@@ -1,1 +1,7 @@
-<p>button works!</p>
+  <button mat-flat-button (click)="onClick()" [disabled]="disabled">
+    <mat-icon *ngIf="icon">{{ icon }}</mat-icon>
+    <ng-container *ngIf="label; else noTitle">
+      {{ label }}
+    </ng-container>
+    <ng-template #noTitle></ng-template>
+  </button>

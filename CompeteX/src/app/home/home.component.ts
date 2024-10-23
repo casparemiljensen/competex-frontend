@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
   title = "this is the tile of the home"
+  testButtonClick() {
+    console.log('Button clicked!');
+    alert('Button click event triggered!');  // You can also trigger any other logic here
+  }
 }
