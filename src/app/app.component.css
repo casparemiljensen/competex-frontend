@@ -1,27 +1,38 @@
 .sidenav-container {
-    height: 100%;
-  }
-  
-  mat-sidenav {
-    width: 250px;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+}
+
+mat-sidenav {
+    width: 200px; /* Fixed width for sidenav */
     background-color: #2196F3; /* Blue background color */
     color: white; /* White text */
-  }
-  
-  mat-sidenav-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers content vertically */
+    padding-top: 20px; /* Optional padding to adjust top space */
+    overflow-y: auto; /* Enables scrolling if content exceeds height */
+}
+
+mat-sidenav-content {
     padding: 16px;
     background-color: #f5f5f5; /* Custom content background color */
-  }
-  
-  .mat-nav-list a {
-    color: white; /* White link color */
-    text-decoration: none;
-  }
-  
-  .mat-nav-list a:hover {
+    flex: 1; /* Allows content to take remaining space */
+}
+
+.mat-nav-list a {
+    color: white; /* Set text color to white */
+    text-decoration: none; /* Remove underline from links */
+    display: flex; /* Use flexbox to align items */
+    align-items: center; /* Center items vertically */
+    padding: 10px; /* Add some padding for better spacing */
+}
+
+.mat-nav-list a:hover {
     background-color: #1976D2; /* Darker blue on hover */
-  }
-  
-  .mat-elevation-z4 {
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Adds shadow */
-  }
+}
+
+.mat-nav-list a .ms-Icon {
+    margin-right: 10px; /* Space between icon and text */
+    color: white; /* Ensure icon color is white */
+}
