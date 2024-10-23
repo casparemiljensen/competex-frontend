@@ -21,21 +21,26 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '20'
 
       # Step 3: Install dependencies
       - name: Install dependencies
         run: npm install
 
-      # Step 4: Run Angular build
+      # Step 4: Install karma-chrome-launcher (to enable ChromeHeadless for testing)
+      - name: Install karma-chrome-launcher
+        run: npm install karma-chrome-launcher --save-dev
+
+      # Step 5: Run Angular build
       - name: Build Angular app
         run: npm run build --if-present
 
-      # Step 5: Run tests
-      - name: Run tests
-        run: npm test
+      # Step 6: Run tests in headless Chrome
+      - name: Run tests in headless Chrome
+        run: |
+          npm test -- --browsers=ChromeHeadless --watch=false
 
-      # Step 6: Upload build artifacts (optional)
+      # Step 7: Upload build artifacts (optional)
       - name: Upload artifacts
         if: success()
         uses: actions/upload-artifact@v3
