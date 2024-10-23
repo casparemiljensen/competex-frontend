@@ -14,7 +14,7 @@ import { CalenderComponent } from './calender/calender.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    ButtonComponent
+    ButtonComponent,
     CalenderComponent
   ],
   imports: [
