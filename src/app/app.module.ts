@@ -3,13 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { ButtonComponent } from './basic-components/button/button.component';
+
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+
+import { ButtonComponent } from './basic-components/button/button.component';
+import { HomeComponent } from './home/home.component';
 import { CalenderComponent } from './calender/calender.component';
 import { TableComponent } from './basic-components/table/table.component';
+
+
 
 @NgModule({
   declarations: [
@@ -23,7 +28,8 @@ import { TableComponent } from './basic-components/table/table.component';
     BrowserModule,
     AppRoutingModule, 
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule
   ],
   providers: [
     provideAnimationsAsync()
