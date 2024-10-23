@@ -8,12 +8,14 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { ButtonComponent } from './basic-components/button/button.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { CalenderComponent } from './calender/calender.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ButtonComponent
+    CalenderComponent
   ],
   imports: [
     BrowserModule,
