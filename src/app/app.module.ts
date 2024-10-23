@@ -9,13 +9,15 @@ import { ButtonComponent } from './basic-components/button/button.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CalenderComponent } from './calender/calender.component';
+import { TableComponent } from './basic-components/table/table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ButtonComponent,
-    CalenderComponent
+    CalenderComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
