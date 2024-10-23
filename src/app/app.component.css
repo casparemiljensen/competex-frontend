@@ -1,0 +1,27 @@
+.sidenav-container {
+    height: 100%;
+  }
+  
+  mat-sidenav {
+    width: 250px;
+    background-color: #2196F3; /* Blue background color */
+    color: white; /* White text */
+  }
+  
+  mat-sidenav-content {
+    padding: 16px;
+    background-color: #f5f5f5; /* Custom content background color */
+  }
+  
+  .mat-nav-list a {
+    color: white; /* White link color */
+    text-decoration: none;
+  }
+  
+  .mat-nav-list a:hover {
+    background-color: #1976D2; /* Darker blue on hover */
+  }
+  
+  .mat-elevation-z4 {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Adds shadow */
+  }
