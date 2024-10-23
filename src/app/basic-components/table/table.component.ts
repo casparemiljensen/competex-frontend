@@ -5,21 +5,36 @@ import { Component } from '@angular/core';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
+
 export class TableComponent {
-  displayedColumns: string[] = ['id', 'name', 'age'];
-  dataSource = ELEMENT_DATA;
+  displayedColumns: string[] = ['date', 'creator', 'eventName'];
+  groupedEvents = this.groupEventsByMonth(EVENT_DATA);
+
+  // Function to group events by month
+  groupEventsByMonth(events: EventData[]): { month: string, events: EventData[] }[] {
+    const grouped: { [key: string]: EventData[] } = {};
+
+    events.forEach(event => {
+      const monthYear = event.date.toLocaleString('default', { month: 'long', year: 'numeric' });
+      if (!grouped[monthYear]) {
+        grouped[monthYear] = [];
+      }
+      grouped[monthYear].push(event);
+    });
+
+    return Object.keys(grouped).map(month => ({ month, events: grouped[month] }));
+  }
 }
 
-export interface UserData {
-  id: string;
-  name: string;
-  age: number;
-}
-
-const ELEMENT_DATA: UserData[] = [
-  {id: '1', name: 'John Doe', age: 25},
-  {id: '2', name: 'Jane Smith', age: 30},
-  {id: '3', name: 'Michael Brown', age: 22},
-  {id: '4', name: 'Lisa White', age: 27}
+const EVENT_DATA: EventData[] = [
+  { date: new Date(2024, 9, 1), creator: 'John Doe', eventName: 'Angular Conference' }, // October
+  { date: new Date(2024, 9, 15), creator: 'Jane Smith', eventName: 'Tech Expo' },      // October
+  { date: new Date(2024, 10, 5), creator: 'Michael Brown', eventName: 'Web Summit' },   // November
+  { date: new Date(2024, 10, 22), creator: 'Lisa White', eventName: 'AI Meetup' }       // November
 ];
 
+export interface EventData {
+  date: Date;
+  creator: string;
+  eventName: string;
+}
