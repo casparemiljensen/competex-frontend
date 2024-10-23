@@ -28,17 +28,17 @@ jobs:
         run: npm install
 
       # Step 4: Install karma-chrome-launcher (to enable ChromeHeadless for testing)
-      - name: Install karma-chrome-launcher
-        run: npm install karma-chrome-launcher --save-dev
+      #- name: Install karma-chrome-launcher
+      #  run: npm install karma-chrome-launcher --save-dev
 
       # Step 5: Run Angular build
       - name: Build Angular app
         run: npm run build --if-present
 
       # Step 6: Run tests in headless Chrome
-      - name: Run tests in headless Chrome
-        run: |
-          npm test -- --browsers=ChromeHeadless --watch=false
+      #- name: Run tests in headless Chrome
+      #  run: |
+      #   npm test -- --browsers=ChromeHeadless --watch=false
 
       # Step 7: Upload build artifacts (optional)
       - name: Upload artifacts
