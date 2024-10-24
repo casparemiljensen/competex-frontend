@@ -8,6 +8,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDivider } from '@angular/material/divider';
 
 import { ButtonComponent } from './basic-components/button/button.component';
 import { HomeComponent } from './home/home.component';
@@ -29,7 +31,9 @@ import { TableComponent } from './basic-components/table/table.component';
     AppRoutingModule, 
     MatIconModule,
     MatButtonModule,
-    MatTableModule
+    MatTableModule,
+    MatExpansionModule,
+    MatDivider
   ],
   providers: [
     provideAnimationsAsync()

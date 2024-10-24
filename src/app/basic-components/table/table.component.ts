@@ -1,40 +1,52 @@
 import { Component } from '@angular/core';
 
+interface Event {
+  id: number;
+  date: Date;
+  creator: string;
+  name: string;
+}
+
+
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
 
+
 export class TableComponent {
-  displayedColumns: string[] = ['date', 'creator', 'eventName'];
-  groupedEvents = this.groupEventsByMonth(EVENT_DATA);
+  events = [
+    { id: 1, date: new Date('2024-10-15'), creator: 'Vejle kanin avlar forenening for unge', name: 'Angular Workshop' },
+    { id: 1, date: new Date('2024-10-15'), creator: 'John Doe', name: 'Angular Workshop' },
+    { id: 2, date: new Date('2024-1-15'), creator: 'John Doe', name: 'Angular Workshop' },
+    { id: 3, date: new Date('2024-5-15'), creator: 'John Doe', name: 'Angular Workshop' },
+    { id: 4, date: new Date('2025-07-15'), creator: 'John Doe', name: 'Angular Workshop' },
+    { id: 5, date: new Date('2024-12-05'), creator: 'Jane Smith', name: 'TypeScript Conference' },
+    // More events
+  ];
+  
+  groupedEvents = this.groupEventsByMonth(this.events);
 
-  // Function to group events by month
-  groupEventsByMonth(events: EventData[]): { month: string, events: EventData[] }[] {
-    const grouped: { [key: string]: EventData[] } = {};
-
-    events.forEach(event => {
-      const monthYear = event.date.toLocaleString('default', { month: 'long', year: 'numeric' });
-      if (!grouped[monthYear]) {
-        grouped[monthYear] = [];
+  groupEventsByMonth(events: Event[]): [string, Event[]][] {
+    // Group events by month and year
+    const groupedEvents: { [key: string]: Event[] } = events.reduce((groups, event) => {
+      const eventDate = new Date(event.date);
+      const monthYear = eventDate.toLocaleString('default', { month: 'long', year: 'numeric' });
+  
+      if (!groups[monthYear]) {
+        groups[monthYear] = [];
       }
-      grouped[monthYear].push(event);
+  
+      groups[monthYear].push(event);
+      return groups;
+    }, {} as { [key: string]: Event[] });
+  
+    // Sort the events by date within each month-year group
+    Object.keys(groupedEvents).forEach(monthYear => {
+      groupedEvents[monthYear].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
     });
-
-    return Object.keys(grouped).map(month => ({ month, events: grouped[month] }));
+  
+    return Object.entries(groupedEvents) as [string, Event[]][];
   }
-}
-
-const EVENT_DATA: EventData[] = [
-  { date: new Date(2024, 9, 1), creator: 'John Doe', eventName: 'Angular Conference' }, // October
-  { date: new Date(2024, 9, 15), creator: 'Jane Smith', eventName: 'Tech Expo' },      // October
-  { date: new Date(2024, 10, 5), creator: 'Michael Brown', eventName: 'Web Summit' },   // November
-  { date: new Date(2024, 10, 22), creator: 'Lisa White', eventName: 'AI Meetup' }       // November
-];
-
-export interface EventData {
-  date: Date;
-  creator: string;
-  eventName: string;
 }
