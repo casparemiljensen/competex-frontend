@@ -14,7 +14,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDivider } from '@angular/material/divider';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './service/InMomoryData/in-memory-data.service'
+import { InMemoryDataService } from './service/InMomoryData/in-memory-data.service';
 
 import { ButtonComponent } from './basic-components/button/button.component';
 import { HomeComponent } from './home/home.component';

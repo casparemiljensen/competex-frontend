@@ -17,9 +17,10 @@ export class TableComponent implements OnInit {
   constructor(private eventService: EventService) {}
 
   ngOnInit(): void {
-    this.eventService.getEvents().subscribe(events => this.events = events);
-    console.log("Events recived ", this.events)
-    this.groupedEvents = this.groupEventsByMonth(this.events);
+    this.eventService.getEvents().subscribe(events => {
+      this.events = events;
+      this.groupedEvents = this.groupEventsByMonth(this.events);
+    });
   }
 
   groupEventsByMonth(events: Event[]): [string, Event[]][] {
