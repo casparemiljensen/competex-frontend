@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDivider } from '@angular/material/divider';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './service/InMomoryData/in-memory-data.service';
@@ -42,6 +43,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     MatTableModule,
     MatExpansionModule,
+    MatProgressSpinner,
     MatDivider,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(

@@ -13,6 +13,7 @@ export class TableComponent implements OnInit {
 
   events: Event[] = [];
   groupedEvents: [string, Event[]][] = [];
+  isLoading = true;
 
   constructor(private eventService: EventService) {}
 
@@ -20,6 +21,7 @@ export class TableComponent implements OnInit {
     this.eventService.getEvents().subscribe(events => {
       this.events = events;
       this.groupedEvents = this.groupEventsByMonth(this.events);
+      this.isLoading = false;
     });
   }
 
