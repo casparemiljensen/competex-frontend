@@ -3,13 +3,13 @@ import { EventService } from '../../service/event/event.service';
 import { Event } from '../../models/event'
 
 @Component({
-  selector: 'app-table',
-  templateUrl: './table.component.html',
-  styleUrls: ['./table.component.css']
+  selector: 'app-event-table',
+  templateUrl: './event-table.component.html',
+  styleUrls: ['./event-table.component.css']
 })
 
 
-export class TableComponent implements OnInit {
+export class EventTableComponent implements OnInit {
 
   events: Event[] = [];
   groupedEvents: [string, Event[]][] = [];

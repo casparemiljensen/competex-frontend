@@ -20,7 +20,7 @@ import { InMemoryDataService } from './service/InMomoryData/in-memory-data.servi
 import { ButtonComponent } from './basic-components/button/button.component';
 import { HomeComponent } from './home/home.component';
 import { CalenderComponent } from './calender/calender.component';
-import { TableComponent } from './basic-components/table/table.component';
+import { EventTableComponent } from './basic-components/event-table/event-table.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
@@ -31,7 +31,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     HomeComponent,
     ButtonComponent,
     CalenderComponent,
-    TableComponent
+    EventTableComponent
   ],
   imports: [
     BrowserModule,
