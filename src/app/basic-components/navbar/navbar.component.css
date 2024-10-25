@@ -15,15 +15,16 @@
   display: flex;
   justify-content: center; /* Center the icon horizontally */
   align-items: center; /* Center the icon vertically */
-  margin: 30px 0; /* Space above and below the icon */
+  margin: 1%; /* Space above and below the icon */
+  margin-bottom: 50%;
+  margin-top: 50%;
 }
 
 .contact-icon-container a {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 33%; /* Adjust size as needed */
-  height: 50px; /* Adjust size as needed */
+  width: auto; /* Adjust size as needed */
   border-radius: 50%; /* Make it circular */
   background-color: white; /* Circle color */
   color: #2196F3; /* Change icon color to match your theme */
@@ -33,12 +34,23 @@
 }
 
 .contact-icon-container a:hover {
-  background-color: #f0f0f0; /* Change background on hover for interaction */
+  background-color: #ffffff; /* Change background on hover for interaction */
 }
 
-.contact-icon-container a i {
-  font-size: 24px; /* Adjust icon size */
+.navbar-route-list a {
+  display: flex;
+  justify-content: center; /* Centers content horizontally */
+  align-items: center;     /* Centers content vertically */
+  color: white; /* Force text color to white */
+  text-decoration: none;   /* Removes underline from links */
 }
+
+.navbar-route-list a:hover {
+  background-color: #ffffff; /* Changes background on hover */
+  color: #2196F3 !important; /* Change text color on hover to match your theme */
+}
+
+
 
 /* Styles for bottom sidenav */
 .bottom-sidenav {
@@ -46,9 +58,23 @@
   bottom: 0;
   left: 0;
   width: 40%;
-  max-height: 50%; /* Adjust height to fit the content */
+  max-height: 100%; /* Adjust height to fit the content */
   display: flex;
   flex-direction: column; /* Stack items vertically */
   overflow-y: auto; /* Allows scrolling if content exceeds max height */
   padding: 10% 0; /* Add padding for spacing */
+}
+
+.toolbarNav {
+  position: fixed;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-around;
+  width: 100%; /* Ensure it spans the full width */
+  background-color: white;
+
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc; /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow: 3px 3px 5px 6px #ccc; /* Firefox 3.5 - 3.6 */
+  box-shadow: 2px 2px 4px 5px #ccc; /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 }

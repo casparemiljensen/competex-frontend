@@ -1,11 +1,11 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav
+    *ngIf="!isSmallScreen"
     #sidenav
     [mode]="isSmallScreen ? 'over' : 'side'"
     [opened]="!isSmallScreen"
     class="mat-elevation-z4"
     [ngClass]="{ 'bottom-sidenav': isSmallScreen }"
-    color="primary"
   >
     <mat-nav-list>
       <div class="contact-icon-container">
@@ -13,23 +13,42 @@
           <i class="ms-Icon ms-Icon--Contact" aria-hidden="true"></i>
         </a>
       </div>
-      <a mat-list-item routerLink="/home" (click)="closeSidenav()">
-        <i class="ms-Icon ms-Icon--Home" aria-hidden="true"></i> Home
-      </a>
-      <a mat-list-item routerLink="/calendar" (click)="closeSidenav()">
-        <i class="ms-Icon ms-Icon--Calendar" aria-hidden="true"></i> Calendar
-      </a>
+      <div class="navbar-route-list">
+        <a mat-list-item routerLink="/home" (click)="closeSidenav()">
+          <i class="ms-Icon ms-Icon--HomeSolid" aria-hidden="true"></i>
+          Home
+        </a>
+        <a mat-list-item routerLink="/calendar" (click)="closeSidenav()">
+          <i class="ms-Icon ms-Icon--CalendarWorkWeek" aria-hidden="true"></i>
+          Calendar
+        </a>
+      </div>
     </mat-nav-list>
   </mat-sidenav>
+
   <mat-sidenav-content>
     <button
       *ngIf="isSmallScreen"
       mat-icon-button
       (click)="sidenav.toggle()"
       aria-label="Toggle sidenav"
-    >
-      <mat-icon>menu</mat-icon>
-    </button>
+    ></button>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
+
+<!-- Mobile Navbar -->
+<mat-toolbar class="toolbarNav" *ngIf="isSmallScreen">
+  <button mat-flat-button routerLink="/home">
+    <mat-icon class="ms-Icon ms-Icon--HomeSolid"></mat-icon>
+    <span></span>
+  </button>
+  <button mat-flat-button routerLink="/calendar">
+    <mat-icon class="ms-Icon ms-Icon--CalendarWorkWeek"></mat-icon>
+    <span></span>
+  </button>
+  <button mat-flat-button routerLink="/mypage">
+    <mat-icon class="ms-Icon ms-Icon--Contact"></mat-icon>
+    <span></span>
+  </button>
+</mat-toolbar>
