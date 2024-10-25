@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { EventService } from '../../service/event/event.service';
 import { Event } from '../../models/event'
 
 @Component({
@@ -8,18 +9,18 @@ import { Event } from '../../models/event'
 })
 
 
-export class TableComponent {
-  events = [
-    { id: 1, date: new Date('2024-10-15'), creator: 'Vejle kanin avlar forenening for unge', name: 'Angular Workshop' },
-    { id: 1, date: new Date('2024-10-15'), creator: 'John Doe', name: 'Angular Workshop' },
-    { id: 2, date: new Date('2024-1-15'), creator: 'John Doe', name: 'Angular Workshop' },
-    { id: 3, date: new Date('2024-5-15'), creator: 'John Doe', name: 'Angular Workshop' },
-    { id: 4, date: new Date('2025-07-15'), creator: 'John Doe', name: 'Angular Workshop' },
-    { id: 5, date: new Date('2024-12-05'), creator: 'Jane Smith', name: 'TypeScript Conference' },
-    // More events
-  ];
-  
-  groupedEvents = this.groupEventsByMonth(this.events);
+export class TableComponent implements OnInit {
+
+  events: Event[] = [];
+  groupedEvents: [string, Event[]][] = [];
+
+  constructor(private eventService: EventService) {}
+
+  ngOnInit(): void {
+    this.eventService.getEvents().subscribe(events => this.events = events);
+    console.log("Events recived ", this.events)
+    this.groupedEvents = this.groupEventsByMonth(this.events);
+  }
 
   groupEventsByMonth(events: Event[]): [string, Event[]][] {
     // Group events by month and year
