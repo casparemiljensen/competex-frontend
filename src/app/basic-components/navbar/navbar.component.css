@@ -1,0 +1,54 @@
+/* Default styles for sidenav */
+.sidenav-container {
+  height: 100%;
+  display: flex;
+}
+
+/* Set default background color for the sidenav */
+.mat-sidenav {
+  background-color: #2196F3; /* Blue background for both mobile and desktop */
+  width: 10%;
+}
+
+/* Specific styles for the contact icon container */
+.contact-icon-container {
+  display: flex;
+  justify-content: center; /* Center the icon horizontally */
+  align-items: center; /* Center the icon vertically */
+  margin: 30px 0; /* Space above and below the icon */
+}
+
+.contact-icon-container a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 33%; /* Adjust size as needed */
+  height: 50px; /* Adjust size as needed */
+  border-radius: 50%; /* Make it circular */
+  background-color: white; /* Circle color */
+  color: #2196F3; /* Change icon color to match your theme */
+  text-decoration: none; /* Remove underline */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Optional shadow for effect */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.contact-icon-container a:hover {
+  background-color: #f0f0f0; /* Change background on hover for interaction */
+}
+
+.contact-icon-container a i {
+  font-size: 24px; /* Adjust icon size */
+}
+
+/* Styles for bottom sidenav */
+.bottom-sidenav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 40%;
+  max-height: 50%; /* Adjust height to fit the content */
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  overflow-y: auto; /* Allows scrolling if content exceeds max height */
+  padding: 10% 0; /* Add padding for spacing */
+}

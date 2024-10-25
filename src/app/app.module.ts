@@ -11,13 +11,17 @@ import { ButtonComponent } from './basic-components/button/button.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CalenderComponent } from './calender/calender.component';
+import { MyPageComponent } from './mypage/mypage.component';
+import { NavbarComponent } from './basic-components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ButtonComponent,
-    CalenderComponent
+    CalenderComponent,
+    NavbarComponent,
+    MyPageComponent    
   ],
   imports: [
     BrowserModule,
