@@ -1,12 +1,5 @@
 import { Component } from '@angular/core';
-
-interface Event {
-  id: number;
-  date: Date;
-  creator: string;
-  name: string;
-}
-
+import { Event } from '../../models/event'
 
 @Component({
   selector: 'app-table',
