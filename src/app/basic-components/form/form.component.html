@@ -1,1 +1,35 @@
-<p>form works!</p>
+<form [formGroup]="myForm">
+    Value: {{myForm.value | json}}
+    <hr>
+
+    <mat-form-field>
+        <input matInput placeholder="Titel" formControlName="title" (ngSubmit)="handleSubmit()">
+        <mat-hint align="end">Må kun indeholde bogstaver</mat-hint>
+        <mat-error *ngIf="title?.invalid">
+            Invalid 
+        </mat-error>
+    </mat-form-field>
+
+    <h4>Konkurrencer</h4>
+    <div formArrayName="competition">
+        <div *ngFor="let competition of competitionForms.controls; let i=index" [formGroupName]="i">
+            <mat-form-field>
+                <input matInput placeholder="Gren" formControlName="gren">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Klasse" formControlName="klasse">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Pris" formControlName="pris">
+                <mat-hint align="end">Må kun indeholde bogstaver</mat-hint>
+                <mat-error *ngIf="getCompetitionControl(i, 'pris')?.errors?.['max']">
+                    Pris overskrider maks.
+                </mat-error>
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="deleteCompetition(i)">X</button>
+        </div>
+    </div>
+    <button mat-raised-button color="primary" (click)="addCompetition()">Tilføj Konkurrence</button>
+    <mat-checkbox formControlName="agree" color="primary">Jeg godkender at mine informationer er korrekt angivet</mat-checkbox>
+    <button mat-raised-button type="submit" [disabled]="myForm.invalid" color="primary">Godkend</button>
+</form>
