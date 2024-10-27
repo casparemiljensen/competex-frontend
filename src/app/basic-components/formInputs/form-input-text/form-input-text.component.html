@@ -1,0 +1,10 @@
+<mat-form-field class="form-group">
+    <input matInput
+        class="form-control"
+        [formControl]="control"
+        [attr.placeholder]="label" 
+    />
+    <mat-error *ngIf="showError">
+        {{label}} is required
+    </mat-error>
+  </mat-form-field>

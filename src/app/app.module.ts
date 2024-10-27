@@ -23,6 +23,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
 import { FormInputTextComponent } from './basic-components/formInputs/form-input-text/form-input-text.component';
+import { FormTemplateComponent } from './basic-components/form-template/form-template.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { FormInputTextComponent } from './basic-components/formInputs/form-input
     CalenderComponent,
     CreateEventComponent,
     FormComponent,
-    FormInputTextComponent
+    FormInputTextComponent,
+    FormTemplateComponent
   ],
   imports: [
     BrowserModule,
