@@ -6,14 +6,25 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { ButtonComponent } from './basic-components/button/button.component';
+
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDivider } from '@angular/material/divider';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
+
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './service/InMomoryData/in-memory-data.service';
+
+import { ButtonComponent } from './basic-components/button/button.component';
+import { HomeComponent } from './home/home.component';
 import { CalenderComponent } from './calender/calender.component';
 import { MyPageComponent } from './mypage/mypage.component';
 import { NavbarComponent } from './basic-components/navbar/navbar.component';
+import { EventTableComponent } from './basic-components/event-table/event-table.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +33,8 @@ import { NavbarComponent } from './basic-components/navbar/navbar.component';
     ButtonComponent,
     CalenderComponent,
     NavbarComponent,
-    MyPageComponent    
+    MyPageComponent,   
+    EventTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +44,15 @@ import { NavbarComponent } from './basic-components/navbar/navbar.component';
     AppRoutingModule, 
     MatIconModule,
     MatButtonModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatTableModule,
+    MatExpansionModule,
+    MatProgressSpinner,
+    MatDivider,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false}
+    )
   ],
   providers: [
     provideAnimationsAsync()
