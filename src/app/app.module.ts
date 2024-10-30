@@ -23,6 +23,7 @@ import { CalenderComponent } from './calender/calender.component';
 import { EventTableComponent } from './basic-components/event-table/event-table.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CompetitionComponent } from './competition/competition.component';
+import { ParticipantsTableComponent } from './basic-components/participants-table/participants-table.component';
 
 
 
@@ -33,7 +34,8 @@ import { CompetitionComponent } from './competition/competition.component';
     ButtonComponent,
     CalenderComponent,
     EventTableComponent,
-    CompetitionComponent
+    CompetitionComponent,
+    ParticipantsTableComponent
   ],
   imports: [
     BrowserModule,
