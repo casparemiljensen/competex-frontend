@@ -24,6 +24,12 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
 import { FormInputTextComponent } from './basic-components/formInputs/form-input-text/form-input-text.component';
 import { FormTemplateComponent } from './basic-components/form-template/form-template.component';
+import { FormInputDateComponent } from './basic-components/formInputs/form-input-date/form-input-date.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {provideNativeDateAdapter} from '@angular/material/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+import { FormInputTimeComponent } from './basic-components/formInputs/form-input-time/form-input-time.component';
 
 
 @NgModule({
@@ -35,7 +41,9 @@ import { FormTemplateComponent } from './basic-components/form-template/form-tem
     CreateEventComponent,
     FormComponent,
     FormInputTextComponent,
-    FormTemplateComponent
+    FormTemplateComponent,
+    FormInputDateComponent,
+    FormInputTimeComponent
   ],
   imports: [
     BrowserModule,
@@ -47,10 +55,13 @@ import { FormTemplateComponent } from './basic-components/form-template/form-tem
     MatChipsModule,
     MatCheckboxModule,
     MatSelectModule,
-    MatInputModule
+    MatInputModule, 
+    MatDatepickerModule,
+    MatFormFieldModule,
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(), 
+    provideNativeDateAdapter(),
   ],
   bootstrap: [AppComponent]
 })

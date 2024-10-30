@@ -1,9 +1,17 @@
 <p>form-template works!</p>
 <form [formGroup]="myForm" (ngSubmit)="handleSubmit()">
-  <ng-content></ng-content>  
-  <app-form-input-text
+    <app-form-input-time
+      label="Start Time"
+      [control]="startTimeControl">
+    </app-form-input-time>
+
+    <app-form-input-date
+      label="Date"
+      [control]="dateControl"
+    ></app-form-input-date>
+    <app-form-input-text
       label="First Name"
-      [control]="nameControl"
+      [control]="titleControl"
     ></app-form-input-text>
     <button mat-raised-button type="submit" [disabled]="myForm.invalid" color="primary">Submit</button>
 </form>

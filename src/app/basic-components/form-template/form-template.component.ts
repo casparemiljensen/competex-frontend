@@ -10,17 +10,27 @@ export class FormTemplateComponent implements OnInit {
   @Input() formFields: {[key: string]: any} = {};
   myForm!: FormGroup;
 
+
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.myForm = this.fb.group({
-      name: ['', Validators.required],
+      title: ['', Validators.required],
+      date: ['', Validators.required],
+      startTime: ['', Validators.required],
     });
   }
 
-  get nameControl(): FormControl {
-    return this.myForm.get('name') as FormControl;
+  get titleControl(): FormControl {
+    return this.myForm.get('title') as FormControl;
   }
+  get dateControl(): FormControl {
+    return this.myForm.get('date') as FormControl;
+  }
+  get startTimeControl(): FormControl {
+    return this.myForm.get('startTime') as FormControl;
+  }
+
   handleSubmit() {
     if (this.myForm.valid) {
       alert('Form submitted successfully!');
