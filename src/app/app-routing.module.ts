@@ -3,12 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { CalenderComponent } from './calender/calender.component';
 import { CreateEventComponent } from './create-event/create-event.component';
+import { MyPageComponent } from './mypage/mypage.component'; // Adjust import as necessary
+
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'calender', component: CalenderComponent},
   { path: 'create-event', component: CreateEventComponent},
-  { path: '', redirectTo: 'home', pathMatch: 'full'}
+  { path: 'mypage', component: MyPageComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect empty path to home
+  { path: '**', redirectTo: '/home' } // Redirect unknown paths to home
 ];
 
 @NgModule({

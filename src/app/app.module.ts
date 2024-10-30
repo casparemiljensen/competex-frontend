@@ -11,6 +11,9 @@ import { CreateEventComponent } from './create-event/create-event.component';
 import { FormComponent } from './basic-components/form/form.component';
 import { MatPaginator } from '@angular/material/paginator'; 
 import { EventTableComponent } from './basic-components/event-table/event-table.component';
+import { MyPageComponent } from './mypage/mypage.component';
+import { NavbarComponent } from './basic-components/navbar/navbar.component';
+
 
 // Agnular Imports
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -46,7 +49,7 @@ import { MatProgressSpinner } from '@angular/material/progress-spinner';
 //ngx imports 
 import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -60,6 +63,8 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
     FormTemplateComponent,
     FormInputDateComponent,
     FormInputTimeComponent,
+    NavbarComponent,
+    MyPageComponent,   
     EventTableComponent,
   ],
   imports: [
@@ -80,6 +85,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
     MatFormFieldModule,
     MatPaginator,
     NgxMatTimepickerModule,
+    MatToolbarModule,
     MatTableModule,
     MatExpansionModule,
     MatProgressSpinner,
