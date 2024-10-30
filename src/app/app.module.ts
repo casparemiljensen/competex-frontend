@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { AppRoutingModule } from './app-routing.module';
@@ -20,10 +21,10 @@ import { InMemoryDataService } from './service/InMomoryData/in-memory-data.servi
 import { ButtonComponent } from './basic-components/button/button.component';
 import { HomeComponent } from './home/home.component';
 import { CalenderComponent } from './calender/calender.component';
+import { MyPageComponent } from './mypage/mypage.component';
+import { NavbarComponent } from './basic-components/navbar/navbar.component';
 import { EventTableComponent } from './basic-components/event-table/event-table.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-
-
 
 @NgModule({
   declarations: [
@@ -31,7 +32,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     HomeComponent,
     ButtonComponent,
     CalenderComponent,
-    EventTableComponent
+    NavbarComponent,
+    MyPageComponent,   
+    EventTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +44,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     AppRoutingModule, 
     MatIconModule,
     MatButtonModule,
+    MatToolbarModule,
     MatTableModule,
     MatExpansionModule,
     MatProgressSpinner,
