@@ -1,18 +1,51 @@
-<p>form-template works!</p>
-<form [formGroup]="myForm" (ngSubmit)="handleSubmit()">
-    <app-form-input-time
-      label="Start Time"
-      [control]="startTimeControl">
-    </app-form-input-time>
-
+<div class="form-group">
+  <form [formGroup]="myForm" (ngSubmit)="handleSubmit()">
+    <div class="form-grid">
+      <app-form-input-text
+        label="Titel"
+        [control]="titleControl" >
+      </app-form-input-text>
+      <app-form-input-text
+        label="Arrangør"
+        [control]="organizerControl">
+      </app-form-input-text>
+      <app-form-input-text
+        label="Stednavn"
+        [control]="locationControl" >
+      </app-form-input-text>
+      <app-form-input-text
+        label="Adresse"
+        [control]="adressControl" >
+      </app-form-input-text>
+      <app-form-input-text
+        label="Postnr. og by"
+        [control]="postadressControl" >
+      </app-form-input-text>
+      <app-form-input-time
+        label="Start tidspunkt"
+        [control]="startTimeControl" >
+      </app-form-input-time>
+      <app-form-input-date
+        label="Start dato"
+        [control]="startDateControl" >
+      </app-form-input-date>
+      <app-form-input-date
+        label="Slut dato"
+        [control]="endDateControl" >
+      </app-form-input-date>
+      <app-form-input-date
+      label="Dato for tilmeldingsstart"
+      [control]="registrationStartDateControl" >
+    </app-form-input-date>
     <app-form-input-date
-      label="Date"
-      [control]="dateControl"
-    ></app-form-input-date>
-    <app-form-input-text
-      label="First Name"
-      [control]="titleControl"
-    ></app-form-input-text>
+      label="Dato for sidste tilmelding"
+      [control]="registrationEndDateControl" >
+    </app-form-input-date>
+    <mat-paginator [length]="3" [pageSize]="1" [pageSizeOptions]="[1]" showFirstLastButtons></mat-paginator>
+    
     <button mat-raised-button type="submit" [disabled]="myForm.invalid" color="primary">Submit</button>
-</form>
   
+
+  </div>
+  </form>
+</div>

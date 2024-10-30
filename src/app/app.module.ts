@@ -9,7 +9,7 @@ import { ButtonComponent } from './basic-components/button/button.component';
 import { CalenderComponent } from './calender/calender.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { FormComponent } from './basic-components/form/form.component';
-
+import { MatPaginator } from '@angular/material/paginator'; 
 // Agnular Imports
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -31,6 +31,8 @@ import {provideNativeDateAdapter} from '@angular/material/core';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import { FormInputTimeComponent } from './basic-components/formInputs/form-input-time/form-input-time.component';
 
+//ngx imports 
+import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,8 @@ import { FormInputTimeComponent } from './basic-components/formInputs/form-input
     MatInputModule, 
     MatDatepickerModule,
     MatFormFieldModule,
+    MatPaginator,
+    NgxMatTimepickerModule,
   ],
   providers: [
     provideAnimationsAsync(), 

@@ -15,20 +15,49 @@ export class FormTemplateComponent implements OnInit {
 
   ngOnInit(): void {
     this.myForm = this.fb.group({
-      title: ['', Validators.required],
-      date: ['', Validators.required],
-      startTime: ['', Validators.required],
+      title: ['', [Validators.required]],
+      organizer: ['', [Validators.required]],
+      location: ['', [Validators.required]],
+      adress: ['', [Validators.required]],
+      postadress: ['', [Validators.required]],
+      startTime: ['', [Validators.required, Validators.pattern('^([01]?[0-9]|2[0-3]):[0-5][0-9]$')]],
+      startDate: ['', [Validators.required]],
+      endDate: ['', [Validators.required]],
+      registrationStartDate: ['', [Validators.required]],
+      registrationEndDate: ['', [Validators.required]],
     });
   }
-
+  
+  //Getter methods for form controls, used in the html template to send the form control to the form-input components. 
   get titleControl(): FormControl {
     return this.myForm.get('title') as FormControl;
   }
-  get dateControl(): FormControl {
-    return this.myForm.get('date') as FormControl;
+  get organizerControl(): FormControl {
+    return this.myForm.get('organizer') as FormControl;
+  }
+  get locationControl(): FormControl { 
+    return this.myForm.get('location') as FormControl;
+  }
+  get adressControl(): FormControl {
+    return this.myForm.get('adress') as FormControl;
+  }
+  get postadressControl(): FormControl {
+    return this.myForm.get('postadress') as FormControl;
   }
   get startTimeControl(): FormControl {
     return this.myForm.get('startTime') as FormControl;
+  }
+  get startDateControl(): FormControl {
+    return this.myForm.get('startDate') as FormControl;
+  }
+  get endDateControl(): FormControl {
+    return this.myForm.get('endDate') as FormControl;
+  }
+  get registrationStartDateControl(): FormControl {
+    return this.myForm.get('registrationStartDate') as FormControl;
+  }
+  get registrationEndDateControl(): FormControl {
+    return this.myForm.get('registrationEndDate') as FormControl;
   }
 
   handleSubmit() {

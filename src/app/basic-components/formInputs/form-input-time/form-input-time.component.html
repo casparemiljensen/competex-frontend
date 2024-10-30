@@ -1,12 +1,12 @@
-<mat-form-field class="form-group">
+<mat-form-field class="form-group" appearance="outline">
     <mat-label>{{label}}</mat-label>
     <input matInput type = "time"
         class="form-control"
         [formControl]="control"
-        [attr.placeholder]="label" 
-    />
+        [attr.placeholder]="label">
     <mat-error *ngIf="showError">
-      {{label}} is required and must match the format {{format}}
+      {{label}} format {{format}}
     </mat-error>
   </mat-form-field>
+
   
