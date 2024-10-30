@@ -21,31 +21,32 @@ export class ParticipantsTableComponent {
 
 // Shold be dynamic depending on the requirments
 export interface Participant {
+  number: number;
   name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+  bunny: string;
+  startno: number;
 }
 
 const PARTICIPANT_DATA: Participant[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-  {position: 11, name: 'Sodium', weight: 22.9897, symbol: 'Na'},
-  {position: 12, name: 'Magnesium', weight: 24.305, symbol: 'Mg'},
-  {position: 13, name: 'Aluminum', weight: 26.9815, symbol: 'Al'},
-  {position: 14, name: 'Silicon', weight: 28.0855, symbol: 'Si'},
-  {position: 15, name: 'Phosphorus', weight: 30.9738, symbol: 'P'},
-  {position: 16, name: 'Sulfur', weight: 32.065, symbol: 'S'},
-  {position: 17, name: 'Chlorine', weight: 35.453, symbol: 'Cl'},
-  {position: 18, name: 'Argon', weight: 39.948, symbol: 'Ar'},
-  {position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K'},
-  {position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca'},
+  { number: 1, name: 'Alice', bunny: 'Asteroid Destroyer', startno: 101 },
+  { number: 2, name: 'Bob', bunny: 'Optimus Prime', startno: 102 },
+  { number: 3, name: 'Charlie', bunny: 'Galactic Conqueror', startno: 103 },
+  { number: 4, name: 'Daisy', bunny: 'Thunder Bunny', startno: 104 },
+  { number: 5, name: 'Edward', bunny: 'Star Hopper', startno: 105 },
+  { number: 6, name: 'Fiona', bunny: 'Comet Chaser', startno: 106 },
+  { number: 7, name: 'George', bunny: 'Supernova Slayer', startno: 107 },
+  { number: 8, name: 'Hannah', bunny: 'Nebula Navigator', startno: 108 },
+  { number: 9, name: 'Ian', bunny: 'Rocket Racer', startno: 109 },
+  { number: 10, name: 'Jasmine', bunny: 'Meteor Masher', startno: 110 },
+  { number: 11, name: 'Kevin', bunny: 'Cosmos Crusher', startno: 111 },
+  { number: 12, name: 'Lily', bunny: 'Galaxy Gladiator', startno: 112 },
+  { number: 13, name: 'Mike', bunny: 'Planet Pulverizer', startno: 113 },
+  { number: 14, name: 'Nina', bunny: 'Orbit Overlord', startno: 114 },
+  { number: 15, name: 'Oscar', bunny: 'Starlight Samurai', startno: 115 },
+  { number: 16, name: 'Paula', bunny: 'Lunar Legend', startno: 116 },
+  { number: 17, name: 'Quinn', bunny: 'Astro Avenger', startno: 117 },
+  { number: 18, name: 'Rachel', bunny: 'Meteor Monarch', startno: 118 },
+  { number: 19, name: 'Steve', bunny: 'Solar Smasher', startno: 119 },
+  { number: 20, name: 'Tina', bunny: 'Black Hole Bandit', startno: 120 },
+  { number: 21, name: 'Peter', bunny: 'Bour, God of Stumper', startno: 121 }
 ];
