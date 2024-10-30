@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
@@ -23,11 +24,11 @@ import { InMemoryDataService } from './service/InMomoryData/in-memory-data.servi
 import { ButtonComponent } from './basic-components/button/button.component';
 import { HomeComponent } from './home/home.component';
 import { CalenderComponent } from './calender/calender.component';
+import { MyPageComponent } from './mypage/mypage.component';
+import { NavbarComponent } from './basic-components/navbar/navbar.component';
 import { EventTableComponent } from './basic-components/event-table/event-table.component';
 import { CompetitionComponent } from './competition/competition.component';
 import { ParticipantsTableComponent } from './basic-components/participants-table/participants-table.component';
-
-
 
 @NgModule({
   declarations: [
@@ -37,7 +38,10 @@ import { ParticipantsTableComponent } from './basic-components/participants-tabl
     CalenderComponent,
     EventTableComponent,
     CompetitionComponent,
-    ParticipantsTableComponent
+    ParticipantsTableComponent,
+    NavbarComponent,
+    MyPageComponent,   
+    EventTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,13 +51,14 @@ import { ParticipantsTableComponent } from './basic-components/participants-tabl
     AppRoutingModule, 
     MatIconModule,
     MatButtonModule,
+    MatToolbarModule,
     MatTableModule,
     MatExpansionModule,
     MatProgressSpinner,
     MatDivider,
     MatTableModule, 
     MatPaginatorModule,
-      HttpClientModule,
+    HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false}
     )
