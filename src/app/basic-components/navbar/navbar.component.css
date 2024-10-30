@@ -8,10 +8,11 @@
 .mat-sidenav {
   background-color: #2196F3; /* Blue background for both mobile and desktop */
   width: 10%;
+  border-radius: 0.001%;
 }
 
 /* Specific styles for the contact icon container */
-.contact-icon-container {
+.contact-icon-container-mypage {
   display: flex;
   justify-content: center; /* Center the icon horizontally */
   align-items: center; /* Center the icon vertically */
@@ -20,61 +21,111 @@
   margin-top: 50%;
 }
 
-.contact-icon-container a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.contact-icon-container-mypage a {
   width: auto; /* Adjust size as needed */
   border-radius: 50%; /* Make it circular */
   background-color: white; /* Circle color */
   color: #2196F3; /* Change icon color to match your theme */
-  text-decoration: none; /* Remove underline */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Optional shadow for effect */
-  transition: background-color 0.3s; /* Smooth transition for hover effect */
 }
 
-.contact-icon-container a:hover {
-  background-color: #ffffff; /* Change background on hover for interaction */
+.contact-icon-container-add a {
+  width: 100%; 
+  background-color: white;
+  color: #2196F3; /* Change icon color to match your theme */
+  border-radius: 0%;
+  text-align: center;
+  padding-top: 25%;
+  padding-bottom: 25%;
+  font-size: 220%;
+  vertical-align: middle;
 }
 
-.navbar-route-list a {
-  display: flex;
-  justify-content: center; /* Centers content horizontally */
-  align-items: center;     /* Centers content vertically */
-  color: white; /* Force text color to white */
-  text-decoration: none;   /* Removes underline from links */
+.contact-icon-container-add a:hover {
+  background-color: #2196F3; /* Change background color on hover */
+  color: white; /* Change icon color on hover */
 }
 
-.navbar-route-list a:hover {
-  background-color: #ffffff; /* Changes background on hover */
-  color: #2196F3 !important; /* Change text color on hover to match your theme */
+.contact-icon-container-general a {
+  display: flex; /* Make it a flex container */
+  width: 100%; /* Ensure it spans the full width */
+  border-radius: 1%; /* Make it rounded */
+  color: white; 
+  padding-top: 25%;
+  padding-bottom: 25%;
+  transition: background-color 0.3s, color 0.3s; /* Optional: Add smooth transitions */
 }
 
-
-
-/* Styles for bottom sidenav */
-.bottom-sidenav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 40%;
-  max-height: 100%; /* Adjust height to fit the content */
-  display: flex;
-  flex-direction: column; /* Stack items vertically */
-  overflow-y: auto; /* Allows scrolling if content exceeds max height */
-  padding: 10% 0; /* Add padding for spacing */
+.contact-icon-container-general a:hover {
+  background-color: white; 
+  color: #2196F3; /* Change text color on hover */
 }
 
-.toolbarNav {
+.contact-icon-container-general a:hover span {
+  color: #2196F3; /* Ensure text color changes on hover */
+}
+
+.custom-icon {
+  width: 20%; /* Adjust size as needed */
+  height: 20%; /* Adjust size as needed */
+  margin-right: 2%; /* Space between icon and text */
+  vertical-align: middle; /* Aligns icon with text */
+}
+
+/* Mobile Navbar */
+.mobileNav {
   position: fixed;
   bottom: 0;
   z-index: 1000;
-  display: flex;
-  justify-content: space-around;
-  width: 100%; /* Ensure it spans the full width */
-  background-color: white;
-
+  background-color: #2196F3;
   -webkit-box-shadow: 3px 3px 5px 6px #ccc; /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
   -moz-box-shadow: 3px 3px 5px 6px #ccc; /* Firefox 3.5 - 3.6 */
   box-shadow: 2px 2px 4px 5px #ccc; /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 }
+
+/* Ensure all button containers take full width and height */
+.mobile-container-general,
+.mobile-container-add, .mobile-container-mypage{
+  display: flex;
+  justify-content: center; /* Center items horizontally */
+  align-items: center; /* Center items vertically */
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+}
+
+/* Apply color style to buttons */
+.mobile-container-general button,
+.mobile-container-add button {
+  background-color: transparent; /* Make button background transparent */
+  border: none; /* Remove button border */
+  color: black; /* Button text color */
+  font-size: 150%; /* Adjust font size for icons */
+}
+
+.mobile-container-mypage button {
+  display: flex;
+  justify-content: center; /* Center the icon horizontally */
+  align-items: center; /* Center the icon vertically */
+  width: 60%; /* Adjust size as needed */
+  height: 70%;
+  border-radius: 50%; /* Make it circular */;
+  border: none; /* Remove button border */
+  
+}
+
+.custom-icon-mobile {
+  width: 60%; /* Adjust size as needed */
+  height: 60%; /* Adjust size as needed */
+  margin-right: 10%; /* Space between icon and text */
+  margin-left: 10%;
+  color: #2196F3;
+  vertical-align: middle; /* Aligns icon with text */
+}
+
+.icon-text-container {
+  display: flex;
+  flex-direction: column; /* Stack icon and text vertically */
+  align-items: center; /* Center the text below the icon */
+  text-align: center; /* Center the text */
+  font-size: 40%;
+}
+

@@ -8,19 +8,42 @@
     [ngClass]="{ 'bottom-sidenav': isSmallScreen }"
   >
     <mat-nav-list>
-      <div class="contact-icon-container">
+      <div class="contact-icon-container-mypage">
         <a mat-list-item routerLink="/mypage" (click)="closeSidenav()">
           <i class="ms-Icon ms-Icon--Contact" aria-hidden="true"></i>
         </a>
       </div>
-      <div class="navbar-route-list">
+      <div class="contact-icon-container-general">
         <a mat-list-item routerLink="/home" (click)="closeSidenav()">
-          <i class="ms-Icon ms-Icon--HomeSolid" aria-hidden="true"></i>
-          Home
+          <i class="ms-Icon ms-Icon--HomeSolid" aria-hidden="true"> </i>
+          <span> Home</span>
         </a>
+      </div>
+      <div class="contact-icon-container-general">
         <a mat-list-item routerLink="/calendar" (click)="closeSidenav()">
           <i class="ms-Icon ms-Icon--CalendarWorkWeek" aria-hidden="true"></i>
-          Calendar
+          <span> Calendar</span>
+        </a>
+      </div>
+      <div class="contact-icon-container-general">
+        <a mat-list-item routerLink="/results" (click)="closeSidenav()">
+          <i class="ms-Icon ms-Icon--Medal" aria-hidden="true"> </i>
+          <span> Results</span>
+        </a>
+      </div>
+      <div class="contact-icon-container-general">
+        <a mat-list-item routerLink="/rabbit" (click)="closeSidenav()">
+          <img
+            src="assets/images/rabbit.png"
+            alt="Rabbit Icon"
+            class="custom-icon"
+          />
+          <span> Rabbit</span>
+        </a>
+      </div>
+      <div class="contact-icon-container-add">
+        <a mat-list-item routerLink="/create-event" (click)="closeSidenav()">
+          <i class="ms-Icon ms-Icon--Add" aria-hidden="true"></i>
         </a>
       </div>
     </mat-nav-list>
@@ -38,17 +61,57 @@
 </mat-sidenav-container>
 
 <!-- Mobile Navbar -->
-<mat-toolbar class="toolbarNav" *ngIf="isSmallScreen">
-  <button mat-flat-button routerLink="/home">
-    <mat-icon class="ms-Icon ms-Icon--HomeSolid"></mat-icon>
-    <span></span>
-  </button>
-  <button mat-flat-button routerLink="/calendar">
-    <mat-icon class="ms-Icon ms-Icon--CalendarWorkWeek"></mat-icon>
-    <span></span>
-  </button>
-  <button mat-flat-button routerLink="/mypage">
-    <mat-icon class="ms-Icon ms-Icon--Contact"></mat-icon>
-    <span></span>
-  </button>
+<mat-toolbar class="mobileNav" *ngIf="isSmallScreen">
+  <div class="mobile-container-general">
+    <button routerLink="/home">
+      <div class="icon-text-container">
+        <mat-icon class="ms-Icon ms-Icon--HomeSolid"></mat-icon>
+        <span>Home</span>
+      </div>
+    </button>
+  </div>
+  <div class="mobile-container-general">
+    <button routerLink="/calendar">
+      <div class="icon-text-container">
+        <mat-icon class="ms-Icon ms-Icon--CalendarWorkWeek"></mat-icon>
+        <span>Calendar</span>
+      </div>
+    </button>
+  </div>
+  <div class="mobile-container-add">
+    <button routerLink="/create-event">
+      <div class="icon-text-container">
+        <mat-icon class="ms-Icon ms-Icon--Add"></mat-icon>
+        <span></span>
+      </div>
+    </button>
+  </div>
+  <div class="mobile-container-general">
+    <button routerLink="/results">
+      <div class="icon-text-container">
+        <mat-icon class="ms-Icon ms-Icon--Medal"></mat-icon>
+        <span>Results</span>
+      </div>
+    </button>
+  </div>
+  <div class="mobile-container-general">
+    <button routerLink="/rabbit">
+      <div class="icon-text-container">
+        <img
+          src="assets/images/rabbit.png"
+          alt="Rabbit Icon"
+          class="custom-icon-mobile"
+        />
+        <span>Rabbits</span>
+      </div>
+    </button>
+  </div>
+  <div class="mobile-container-mypage">
+    <button routerLink="/mypage">
+      <div class="icon-text-container">
+        <mat-icon class="ms-Icon ms-Icon--Contact"></mat-icon>
+        <span></span>
+      </div>
+    </button>
+  </div>
 </mat-toolbar>
