@@ -10,10 +10,16 @@ import { CalenderComponent } from './calender/calender.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { FormComponent } from './basic-components/form/form.component';
 import { MatPaginator } from '@angular/material/paginator'; 
+import { EventTableComponent } from './basic-components/event-table/event-table.component';
+
 // Agnular Imports
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InMemoryDataService } from './service/InMomoryData/in-memory-data.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
+
 
 //  Angular Material Imports 
 import { MatIconModule } from '@angular/material/icon';
@@ -30,9 +36,17 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import { FormInputTimeComponent } from './basic-components/formInputs/form-input-time/form-input-time.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatTableModule } from '@angular/material/table';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDivider } from '@angular/material/divider';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
 //ngx imports 
 import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+
 
 @NgModule({
   declarations: [
@@ -45,10 +59,14 @@ import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
     FormInputTextComponent,
     FormTemplateComponent,
     FormInputDateComponent,
-    FormInputTimeComponent
+    FormInputTimeComponent,
+    EventTableComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    MatSidenavModule,
+    MatListModule,
     AppRoutingModule, 
     MatIconModule,
     MatButtonModule,
@@ -62,10 +80,19 @@ import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
     MatFormFieldModule,
     MatPaginator,
     NgxMatTimepickerModule,
+    MatTableModule,
+    MatExpansionModule,
+    MatProgressSpinner,
+    MatDivider,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false}
+    )
   ],
   providers: [
     provideAnimationsAsync(), 
     provideNativeDateAdapter(),
+    
   ],
   bootstrap: [AppComponent]
 })

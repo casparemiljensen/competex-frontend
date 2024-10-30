@@ -1,0 +1,68 @@
+.table-container {
+    max-width: 800px; /* Adjust this to your desired width */
+    margin: 0 auto; /* This centers the div horizontally */
+    padding: 20px; /* Add some padding to give space around */
+    width: 100%; /* Ensures it scales to the viewport */
+  }
+  
+  .month-header {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 20px 0 10px;
+    color: #333;
+  }
+
+  .mat-accordion {
+    width: 100%; /* Ensure the accordion takes up the full width of the container */
+  }
+  
+  .mat-expansion-panel {
+    margin-bottom: 10px; /* Add some space between each panel */
+  }
+  
+  .event-details {
+    padding: 10px 0; /* Optional: padding within the expanded content */
+  }
+  .event-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* Three equal columns */
+    align-items: center; /* Vertically center the text */
+    gap: 20px; /* Adjust the spacing between columns */
+    padding: 10px 0;
+  }
+  
+  .event-column {
+    padding: 0 10px; /* Add horizontal padding for better spacing */
+    border-right: 1px solid #ddd; /* Add a small line between columns */
+  }
+  
+  .event-column:last-child {
+    border-right: none; /* Remove the line for the last column */
+  }
+  
+  .mat-expansion-panel-header {
+    border-bottom: 1px solid #e0e0e0; /* Optional: separate the header from the body */
+  }
+  
+  .event-details {
+    padding: 10px 0;
+  }
+  
+  .register-link {
+    display: block;
+    margin-top: 10px;
+    text-align: right;
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .register-link:hover {
+    text-decoration: underline;
+  }
+  
+  .spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust as needed */
+  }
