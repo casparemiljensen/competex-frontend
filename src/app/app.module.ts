@@ -22,6 +22,7 @@ import { HomeComponent } from './home/home.component';
 import { CalenderComponent } from './calender/calender.component';
 import { EventTableComponent } from './basic-components/event-table/event-table.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { CompetitionComponent } from './competition/competition.component';
 
 
 
@@ -31,7 +32,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     HomeComponent,
     ButtonComponent,
     CalenderComponent,
-    EventTableComponent
+    EventTableComponent,
+    CompetitionComponent
   ],
   imports: [
     BrowserModule,
