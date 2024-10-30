@@ -1,7 +1,8 @@
 /* Default styles for sidenav */
 .sidenav-container {
   height: 100%;
-  display: flex;
+  width: 100%;
+  position: fixed;
 }
 
 /* Set default background color for the sidenav */
@@ -9,6 +10,7 @@
   background-color: #2196F3; /* Blue background for both mobile and desktop */
   width: 10%;
   border-radius: 0.001%;
+  min-width: 13%;
 }
 
 /* Specific styles for the contact icon container */
@@ -17,8 +19,8 @@
   justify-content: center; /* Center the icon horizontally */
   align-items: center; /* Center the icon vertically */
   margin: 1%; /* Space above and below the icon */
-  margin-bottom: 50%;
-  margin-top: 50%;
+  margin-bottom: 30%;
+  margin-top: 20%;
 }
 
 .contact-icon-container-mypage a {
@@ -26,6 +28,8 @@
   border-radius: 50%; /* Make it circular */
   background-color: white; /* Circle color */
   color: #2196F3; /* Change icon color to match your theme */
+  min-width: 20%;
+  max-width: 100%;
 }
 
 .contact-icon-container-add a {
@@ -34,10 +38,10 @@
   color: #2196F3; /* Change icon color to match your theme */
   border-radius: 0%;
   text-align: center;
-  padding-top: 25%;
-  padding-bottom: 25%;
-  font-size: 220%;
   vertical-align: middle;
+  padding-top: 15%;
+  padding-bottom: 15%;
+  font-size: 220%;
 }
 
 .contact-icon-container-add a:hover {
@@ -50,8 +54,8 @@
   width: 100%; /* Ensure it spans the full width */
   border-radius: 1%; /* Make it rounded */
   color: white; 
-  padding-top: 25%;
-  padding-bottom: 25%;
+  padding-top: 15%;
+  padding-bottom: 15%;
   transition: background-color 0.3s, color 0.3s; /* Optional: Add smooth transitions */
 }
 
@@ -65,15 +69,15 @@
 }
 
 .custom-icon {
-  width: 20%; /* Adjust size as needed */
-  height: 20%; /* Adjust size as needed */
+  width: 15%; /* Adjust size as needed */
+  height: 15%; /* Adjust size as needed */
   margin-right: 2%; /* Space between icon and text */
   vertical-align: middle; /* Aligns icon with text */
 }
 
 /* Mobile Navbar */
 .mobileNav {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   z-index: 1000;
   background-color: #2196F3;
@@ -84,7 +88,7 @@
 
 /* Ensure all button containers take full width and height */
 .mobile-container-general,
-.mobile-container-add, .mobile-container-mypage{
+.mobile-container-add, .mobile-container-mypage {
   display: flex;
   justify-content: center; /* Center items horizontally */
   align-items: center; /* Center items vertically */
@@ -114,7 +118,6 @@
 
 .custom-icon-mobile {
   width: 60%; /* Adjust size as needed */
-  height: 60%; /* Adjust size as needed */
   margin-right: 10%; /* Space between icon and text */
   margin-left: 10%;
   color: #2196F3;
