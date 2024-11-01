@@ -1,0 +1,26 @@
+mat-accordion {
+    width: 100%;
+
+}
+  
+mat-expansion-panel {
+    margin-bottom: 15px;
+}
+
+/* 
+.page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px; 
+  }
+  
+  .table-container {
+    width: 100%;
+    max-width: 1200px; 
+    overflow-x: auto;
+    padding: 0;
+    margin: 0;
+  } 
+    */

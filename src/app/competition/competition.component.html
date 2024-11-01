@@ -1,4 +1,14 @@
 <p>competition works!</p>
-<div *ngFor="let table of tables">
-    <app-participants-table [data]="table.data" [columns]="table.columns"></app-participants-table>
-</div>
+<mat-accordion multi="true">
+    <div>
+        <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>This is the tile</mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="page-container">
+                <app-participants-table [dataSource]="competitions" [displayedColumns]="displayedColums"></app-participants-table>
+                <!-- <app-participants-table [data]="table.data" [columns]="table.columns"></app-participants-table> -->
+            </div>
+        </mat-expansion-panel>
+    </div>
+</mat-accordion>

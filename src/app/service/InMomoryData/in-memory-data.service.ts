@@ -29,10 +29,20 @@ export class InMemoryDataService implements InMemoryDbService{
       { id: 19, date: new Date('2025-07-09'), creator: 'Esbjerg Svømmeklub', name: 'Ski Trip' },
       { id: 20, date: new Date('2024-12-08'), creator: 'København Håndboldforening', name: 'Golf Masters' },
     ];
-    return { events };
+
+    const competitions = [
+      { id: 1, name: 'Competition 1', date: '2023-01-01', location: 'Location 1' },
+      { id: 2, name: 'Competition 2', date: '2023-02-01', location: 'Location 2' },
+      { id: 3, name: 'Competition 3', date: '2023-03-01', location: 'Location 3' },
+      { id: 4, name: 'Competition 4', date: '2023-04-01', location: 'Location 4' },
+      { id: 5, name: 'Competition 5', date: '2023-05-01', location: 'Location 5' },
+      // Add more mock competitions as needed
+    ];
+
+    return { events, competitions };
   }
 
-  genId(event: Event[]): number {
-    return event.length > 0 ? Math.max(...event.map(event => event.id)) + 1 : 11
-  }
+  // genId(event: Event[]): number {
+  //   return event.length > 0 ? Math.max(...event.map(event => event.id)) + 1 : 11
+  // }
 }

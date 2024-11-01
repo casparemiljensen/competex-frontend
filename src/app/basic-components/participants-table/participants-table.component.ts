@@ -9,24 +9,28 @@ import { MatTableDataSource } from '@angular/material/table';
 })
   
 export class ParticipantsTableComponent implements OnInit {
-  @Input() data: any[] = [];
-  @Input() columns: string[] = [];
+  @Input() dataSource: any[] = [];
+  @Input() displayedColumns: string[] = [];
   
   // columnsToDisplay: string[] = this.displayedColumns.slice();
-  public dataSource = new MatTableDataSource<any>();
-  public displayedColumns: string[] = [];
+  // public dataSource = new MatTableDataSource<any>();
+  // public displayedColumns: string[] = [];
   
   ngOnInit(): void {
-    this.dataSource.data = this.data;
-    this.displayedColumns = this.columns;
+    console.log('DataSource:', this.dataSource); // Verify data here
+    console.log('DisplayedColumns:', this.displayedColumns); 
+    
+    // this.dataSource.data = this.data;
+    // this.displayedColumns = this.columns;
   }
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-  }
+  // ngAfterViewInit() {
+  //   this.dataSource.paginator = this.paginator;
+  // }
 }
 
 // Shold be dynamic depending on the requirments
+
 
