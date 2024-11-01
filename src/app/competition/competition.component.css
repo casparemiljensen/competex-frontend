@@ -24,3 +24,10 @@ mat-expansion-panel {
     margin: 0;
   } 
     */
+
+    .loading-spinner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; /* Full viewport height */
+    }
