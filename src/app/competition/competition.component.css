@@ -25,9 +25,9 @@ mat-expansion-panel {
   } 
     */
 
-    .loading-spinner {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh; /* Full viewport height */
-    }
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+}
