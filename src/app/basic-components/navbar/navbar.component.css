@@ -54,32 +54,27 @@
   display: flex; /* Make it a flex container */
   width: 100%; /* Ensure it spans the full width */
   border-radius: 1%; /* Make it rounded */
-  color: white; 
   padding-top: 15%;
   padding-bottom: 15%;
   transition: background-color 0.3s, color 0.3s; /* Optional: Add smooth transitions */
 }
 
-.contact-icon-container-general a:hover {
-  background-color: white; 
-  color: #2196F3; /* Change text color on hover */
+.contact-icon-container-general, .mat-nav-list-general i, span {
+  color: white;
 }
 
-.contact-icon-container-general a:hover span {
-  color: #2196F3; /* Ensure text color changes on hover */
+/* Apply hover styles to icon and text within contact-icon-container-general */
+.contact-icon-container-general:hover a,
+.contact-icon-container-general:hover a i,
+.contact-icon-container-general:hover a span {
+  background-color: white;
+  color: #2196F3; /* Change color of both icon and text when hovering over container */
 }
 
-.custom-icon {
-  width: 15%; /* Adjust size as needed */
-  height: 15%; /* Adjust size as needed */
-  margin-right: 2%; /* Space between icon and text */
-  vertical-align: middle; /* Aligns icon with text */
-}
 
 /* Mobile Navbar */
 .mobileNav {
   position: absolute;
-  bottom: 0;
   z-index: 1000;
   background-color: #2196F3;
   -webkit-box-shadow: 3px 3px 5px 6px #ccc; /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
@@ -89,12 +84,22 @@
 
 /* Ensure all button containers take full width and height */
 .mobile-container-general,
-.mobile-container-add, .mobile-container-mypage {
+.mobile-container-add {
   display: flex;
   justify-content: center; /* Center items horizontally */
   align-items: center; /* Center items vertically */
   width: 100%; /* Full width */
   height: 100%; /* Full height */
+}
+
+.mobile-container-mypage {
+  display: flex;
+  justify-content: center; /* Center the icon horizontally */
+  align-items: center; 
+  margin: 1%; /* Space above and below the icon */
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  min-width: 20%;
 }
 
 /* Apply color style to buttons */
@@ -117,19 +122,21 @@
   
 }
 
-.custom-icon-mobile {
-  width: 60%; /* Adjust size as needed */
-  margin-right: 10%; /* Space between icon and text */
-  margin-left: 10%;
-  color: #2196F3;
-  vertical-align: middle; /* Aligns icon with text */
-}
-
 .icon-text-container {
   display: flex;
   flex-direction: column; /* Stack icon and text vertically */
   align-items: center; /* Center the text below the icon */
   text-align: center; /* Center the text */
   font-size: 40%;
+  color: white;
+}
+
+.icon-text-container-mypage {
+  display: flex;
+  flex-direction: column; /* Stack icon and text vertically */
+  align-items: center; /* Center the text below the icon */
+  text-align: center; /* Center the text */
+  font-size: 40%;
+  color: #2196F3;
 }
 

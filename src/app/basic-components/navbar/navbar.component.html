@@ -7,12 +7,14 @@
     class="mat-sidenav"
     [ngClass]="{ 'bottom-sidenav': isSmallScreen }"
   >
-    <mat-nav-list>
+    <mat-nav-list class="mat-nav-list-mypage">
       <div class="contact-icon-container-mypage">
         <a mat-list-item routerLink="/mypage" (click)="closeSidenav()">
           <i class="ms-Icon ms-Icon--Contact" aria-hidden="true"></i>
         </a>
       </div>
+    </mat-nav-list>
+    <mat-nav-list class="mat-nav-list-general">
       <div class="contact-icon-container-general">
         <a mat-list-item routerLink="/home" (click)="closeSidenav()">
           <i class="ms-Icon ms-Icon--HomeSolid" aria-hidden="true"> </i>
@@ -33,14 +35,12 @@
       </div>
       <div class="contact-icon-container-general">
         <a mat-list-item routerLink="/rabbit" (click)="closeSidenav()">
-          <img
-            src="assets/images/rabbit.png"
-            alt="Rabbit Icon"
-            class="custom-icon"
-          />
+          <i class="ms-Icon ms-Icon--HeartFill" aria-hidden="true"> </i>
           <span> Rabbit</span>
         </a>
       </div>
+    </mat-nav-list>
+    <mat-nav-list class="mat-nav-list-add">
       <div class="contact-icon-container-add">
         <a mat-list-item routerLink="/create-event" (click)="closeSidenav()">
           <i class="ms-Icon ms-Icon--Add" aria-hidden="true"></i>
@@ -97,18 +97,14 @@
   <div class="mobile-container-general">
     <button routerLink="/rabbit">
       <div class="icon-text-container">
-        <img
-          src="assets/images/rabbit.png"
-          alt="Rabbit Icon"
-          class="custom-icon-mobile"
-        />
+        <mat-icon class="ms-Icon ms-Icon--HeartFill"></mat-icon>
         <span>Rabbits</span>
       </div>
     </button>
   </div>
   <div class="mobile-container-mypage">
     <button routerLink="/mypage">
-      <div class="icon-text-container">
+      <div class="icon-text-container-mypage">
         <mat-icon class="ms-Icon ms-Icon--Contact"></mat-icon>
         <span></span>
       </div>
