@@ -1,10 +1,13 @@
-<p>competition works!</p>
+<div *ngIf="isLoading" class="loading-spinner">
+    <mat-spinner></mat-spinner> <!-- Angular Material Spinner -->
+</div>
+
 <mat-accordion multi="true">
     <div>
         <mat-expansion-panel hideToggle *ngFor="let comp of competitions">
             <mat-expansion-panel-header>
                 <mat-panel-title>{{ comp.title }}</mat-panel-title>
-              </mat-expansion-panel-header>
+            </mat-expansion-panel-header>
             <div class="page-container">
                 <app-participants-table [dataSource]="comp.data" [displayedColumns]="comp.columns"></app-participants-table>
             </div>
