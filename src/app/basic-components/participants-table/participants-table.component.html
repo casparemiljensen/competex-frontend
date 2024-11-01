@@ -1,46 +1,15 @@
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        
+        <!--Collum defintion-->
+        <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+            <th mat-header-cell *matHeaderCellDef> {{ column | uppercase }} </th>
+            <td mat-cell *matCellDef="let element"> {{ element[column] }} </td>
+        </ng-container>
 
-<mat-accordion>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header >
-            <mat-panel-title>
-                test for title
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div class="mat-elevation-z8">
-            <table mat-table [dataSource]="dataSource">
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>
 
-                <!-- Position Column -->
-                <ng-container matColumnDef="position">
-                <th mat-header-cell *matHeaderCellDef> No. </th>
-                <td mat-cell *matCellDef="let participant"> {{participant.number}} </td>
-                </ng-container>
 
-                <!-- Name Column -->
-                <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef> Name </th>
-                <td mat-cell *matCellDef="let participant"> {{participant.name}} </td>
-                </ng-container>
-
-                <!-- Weight Column -->
-                <ng-container matColumnDef="weight">
-                <th mat-header-cell *matHeaderCellDef> Bunny </th>
-                <td mat-cell *matCellDef="let participant"> {{participant.bunny}} </td>
-                </ng-container>
-
-                <!-- Symbol Column -->
-                <ng-container matColumnDef="symbol">
-                <th mat-header-cell *matHeaderCellDef> Start No. </th>
-                <td mat-cell *matCellDef="let participant"> {{participant.startno}} </td>
-                </ng-container>
-
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
-
-            <mat-paginator [pageSizeOptions]="[10, 20, 100]"
-                            showFirstLastButtons
-                            aria-label="Select page of periodic elements">
-            </mat-paginator>
-        </div>
-    </mat-expansion-panel>
-</mat-accordion>

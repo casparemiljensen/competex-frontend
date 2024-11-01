@@ -1,2 +1,4 @@
 <p>competition works!</p>
-<app-participants-table></app-participants-table>
+<div *ngFor="let table of tables">
+    <app-participants-table [data]="table.data" [columns]="table.columns"></app-participants-table>
+</div>
