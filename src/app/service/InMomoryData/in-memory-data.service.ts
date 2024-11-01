@@ -31,12 +31,73 @@ export class InMemoryDataService implements InMemoryDbService{
     ];
 
     const competitions = [
-      { id: 1, name: 'Competition 1', date: '2023-01-01', location: 'Location 1' },
-      { id: 2, name: 'Competition 2', date: '2023-02-01', location: 'Location 2' },
-      { id: 3, name: 'Competition 3', date: '2023-03-01', location: 'Location 3' },
-      { id: 4, name: 'Competition 4', date: '2023-04-01', location: 'Location 4' },
-      { id: 5, name: 'Competition 5', date: '2023-05-01', location: 'Location 5' },
-      // Add more mock competitions as needed
+      {
+        competition: "Boys U12 Football",
+        data: [
+          { club: "Tigers", players: 11, coach: 'John Doe' },
+          { club: "Hawks", players: 12, coach: 'Jane Smith' },
+          { club: "Lions", players: 13, coach: 'Jim Brown' },
+          { club: "Tigers", players: 11, coach: 'John Doe' },
+          { club: "Hawks", players: 12, coach: 'Jane Smith' },
+          { club: "Lions", players: 13, coach: 'Jim Brown' },
+          { club: "Tigers", players: 11, coach: 'John Doe' },
+          { club: "Hawks", players: 12, coach: 'Jane Smith' },
+          { club: "Lions", players: 13, coach: 'Jim Brown' },
+          { club: "Tigers", players: 11, coach: 'John Doe' },
+          { club: "Hawks", players: 12, coach: 'Jane Smith' },
+          { club: "Lions", players: 13, coach: 'Jim Brown' },
+          { club: "Tigers", players: 11, coach: 'John Doe' },
+          { club: "Hawks", players: 12, coach: 'Jane Smith' },
+          { club: "Lions", players: 13, coach: 'Jim Brown' },
+          { club: "Tigers", players: 11, coach: 'John Doe' },
+          { club: "Hawks", players: 12, coach: 'Jane Smith' },
+          { club: "Lions", players: 13, coach: 'Jim Brown' },
+          { club: "Tigers", players: 11, coach: 'John Doe' },
+          { club: "Hawks", players: 12, coach: 'Jane Smith' },
+          { club: "Lions", players: 13, coach: 'Jim Brown' },
+          { club: "Tigers", players: 11, coach: 'John Doe' },
+          { club: "Hawks", players: 12, coach: 'Jane Smith' },
+          { club: "Lions", players: 13, coach: 'Jim Brown' },
+          { club: "Tigers", players: 11, coach: 'John Doe' },
+          { club: "Hawks", players: 12, coach: 'Jane Smith' },
+          { club: "Lions", players: 13, coach: 'Jim Brown' },
+          { club: "Tigers", players: 11, coach: 'John Doe' },
+          { club: "Hawks", players: 12, coach: 'Jane Smith' },
+          { club: "Lions", players: 13, coach: 'Jim Brown' }
+        ]
+      },
+      {
+        competition: "Girls U15 Volleyball",
+        data: [
+          { team: "Spikers", members: 10, manager: 'Alice Johnson' },
+          { team: "Blockers", members: 9, manager: 'Billie Jean' },
+          { team: "Diggers", members: 11, manager: 'Carl Kicks' }
+        ]
+      },
+      {
+        competition: "Mixed U18 Basketball",
+        data: [
+          { squad: "Shooters", athletes: 5, trainer: 'Mike Bane' },
+          { squad: "Dribblers", athletes: 6, trainer: 'Sarah Conner' },
+          { squad: "Jumpers", athletes: 5, trainer: 'Donnie Darko' }
+        ]
+      },
+      {
+        competition: "Open Swimming 100m",
+        data: [
+          { club: "Wave Riders", swimmers: 4, coach: 'Lana Kane' },
+          { club: "Speedsters", swimmers: 5, coach: 'Archer Sterling' },
+          { club: "Aqua Flyers", swimmers: 3, coach: 'Cyril Figgis' }
+        ]
+      },
+      {
+        competition: "Youth Chess Tournament",
+        data: [
+          { club: "Check Mates", players: 8, coordinator: 'Ray Gillette' },
+          { club: "Kings & Queens", players: 7, coordinator: 'Pam Poovey' },
+          { club: "Bishop Battlers", players: 6, coordinator: 'Cheryl Tunt' }
+        ]
+      }
     ];
 
     return { events, competitions };

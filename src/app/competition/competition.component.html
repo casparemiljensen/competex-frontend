@@ -1,13 +1,12 @@
 <p>competition works!</p>
 <mat-accordion multi="true">
     <div>
-        <mat-expansion-panel hideToggle>
+        <mat-expansion-panel hideToggle *ngFor="let comp of competitions">
             <mat-expansion-panel-header>
-                <mat-panel-title>This is the tile</mat-panel-title>
-            </mat-expansion-panel-header>
+                <mat-panel-title>{{ comp.title }}</mat-panel-title>
+              </mat-expansion-panel-header>
             <div class="page-container">
-                <app-participants-table [dataSource]="competitions" [displayedColumns]="displayedColums"></app-participants-table>
-                <!-- <app-participants-table [data]="table.data" [columns]="table.columns"></app-participants-table> -->
+                <app-participants-table [dataSource]="comp.data" [displayedColumns]="comp.columns"></app-participants-table>
             </div>
         </mat-expansion-panel>
     </div>

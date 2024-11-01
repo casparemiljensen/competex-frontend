@@ -13,30 +13,13 @@ export class CompetitionComponent implements OnInit{
   constructor(private competitionService: CompetitionService) {}
 
   ngOnInit(): void {
-    this.competitionService.getCompetitions().subscribe(data =>{
-      this.competitions = data;
-      console.log('Competitions:', this.competitions);
-      if ( this.competitions.length > 0 ) {
-        this.displayedColums = Object.keys(this.competitions[0])
-      }
+    this.competitionService.getCompetitions().subscribe(data => {
+      this.competitions = data.map(competition => ({
+        title: competition.competition,
+        data: competition.data,
+        columns: competition.data.length > 0 ? Object.keys(competition.data[0]) : []
+      }));
     })
-    // this.tables = PARTICIPANT_DATA
-    // this.tables = [
-    //   {
-    //     data: [
-    //       { id: 1, name: 'Alice', age: 24 },
-    //       { id: 2, name: 'Bob', age: 30 }
-    //     ],
-    //     columns: ['id', 'name', 'age']
-    //   },
-    //   {
-    //     data: [
-    //       { product: 'Table', price: 300 },
-    //       { product: 'Chair', price: 150 }
-    //     ],
-    //     columns: ['product', 'price']
-    //   }
-    // ];
   }
 
 }
