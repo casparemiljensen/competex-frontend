@@ -9,7 +9,7 @@ import { PARTICIPANT_DATA } from '../../mock-data/mock-participant'
   templateUrl: './participants-table.component.html',
   styleUrl: './participants-table.component.css',
 })
-
+  
 export class ParticipantsTableComponent {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource<Participant>(PARTICIPANT_DATA);

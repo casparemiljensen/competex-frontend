@@ -9,12 +9,9 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'calendar', component: CalenderComponent },
   { path: 'mypage', component: MyPageComponent },
+  { path: 'competition', component: CompetitionComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect empty path to home
-  { path: '**', redirectTo: '/home' }, // Redirect unknown paths to home
-  { path: 'home', component: HomeComponent},
-  { path: 'calender', component: CalenderComponent},
-  { path: '', redirectTo: 'home', pathMatch: 'full'},
-  { path: 'competition', component: CompetitionComponent}
+  { path: '**', redirectTo: '/home' } // Redirect unknown paths to home
 ];
 
 @NgModule({
