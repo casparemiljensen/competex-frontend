@@ -1,15 +1,16 @@
 <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-        
-        <!--Collum defintion-->
+    <table mat-table [dataSource]="tableDataSource" class="mat-elevation-z8">
+        <!-- Column Definition -->
         <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
             <th mat-header-cell *matHeaderCellDef> {{ column | uppercase }} </th>
             <td mat-cell *matCellDef="let element"> {{ element[column] }} </td>
         </ng-container>
-
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+    <mat-paginator [length]="tableDataSource.data.length"
+                   [pageSize]="10"
+                   [pageSizeOptions]="[10, 25, 100]"
+                   aria-label="Select page">
+    </mat-paginator>
 </div>
-
-
