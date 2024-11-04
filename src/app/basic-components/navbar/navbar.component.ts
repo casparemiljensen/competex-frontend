@@ -8,9 +8,10 @@ import { MatSidenav } from '@angular/material/sidenav';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  isDrawerOpen = false;
   isSmallScreen: boolean = false;
 
-  @ViewChild('sidenav') sidenav!: MatSidenav; // Ensure sidenav is available in the template
+  @ViewChild('sidenav') sidenav!: MatSidenav;
 
   constructor(private breakpointObserver: BreakpointObserver) {}
 
@@ -22,15 +23,15 @@ export class NavbarComponent implements OnInit {
       });
   }
 
-  closeSidenav() {
-    // Method to close the sidenav
-    if (this.isSmallScreen) {
-      this.sidenav.close();
-    }
+  toggleDrawer() {
+    this.isDrawerOpen = !this.isDrawerOpen;
   }
 
-  toggleSidenav() {
-    // Method to toggle the sidenav's visibility
-    this.sidenav.toggle();
+  closeSidenav() {
+    // Method to close the sidenav
+    if (this.isSmallScreen && this.isDrawerOpen) {
+      this.isDrawerOpen = false; // Close the drawer
+      this.sidenav.close(); // Close the sidenav
+    }
   }
 }

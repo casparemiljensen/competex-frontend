@@ -1,3 +1,46 @@
+<!-- Mobile Drawer Navbar -->
+<mat-drawer-container *ngIf="isSmallScreen" fxFlex autosize class="mobile-drawer-container">
+  <div class="drawer-container">
+    <button mat-icon-button (click)="toggleDrawer()" aria-label="Toggle sidenav" class="drawer-button">
+      <mat-icon>menu</mat-icon>
+      <a>CompeteX</a>
+    </button>
+  </div>
+  <mat-drawer #drawer mode="over" [opened]="isDrawerOpen" class="top-drawer">
+    <div fxLayout="column">
+      <button mat-button routerLink="/home" routerLinkActive="selected no-border txt-bold" fxLayoutAlign="center" class="py-2 pr-5" (click)="closeSidenav()">
+        <mat-icon class="ms-Icon ms-Icon--HomeSolid mr-2"></mat-icon>
+        <span>Home</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-button routerLink="/calendar" routerLinkActive="selected no-border txt-bold" fxLayoutAlign="center" class="py-2 pr-5" (click)="closeSidenav()">
+        <mat-icon class="ms-Icon ms-Icon--CalendarWorkWeek mr-2"></mat-icon>
+        <span>Calendar</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-button routerLink="/create-event" routerLinkActive="selected no-border txt-bold" fxLayoutAlign="center" class="py-2 pr-5" (click)="closeSidenav()">
+        <mat-icon class="ms-Icon ms-Icon--Add mr-2"></mat-icon>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-button routerLink="/results" routerLinkActive="selected no-border txt-bold" fxLayoutAlign="center" class="py-2 pr-5" (click)="closeSidenav()">
+        <mat-icon class="ms-Icon ms-Icon--Medal mr-2"></mat-icon>
+        <span>Results</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-button routerLink="/rabbit" routerLinkActive="selected no-border txt-bold" fxLayoutAlign="center" class="py-2 pr-5" (click)="closeSidenav()">
+        <mat-icon class="ms-Icon ms-Icon--HeartFill mr-2"></mat-icon>
+        <span>Rabbits</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-button routerLink="/mypage" routerLinkActive="selected no-border txt-bold" fxLayoutAlign="center" class="py-2 pr-5" (click)="closeSidenav()">
+        <mat-icon class="ms-Icon ms-Icon--Contact mr-2"></mat-icon>
+      </button>
+    </div>
+  </mat-drawer>
+</mat-drawer-container>    
+
+
+<!-- Desktop Navbar -->
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav
     *ngIf="!isSmallScreen"
@@ -48,66 +91,4 @@
       </div>
     </mat-nav-list>
   </mat-sidenav>
-
-  <mat-sidenav-content>
-    <button
-      *ngIf="isSmallScreen"
-      mat-icon-button
-      (click)="sidenav.toggle()"
-      aria-label="Toggle sidenav"
-    ></button>
     <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
-
-<!-- Mobile Navbar -->
-<mat-toolbar class="mobileNav" *ngIf="isSmallScreen">
-  <div class="mobile-container-general">
-    <button routerLink="/home">
-      <div class="icon-text-container">
-        <mat-icon class="ms-Icon ms-Icon--HomeSolid"></mat-icon>
-        <span>Home</span>
-      </div>
-    </button>
-  </div>
-  <div class="mobile-container-general">
-    <button routerLink="/calendar">
-      <div class="icon-text-container">
-        <mat-icon class="ms-Icon ms-Icon--CalendarWorkWeek"></mat-icon>
-        <span>Calendar</span>
-      </div>
-    </button>
-  </div>
-  <div class="mobile-container-add">
-    <button routerLink="/create-event">
-      <div class="icon-text-container">
-        <mat-icon class="ms-Icon ms-Icon--Add"></mat-icon>
-        <span></span>
-      </div>
-    </button>
-  </div>
-  <div class="mobile-container-general">
-    <button routerLink="/results">
-      <div class="icon-text-container">
-        <mat-icon class="ms-Icon ms-Icon--Medal"></mat-icon>
-        <span>Results</span>
-      </div>
-    </button>
-  </div>
-  <div class="mobile-container-general">
-    <button routerLink="/rabbit">
-      <div class="icon-text-container">
-        <mat-icon class="ms-Icon ms-Icon--HeartFill"></mat-icon>
-        <span>Rabbits</span>
-      </div>
-    </button>
-  </div>
-  <div class="mobile-container-mypage">
-    <button routerLink="/mypage">
-      <div class="icon-text-container-mypage">
-        <mat-icon class="ms-Icon ms-Icon--Contact"></mat-icon>
-        <span></span>
-      </div>
-    </button>
-  </div>
-</mat-toolbar>

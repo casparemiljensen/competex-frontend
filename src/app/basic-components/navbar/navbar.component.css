@@ -72,70 +72,83 @@
 
 
 /* Mobile Navbar */
-.mobileNav {
-  position: absolute;
-  z-index: 1000;
+.top-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  height: auto; /* Adjust height as needed */
   background-color: #2196F3;
-  -webkit-box-shadow: 3px 3px 5px 6px #ccc; /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-  -moz-box-shadow: 3px 3px 5px 6px #ccc; /* Firefox 3.5 - 3.6 */
-  box-shadow: 2px 2px 4px 5px #ccc; /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+  z-index: 1000; /* Ensure it appears above other content */
 }
 
-/* Ensure all button containers take full width and height */
+.drawer-container {
+  background-color: #2196F3;
+  display: flex;
+  justify-content: space-between; /* Space out the containers */
+  padding: 1rem; /* Add padding to the container */
+}
+
+.drawer-container a {
+  color: white; 
+  position: absolute;
+  text-align: center;
+}
+
+.drawer-button {
+  color: white; 
+  position: relative;
+}
+
 .mobile-container-general,
-.mobile-container-add {
-  display: flex;
-  justify-content: center; /* Center items horizontally */
-  align-items: center; /* Center items vertically */
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-}
-
+.mobile-container-add,
 .mobile-container-mypage {
+  flex: 1; /* Allow equal spacing for each container */
   display: flex;
-  justify-content: center; /* Center the icon horizontally */
-  align-items: center; 
-  margin: 1%; /* Space above and below the icon */
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  min-width: 20%;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Apply color style to buttons */
+/* Special styles for the "Add" container */
+.mobile-container-add {
+  transform: translateY(-15%); /* Slightly lift "Add" button for prominence */
+}
+
+/* Button styles */
 .mobile-container-general button,
-.mobile-container-add button {
-  background-color: transparent; /* Make button background transparent */
-  border: none; /* Remove button border */
-  color: black; /* Button text color */
-  font-size: 150%; /* Adjust font size for icons */
-}
-
+.mobile-container-add button,
 .mobile-container-mypage button {
-  display: flex;
-  justify-content: center; /* Center the icon horizontally */
-  align-items: center; /* Center the icon vertically */
-  width: 60%; /* Adjust size as needed */
-  height: 70%;
-  border-radius: 50%; /* Make it circular */;
-  border: none; /* Remove button border */
-  
-}
-
-.icon-text-container {
-  display: flex;
-  flex-direction: column; /* Stack icon and text vertically */
-  align-items: center; /* Center the text below the icon */
-  text-align: center; /* Center the text */
-  font-size: 40%;
+  background-color: transparent;
+  border: none;
   color: white;
+  font-size: 1.5rem; /* Adjust icon size */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
 }
 
-.icon-text-container-mypage {
-  display: flex;
-  flex-direction: column; /* Stack icon and text vertically */
-  align-items: center; /* Center the text below the icon */
-  text-align: center; /* Center the text */
-  font-size: 40%;
+/* Circular button style for "My Page" */
+.mobile-container-mypage button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #f0f0f0; /* Light background color for contrast */
   color: #2196F3;
 }
 
+/* Icon and text alignment for general buttons */
+.icon-text-container,
+.icon-text-container-mypage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.8rem; /* Adjust text size */
+  color: inherit;
+}
+
+/* Custom color for My Page icon text */
+.icon-text-container-mypage {
+  color: #2196F3;
+}
