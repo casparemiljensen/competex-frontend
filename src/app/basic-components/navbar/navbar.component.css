@@ -56,7 +56,6 @@
   border-radius: 1%; /* Make it rounded */
   padding-top: 15%;
   padding-bottom: 15%;
-  transition: background-color 0.3s, color 0.3s; /* Optional: Add smooth transitions */
 }
 
 .contact-icon-container-general, .mat-nav-list-general i, span {
