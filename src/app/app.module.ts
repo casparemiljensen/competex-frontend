@@ -29,6 +29,7 @@ import { NavbarComponent } from './basic-components/navbar/navbar.component';
 import { EventTableComponent } from './basic-components/event-table/event-table.component';
 import { CompetitionComponent } from './basic-components/competition/competition.component';
 import { ParticipantsTableComponent } from './basic-components/participants-table/participants-table.component';
+import { EventPageComponent } from './event-page/event-page.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { ParticipantsTableComponent } from './basic-components/participants-tabl
     ParticipantsTableComponent,
     NavbarComponent,
     MyPageComponent,   
-    EventTableComponent,
+    EventTableComponent, EventPageComponent,
   ],
   imports: [
     BrowserModule,
