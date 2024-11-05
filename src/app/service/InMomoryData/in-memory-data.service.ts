@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Event } from '../../models/event'
+import { V } from '@angular/cdk/keycodes';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,16 @@ export class InMemoryDataService implements InMemoryDbService{
       { id: 18, date: new Date('2024-11-11'), creator: 'Frederikshavn Badmintonklub', name: 'Ski Trip' },
       { id: 19, date: new Date('2025-07-09'), creator: 'Esbjerg Svømmeklub', name: 'Ski Trip' },
       { id: 20, date: new Date('2024-12-08'), creator: 'København Håndboldforening', name: 'Golf Masters' },
+    ];
+
+
+    const judge = [
+      { name: "name "},
+      { name: "name "},
+      { name: "name "},
+      { name: "name "},
+      { name: "name "},
+      { name: "name "}
     ];
 
     const competitions = [
@@ -100,7 +111,7 @@ export class InMemoryDataService implements InMemoryDbService{
       }
     ];
 
-    return { events, competitions };
+    return { events, competitions, judge };
   }
 
   // genId(event: Event[]): number {

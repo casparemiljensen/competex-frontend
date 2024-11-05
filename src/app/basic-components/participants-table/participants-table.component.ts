@@ -17,8 +17,6 @@ export class ParticipantsTableComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.tableDataSource.data = this.dataSource;
-    console.log('DataSource:', this.dataSource);
-    console.log('DisplayedColumns:', this.displayedColumns);
   }
 
   ngAfterViewInit() {

@@ -4,7 +4,10 @@
         participant list
       </mat-grid-tile>
       <mat-grid-tile>
-        judge list
+        <app-participants-table
+        [dataSource]="this.table"
+        [displayedColumns]="this.displayedColumns">
+      </app-participants-table>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="2" [rowspan]="1">
         <div class="competition-container">
