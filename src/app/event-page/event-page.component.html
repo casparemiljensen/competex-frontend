@@ -1,13 +1,37 @@
 <div class="grid-container">
     <mat-grid-list cols="2" rowHeight="2:1">
-      <mat-grid-tile>
-        participant list
+      <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <strong>
+          this is the test for the big title
+        </strong>
       </mat-grid-tile>
       <mat-grid-tile>
-        <app-participants-table
-        [dataSource]="this.table"
-        [displayedColumns]="this.displayedColumns">
-      </app-participants-table>
+        <p>
+          Location <br />
+          Adress <br />
+          Post nummer <br />
+        </p>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <p>
+          Date <br />
+          Start time <br />
+          Registration start <br />
+          Registration deadline <br /> 
+        </p>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="participant-list">
+          this is the participant list
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="participant-table-container">
+          <app-participants-table
+            [dataSource]="this.table"
+            [displayedColumns]="this.displayedColumns">
+          </app-participants-table>
+        </div>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="2" [rowspan]="1">
         <div class="competition-container">
@@ -17,4 +41,3 @@
     </mat-grid-list>
   </div>
   
-  <app-competition></app-competition>

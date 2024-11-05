@@ -33,12 +33,12 @@ export class InMemoryDataService implements InMemoryDbService{
 
 
     const judge = [
-      { name: "name "},
-      { name: "name "},
-      { name: "name "},
-      { name: "name "},
-      { name: "name "},
-      { name: "name "}
+      { name: "Peter"},
+      { name: "Jens"},
+      { name: "Hans"},
+      { name: "Christian"},
+      { name: "Thomas"},
+      { name: "Lars"}
     ];
 
     const competitions = [

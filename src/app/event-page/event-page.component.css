@@ -1,9 +1,18 @@
 .grid-container {
-    height: 100vh; /* Full viewport height */
-    overflow: hidden; /* Prevent overflow */
-  }
-  
-  .competition-container {
-    height: 100%; /* Full height of the grid tile */
-    overflow-y: auto; /* Enable vertical scrolling */
-  }
+  height: 100vh; /* Full viewport height */
+  overflow: hidden; /* Prevent overflow */
+}
+
+.participant-list {
+  padding: 16px;
+}
+
+.participant-table-container {
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Enable scrolling if needed */
+}
+.competition-container {
+  height: 100%; /* Full height of the grid tile */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
