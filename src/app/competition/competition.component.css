@@ -1,33 +1,39 @@
-mat-accordion {
-    width: 100%;
-
-}
-  
-mat-expansion-panel {
-    margin-bottom: 15px;
+/* Wrapper to center content and limit width */
+.container-wrapper {
+  max-width: 900px; /* Set a maximum width for the content */
+  margin: 0 auto; /* Center the content horizontally */
+  padding: 20px; /* Add padding for better spacing */
 }
 
-
-/* .page-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 20px; 
-  }
-  
-  .table-container {
-    width: 100%;
-    max-width: 1200px; 
-    overflow-x: auto;
-    padding: 0;
-    margin: 0;
-  }  */
-   
-
+/* Loading spinner centered */
 .loading-spinner {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh; /* Full viewport height */
+}
+
+.custom-panel{
+  margin-bottom: 16px;
+}
+/* Expansion panel header customization */
+.custom-panel .custom-panel-header {
+  background-color: #007bb5; /* Blue background for header */
+  color: white; /* Make the text white */
+  font-weight: bold;
+  padding: 16px;
+  font-size: 1.1rem;
+  border-radius: 0 0 0 0;
+  max-width: 900px; /* Align with the container-wrapper width */
+  margin: 0 auto; /* Center the header within the container */
+  box-sizing: border-box; /* Ensure padding is included in the width */
+}
+
+.custom-panel .panel-text{
+  color: white;
+}
+
+.custom-panel .custom-panel-header.mat-expanded {
+  border-radius: 0 0 0 0 ;
+  background-color: #005fa3; /* Darker blue when expanded */  
 }
