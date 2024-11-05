@@ -10,12 +10,15 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { MatTableModule } from '@angular/material/table';
+import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDivider } from '@angular/material/divider';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
 import { InMemoryDataService } from './service/InMomoryData/in-memory-data.service';
 
 import { ButtonComponent } from './basic-components/button/button.component';
@@ -24,7 +27,8 @@ import { CalenderComponent } from './calender/calender.component';
 import { MyPageComponent } from './mypage/mypage.component';
 import { NavbarComponent } from './basic-components/navbar/navbar.component';
 import { EventTableComponent } from './basic-components/event-table/event-table.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { CompetitionComponent } from './basic-components/competition/competition.component';
+import { ParticipantsTableComponent } from './basic-components/participants-table/participants-table.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     HomeComponent,
     ButtonComponent,
     CalenderComponent,
+    EventTableComponent,
+    CompetitionComponent,
+    ParticipantsTableComponent,
     NavbarComponent,
     MyPageComponent,   
     EventTableComponent,
@@ -49,6 +56,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     MatExpansionModule,
     MatProgressSpinner,
     MatDivider,
+    MatTableModule, 
+    MatPaginatorModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false}
