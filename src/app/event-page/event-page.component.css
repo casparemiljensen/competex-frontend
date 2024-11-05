@@ -1,0 +1,9 @@
+.grid-container {
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Prevent overflow */
+  }
+  
+  .competition-container {
+    height: 100%; /* Full height of the grid tile */
+    overflow-y: auto; /* Enable vertical scrolling */
+  }

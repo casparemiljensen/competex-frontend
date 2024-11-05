@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
@@ -15,6 +15,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDivider } from '@angular/material/divider';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -42,7 +43,8 @@ import { EventPageComponent } from './event-page/event-page.component';
     ParticipantsTableComponent,
     NavbarComponent,
     MyPageComponent,   
-    EventTableComponent, EventPageComponent,
+    EventTableComponent, 
+    EventPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +55,7 @@ import { EventPageComponent } from './event-page/event-page.component';
     MatIconModule,
     MatButtonModule,
     MatToolbarModule,
+    MatGridListModule,
     MatTableModule,
     MatExpansionModule,
     MatProgressSpinner,

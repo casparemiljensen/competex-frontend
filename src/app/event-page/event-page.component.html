@@ -1,1 +1,17 @@
-<p>event-page works!</p>
+<div class="grid-container">
+    <mat-grid-list cols="2" rowHeight="2:1">
+      <mat-grid-tile>
+        participant list
+      </mat-grid-tile>
+      <mat-grid-tile>
+        judge list
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <div class="competition-container">
+          <app-competition></app-competition>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  
+  <app-competition></app-competition>
