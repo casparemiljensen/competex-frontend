@@ -5,7 +5,6 @@
   position: fixed;
 }
 
-/* Set default background color for the sidenav */
 .mat-sidenav {
   background-color: #2196F3; /* Blue background for both mobile and desktop */
   width: 10%;
@@ -13,7 +12,6 @@
   min-width: 13%;
 }
 
-/* Specific styles for the contact icon container */
 .contact-icon-container-mypage {
   display: flex;
   justify-content: center; /* Center the icon horizontally */
@@ -74,13 +72,21 @@
 /* Mobile Navbar */
 .top-drawer {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  height: auto; /* Adjust height as needed */
   background-color: #2196F3;
-  z-index: 1000; /* Ensure it appears above other content */
+  width: 100%;
+  border-radius: 0.001%;
+}
+
+.mobile-drawer-container {
+  height: 100%;
+  width: 100%;  
+}
+
+mat-divider {
+  background-color: #2196F3;
+  margin-bottom: 10%; 
+  margin-top: 5%;
+  border: none;
 }
 
 .drawer-container {
@@ -101,54 +107,26 @@
   position: relative;
 }
 
-.mobile-container-general,
-.mobile-container-add,
-.mobile-container-mypage {
-  flex: 1; /* Allow equal spacing for each container */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.mat-sidenav-content-background-color {
+  background-color: #2196F3;
+  position: relative;
 }
 
-/* Special styles for the "Add" container */
-.mobile-container-add {
-  transform: translateY(-15%); /* Slightly lift "Add" button for prominence */
-}
-
-/* Button styles */
-.mobile-container-general button,
-.mobile-container-add button,
-.mobile-container-mypage button {
-  background-color: transparent;
-  border: none;
+.menu-drawer {
+  margin-bottom: 10%;
   color: white;
-  font-size: 1.5rem; /* Adjust icon size */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
+  background-color: white;
+  width: 100%;
+  border-radius: 0.001%;
 }
 
-/* Circular button style for "My Page" */
-.mobile-container-mypage button {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #f0f0f0; /* Light background color for contrast */
-  color: #2196F3;
+.general-button {
+  color: white;
+  width: 100%;
+  border-radius: 0.001%;
+  font-size: 150%;
 }
 
-/* Icon and text alignment for general buttons */
-.icon-text-container,
-.icon-text-container-mypage {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 0.8rem; /* Adjust text size */
-  color: inherit;
-}
-
-/* Custom color for My Page icon text */
-.icon-text-container-mypage {
-  color: #2196F3;
+.general-button i {
+  color: white;
 }

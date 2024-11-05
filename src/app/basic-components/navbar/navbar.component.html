@@ -1,44 +1,87 @@
 <!-- Mobile Drawer Navbar -->
-<mat-drawer-container *ngIf="isSmallScreen" fxFlex autosize class="mobile-drawer-container">
+<mat-drawer-container
+  *ngIf="isSmallScreen"
+  autosize
+  class="mobile-drawer-container"
+>
   <div class="drawer-container">
-    <button mat-icon-button (click)="toggleDrawer()" aria-label="Toggle sidenav" class="drawer-button">
+    <button
+      mat-icon-button
+      (click)="toggleDrawer()"
+      aria-label="Toggle sidenav"
+      class="drawer-button"
+    >
       <mat-icon>menu</mat-icon>
       <a>CompeteX</a>
     </button>
   </div>
-  <mat-drawer #drawer mode="over" [opened]="isDrawerOpen" class="top-drawer">
+  <mat-drawer #sidenav mode="push" [opened]="isDrawerOpen" class="top-drawer">
     <div fxLayout="column">
-      <button mat-button routerLink="/home" routerLinkActive="selected no-border txt-bold" fxLayoutAlign="center" class="py-2 pr-5" (click)="closeSidenav()">
-        <mat-icon class="ms-Icon ms-Icon--HomeSolid mr-2"></mat-icon>
-        <span>Home</span>
+      <button mat-button (click)="closeSidenav()" class="menu-drawer">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <button
+        mat-button
+        routerLink="/home"
+        (click)="closeSidenav()"
+        class="general-button"
+      >
+        <i class="ms-Icon ms-Icon--HomeSolid mr-2"></i>
+        <span> Home</span>
       </button>
       <mat-divider></mat-divider>
-      <button mat-button routerLink="/calendar" routerLinkActive="selected no-border txt-bold" fxLayoutAlign="center" class="py-2 pr-5" (click)="closeSidenav()">
-        <mat-icon class="ms-Icon ms-Icon--CalendarWorkWeek mr-2"></mat-icon>
-        <span>Calendar</span>
+      <button
+        mat-button
+        routerLink="/calendar"
+        (click)="closeSidenav()"
+        class="general-button"
+      >
+        <i class="ms-Icon ms-Icon--CalendarWorkWeek mr-2"></i>
+        <span> Calendar</span>
       </button>
       <mat-divider></mat-divider>
-      <button mat-button routerLink="/create-event" routerLinkActive="selected no-border txt-bold" fxLayoutAlign="center" class="py-2 pr-5" (click)="closeSidenav()">
-        <mat-icon class="ms-Icon ms-Icon--Add mr-2"></mat-icon>
+      <button
+        mat-button
+        routerLink="/results"
+        (click)="closeSidenav()"
+        class="general-button"
+      >
+        <i class="ms-Icon ms-Icon--Medal mr-2"></i>
+        <span> Results</span>
       </button>
       <mat-divider></mat-divider>
-      <button mat-button routerLink="/results" routerLinkActive="selected no-border txt-bold" fxLayoutAlign="center" class="py-2 pr-5" (click)="closeSidenav()">
-        <mat-icon class="ms-Icon ms-Icon--Medal mr-2"></mat-icon>
-        <span>Results</span>
+      <button
+        mat-button
+        routerLink="/rabbit"
+        (click)="closeSidenav()"
+        class="general-button"
+      >
+        <i class="ms-Icon ms-Icon--HeartFill mr-2"></i>
+        <span> Rabbits</span>
       </button>
       <mat-divider></mat-divider>
-      <button mat-button routerLink="/rabbit" routerLinkActive="selected no-border txt-bold" fxLayoutAlign="center" class="py-2 pr-5" (click)="closeSidenav()">
-        <mat-icon class="ms-Icon ms-Icon--HeartFill mr-2"></mat-icon>
-        <span>Rabbits</span>
+      <button
+        mat-button
+        routerLink="/mypage"
+        (click)="closeSidenav()"
+        class="general-button"
+      >
+        <i class="ms-Icon ms-Icon--Contact mr-2"></i>
+        <span> My Page</span>
       </button>
       <mat-divider></mat-divider>
-      <button mat-button routerLink="/mypage" routerLinkActive="selected no-border txt-bold" fxLayoutAlign="center" class="py-2 pr-5" (click)="closeSidenav()">
-        <mat-icon class="ms-Icon ms-Icon--Contact mr-2"></mat-icon>
+      <button
+        mat-button
+        routerLink="/create-event"
+        (click)="closeSidenav()"
+        class="general-button"
+      >
+        <i class="ms-Icon ms-Icon--Add mr-2"></i>
       </button>
     </div>
   </mat-drawer>
-</mat-drawer-container>    
-
+  <router-outlet></router-outlet>
+</mat-drawer-container>
 
 <!-- Desktop Navbar -->
 <mat-sidenav-container class="sidenav-container">
@@ -91,4 +134,5 @@
       </div>
     </mat-nav-list>
   </mat-sidenav>
-    <router-outlet></router-outlet>
+  <router-outlet></router-outlet
+></mat-sidenav-container>
