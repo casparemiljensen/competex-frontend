@@ -1,4 +1,4 @@
-/* Default styles for sidenav */
+/* Navbar for normal page */
 .sidenav-container {
   height: 100%;
   width: 100%;
@@ -6,7 +6,7 @@
 }
 
 .mat-sidenav {
-  background-color: #2196F3; /* Blue background for both mobile and desktop */
+  background-color: #2196F3;
   width: 10%;
   border-radius: 0.001%;
   min-width: 13%;
@@ -14,18 +14,18 @@
 
 .contact-icon-container-mypage {
   display: flex;
-  justify-content: center; /* Center the icon horizontally */
-  align-items: center; /* Center the icon vertically */
-  margin: 1%; /* Space above and below the icon */
+  justify-content: center; 
+  align-items: center; 
+  margin: 1%;
   margin-bottom: 30%;
   margin-top: 20%;
 }
 
 .contact-icon-container-mypage a {
-  width: auto; /* Adjust size as needed */
-  border-radius: 50%; /* Make it circular */
-  background-color: white; /* Circle color */
-  color: #2196F3; /* Change icon color to match your theme */
+  width: auto; 
+  border-radius: 50%;
+  background-color: white;
+  color: #2196F3; 
   min-width: 20%;
   max-width: 100%;
 }
@@ -33,7 +33,7 @@
 .contact-icon-container-add a {
   width: 100%; 
   background-color: white;
-  color: #2196F3; /* Change icon color to match your theme */
+  color: #2196F3; 
   border-radius: 0%;
   text-align: center;
   vertical-align: middle;
@@ -44,14 +44,14 @@
 }
 
 .contact-icon-container-add a:hover {
-  background-color: #2196F3; /* Change background color on hover */
-  color: white; /* Change icon color on hover */
+  background-color: #2196F3;
+  color: white; 
 }
 
 .contact-icon-container-general a {
-  display: flex; /* Make it a flex container */
-  width: 100%; /* Ensure it spans the full width */
-  border-radius: 1%; /* Make it rounded */
+  display: flex; 
+  width: 100%; 
+  border-radius: 1%; 
   padding-top: 15%;
   padding-bottom: 15%;
 }
@@ -60,12 +60,11 @@
   color: white;
 }
 
-/* Apply hover styles to icon and text within contact-icon-container-general */
 .contact-icon-container-general:hover a,
 .contact-icon-container-general:hover a i,
 .contact-icon-container-general:hover a span {
   background-color: white;
-  color: #2196F3; /* Change color of both icon and text when hovering over container */
+  color: #2196F3; 
 }
 
 
@@ -92,8 +91,8 @@ mat-divider {
 .drawer-container {
   background-color: #2196F3;
   display: flex;
-  justify-content: space-between; /* Space out the containers */
-  padding: 1rem; /* Add padding to the container */
+  justify-content: space-between; 
+  padding: 1rem; 
 }
 
 .drawer-container a {
