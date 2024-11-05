@@ -27,7 +27,7 @@ import { CalenderComponent } from './calender/calender.component';
 import { MyPageComponent } from './mypage/mypage.component';
 import { NavbarComponent } from './basic-components/navbar/navbar.component';
 import { EventTableComponent } from './basic-components/event-table/event-table.component';
-import { CompetitionComponent } from './competition/competition.component';
+import { CompetitionComponent } from './basic-components/competition/competition.component';
 import { ParticipantsTableComponent } from './basic-components/participants-table/participants-table.component';
 
 @NgModule({
