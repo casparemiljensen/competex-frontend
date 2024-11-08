@@ -53,7 +53,6 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatGridListModule } from '@angular/material/grid-list';
 
 //ngx imports
-import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 @NgModule({
@@ -97,7 +96,6 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
     MatDatepickerModule,
     MatFormFieldModule,
     MatPaginator,
-    NgxMatTimepickerModule,
     MatToolbarModule,
     MatGridListModule,
     MatTableModule,
