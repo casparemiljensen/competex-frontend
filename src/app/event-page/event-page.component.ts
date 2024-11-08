@@ -15,11 +15,11 @@ export class EventPageComponent implements OnInit {
   constructor(private eventPageService: EventPageService) {}
 
   ngOnInit(): void {
+    this.isLoading = false;
     
     //Fetch judge data
     this.eventPageService.getJudge().subscribe(data => {
       this.judgeData = data;
-      this.isLoading = false;
     });
 
     //Fetch competition data
