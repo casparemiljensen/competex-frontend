@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-//Our Components
+//Our components
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -15,8 +15,9 @@ import { CompetitionFormComponent } from './basic-components/form-competition/fo
 import { CompetitionPermitsComponent } from './basic-components/form-competition-permits/form-competition-permits.component';
 import { FormInputSelectComponent } from './basic-components/form-inputs/form-input-select/form-input-select.component';
 import { FormEventInformationComponent } from './basic-components/form-event-information/form-event-information.component';
-import { CompetitionComponent } from './basic-components/competition/competition.component';
-import { ParticipantsTableComponent } from './basic-components/participants-table/participants-table.component';
+import { ExpandableTableComponent } from './basic-components/ExpandableTable/ExpandableTable.component';
+import { DataTableComponent } from './basic-components/DataTable/DataTable.component';
+import { EventPageComponent } from './event-page/event-page.component';
 
 // Agnular Imports
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -47,8 +48,9 @@ import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDivider } from '@angular/material/divider';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 //ngx imports
 import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
@@ -66,8 +68,8 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
     FormInputDateComponent,
     FormInputTimeComponent,
     EventTableComponent,
-    CompetitionComponent,
-    ParticipantsTableComponent,
+    ExpandableTableComponent,
+    DataTableComponent,
     NavbarComponent,
     MyPageComponent,
     EventTableComponent,
@@ -75,6 +77,8 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
     CompetitionFormComponent,
     FormInputSelectComponent,
     FormEventInformationComponent,
+    MyPageComponent,
+    EventPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -95,6 +99,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
     MatPaginator,
     NgxMatTimepickerModule,
     MatToolbarModule,
+    MatGridListModule,
     MatTableModule,
     MatExpansionModule,
     MatProgressSpinner,
