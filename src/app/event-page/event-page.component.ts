@@ -7,18 +7,24 @@ import { EventPageService } from '../service/event-page/event-page.service';
   styleUrl: './event-page.component.css'
 })
 export class EventPageComponent implements OnInit {
-  table: any[] = [];
+  competitionData: any[] = [];
+  judgeData: any[] = [];
   displayedColumns: string[] = [];
   isLoading = true;
 
   constructor(private eventPageService: EventPageService) {}
 
   ngOnInit(): void {
+    
+    //Fetch judge data
     this.eventPageService.getJudge().subscribe(data => {
-      this.table = data;
-      this.displayedColumns = data.length > 0 ? Object.keys(data[0]) : [];
+      this.judgeData = data;
       this.isLoading = false;
-      console.log(this.table);
+    });
+
+    //Fetch competition data
+    this.eventPageService.getCompetitions().subscribe(data => {
+      this.competitionData = data;
     });
   }
 }

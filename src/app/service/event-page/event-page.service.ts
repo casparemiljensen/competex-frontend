@@ -7,10 +7,15 @@ import { Observable } from 'rxjs';
 })
 export class EventPageService {
   private judgeUrl = 'api/judge';
+  private competitionsUrl = 'api/competitions';
 
   constructor(private http: HttpClient) {}
 
   getJudge(): Observable<any[]> {
     return this.http.get<any[]>(this.judgeUrl);
+  }
+
+  getCompetitions(): Observable<any[]> {
+    return this.http.get<any[]>(this.competitionsUrl);
   }
 }

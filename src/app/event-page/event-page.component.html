@@ -23,16 +23,13 @@
   </div>
   <div class="middle-section">
     <div class="table-container">
-      <app-competition></app-competition>
+      <app-competition [competitions]="judgeData"></app-competition>
     </div>
     <div class="table-container">
-      <app-participants-table
-          [dataSource]="this.table"
-          [displayedColumns]="this.displayedColumns">
-      </app-participants-table>
+      <app-competition [competitions]="judgeData"></app-competition>
     </div>
   </div>
   <div class="competition-container">
-    <app-competition></app-competition>
+    <app-competition [competitions]="competitionData"></app-competition>
   </div>
 </div>
