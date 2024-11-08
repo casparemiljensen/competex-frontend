@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CompetitionPermitsComponent } from './competition-permits.component';
+import { CompetitionPermitsComponent } from './form-competition-permits.component';
 
 describe('CompetitionPermitsComponent', () => {
   let component: CompetitionPermitsComponent;
@@ -8,9 +8,8 @@ describe('CompetitionPermitsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CompetitionPermitsComponent]
-    })
-    .compileComponents();
+      declarations: [CompetitionPermitsComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(CompetitionPermitsComponent);
     component = fixture.componentInstance;

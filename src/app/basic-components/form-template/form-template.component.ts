@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, input } from '@angular/core';
+import { Component, Input, OnInit, input, DoCheck } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -44,10 +44,14 @@ export class FormTemplateComponent implements OnInit {
         traeningsstaevner: [false],
       }),
     });
+
+    this.myForm.valueChanges.subscribe(() => {
+      this.myForm.updateValueAndValidity();
+    });
   }
 
   get competitionControl(): FormArray {
-    return this.myForm.get('competition') as FormArray;
+    return this.myForm.get('competitions') as FormArray;
   }
   //Getter methods for form controls, used in the html template to send the form control to the form-input components.
   get titleControl(): FormControl {
@@ -86,9 +90,19 @@ export class FormTemplateComponent implements OnInit {
 
   handleSubmit() {
     if (this.myForm.valid) {
-      alert('Form submitted successfully!');
+      const formData = this.myForm.value; // Collect the form data
+      console.log('Form Submitted:', formData);
+      // You can also send the form data to a server here using an API
+      // Example: this.http.post('api-url', formData).subscribe(response => { ... });
     } else {
-      alert('Form is invalid. Please correct the errors.');
+      console.log('Form is invalid');
+      alert('Please correct the errors in the form before submitting.');
     }
+  }
+
+  ngDoCheck(): void {
+    console.log('Form Valid:', this.myForm.valid);
+    console.log('Competitions Control Valid:', this.competitionControl.valid);
+    console.log('Competitions Control Value:', this.competitionControl.value);
   }
 }
