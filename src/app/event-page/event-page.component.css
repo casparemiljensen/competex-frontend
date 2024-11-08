@@ -21,18 +21,43 @@
   gap: 16px;
 }
 
-
-.container {
-  /* background-color: #f3f3f3;
-  padding: 16px;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
-}
-
 .buttons {
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+.start-button {
+  background-color: #333;
+  color: white;
+}
+
+.edit-button {
+  background-color: #ff6f61;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.register-button {
+  background-color: #4caf50;
+  color: white;
+}
+
+button.mat-button {
+  font-weight: bold;
+  border-radius: 4px;
+  padding: 8px 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+button.mat-button:hover {
+  opacity: 0.9;
+}
+
+.mat-mdc-button:not(:disabled) {
+  color: white !important;
 }
 
 /* Middle Section with Two Tables Side by Side */
@@ -42,9 +67,52 @@
   gap: 5%;
 }
 
-/* Bottom Section with Full-Width Table */
-.bottom-section {
-  background-color: #e0f7fa;
-  padding: 5%;
-  border-radius: 4px;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .top-section {
+    grid-template-columns: 1fr; /* Stack location, dates, and buttons vertically */
+    gap: 12px;
+  }
+
+  .buttons {
+    flex-direction: row;
+    gap: 4px;
+    justify-content: center;
+  }
+
+  .middle-section {
+    grid-template-columns: 1fr; /* Stack tables vertically */
+    gap: 16px;
+  }
+
+  button.mat-button {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.2rem;
+    padding: 12px 0;
+  }
+
+  .page-container {
+    padding: 0 2%;
+  }
+
+  .middle-section,
+  .bottom-section {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .top-section {
+    gap: 8px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 6px;
+  }
 }
