@@ -1,4 +1,16 @@
-<h1 class="heading">comp-start works!</h1>
-<div>
-  <a> HHHHHH<button>Click me</button> </a>
+<h1>{{ competitionName }} Matches</h1>
+<div *ngIf="competitionData; else noData">
+  <div *ngFor="let match of competitionData" class="competition-container">
+    <button
+      class="competition-button"
+      (click)="openConfirmDialog(buttonText, match)"
+    >
+      {{ buttonText }}
+    </button>
+    <a>{{ match.club }} vs. {{ match.club }}</a>
+  </div>
 </div>
+
+<ng-template #noData>
+  <p>No data available</p>
+</ng-template>
