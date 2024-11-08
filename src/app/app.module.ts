@@ -29,7 +29,7 @@ import { MyPageComponent } from './mypage/mypage.component';
 import { NavbarComponent } from './basic-components/navbar/navbar.component';
 import { EventTableComponent } from './basic-components/event-table/event-table.component';
 import { ExpandableTableComponent } from './basic-components/ExpandableTable/ExpandableTable.component';
-import { ParticipantsTableComponent } from './basic-components/participants-table/participants-table.component';
+import { DataTableComponent } from './basic-components/DataTable/DataTable.component';
 import { EventPageComponent } from './event-page/event-page.component';
 
 @NgModule({
@@ -40,7 +40,7 @@ import { EventPageComponent } from './event-page/event-page.component';
     CalenderComponent,
     EventTableComponent,
     ExpandableTableComponent,
-    ParticipantsTableComponent,
+    DataTableComponent,
     NavbarComponent,
     MyPageComponent,   
     EventPageComponent,

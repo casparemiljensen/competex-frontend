@@ -10,10 +10,10 @@
           <mat-panel-title class="panel-text">{{ comp.judge || comp.ExpandableTable }}</mat-panel-title>
         </mat-expansion-panel-header>
         <div class="page-container">
-          <app-participants-table
+          <app-DataTable
             [dataSource]="comp.data"
             [displayedColumns]="displayedColumns">
-          </app-participants-table>
+          </app-DataTable>
         </div>
       </mat-expansion-panel>
     </div>

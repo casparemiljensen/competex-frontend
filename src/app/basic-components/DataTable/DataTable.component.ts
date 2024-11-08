@@ -3,11 +3,11 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
-  selector: 'app-participants-table',
-  templateUrl: './participants-table.component.html',
-  styleUrls: ['./participants-table.component.css'],
+  selector: 'app-DataTable',
+  templateUrl: './DataTable.component.html',
+  styleUrls: ['./DataTable.component.css'],
 })
-export class ParticipantsTableComponent implements OnInit, AfterViewInit, OnChanges {
+export class DataTableComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() dataSource!: any[];
   @Input() displayedColumns: string[] = [];  // Default to an empty array to handle dynamic columns
 
