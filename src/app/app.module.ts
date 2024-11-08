@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
@@ -15,6 +15,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDivider } from '@angular/material/divider';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -27,8 +28,9 @@ import { CalenderComponent } from './calender/calender.component';
 import { MyPageComponent } from './mypage/mypage.component';
 import { NavbarComponent } from './basic-components/navbar/navbar.component';
 import { EventTableComponent } from './basic-components/event-table/event-table.component';
-import { CompetitionComponent } from './basic-components/competition/competition.component';
-import { ParticipantsTableComponent } from './basic-components/participants-table/participants-table.component';
+import { ExpandableTableComponent } from './basic-components/ExpandableTable/ExpandableTable.component';
+import { DataTableComponent } from './basic-components/DataTable/DataTable.component';
+import { EventPageComponent } from './event-page/event-page.component';
 
 @NgModule({
   declarations: [
@@ -37,11 +39,11 @@ import { ParticipantsTableComponent } from './basic-components/participants-tabl
     ButtonComponent,
     CalenderComponent,
     EventTableComponent,
-    CompetitionComponent,
-    ParticipantsTableComponent,
+    ExpandableTableComponent,
+    DataTableComponent,
     NavbarComponent,
     MyPageComponent,   
-    EventTableComponent,
+    EventPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +54,7 @@ import { ParticipantsTableComponent } from './basic-components/participants-tabl
     MatIconModule,
     MatButtonModule,
     MatToolbarModule,
+    MatGridListModule,
     MatTableModule,
     MatExpansionModule,
     MatProgressSpinner,
