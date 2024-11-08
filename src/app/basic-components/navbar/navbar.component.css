@@ -1,7 +1,6 @@
 /* Default styles for sidenav */
 .sidenav-container {
   height: 100%;
-  display: flex;
 }
 
 /* Set default background color for the sidenav */
@@ -129,3 +128,7 @@
   font-size: 40%;
 }
 
+mat-mdc-list-item-unscoped-content 
+mdc-list-item__primary-text {
+  color: white;
+}

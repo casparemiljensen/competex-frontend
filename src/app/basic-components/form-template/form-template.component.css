@@ -1,12 +1,15 @@
 .form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 20px;
-    row-gap: 5px;
-    width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+  row-gap: 5px;
+  width: 100%;
+}
+@media (max-width: 600px) {
+  .form-grid {
+    grid-template-columns: 1fr; /* Switch to a single column for mobile */
   }
-  
-  .form-group {
-    margin-bottom: 16px;
-  }
-  
+}
+.form-group {
+  margin-bottom: 16px;
+}
