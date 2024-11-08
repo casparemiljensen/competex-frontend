@@ -1,35 +1,41 @@
 /* Table container customization for max width and centering */
 .table-container {
-    width: 100%;
-    overflow: hidden;
-    border-radius: 0 0 4px 4px; /* Rounded bottom corners to match panel */
-    padding: 0;
-    margin: 0;
-  }
-  
-  /* Custom table styles with maximum width */
-  .custom-mat-table {
-    width: 100%;
-    border-collapse: collapse; /* Remove gaps between table cells */
-    margin: 0;
-  }
-  
-  .custom-mat-table th.mat-header-cell {
-    font-weight: bold;
-    background-color: #f2f2f2; /* Light grey for header cells */
-    padding: 8px;
-    text-align: left;
-  }
-  
-  .custom-mat-table td.mat-cell {
-    padding: 8px;
-  }
-  
-  /* Style every other row with a slightly different color */
-  .custom-mat-table tr:nth-child(even) td {
-    background-color: #736c6c4e; /* Light grey for even rows */
-  }
-  
-  .custom-mat-table tr:nth-child(odd) td {
-    background-color: #ffffff; /* White for odd rows */
-  }
+  width: 100%;
+  overflow: hidden;
+  border-radius: 0 0 4px 4px; /* Rounded bottom corners to match panel */
+  padding: 0;
+  margin: 16px 0;
+}
+
+
+/* Increase font size for table column text */
+.custom-mat-table td.mat-cell {
+  font-size: 1.1em; /* Adjust the font size as needed */
+}
+
+/* Custom table styles */
+.custom-mat-table {
+  width: 100%;
+  border-collapse: collapse; /* Remove gaps between table cells */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Header cell styling for improved emphasis */
+.custom-mat-table th.mat-header-cell {
+  font-weight: bold; /* Bolder text for headers */
+  font-size: 1.2em; /* Increase the font size */
+  color: black; /* Darker text color for contrast */
+  padding: 12px; /* Slightly increased padding */
+  text-align: left;
+}
+
+
+/* 
+.custom-mat-table tr:nth-child(even) td {
+   background-color: #f9f9f9;  Very light grey for even rows
+} */
+
+.custom-mat-table tr:nth-child(odd) td {
+  background-color: #dbdbdb; /* White for odd rows */
+}
+

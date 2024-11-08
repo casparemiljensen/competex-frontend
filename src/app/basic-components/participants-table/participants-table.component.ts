@@ -9,23 +9,31 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class ParticipantsTableComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() dataSource!: any[];
-  @Input() displayedColumns!: string[];
+  @Input() displayedColumns: string[] = [];  // Default to an empty array to handle dynamic columns
 
   tableDataSource = new MatTableDataSource<any>([]);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngOnInit(): void {
-    this.tableDataSource.data = this.dataSource;
+    this.initializeTable();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['dataSource']) {
-      this.tableDataSource.data = this.dataSource;
+      this.initializeTable();
     }
   }
 
   ngAfterViewInit() {
     this.tableDataSource.paginator = this.paginator;
+  }
+
+  private initializeTable(): void {
+    if (this.dataSource && this.dataSource.length > 0) {
+      // Dynamically set columns based on the keys of the first object in dataSource
+      this.displayedColumns = Object.keys(this.dataSource[0]);
+      this.tableDataSource.data = this.dataSource;
+    }
   }
 }
