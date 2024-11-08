@@ -24,17 +24,26 @@
 .buttons {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 5%;
+  align-items: center; /* Center the buttons */
+}
+
+.start-button,
+.edit-button,
+.register-button {
+  background-color: #333;
+  color: white;
+  max-width: 200px; /* Limit the width of each button */
+  width: 100%; /* Ensures they are responsive up to the max-width */
+  text-align: center;
 }
 
 .start-button {
   background-color: #333;
-  color: white;
 }
 
 .edit-button {
   background-color: #ff6f61;
-  color: white;
   display: flex;
   align-items: center;
   gap: 4px;
@@ -42,7 +51,6 @@
 
 .register-button {
   background-color: #4caf50;
-  color: white;
 }
 
 button.mat-button {

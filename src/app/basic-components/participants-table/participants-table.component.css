@@ -1,3 +1,17 @@
+.mat-mdc-header-cell {
+  border-bottom-color: var(--mat-table-row-item-outline-color, var(--mat-app-outline, rgba(0, 0, 0, 0.12)));
+  border-bottom-width: var(--mat-table-row-item-outline-width, 1px);
+  border-bottom-style: solid;
+  letter-spacing: var(--mat-table-header-headline-tracking, var(--mat-app-title-small-tracking));
+  font-weight: bold; /* Ensures header font is bold */
+  line-height: inherit;
+  box-sizing: border-box;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  outline: none;
+  text-align: left;
+}
+
 /* Table container customization for max width and centering */
 .table-container {
   width: 100%;
