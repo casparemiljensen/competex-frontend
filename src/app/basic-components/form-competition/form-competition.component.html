@@ -26,4 +26,25 @@
             class="competition-input"
             label="Pris"
             [control]="getPrisControl(i)"
-            validationMessage=
+            validationMessage="Maks pris er 50 kr."
+          >
+          </app-form-input-text>
+          <div>
+            <button mat-icon-button color="warn" (click)="deleteCompetition(i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="competition-button-container">
+    <button
+      mat-raised-button
+      class="add-competition-button"
+      (click)="addCompetition()"
+    >
+      Tilføj Konkurrence
+    </button>
+  </div>
+</form>

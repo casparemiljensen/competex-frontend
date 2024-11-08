@@ -1,5 +1,6 @@
 .competition-section {
   margin-top: 20px;
+  text-align: center;
 }
 
 .form-competition-grid {
@@ -25,4 +26,9 @@
 }
 .add-competition-button:hover {
   background-color: rgb(66, 156, 66) !important;
+}
+
+.competition-button-container {
+  display: flex;
+  justify-content: center;
 }

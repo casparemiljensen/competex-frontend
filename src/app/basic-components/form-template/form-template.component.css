@@ -12,4 +12,25 @@
 }
 .form-group {
   margin-bottom: 16px;
+  height: 600px;
+  width: 80vw;
+  text-align: center;
+}
+.form-page {
+  height: 50vh;
+}
+
+.submit-button {
+  margin-top: 10px;
+  align-self: start;
+  background-color: green !important;
+}
+.submit-button:hover {
+  background-color: rgb(66, 156, 66) !important;
+}
+
+.paginator {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }

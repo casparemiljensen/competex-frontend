@@ -6,6 +6,7 @@ import {
   FormControl,
   FormArray,
 } from '@angular/forms';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-form-template',
@@ -14,7 +15,9 @@ import {
 })
 export class FormTemplateComponent implements OnInit {
   @Input() formFields: { [key: string]: any } = {};
+
   myForm!: FormGroup;
+  currentPageIndex: number = 0;
 
   constructor(private fb: FormBuilder) {}
 
@@ -53,37 +56,7 @@ export class FormTemplateComponent implements OnInit {
   get competitionControl(): FormArray {
     return this.myForm.get('competitions') as FormArray;
   }
-  //Getter methods for form controls, used in the html template to send the form control to the form-input components.
-  get titleControl(): FormControl {
-    return this.myForm.get('title') as FormControl;
-  }
-  get organizerControl(): FormControl {
-    return this.myForm.get('organizer') as FormControl;
-  }
-  get locationControl(): FormControl {
-    return this.myForm.get('location') as FormControl;
-  }
-  get adressControl(): FormControl {
-    return this.myForm.get('adress') as FormControl;
-  }
-  get postadressControl(): FormControl {
-    return this.myForm.get('postadress') as FormControl;
-  }
-  get startTimeControl(): FormControl {
-    return this.myForm.get('startTime') as FormControl;
-  }
-  get startDateControl(): FormControl {
-    return this.myForm.get('startDate') as FormControl;
-  }
-  get endDateControl(): FormControl {
-    return this.myForm.get('endDate') as FormControl;
-  }
-  get registrationStartDateControl(): FormControl {
-    return this.myForm.get('registrationStartDate') as FormControl;
-  }
-  get registrationEndDateControl(): FormControl {
-    return this.myForm.get('registrationEndDate') as FormControl;
-  }
+
   get permissionsGroupControl(): FormGroup {
     return this.myForm.get('permissions') as FormGroup;
   }
@@ -100,9 +73,13 @@ export class FormTemplateComponent implements OnInit {
     }
   }
 
-  ngDoCheck(): void {
-    console.log('Form Valid:', this.myForm.valid);
-    console.log('Competitions Control Valid:', this.competitionControl.valid);
-    console.log('Competitions Control Value:', this.competitionControl.value);
+  onPageChange(event: PageEvent): void {
+    this.currentPageIndex = event.pageIndex;
   }
+  //Check validation of form components.
+  // ngDoCheck(): void {
+  //   console.log('Form Valid:', this.myForm.valid);
+  //   console.log('Competitions Control Valid:', this.competitionControl.valid);
+  //   console.log('Competitions Control Value:', this.competitionControl.value);
+  // }
 }
