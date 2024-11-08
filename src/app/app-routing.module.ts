@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { CalenderComponent } from './calender/calender.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { MyPageComponent } from './mypage/mypage.component'; // Adjust import as necessary
+import { CompetitionComponent } from './basic-components/competition/competition.component';
 
 
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'calender', component: CalenderComponent},
   { path: 'create-event', component: CreateEventComponent},
   { path: 'mypage', component: MyPageComponent },
+  { path: 'competition', component: CompetitionComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect empty path to home
   { path: '**', redirectTo: '/home' } // Redirect unknown paths to home
 ];

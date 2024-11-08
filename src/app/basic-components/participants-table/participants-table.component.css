@@ -1,0 +1,35 @@
+/* Table container customization for max width and centering */
+.table-container {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 0 0 4px 4px; /* Rounded bottom corners to match panel */
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Custom table styles with maximum width */
+  .custom-mat-table {
+    width: 100%;
+    border-collapse: collapse; /* Remove gaps between table cells */
+    margin: 0;
+  }
+  
+  .custom-mat-table th.mat-header-cell {
+    font-weight: bold;
+    background-color: #f2f2f2; /* Light grey for header cells */
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .custom-mat-table td.mat-cell {
+    padding: 8px;
+  }
+  
+  /* Style every other row with a slightly different color */
+  .custom-mat-table tr:nth-child(even) td {
+    background-color: #736c6c4e; /* Light grey for even rows */
+  }
+  
+  .custom-mat-table tr:nth-child(odd) td {
+    background-color: #ffffff; /* White for odd rows */
+  }

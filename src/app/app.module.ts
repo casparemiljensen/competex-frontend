@@ -8,12 +8,15 @@ import { HomeComponent } from './home/home.component';
 import { ButtonComponent } from './basic-components/button/button.component';
 import { CalenderComponent } from './calender/calender.component';
 import { CreateEventComponent } from './create-event/create-event.component';
-import { MatPaginator } from '@angular/material/paginator';
 import { EventTableComponent } from './basic-components/event-table/event-table.component';
 import { MyPageComponent } from './mypage/mypage.component';
 import { NavbarComponent } from './basic-components/navbar/navbar.component';
 import { CompetitionFormComponent } from './basic-components/form-competition/form-competition.component';
 import { CompetitionPermitsComponent } from './basic-components/form-competition-permits/form-competition-permits.component';
+import { FormInputSelectComponent } from './basic-components/form-inputs/form-input-select/form-input-select.component';
+import { FormEventInformationComponent } from './basic-components/form-event-information/form-event-information.component';
+import { CompetitionComponent } from './basic-components/competition/competition.component';
+import { ParticipantsTableComponent } from './basic-components/participants-table/participants-table.component';
 
 // Agnular Imports
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -39,18 +42,17 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormInputTimeComponent } from './basic-components/form-inputs/form-input-time/form-input-time.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import { MatTableModule } from '@angular/material/table';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDivider } from '@angular/material/divider';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 //ngx imports
 import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { FormInputSelectComponent } from './basic-components/form-inputs/form-input-select/form-input-select.component';
-import { FormEventInformationComponent } from './basic-components/form-event-information/form-event-information.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +65,9 @@ import { FormEventInformationComponent } from './basic-components/form-event-inf
     FormTemplateComponent,
     FormInputDateComponent,
     FormInputTimeComponent,
+    EventTableComponent,
+    CompetitionComponent,
+    ParticipantsTableComponent,
     NavbarComponent,
     MyPageComponent,
     EventTableComponent,
@@ -95,6 +100,8 @@ import { FormEventInformationComponent } from './basic-components/form-event-inf
     MatProgressSpinner,
     MatDivider,
     MatSlideToggleModule,
+    MatTableModule,
+    MatPaginatorModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
       dataEncapsulation: false,
