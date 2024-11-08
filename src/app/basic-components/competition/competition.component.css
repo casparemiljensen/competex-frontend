@@ -1,8 +1,8 @@
 /* Wrapper to center content and limit width */
 .container-wrapper {
-  max-width: 900px; /* Set a maximum width for the content */
+  /* max-width: 900px;  Set a maximum width for the content */
   margin: 0 auto; /* Center the content horizontally */
-  padding: 20px; /* Add padding for better spacing */
+  /* padding: 20px;  Add padding for better spacing */
 }
 
 /* Loading spinner centered */
@@ -25,7 +25,7 @@
   padding: 16px;
   font-size: 1.1rem;
   border-radius: 0 0 0 0;
-  max-width: 900px; /* Align with the container-wrapper width */
+  /* max-width: 900px;  Align with the container-wrapper width */
   margin: 0 auto; /* Center the header within the container */
   box-sizing: border-box; /* Ensure padding is included in the width */
 }
