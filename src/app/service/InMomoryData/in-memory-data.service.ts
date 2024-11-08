@@ -48,9 +48,9 @@ export class InMemoryDataService implements InMemoryDbService{
       }
     ];
 
-    const competitions = [
+    const ExpandableTables = [
       {
-        competition: "Boys U12 Football",
+        ExpandableTable: "Boys U12 Football",
         data: [
           { club: "Tigers", players: 11, coach: 'John Doe' },
           { club: "Hawks", players: 12, coach: 'Jane Smith' },
@@ -85,7 +85,7 @@ export class InMemoryDataService implements InMemoryDbService{
         ]
       },
       {
-        competition: "Girls U15 Volleyball",
+        ExpandableTable: "Girls U15 Volleyball",
         data: [
           { team: "Spikers", members: 10, manager: 'Alice Johnson' },
           { team: "Blockers", members: 9, manager: 'Billie Jean' },
@@ -93,7 +93,7 @@ export class InMemoryDataService implements InMemoryDbService{
         ]
       },
       {
-        competition: "Mixed U18 Basketball",
+        ExpandableTable: "Mixed U18 Basketball",
         data: [
           { squad: "Shooters", athletes: 5, trainer: 'Mike Bane' },
           { squad: "Dribblers", athletes: 6, trainer: 'Sarah Conner' },
@@ -101,7 +101,7 @@ export class InMemoryDataService implements InMemoryDbService{
         ]
       },
       {
-        competition: "Open Swimming 100m",
+        ExpandableTable: "Open Swimming 100m",
         data: [
           { club: "Wave Riders", swimmers: 4, coach: 'Lana Kane' },
           { club: "Speedsters", swimmers: 5, coach: 'Archer Sterling' },
@@ -109,7 +109,7 @@ export class InMemoryDataService implements InMemoryDbService{
         ]
       },
       {
-        competition: "Youth Chess Tournament",
+        ExpandableTable: "Youth Chess Tournament",
         data: [
           { club: "Check Mates", players: 8, coordinator: 'Ray Gillette' },
           { club: "Kings & Queens", players: 7, coordinator: 'Pam Poovey' },
@@ -118,7 +118,7 @@ export class InMemoryDataService implements InMemoryDbService{
       }
     ];
 
-    return { events, competitions, judge };
+    return { events, ExpandableTables, judge };
   }
 
   // genId(event: Event[]): number {

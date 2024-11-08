@@ -7,7 +7,7 @@ import { EventPageService } from '../service/event-page/event-page.service';
   styleUrl: './event-page.component.css'
 })
 export class EventPageComponent implements OnInit {
-  competitionData: any[] = [];
+  ExpandableTableData: any[] = [];
   judgeData: any[] = [];
   displayedColumns: string[] = [];
   isLoading = true;
@@ -22,9 +22,9 @@ export class EventPageComponent implements OnInit {
       this.judgeData = data;
     });
 
-    //Fetch competition data
-    this.eventPageService.getCompetitions().subscribe(data => {
-      this.competitionData = data;
+    //Fetch ExpandableTable data
+    this.eventPageService.getExpandableTables().subscribe(data => {
+      this.ExpandableTableData = data;
     });
   }
 }

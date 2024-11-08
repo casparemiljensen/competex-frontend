@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class EventPageService {
   private judgeUrl = 'api/judge';
-  private competitionsUrl = 'api/competitions';
+  private ExpandableTablesUrl = 'api/ExpandableTables';
 
   constructor(private http: HttpClient) {}
 
@@ -15,7 +15,7 @@ export class EventPageService {
     return this.http.get<any[]>(this.judgeUrl);
   }
 
-  getCompetitions(): Observable<any[]> {
-    return this.http.get<any[]>(this.competitionsUrl);
+  getExpandableTables(): Observable<any[]> {
+    return this.http.get<any[]>(this.ExpandableTablesUrl);
   }
 }

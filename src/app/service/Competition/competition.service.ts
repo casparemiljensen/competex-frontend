@@ -5,12 +5,12 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class CompetitionService {
-  private competitionsUrl = 'api/competitions';
+export class ExpandableTableService {
+  private ExpandableTablesUrl = 'api/ExpandableTables';
 
   constructor(private http: HttpClient) {}
 
-  getCompetitions(): Observable<any[]> {
-    return this.http.get<any[]>(this.competitionsUrl);
+  getExpandableTables(): Observable<any[]> {
+    return this.http.get<any[]>(this.ExpandableTablesUrl);
   }
 }

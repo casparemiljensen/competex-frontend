@@ -28,7 +28,7 @@ import { CalenderComponent } from './calender/calender.component';
 import { MyPageComponent } from './mypage/mypage.component';
 import { NavbarComponent } from './basic-components/navbar/navbar.component';
 import { EventTableComponent } from './basic-components/event-table/event-table.component';
-import { CompetitionComponent } from './basic-components/competition/competition.component';
+import { ExpandableTableComponent } from './basic-components/ExpandableTable/ExpandableTable.component';
 import { ParticipantsTableComponent } from './basic-components/participants-table/participants-table.component';
 import { EventPageComponent } from './event-page/event-page.component';
 
@@ -39,11 +39,10 @@ import { EventPageComponent } from './event-page/event-page.component';
     ButtonComponent,
     CalenderComponent,
     EventTableComponent,
-    CompetitionComponent,
+    ExpandableTableComponent,
     ParticipantsTableComponent,
     NavbarComponent,
     MyPageComponent,   
-    EventTableComponent, 
     EventPageComponent,
   ],
   imports: [
