@@ -1,0 +1,14 @@
+<mat-form-field class="form-group" appearance="outline" >
+    <mat-label>{{label}}</mat-label>
+    <input matInput
+        [matDatepicker]="picker"
+        class="form-control"
+        [formControl]="control"
+        [attr.placeholder]="label" 
+    />
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-error *ngIf="showError">
+        {{label}} is required
+    </mat-error>
+</mat-form-field>

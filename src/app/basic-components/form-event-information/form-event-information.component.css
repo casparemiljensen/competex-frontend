@@ -1,0 +1,18 @@
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+  row-gap: 5px;
+  width: 100%;
+  min-width: 50rem;
+}
+@media (max-width: 600px) {
+  .form-grid {
+    grid-template-columns: 1fr; /* Switch to a single column for mobile */
+    row-gap: 0px;
+    min-width: 10rem;
+  }
+}
+.form-group {
+  margin-bottom: 16px;
+}

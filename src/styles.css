@@ -5,3 +5,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+mat-nav-list a, span {
+    color: #ffffff !important;
+  }
+mat-nav-list a:hover span {
+    color: #2196f3 !important; /* Set the hover color to blue */
+}
+
