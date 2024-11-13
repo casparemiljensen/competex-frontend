@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 @Component({
   selector: 'app-competition-page',
   templateUrl: './competition-page.component.html',
@@ -7,7 +12,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class CompetitionPageComponent {
   myForm!: FormGroup;
-
+  detailsSubmitted = false;
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
@@ -18,9 +23,27 @@ export class CompetitionPageComponent {
     });
   }
 
+  bedMetodeOptions = [
+    { value: 'd1', viewValue: 'D1' },
+    { value: 'c1', viewValue: 'C1' },
+    { value: 'd2', viewValue: 'D2' },
+    { value: 'c2', viewValue: 'C2' },
+  ];
+
+  get dommerControl(): FormControl {
+    return this.myForm.get('dommer') as FormControl;
+  }
+  get aspirantControl(): FormControl {
+    return this.myForm.get('aspirant') as FormControl;
+  }
+  get bedMetodeControl(): FormControl {
+    return this.myForm.get('bedmetode') as FormControl;
+  }
+
   handleSubmit() {
     if (this.myForm.valid) {
       const formData = this.myForm.value; // Collect the form data
+      this.detailsSubmitted = true;
       console.log('Form Submitted:', formData);
       // You can also send the form data to a server here using an API
       // Example: this.http.post('api-url', formData).subscribe(response => { ... });

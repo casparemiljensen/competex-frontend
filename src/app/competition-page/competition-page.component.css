@@ -10,3 +10,8 @@
   width: 80vw;
   max-width: 500px;
 }
+.submit-button {
+  margin-top: 10px;
+  align-self: start;
+  background-color: green !important;
+}

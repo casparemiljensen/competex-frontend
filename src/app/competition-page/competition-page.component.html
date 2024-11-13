@@ -1,11 +1,26 @@
-<p>competition-page works!</p>
 <div class="page-container">
-  <h2>Konkurrence Detaljer</h2>
-  <div class="form-group">
-    <form [formGroup]="myForm" (ngSubmit)="handleSubmit()">
-      <app-form-input-text label="Dommer"> </app-form-input-text>
-      <app-form-input-text label="Aspirant"> </app-form-input-text>
-      <app-form-input-select label="Bedømmelsesmetode"> </app-form-input-select>
-    </form>
+  <div *ngIf="!detailsSubmitted">
+    <h2>Konkurrence Detaljer</h2>
+    <div class="form-group">
+      <form [formGroup]="myForm" (ngSubmit)="handleSubmit()">
+        <app-form-input-text label="Dommer" [control]="dommerControl">
+        </app-form-input-text>
+        <app-form-input-text label="Aspirant" [control]="aspirantControl">
+        </app-form-input-text>
+        <app-form-input-select
+          label="Bedømmelsesmetode"
+          [options]="bedMetodeOptions"
+          [control]="bedMetodeControl"
+        ></app-form-input-select>
+        <app-form-input-time label="Start Tid"> </app-form-input-time>
+        <button mat-raised-button type="submit" class="submit-button">
+          Fortsæt
+        </button>
+      </form>
+    </div>
+  </div>
+  <div *ngIf="detailsSubmitted">
+    <!-- Ongoing Competition Page -->
+    <h2>Bedømmelse</h2>
   </div>
 </div>
