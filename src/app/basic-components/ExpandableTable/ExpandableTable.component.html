@@ -1,0 +1,21 @@
+<div class="container-wrapper">
+  <div *ngIf="isLoading" class="loading-spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <mat-accordion multi="true" class="custom-accordion">
+    <div>
+      <mat-expansion-panel *ngFor="let comp of ExpandableTables" class="custom-panel">
+        <mat-expansion-panel-header class="custom-panel-header">
+          <mat-panel-title class="panel-text">{{ comp.judge || comp.ExpandableTable }}</mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="page-container">
+          <app-DataTable
+            [dataSource]="comp.data"
+            [displayedColumns]="displayedColumns">
+          </app-DataTable>
+        </div>
+      </mat-expansion-panel>
+    </div>
+  </mat-accordion>
+</div>
