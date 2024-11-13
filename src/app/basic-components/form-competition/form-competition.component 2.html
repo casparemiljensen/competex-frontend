@@ -1,0 +1,50 @@
+<form [formGroup]="parentFormGroup">
+  <div class="form-group competition-section">
+    <h4>Konkurrencer</h4>
+    <div class="form-competition-grid">
+      <div formArrayName="competitions">
+        <div
+          *ngFor="let competition of control.controls; let i = index"
+          [formGroupName]="i"
+          class="form-competition-row"
+        >
+          <app-form-input-select
+            class="competition-input"
+            label="Gren"
+            [control]="getGrenControl(i)"
+            [options]="grenOptions"
+          >
+          </app-form-input-select>
+          <app-form-input-select
+            class="competition-input"
+            label="Klasse"
+            [control]="getKlasseControl(i)"
+            [options]="klasseOptions"
+          >
+          </app-form-input-select>
+          <app-form-input-text
+            class="competition-input"
+            label="Pris"
+            [control]="getPrisControl(i)"
+            validationMessage="Maks pris er 50 kr."
+          >
+          </app-form-input-text>
+          <div>
+            <button mat-icon-button color="warn" (click)="deleteCompetition(i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="competition-button-container">
+    <button
+      mat-raised-button
+      class="add-competition-button"
+      (click)="addCompetition()"
+    >
+      Tilføj Konkurrence
+    </button>
+  </div>
+</form>
