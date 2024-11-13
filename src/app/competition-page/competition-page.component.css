@@ -1,0 +1,12 @@
+.page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+.form-group {
+  margin-bottom: 16px;
+  height: 600px;
+  width: 80vw;
+  max-width: 500px;
+}

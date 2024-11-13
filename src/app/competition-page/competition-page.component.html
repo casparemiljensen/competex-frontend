@@ -1,0 +1,11 @@
+<p>competition-page works!</p>
+<div class="page-container">
+  <h2>Konkurrence Detaljer</h2>
+  <div class="form-group">
+    <form [formGroup]="myForm" (ngSubmit)="handleSubmit()">
+      <app-form-input-text label="Dommer"> </app-form-input-text>
+      <app-form-input-text label="Aspirant"> </app-form-input-text>
+      <app-form-input-select label="Bedømmelsesmetode"> </app-form-input-select>
+    </form>
+  </div>
+</div>

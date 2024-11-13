@@ -18,6 +18,9 @@ import { FormEventInformationComponent } from './basic-components/form-event-inf
 import { ExpandableTableComponent } from './basic-components/ExpandableTable/ExpandableTable.component';
 import { DataTableComponent } from './basic-components/DataTable/DataTable.component';
 import { EventPageComponent } from './event-page/event-page.component';
+import { CompStartComponent } from './comp-start/comp-start.component';
+import { ConfirmDialogComponent } from './basic-components/confirm-dialog/confirm-dialog.component';
+import { CompetitionPageComponent } from './competition-page/competition-page.component';
 
 // Agnular Imports
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -55,8 +58,6 @@ import { MatGridListModule } from '@angular/material/grid-list';
 
 //ngx imports
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { CompStartComponent } from './comp-start/comp-start.component';
-import { ConfirmDialogComponent } from './basic-components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +86,7 @@ import { ConfirmDialogComponent } from './basic-components/confirm-dialog/confir
     FormEventInformationComponent,
     MyPageComponent,
     EventPageComponent,
+    CompetitionPageComponent,
   ],
   imports: [
     BrowserModule,
