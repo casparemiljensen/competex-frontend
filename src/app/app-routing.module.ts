@@ -1,21 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component'; // Adjust import as necessary
-import { CalenderComponent } from './calender/calender.component'; // Adjust import as necessary
+import { HomeComponent } from './home/home.component';
+import { CalenderComponent } from './calender/calender.component';
+import { CreateEventComponent } from './create-event/create-event.component';
 import { MyPageComponent } from './mypage/mypage.component'; // Adjust import as necessary
+import { CompStartComponent } from './comp-start/comp-start.component';
 import { EventPageComponent } from './event-page/event-page.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'calendar', component: CalenderComponent },
+  { path: 'calender', component: CalenderComponent },
+  { path: 'create-event', component: CreateEventComponent },
   { path: 'mypage', component: MyPageComponent },
-  { path: 'event-page', component: EventPageComponent},
+  { path: 'competition-start', component: CompStartComponent },
+  { path: 'event-page', component: EventPageComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect empty path to home
-  { path: '**', redirectTo: '/home' } // Redirect unknown paths to home
+  { path: '**', redirectTo: '/home' }, // Redirect unknown paths to home
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
