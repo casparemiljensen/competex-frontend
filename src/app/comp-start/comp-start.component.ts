@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../basic-components/confirm-dialog/confirm-dialog.component';
+import { CompetitionService } from '../service/Competition/competition.service';
 
 @Component({
   selector: 'app-comp-start',
@@ -9,28 +10,26 @@ import { ConfirmDialogComponent } from '../basic-components/confirm-dialog/confi
   styleUrls: ['./comp-start.component.css']
 })
 export class CompStartComponent implements OnInit {
+  competitions: any[] = []
+  displayedColums: string[] = [];
+  isLoading = true;  
+
   @Output() buttonClick = new EventEmitter<void>();
   buttonText: string = 'Aktiv'; // or 'Afsluttet', set dynamically as needed
-  competitionData: any;
-  competitionName = "Boys U12 Football";
 
-  constructor(private http: HttpClient, public dialog: MatDialog) {}
+
+  constructor(private http: HttpClient, public dialog: MatDialog, private competitionService: CompetitionService) {}
 
   ngOnInit(): void {
-    this.getCompetitionData();
-  }
-
-  getCompetitionData(): void {
-    this.http.get<any[]>('api/competitions')
-      .subscribe(data => {
-        const competition = data.find(comp => comp.competition === this.competitionName);
-        if (competition) {
-          this.competitionData = competition.data;
-        } else {
-          console.error('Competition not found');
-        }
-      });
-  }
+    this.competitionService.getCompetitions().subscribe(data => {
+      this.competitions = data.map(competition => ({
+        title: competition.competition,
+        data: competition.data,
+        columns: competition.data.length > 0 ? Object.keys(competition.data[0]) : []
+      }));
+      this.isLoading = false;
+    })
+    }
 
   openConfirmDialog(buttonText: string, match: any): void {
     // Define different dialog data based on the button text
@@ -38,7 +37,6 @@ export class CompStartComponent implements OnInit {
       title: '',
       message: ''
     };
-
     if (buttonText === 'Aktiv') {
       dialogData.title = 'OPS! Du er ved at redigere i en aktiv konkurrence!';
       dialogData.message = 'Ønsker du at fortsætte?';
@@ -46,12 +44,10 @@ export class CompStartComponent implements OnInit {
       dialogData.title = 'OPS! Du er ved at redigere i en afsluttet konkurrence!';
       dialogData.message = 'Ønsker du at fortsætte?';
     }
-
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '300px',
       data: dialogData
     });
-
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         // User chose to continue, emit buttonClick event

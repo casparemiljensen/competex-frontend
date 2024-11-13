@@ -1,16 +1,32 @@
-<h1 class="heading">{{ competitionName }}</h1>
-<div *ngIf="competitionData; else noData">
-  <div *ngFor="let match of competitionData" class="competition-container">
-    <button
-      class="competition-button"
-      (click)="openConfirmDialog(buttonText, match)"
-    >
-      {{ buttonText }}
-    </button>
-    <a>{{ match.club }} vs. {{ match.club }}</a>
-  </div>
-</div>
+<h1 class="heading">Competition</h1>
 
-<ng-template #noData>
-  <p>No data available</p>
-</ng-template>
+<div class="container-wrapper">
+  <div *ngIf="isLoading" class="loading-spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <mat-accordion multi="true" class="custom-accordion">
+    <div>
+      <mat-expansion-panel
+        hideToggle
+        *ngFor="let comp of competitions"
+        class="custom-panel"
+      >
+        <mat-expansion-panel-header class="custom-panel-header">
+          <button
+            class="competition-button"
+            (click)="openConfirmDialog(buttonText, comp)"
+          >
+            {{ buttonText }}
+          </button>
+          <mat-panel-title class="panel-text">{{ comp.title }}</mat-panel-title>
+        </mat-expansion-panel-header>
+        <app-participants-table
+          [dataSource]="comp.data"
+          [displayedColumns]="comp.columns"
+        >
+        </app-participants-table>
+      </mat-expansion-panel>
+    </div>
+  </mat-accordion>
+</div>

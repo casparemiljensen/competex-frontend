@@ -11,11 +11,9 @@
     align-items: center;
     background-color: #2196f3;
     color: white;
-    border-radius: 5%;
     width: 30%;
     margin: 0 auto;
     padding: 10px;
-    border-radius: 10px;
     margin-top: 2%;
     margin-bottom: 2%;
 }
@@ -31,6 +29,55 @@
     width: 20%;
     height: 100%; 
     cursor: pointer;
-    border-radius: 10px;
 }
+
+.competition-button:hover {
+    background-color: #e8e7eb;
+    color: #4CAF50;
+    border-color: #4CAF50;
+    border: 2px solid #4CAF50;
+}
+
+/* Wrapper to center content and limit width */
+.container-wrapper {
+    max-width: 900px; /* Set a maximum width for the content */
+    margin: 0 auto; /* Center the content horizontally */
+    padding: 20px; /* Add padding for better spacing */
+  }
+  
+  /* Loading spinner centered */
+  .loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+  }
+  
+  
+  .custom-panel{
+    margin-bottom: 16px;
+  }
+  /* Expansion panel header customization */
+  .custom-panel-header {
+    background-color: #2196F3; /* Blue background for header */
+    font-weight: bold;
+    padding: 16px;
+    font-size: 1.1rem;
+    max-width: 900px; /* Align with the container-wrapper width */
+    margin: 0 auto; /* Center the header within the container */
+    box-sizing: border-box; /* Ensure padding is included in the width */
+  }
+  
+  .custom-panel .panel-text{
+    color: white;
+  }
+ 
+  .panel-text :hover{
+    color: #2196F3;
+  }
+  
+  .custom-panel .custom-panel-header.mat-expanded {
+    background-color: #2a78af; /* Darker blue when expanded */  
+  }
+  
 
