@@ -1,0 +1,37 @@
+<div class="page-container">
+  <div class="title">
+    This is the title for the event
+  </div>
+  <div class="top-section">
+    <div class="container locatoin">
+      <h3>Location</h3>
+      <p>Stednavn</p>
+      <p>Address</p>
+      <p>Post nummer og by</p>
+    </div>
+    <div class="container dates">
+      <h3>Datoer og tidspunkt</h3>
+      <p>Starttidspunkt:</p>
+      <p>Tilmeldingsstart:</p>
+      <p>Sidste tilmelding:</p>
+    </div>
+    <div class="container buttons">
+      <button mat-button class="start-button">START</button>
+      <button mat-button color="warn" class="edit-button">
+        <mat-icon>edit</mat-icon> Edit
+      </button>
+      <button mat-button color="primary" class="register-button">Register</button>
+    </div>
+  </div>
+  <div class="middle-section">
+    <div class="table-container">
+      <app-ExpandableTable [ExpandableTables]="judgeData"></app-ExpandableTable>
+    </div>
+    <div class="table-container">
+      <app-ExpandableTable [ExpandableTables]="judgeData"></app-ExpandableTable>
+    </div>
+  </div>
+  <div class="ExpandableTable-container">
+    <app-ExpandableTable [ExpandableTables]="ExpandableTableData"></app-ExpandableTable>
+  </div>
+</div>

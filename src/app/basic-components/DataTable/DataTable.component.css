@@ -1,0 +1,55 @@
+.mat-mdc-header-cell {
+  border-bottom-color: var(--mat-table-row-item-outline-color, var(--mat-app-outline, rgba(0, 0, 0, 0.12)));
+  border-bottom-width: var(--mat-table-row-item-outline-width, 1px);
+  border-bottom-style: solid;
+  letter-spacing: var(--mat-table-header-headline-tracking, var(--mat-app-title-small-tracking));
+  font-weight: bold; /* Ensures header font is bold */
+  line-height: inherit;
+  box-sizing: border-box;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  outline: none;
+  text-align: left;
+}
+
+/* Table container customization for max width and centering */
+.table-container {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 0 0 4px 4px; /* Rounded bottom corners to match panel */
+  padding: 0;
+  margin: 16px 0;
+}
+
+
+/* Increase font size for table column text */
+.custom-mat-table td.mat-cell {
+  font-size: 1.1em; /* Adjust the font size as needed */
+}
+
+/* Custom table styles */
+.custom-mat-table {
+  width: 100%;
+  border-collapse: collapse; /* Remove gaps between table cells */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Header cell styling for improved emphasis */
+.custom-mat-table th.mat-header-cell {
+  font-weight: bold; /* Bolder text for headers */
+  font-size: 1.2em; /* Increase the font size */
+  color: black; /* Darker text color for contrast */
+  padding: 12px; /* Slightly increased padding */
+  text-align: left;
+}
+
+
+/* 
+.custom-mat-table tr:nth-child(even) td {
+   background-color: #f9f9f9;  Very light grey for even rows
+} */
+
+.custom-mat-table tr:nth-child(odd) td {
+  background-color: #dbdbdb; /* White for odd rows */
+}
+
