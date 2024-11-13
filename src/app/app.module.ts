@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //Our components
 import { AppRoutingModule } from './app-routing.module';
@@ -29,6 +30,10 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 //  Angular Material Imports
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -54,6 +59,18 @@ import { MatGridListModule } from '@angular/material/grid-list';
 
 //ngx imports
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { InMemoryDataService } from './service/InMomoryData/in-memory-data.service';
+import { ButtonComponent } from './basic-components/button/button.component';
+import { HomeComponent } from './home/home.component';
+import { CalenderComponent } from './calender/calender.component';
+import { MyPageComponent } from './mypage/mypage.component';
+import { NavbarComponent } from './basic-components/navbar/navbar.component';
+import { EventTableComponent } from './basic-components/event-table/event-table.component';
+import { CompetitionComponent } from './basic-components/competition/competition.component';
+import { ParticipantsTableComponent } from './basic-components/participants-table/participants-table.component';
+import { CompStartComponent } from './comp-start/comp-start.component';
+import { ConfirmDialogComponent } from './basic-components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +87,10 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
     ExpandableTableComponent,
     DataTableComponent,
     NavbarComponent,
+    MyPageComponent,   
+    EventTableComponent, 
+    CompStartComponent, 
+    ConfirmDialogComponent,
     MyPageComponent,
     EventTableComponent,
     CompetitionPermitsComponent,
@@ -86,6 +107,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
     MatListModule,
     AppRoutingModule,
     MatIconModule,
+    MatDialogModule,
     MatButtonModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,

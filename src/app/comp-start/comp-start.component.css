@@ -1,0 +1,36 @@
+.heading {
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.competition-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: #2196f3;
+    color: white;
+    border-radius: 5%;
+    width: 30%;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.competition-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    width: 20%;
+    height: 100%; 
+    cursor: pointer;
+    border-radius: 10px;
+}
+
