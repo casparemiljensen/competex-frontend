@@ -31,7 +31,6 @@ export class InMemoryDataService implements InMemoryDbService{
       { id: 20, date: new Date('2024-12-08'), creator: 'København Håndboldforening', name: 'Golf Masters' },
     ];
 
-
     const judge = [
       { 
         judge: "Judges",
@@ -51,34 +50,8 @@ export class InMemoryDataService implements InMemoryDbService{
     const ExpandableTables = [
       {
         ExpandableTable: "Boys U12 Football",
+        status: "Start", // Added status
         data: [
-          { club: "Tigers", players: 11, coach: 'John Doe' },
-          { club: "Hawks", players: 12, coach: 'Jane Smith' },
-          { club: "Lions", players: 13, coach: 'Jim Brown' },
-          { club: "Tigers", players: 11, coach: 'John Doe' },
-          { club: "Hawks", players: 12, coach: 'Jane Smith' },
-          { club: "Lions", players: 13, coach: 'Jim Brown' },
-          { club: "Tigers", players: 11, coach: 'John Doe' },
-          { club: "Hawks", players: 12, coach: 'Jane Smith' },
-          { club: "Lions", players: 13, coach: 'Jim Brown' },
-          { club: "Tigers", players: 11, coach: 'John Doe' },
-          { club: "Hawks", players: 12, coach: 'Jane Smith' },
-          { club: "Lions", players: 13, coach: 'Jim Brown' },
-          { club: "Tigers", players: 11, coach: 'John Doe' },
-          { club: "Hawks", players: 12, coach: 'Jane Smith' },
-          { club: "Lions", players: 13, coach: 'Jim Brown' },
-          { club: "Tigers", players: 11, coach: 'John Doe' },
-          { club: "Hawks", players: 12, coach: 'Jane Smith' },
-          { club: "Lions", players: 13, coach: 'Jim Brown' },
-          { club: "Tigers", players: 11, coach: 'John Doe' },
-          { club: "Hawks", players: 12, coach: 'Jane Smith' },
-          { club: "Lions", players: 13, coach: 'Jim Brown' },
-          { club: "Tigers", players: 11, coach: 'John Doe' },
-          { club: "Hawks", players: 12, coach: 'Jane Smith' },
-          { club: "Lions", players: 13, coach: 'Jim Brown' },
-          { club: "Tigers", players: 11, coach: 'John Doe' },
-          { club: "Hawks", players: 12, coach: 'Jane Smith' },
-          { club: "Lions", players: 13, coach: 'Jim Brown' },
           { club: "Tigers", players: 11, coach: 'John Doe' },
           { club: "Hawks", players: 12, coach: 'Jane Smith' },
           { club: "Lions", players: 13, coach: 'Jim Brown' }
@@ -86,6 +59,7 @@ export class InMemoryDataService implements InMemoryDbService{
       },
       {
         ExpandableTable: "Girls U15 Volleyball",
+        status: "Aktiv", // Added status
         data: [
           { team: "Spikers", members: 10, manager: 'Alice Johnson' },
           { team: "Blockers", members: 9, manager: 'Billie Jean' },
@@ -94,6 +68,7 @@ export class InMemoryDataService implements InMemoryDbService{
       },
       {
         ExpandableTable: "Mixed U18 Basketball",
+        status: "Afsluttet", // Added status
         data: [
           { squad: "Shooters", athletes: 5, trainer: 'Mike Bane' },
           { squad: "Dribblers", athletes: 6, trainer: 'Sarah Conner' },
@@ -102,6 +77,7 @@ export class InMemoryDataService implements InMemoryDbService{
       },
       {
         ExpandableTable: "Open Swimming 100m",
+        status: "Start", // Added status
         data: [
           { club: "Wave Riders", swimmers: 4, coach: 'Lana Kane' },
           { club: "Speedsters", swimmers: 5, coach: 'Archer Sterling' },
@@ -110,6 +86,7 @@ export class InMemoryDataService implements InMemoryDbService{
       },
       {
         ExpandableTable: "Youth Chess Tournament",
+        status: "Aktiv", // Added status
         data: [
           { club: "Check Mates", players: 8, coordinator: 'Ray Gillette' },
           { club: "Kings & Queens", players: 7, coordinator: 'Pam Poovey' },

@@ -6,26 +6,28 @@
   </div>
 
   <mat-accordion multi="true" class="custom-accordion">
-    <div>
+    <div *ngFor="let comp of ExpandableTableData; let i = index">
       <mat-expansion-panel
         hideToggle
-        *ngFor="let comp of competitions"
         class="custom-panel"
+        [class.start]="comp.status === 'Start'"
+        [class.aktiv]="comp.status === 'Aktiv'"
+        [class.afsluttet]="comp.status === 'Afsluttet'"
       >
         <mat-expansion-panel-header class="custom-panel-header">
           <button
             class="competition-button"
-            (click)="openConfirmDialog(buttonText, comp)"
+            [class.start-button]="comp.status === 'Start'"
+            [class.aktiv-button]="comp.status === 'Aktiv'"
+            [class.afsluttet-button]="comp.status === 'Afsluttet'"
+            (click)="openConfirmDialog(comp.status, comp)"
           >
-            {{ buttonText }}
+            {{ comp.status }}
           </button>
-          <mat-panel-title class="panel-text">{{ comp.title }}</mat-panel-title>
+          <mat-panel-title class="panel-text">{{
+            comp.ExpandableTable
+          }}</mat-panel-title>
         </mat-expansion-panel-header>
-        <app-participants-table
-          [dataSource]="comp.data"
-          [displayedColumns]="comp.columns"
-        >
-        </app-participants-table>
       </mat-expansion-panel>
     </div>
   </mat-accordion>

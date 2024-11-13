@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../basic-components/confirm-dialog/confirm-dialog.component';
-import { CompetitionService } from '../service/Competition/competition.service';
+import { EventPageService } from '../service/event-page/event-page.service';
 
 @Component({
   selector: 'app-comp-start',
@@ -10,29 +10,30 @@ import { CompetitionService } from '../service/Competition/competition.service';
   styleUrls: ['./comp-start.component.css']
 })
 export class CompStartComponent implements OnInit {
-  competitions: any[] = []
-  displayedColums: string[] = [];
-  isLoading = true;  
+  ExpandableTableData: any[] = [];
+  judgeData: any[] = [];
+  displayedColumns: string[] = [];
+  isLoading = true;
 
   @Output() buttonClick = new EventEmitter<void>();
-  buttonText: string = 'Aktiv'; // or 'Afsluttet', set dynamically as needed
 
-
-  constructor(private http: HttpClient, public dialog: MatDialog, private competitionService: CompetitionService) {}
+  constructor(private http: HttpClient, public dialog: MatDialog, private eventPageService: EventPageService) {}
 
   ngOnInit(): void {
-    this.competitionService.getCompetitions().subscribe(data => {
-      this.competitions = data.map(competition => ({
-        title: competition.competition,
-        data: competition.data,
-        columns: competition.data.length > 0 ? Object.keys(competition.data[0]) : []
-      }));
-      this.isLoading = false;
-    })
-    }
+    this.isLoading = false;
+
+    // Fetch judge data
+    this.eventPageService.getJudge().subscribe(data => {
+      this.judgeData = data;
+    });
+
+    // Fetch ExpandableTable data
+    this.eventPageService.getExpandableTables().subscribe(data => {
+      this.ExpandableTableData = data;
+    });
+  }
 
   openConfirmDialog(buttonText: string, match: any): void {
-    // Define different dialog data based on the button text
     let dialogData = {
       title: '',
       message: ''
@@ -50,12 +51,10 @@ export class CompStartComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // User chose to continue, emit buttonClick event
         this.buttonClick.emit();
-        console.log("User chose to proceed with:", match);
+        console.log("User  chose to proceed with:", match);
       } else {
-        // User chose to go back
-        console.log("User cancelled action for:", match);
+        console.log("User  cancelled action for:", match);
       }
     });
   }
