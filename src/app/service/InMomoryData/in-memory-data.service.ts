@@ -120,122 +120,86 @@ export class InMemoryDataService implements InMemoryDbService{
 
     const result = [
       {
-        competition_name: "Konkurrence navn - Bed m.",
-        judge: "Ray Ray",
-        participants: [
+        ExpandableTable: "Konkurrence navn - Bed m.",
+        // judge: "Ray Ray",
+        data: [
           {
-            number: 1,
-            participant_name: {
-              rabbit_name: "Kaninnavn 1",
-              handler_name: "Førernavn 1"
-            },
-            scores: [
-              {
-                fejl_1: "10+1+1",
-                time_1: "1:02:35",
-                fejl_2: "10+1+1",
-                time_2: "1:05:40",
-                total_fejl: 12,
-                total_time: "2:08:15",
-                pind: "x"
-              }
-            ]
+            Nr: 1,
+            Handler: "Rasmus",
+            Rabbit: "Kaninnavn 1",
+            Fejl_1: "10+1+1",
+            Tid_1: "1:02:35",
+            Fejl_2: "10+1+1",
+            Tid_2: "1:05:40",
+            T_Fejl: 12,
+            T_Tid: "2:08:15",
+            Pind: "x"
           },
           {
-            number: 2,
-            participant_name: {
-              rabbit_name: "Kaninnavn 2",
-              handler_name: "Førernavn 2"
-            },
-            scores: [
-              {
-                fejl_1: "5+2",
-                time_1: "0:58:10",
-                fejl_2: "6+3",
-                time_2: "1:00:20",
-                total_fejl: 10,
-                total_time: "1:58:30",
-                pind: "-"
-              }
-            ]
+            Nr: 2,
+            Handler: "Lars",
+            Rabbit: "Kaninnavn 2",
+            Fejl_1: "5+2",
+            Tid_1: "0:58:10",
+            Fejl_2: "6+3",
+            Tid_2: "1:00:20",
+            T_Fejl: 10,
+            T_Tid: "1:58:30",
+            Pind: "-"
           },
           {
-            number: 3,
-            participant_name: {
-              rabbit_name: "Kaninnavn 3",
-              handler_name: "Førernavn 3"
-            },
-            scores: [
-              {
-                fejl_1: "8+1",
-                time_1: "1:10:45",
-                fejl_2: "9+1",
-                time_2: "1:08:30",
-                total_fejl: 10,
-                total_time: "2:19:15",
-                pind: "x"
-              }
-            ]
+            Nr: 3,
+            Handler: "Sofie",
+            Rabbit: "Kaninnavn 3",
+            Fejl_1: "8+1",
+            Tid_1: "1:10:45",
+            Fejl_2: "9+1",
+            Tid_2: "1:08:30",
+            T_Fejl: 10,
+            T_Tid: "2:19:15",
+            Pind: "x"
           }
         ]
       },
       {
-        competition_name: "Konkurrence navn - Spring m.",
-        judge: "Sandy Dee",
-        participants: [
+        ExpandableTable: "Konkurrence navn - Spring m.",
+        // judge: "Sandy Dee",
+        data: [
           {
-            number: 1,
-            participant_name: {
-              rabbit_name: "Kaninnavn A",
-              handler_name: "Førernavn A"
-            },
-            scores: [
-              {
-                fejl_1: "7+1",
-                time_1: "1:05:10",
-                fejl_2: "6+2",
-                time_2: "1:03:20",
-                total_fejl: 8,
-                total_time: "2:08:30",
-                pind: "x"
-              }
-            ]
+            Nr: 1,
+            Handler: "Mikkel",
+            Rabbit: "Kaninnavn A",
+            Fejl_1: "7+1",
+            Tid_1: "1:05:10",
+            Fejl_2: "6+2",
+            Tid_2: "1:03:20",
+            T_Fejl: 8,
+            T_Tid: "2:08:30",
+            Pind: "x"
           },
           {
-            number: 2,
-            participant_name: {
-              rabbit_name: "Kaninnavn B",
-              handler_name: "Førernavn B"
-            },
-            scores: [
-              {
-                fejl_1: "3+4",
-                time_1: "0:55:20",
-                fejl_2: "4+3",
-                time_2: "0:57:45",
-                total_fejl: 7,
-                total_time: "1:53:05",
-                pind: "-"
-              }
-            ]
+            Nr: 2,
+            Handler: "Anna",
+            Rabbit: "Kaninnavn B",
+            Fejl_1: "3+4",
+            Tid_1: "0:55:20",
+            Fejl_2: "4+3",
+            Tid_2: "0:57:45",
+            T_Fejl: 7,
+            T_Tid: "1:53:05",
+            Pind: "-"
           },
           {
-            number: 3,
-            participant_name: {
-              rabbit_name: "Kaninnavn C",
-              handler_name: "Førernavn C"
-            },
-            scores: [
-              {
-                fejl_1: "5+2+1",
-                time_1: "1:02:25",
-                fejl_2: "6+1",
-                time_2: "1:04:50",
-                total_fejl: 9,
-                total_time: "2:07:15",
-                pind: "x"
-              }
-            ]
+            Nr: 3,
+            Handler: "Jens",
+            Rabbit: "Kaninnavn C",
+            Fejl_1: "5+2+1",
+            Tid_1: "1:02:25",
+            Fejl_2: "6+1",
+            Tid_2: "1:04:50",
+            T_Fejl: 9,
+            T_Tid: "2:07:15",
+            Pind: "x"
           }
         ]
       }
