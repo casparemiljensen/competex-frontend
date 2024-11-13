@@ -118,7 +118,130 @@ export class InMemoryDataService implements InMemoryDbService{
       }
     ];
 
-    return { events, ExpandableTables, judge };
+    const result = [
+      {
+        competition_name: "Konkurrence navn - Bed m.",
+        judge: "Ray Ray",
+        participants: [
+          {
+            number: 1,
+            participant_name: {
+              rabbit_name: "Kaninnavn 1",
+              handler_name: "Førernavn 1"
+            },
+            scores: [
+              {
+                fejl_1: "10+1+1",
+                time_1: "1:02:35",
+                fejl_2: "10+1+1",
+                time_2: "1:05:40",
+                total_fejl: 12,
+                total_time: "2:08:15",
+                pind: "x"
+              }
+            ]
+          },
+          {
+            number: 2,
+            participant_name: {
+              rabbit_name: "Kaninnavn 2",
+              handler_name: "Førernavn 2"
+            },
+            scores: [
+              {
+                fejl_1: "5+2",
+                time_1: "0:58:10",
+                fejl_2: "6+3",
+                time_2: "1:00:20",
+                total_fejl: 10,
+                total_time: "1:58:30",
+                pind: "-"
+              }
+            ]
+          },
+          {
+            number: 3,
+            participant_name: {
+              rabbit_name: "Kaninnavn 3",
+              handler_name: "Førernavn 3"
+            },
+            scores: [
+              {
+                fejl_1: "8+1",
+                time_1: "1:10:45",
+                fejl_2: "9+1",
+                time_2: "1:08:30",
+                total_fejl: 10,
+                total_time: "2:19:15",
+                pind: "x"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        competition_name: "Konkurrence navn - Spring m.",
+        judge: "Sandy Dee",
+        participants: [
+          {
+            number: 1,
+            participant_name: {
+              rabbit_name: "Kaninnavn A",
+              handler_name: "Førernavn A"
+            },
+            scores: [
+              {
+                fejl_1: "7+1",
+                time_1: "1:05:10",
+                fejl_2: "6+2",
+                time_2: "1:03:20",
+                total_fejl: 8,
+                total_time: "2:08:30",
+                pind: "x"
+              }
+            ]
+          },
+          {
+            number: 2,
+            participant_name: {
+              rabbit_name: "Kaninnavn B",
+              handler_name: "Førernavn B"
+            },
+            scores: [
+              {
+                fejl_1: "3+4",
+                time_1: "0:55:20",
+                fejl_2: "4+3",
+                time_2: "0:57:45",
+                total_fejl: 7,
+                total_time: "1:53:05",
+                pind: "-"
+              }
+            ]
+          },
+          {
+            number: 3,
+            participant_name: {
+              rabbit_name: "Kaninnavn C",
+              handler_name: "Førernavn C"
+            },
+            scores: [
+              {
+                fejl_1: "5+2+1",
+                time_1: "1:02:25",
+                fejl_2: "6+1",
+                time_2: "1:04:50",
+                total_fejl: 9,
+                total_time: "2:07:15",
+                pind: "x"
+              }
+            ]
+          }
+        ]
+      }
+    ];
+
+    return { events, ExpandableTables, judge, result};
   }
 
   // genId(event: Event[]): number {
