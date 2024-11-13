@@ -1,4 +1,4 @@
-<h1>{{ competitionName }} Matches</h1>
+<h1 class="heading">{{ competitionName }}</h1>
 <div *ngIf="competitionData; else noData">
   <div *ngFor="let match of competitionData" class="competition-container">
     <button
