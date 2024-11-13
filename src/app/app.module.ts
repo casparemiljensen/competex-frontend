@@ -1,19 +1,24 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-//Our Components
+//Our components
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ButtonComponent } from './basic-components/button/button.component';
 import { CalenderComponent } from './calender/calender.component';
 import { CreateEventComponent } from './create-event/create-event.component';
-import { MatPaginator } from '@angular/material/paginator';
 import { EventTableComponent } from './basic-components/event-table/event-table.component';
 import { MyPageComponent } from './mypage/mypage.component';
 import { NavbarComponent } from './basic-components/navbar/navbar.component';
 import { CompetitionFormComponent } from './basic-components/form-competition/form-competition.component';
 import { CompetitionPermitsComponent } from './basic-components/form-competition-permits/form-competition-permits.component';
+import { FormInputSelectComponent } from './basic-components/form-inputs/form-input-select/form-input-select.component';
+import { FormEventInformationComponent } from './basic-components/form-event-information/form-event-information.component';
+import { ExpandableTableComponent } from './basic-components/ExpandableTable/ExpandableTable.component';
+import { DataTableComponent } from './basic-components/DataTable/DataTable.component';
+import { EventPageComponent } from './event-page/event-page.component';
 
 // Agnular Imports
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -25,6 +30,10 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 //  Angular Material Imports
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -39,18 +48,29 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormInputTimeComponent } from './basic-components/form-inputs/form-input-time/form-input-time.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import { MatTableModule } from '@angular/material/table';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDivider } from '@angular/material/divider';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 //ngx imports
-import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { FormInputSelectComponent } from './basic-components/form-inputs/form-input-select/form-input-select.component';
-import { FormEventInformationComponent } from './basic-components/form-event-information/form-event-information.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { InMemoryDataService } from './service/InMomoryData/in-memory-data.service';
+import { ButtonComponent } from './basic-components/button/button.component';
+import { HomeComponent } from './home/home.component';
+import { CalenderComponent } from './calender/calender.component';
+import { MyPageComponent } from './mypage/mypage.component';
+import { NavbarComponent } from './basic-components/navbar/navbar.component';
+import { EventTableComponent } from './basic-components/event-table/event-table.component';
+import { CompetitionComponent } from './basic-components/competition/competition.component';
+import { ParticipantsTableComponent } from './basic-components/participants-table/participants-table.component';
+import { CompStartComponent } from './comp-start/comp-start.component';
+import { ConfirmDialogComponent } from './basic-components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -63,13 +83,22 @@ import { FormEventInformationComponent } from './basic-components/form-event-inf
     FormTemplateComponent,
     FormInputDateComponent,
     FormInputTimeComponent,
+    EventTableComponent,
+    ExpandableTableComponent,
+    DataTableComponent,
     NavbarComponent,
+    MyPageComponent,   
+    EventTableComponent, 
+    CompStartComponent, 
+    ConfirmDialogComponent,
     MyPageComponent,
     EventTableComponent,
     CompetitionPermitsComponent,
     CompetitionFormComponent,
     FormInputSelectComponent,
     FormEventInformationComponent,
+    MyPageComponent,
+    EventPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,6 +107,7 @@ import { FormEventInformationComponent } from './basic-components/form-event-inf
     MatListModule,
     AppRoutingModule,
     MatIconModule,
+    MatDialogModule,
     MatButtonModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
@@ -88,13 +118,15 @@ import { FormEventInformationComponent } from './basic-components/form-event-inf
     MatDatepickerModule,
     MatFormFieldModule,
     MatPaginator,
-    NgxMatTimepickerModule,
     MatToolbarModule,
+    MatGridListModule,
     MatTableModule,
     MatExpansionModule,
     MatProgressSpinner,
     MatDivider,
     MatSlideToggleModule,
+    MatTableModule,
+    MatPaginatorModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
       dataEncapsulation: false,

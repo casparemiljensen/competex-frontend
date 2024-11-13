@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Event } from '../../models/event'
+import { V } from '@angular/cdk/keycodes';
 
 @Injectable({
   providedIn: 'root'
@@ -29,10 +30,98 @@ export class InMemoryDataService implements InMemoryDbService{
       { id: 19, date: new Date('2025-07-09'), creator: 'Esbjerg Svømmeklub', name: 'Ski Trip' },
       { id: 20, date: new Date('2024-12-08'), creator: 'København Håndboldforening', name: 'Golf Masters' },
     ];
-    return { events };
+
+
+    const judge = [
+      { 
+        judge: "Judges",
+        data: [
+          { name: "Peter"},
+          { name: "John"},
+          { name: "Michael"},
+          { name: "Jens"},
+          { name: "Hans"},
+          { name: "Christian"},
+          { name: "Thomas"},
+          { name: "Lars"}
+        ]
+      }
+    ];
+
+    const ExpandableTables = [
+      {
+        ExpandableTable: "Boys U12 Football",
+        data: [
+          { club: "Tigers", players: 11, coach: 'John Doe' },
+          { club: "Hawks", players: 12, coach: 'Jane Smith' },
+          { club: "Lions", players: 13, coach: 'Jim Brown' },
+          { club: "Tigers", players: 11, coach: 'John Doe' },
+          { club: "Hawks", players: 12, coach: 'Jane Smith' },
+          { club: "Lions", players: 13, coach: 'Jim Brown' },
+          { club: "Tigers", players: 11, coach: 'John Doe' },
+          { club: "Hawks", players: 12, coach: 'Jane Smith' },
+          { club: "Lions", players: 13, coach: 'Jim Brown' },
+          { club: "Tigers", players: 11, coach: 'John Doe' },
+          { club: "Hawks", players: 12, coach: 'Jane Smith' },
+          { club: "Lions", players: 13, coach: 'Jim Brown' },
+          { club: "Tigers", players: 11, coach: 'John Doe' },
+          { club: "Hawks", players: 12, coach: 'Jane Smith' },
+          { club: "Lions", players: 13, coach: 'Jim Brown' },
+          { club: "Tigers", players: 11, coach: 'John Doe' },
+          { club: "Hawks", players: 12, coach: 'Jane Smith' },
+          { club: "Lions", players: 13, coach: 'Jim Brown' },
+          { club: "Tigers", players: 11, coach: 'John Doe' },
+          { club: "Hawks", players: 12, coach: 'Jane Smith' },
+          { club: "Lions", players: 13, coach: 'Jim Brown' },
+          { club: "Tigers", players: 11, coach: 'John Doe' },
+          { club: "Hawks", players: 12, coach: 'Jane Smith' },
+          { club: "Lions", players: 13, coach: 'Jim Brown' },
+          { club: "Tigers", players: 11, coach: 'John Doe' },
+          { club: "Hawks", players: 12, coach: 'Jane Smith' },
+          { club: "Lions", players: 13, coach: 'Jim Brown' },
+          { club: "Tigers", players: 11, coach: 'John Doe' },
+          { club: "Hawks", players: 12, coach: 'Jane Smith' },
+          { club: "Lions", players: 13, coach: 'Jim Brown' }
+        ]
+      },
+      {
+        ExpandableTable: "Girls U15 Volleyball",
+        data: [
+          { team: "Spikers", members: 10, manager: 'Alice Johnson' },
+          { team: "Blockers", members: 9, manager: 'Billie Jean' },
+          { team: "Diggers", members: 11, manager: 'Carl Kicks' }
+        ]
+      },
+      {
+        ExpandableTable: "Mixed U18 Basketball",
+        data: [
+          { squad: "Shooters", athletes: 5, trainer: 'Mike Bane' },
+          { squad: "Dribblers", athletes: 6, trainer: 'Sarah Conner' },
+          { squad: "Jumpers", athletes: 5, trainer: 'Donnie Darko' }
+        ]
+      },
+      {
+        ExpandableTable: "Open Swimming 100m",
+        data: [
+          { club: "Wave Riders", swimmers: 4, coach: 'Lana Kane' },
+          { club: "Speedsters", swimmers: 5, coach: 'Archer Sterling' },
+          { club: "Aqua Flyers", swimmers: 3, coach: 'Cyril Figgis' }
+        ]
+      },
+      {
+        ExpandableTable: "Youth Chess Tournament",
+        data: [
+          { club: "Check Mates", players: 8, coordinator: 'Ray Gillette' },
+          { club: "Kings & Queens", players: 7, coordinator: 'Pam Poovey' },
+          { club: "Bishop Battlers", players: 6, coordinator: 'Cheryl Tunt' }
+        ]
+      }
+    ];
+
+    return { events, ExpandableTables, judge };
   }
 
-  genId(event: Event[]): number {
-    return event.length > 0 ? Math.max(...event.map(event => event.id)) + 1 : 11
-  }
+  // genId(event: Event[]): number {
+  //   return event.length > 0 ? Math.max(...event.map(event => event.id)) + 1 : 11
+  // }
 }
