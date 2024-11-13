@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ExpandableTableService } from './ExpandableTable.service';
+import { ExpandableTableService } from './expandabletable.service';
 
 describe('ExpandableTableService', () => {
   let service: ExpandableTableService;
