@@ -26,10 +26,13 @@
   flex-direction: column;
   gap: 5%;
   align-items: center; /* Center the buttons */
+  justify-content: center; /* Center vertically */
+  height: 100%; /* Ensures it takes full height of the grid cell */
 }
 
 .start-button,
 .edit-button,
+.result-button,
 .register-button {
   background-color: #333;
   color: white;
@@ -51,6 +54,13 @@
 
 .register-button {
   background-color: #4caf50;
+}
+
+.result-button {
+  background-color: grey;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 button.mat-button {
