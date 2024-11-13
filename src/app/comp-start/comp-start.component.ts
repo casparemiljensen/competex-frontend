@@ -33,7 +33,11 @@ export class CompStartComponent implements OnInit {
     });
   }
 
-  openConfirmDialog(buttonText: string, match: any): void {
+  openConfirmDialog(buttonText: string, comp: any): void {
+    if (buttonText === "Start") {
+      return; // Do not open the dialog if buttonText is "Start"
+    }
+    
     let dialogData = {
       title: '',
       message: ''
@@ -52,9 +56,9 @@ export class CompStartComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.buttonClick.emit();
-        console.log("User  chose to proceed with:", match);
+        console.log("User  chose to proceed with:", comp);
       } else {
-        console.log("User  cancelled action for:", match);
+        console.log("User  cancelled action for:", comp);
       }
     });
   }
