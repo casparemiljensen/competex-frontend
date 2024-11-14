@@ -8,30 +8,39 @@
 .competition-container {
     display: flex;
     flex-direction: column;
-    width: 40%; /* Increase width */
-    margin: 0 auto;
+    align-items: center;
     margin-top: 2%;
     margin-bottom: 2%;
 }
 
 .competition-item {
+    position: relative;
+    justify-content: center;
     display: flex;
     align-items: center;
     background-color: #2196f3;
     color: white;
+    border-radius: 5%;
+    width: 300px;
     padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    height: 50px; /* Set a fixed height */
+    height: 50px;
+    border-radius: 10px;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 
 .competition-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #4CAF50;
+    color: white;
     border: none;
-    width: 30%; /* Adjust width as needed */
+    width: 30%;
     height: 100%; 
     cursor: pointer;
-    margin-right: 10px;
-    border-radius: 5px 0 0 5px; /* Rounded corners for the left side */
+    border-radius: 10px;
 }
 
 .competition-button.start-button {
@@ -74,3 +83,25 @@
     font-weight: bold;
     padding-left: 10px; /* Add padding for better spacing */
 } 
+
+.centered-button-container {
+    display: flex;
+    justify-content: center; /* Centers content horizontally */
+    margin-top: 10px; /* Add spacing as needed */
+}
+
+.newEvent-button {
+    background-color: #4caf50; /* Green color */
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+.newEvent-button:hover {
+    opacity: 0.9;
+}

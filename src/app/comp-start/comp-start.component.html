@@ -13,17 +13,24 @@
         [class.aktiv]="comp.status === 'Aktiv'"
         [class.afsluttet]="comp.status === 'Afsluttet'"
       >
-        <button
-          class="competition-button"
-          [class.start-button]="comp.status === 'Start'"
-          [class.aktiv-button]="comp.status === 'Aktiv'"
-          [class.afsluttet-button]="comp.status === 'Afsluttet'"
-          (click)="openConfirmDialog(comp.status, comp)"
-        >
-          {{ comp.status }}
-        </button>
-        <span class="competition-text">{{ comp.ExpandableTable }}</span>
+      <span class="competition-text">{{ comp.ExpandableTable }}</span>
+      <button
+        class="competition-button"
+        [class.start-button]="comp.status === 'Start'"
+        [class.aktiv-button]="comp.status === 'Aktiv'"
+        [class.afsluttet-button]="comp.status === 'Afsluttet'"
+        (click)="openConfirmDialog(comp.status, comp)"
+      >
+        {{ comp.status }}
+      </button>
       </div>
+    </div>
+    <div class="centered-button-container">
+      <button
+      class="newEvent-button" routerLink="/create-event"
+    >
+      Tilføj Træningskonkurrence
+    </button>
     </div>
   </div>
 </div>
