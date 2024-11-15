@@ -1,0 +1,136 @@
+.page-container {
+  display: grid;
+  grid-template-rows: auto auto auto; /* Three main rows for top, middle, and bottom sections */
+  gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 16px 0;
+}
+
+.top-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* Three columns for location, dates, and buttons */
+  gap: 16px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 5%;
+  align-items: center; /* Center the buttons */
+  justify-content: center; /* Center vertically */
+  height: 100%; /* Ensures it takes full height of the grid cell */
+}
+
+.start-button,
+.edit-button,
+.result-button,
+.register-button {
+  background-color: #333;
+  color: white;
+  max-width: 200px; /* Limit the width of each button */
+  width: 100%; /* Ensures they are responsive up to the max-width */
+  text-align: center;
+}
+
+.start-button {
+  background-color: #333;
+}
+
+.edit-button {
+  background-color: #ff6f61;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.register-button {
+  background-color: #4caf50;
+}
+
+.result-button {
+  background-color: grey;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+button.mat-button {
+  font-weight: bold;
+  border-radius: 4px;
+  padding: 8px 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+button.mat-button:hover {
+  opacity: 0.9;
+}
+
+.mat-mdc-button:not(:disabled) {
+  color: white !important;
+}
+
+/* Middle Section with Two Tables Side by Side */
+.middle-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .top-section {
+    grid-template-columns: 1fr; /* Stack location, dates, and buttons vertically */
+    gap: 12px;
+  }
+
+  .buttons {
+    flex-direction: row;
+    gap: 4px;
+    justify-content: center;
+  }
+
+  .middle-section {
+    grid-template-columns: 1fr; /* Stack tables vertically */
+    gap: 16px;
+  }
+
+  button.mat-button {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.2rem;
+    padding: 12px 0;
+  }
+
+  .page-container {
+    padding: 0 2%;
+  }
+
+  .middle-section,
+  .bottom-section {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .top-section {
+    gap: 8px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 6px;
+  }
+}

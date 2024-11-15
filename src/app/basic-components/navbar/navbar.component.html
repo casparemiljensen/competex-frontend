@@ -1,0 +1,138 @@
+<!-- Mobile Drawer Navbar -->
+<mat-drawer-container
+  *ngIf="isSmallScreen"
+  autosize
+  class="mobile-drawer-container"
+>
+  <div class="drawer-container">
+    <button
+      mat-icon-button
+      (click)="toggleDrawer()"
+      aria-label="Toggle sidenav"
+      class="drawer-button"
+    >
+      <mat-icon>menu</mat-icon>
+      <a>CompeteX</a>
+    </button>
+  </div>
+  <mat-drawer #sidenav mode="push" [opened]="isDrawerOpen" class="top-drawer">
+    <div fxLayout="column">
+      <button mat-button (click)="closeSidenav()" class="menu-drawer">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <button
+        mat-button
+        routerLink="/home"
+        (click)="closeSidenav()"
+        class="general-button"
+      >
+        <i class="ms-Icon ms-Icon--HomeSolid mr-2"></i>
+        <span> Home</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button
+        mat-button
+        routerLink="/calendar"
+        (click)="closeSidenav()"
+        class="general-button"
+      >
+        <i class="ms-Icon ms-Icon--CalendarWorkWeek mr-2"></i>
+        <span> Calendar</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button
+        mat-button
+        routerLink="/results"
+        (click)="closeSidenav()"
+        class="general-button"
+      >
+        <i class="ms-Icon ms-Icon--Medal mr-2"></i>
+        <span> Results</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button
+        mat-button
+        routerLink="/rabbit"
+        (click)="closeSidenav()"
+        class="general-button"
+      >
+        <i class="ms-Icon ms-Icon--HeartFill mr-2"></i>
+        <span> Rabbits</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button
+        mat-button
+        routerLink="/mypage"
+        (click)="closeSidenav()"
+        class="general-button"
+      >
+        <i class="ms-Icon ms-Icon--Contact mr-2"></i>
+        <span> My Page</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button
+        mat-button
+        routerLink="/create-event"
+        (click)="closeSidenav()"
+        class="general-button"
+      >
+        <i class="ms-Icon ms-Icon--Add mr-2"></i>
+      </button>
+    </div>
+  </mat-drawer>
+  <router-outlet></router-outlet>
+</mat-drawer-container>
+
+<!-- Desktop Navbar -->
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    *ngIf="!isSmallScreen"
+    #sidenav
+    [mode]="isSmallScreen ? 'over' : 'side'"
+    [opened]="!isSmallScreen"
+    class="mat-sidenav"
+    [ngClass]="{ 'bottom-sidenav': isSmallScreen }"
+  >
+    <mat-nav-list class="mat-nav-list-mypage">
+      <div class="contact-icon-container-mypage">
+        <a mat-list-item routerLink="/mypage" (click)="closeSidenav()">
+          <i class="ms-Icon ms-Icon--Contact" aria-hidden="true"></i>
+        </a>
+      </div>
+    </mat-nav-list>
+    <mat-nav-list class="mat-nav-list-general">
+      <div class="contact-icon-container-general">
+        <a mat-list-item routerLink="/home" (click)="closeSidenav()">
+          <i class="ms-Icon ms-Icon--HomeSolid" aria-hidden="true"> </i>
+          <span> Home</span>
+        </a>
+      </div>
+      <div class="contact-icon-container-general">
+        <a mat-list-item routerLink="/calender" (click)="closeSidenav()">
+          <i class="ms-Icon ms-Icon--CalendarWorkWeek" aria-hidden="true"></i>
+          <span> Calendar</span>
+        </a>
+      </div>
+      <div class="contact-icon-container-general">
+        <a mat-list-item routerLink="/results" (click)="closeSidenav()">
+          <i class="ms-Icon ms-Icon--Medal" aria-hidden="true"> </i>
+          <span> Results</span>
+        </a>
+      </div>
+      <div class="contact-icon-container-general">
+        <a mat-list-item routerLink="/rabbit" (click)="closeSidenav()">
+          <i class="ms-Icon ms-Icon--HeartFill" aria-hidden="true"> </i>
+          <span> Rabbit</span>
+        </a>
+      </div>
+    </mat-nav-list>
+    <mat-nav-list class="mat-nav-list-add">
+      <div class="contact-icon-container-add">
+        <a mat-list-item routerLink="/create-event" (click)="closeSidenav()">
+          <i class="ms-Icon ms-Icon--Add" aria-hidden="true"></i>
+        </a>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <router-outlet></router-outlet
+></mat-sidenav-container>
