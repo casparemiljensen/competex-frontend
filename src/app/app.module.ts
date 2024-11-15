@@ -57,6 +57,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { CompStartComponent } from './comp-start/comp-start.component';
 import { ConfirmDialogComponent } from './basic-components/confirm-dialog/confirm-dialog.component';
+import { RegistrationPageComponent } from './registration-page/registration-page.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +86,7 @@ import { ConfirmDialogComponent } from './basic-components/confirm-dialog/confir
     FormEventInformationComponent,
     MyPageComponent,
     EventPageComponent,
+    RegistrationPageComponent,
   ],
   imports: [
     BrowserModule,

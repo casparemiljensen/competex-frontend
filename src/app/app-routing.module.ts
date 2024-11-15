@@ -6,6 +6,7 @@ import { CreateEventComponent } from './create-event/create-event.component';
 import { MyPageComponent } from './mypage/mypage.component'; // Adjust import as necessary
 import { CompStartComponent } from './comp-start/comp-start.component';
 import { EventPageComponent } from './event-page/event-page.component';
+import { RegistrationPageComponent } from './registration-page/registration-page.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'mypage', component: MyPageComponent },
   { path: 'competition-start', component: CompStartComponent },
   { path: 'event-page', component: EventPageComponent },
+  { path: 'registration-page/:id', component: RegistrationPageComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect empty path to home
   { path: '**', redirectTo: '/home' }, // Redirect unknown paths to home
 ];

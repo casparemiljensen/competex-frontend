@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { catchError, Observable, of } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
 import { MOCK_EVENTS } from '../../mock-data/mock-events';
 import { Event } from '../../models/event';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -19,6 +19,12 @@ export class EventService {
           catchError(this.handleError<Event[]>('getEvents', []))
         );
     }
+
+  getEventById(id: number): Observable<Event | undefined> {
+    return this.getEvents().pipe(
+      map((events: Event[]) => events.find((event) => event.id === id))
+    );
+  }
 
     private handleError<T>(operation = 'operation', result?: T) {
       return (error: any): Observable<T> => {
