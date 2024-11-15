@@ -58,6 +58,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { CompStartComponent } from './comp-start/comp-start.component';
 import { ConfirmDialogComponent } from './basic-components/confirm-dialog/confirm-dialog.component';
 import { ResultPageComponent } from './result-page/result-page.component';
+import { ResultsOverviewPageComponent } from './results-overview-page/results-overview-page.component';
 
 @NgModule({
   declarations: [
@@ -87,6 +88,7 @@ import { ResultPageComponent } from './result-page/result-page.component';
     MyPageComponent,
     EventPageComponent,
     ResultPageComponent,
+    ResultsOverviewPageComponent,
   ],
   imports: [
     BrowserModule,
