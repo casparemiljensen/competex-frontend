@@ -12,6 +12,9 @@ export class EventPageComponent implements OnInit {
   displayedColumns: string[] = [];
   isLoading = true;
 
+  // This is the tempory, to show how the pange changes give the view is creator of the event or not
+  isCreator = true;
+
   constructor(private eventPageService: EventPageService) {}
 
   ngOnInit(): void {
