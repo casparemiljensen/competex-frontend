@@ -1,2 +1,15 @@
-<h1 class="title">{{ title }}</h1>
-<app-event-table></app-event-table>
+<div class="results-overview-container">
+    <h1>Stævne resultater</h1>
+    <div *ngFor="let event of events" class="event-card">
+      <div class="event-card-content">
+        <h2>{{event.date | date: 'MMMM d, y'}} - {{ event.name }}</h2>
+        <div class="flex-container">
+            <div class="event-details">
+              <p><strong>Created by:</strong> {{ event.creator }}</p>
+            </div>
+            <button class="view-results-button" (click)="viewEventResults(event.id)">View Results</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

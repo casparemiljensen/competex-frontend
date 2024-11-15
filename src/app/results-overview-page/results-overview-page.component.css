@@ -1,3 +1,84 @@
-.title {
+/* Container styling for the whole page */
+.results-overview-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
     text-align: center;
-}
+  }
+  
+  /* Title styling */
+  .results-overview-container h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Card styling for each event */
+  .event-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px 0;
+    padding: 10px;
+    transition: transform 0.2s;
+  }
+  
+  .event-card:hover {
+    transform: scale(1.02); /* Slight zoom effect on hover */
+  }
+  
+  /* Content styling within the card */
+  .event-card-content {
+    text-align: left;
+  }
+  
+  /* Heading for each event */
+  .event-card-content h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  /* Flex container to align details and button */
+  .flex-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* margin-top: 10px; */
+  }
+  
+  /* Event details section */
+  .event-details {
+    color: #555;
+  }
+  
+  /* Button styling */
+  .view-results-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #2196f3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    max-width: 40%;
+  }
+  
+  .view-results-button:hover {
+    background-color: #1976d2; /* Darker blue on hover */
+  }
+  
+  /* Responsive adjustments for small screens */
+  @media (max-width: 600px) {
+    .flex-container {
+      flex-direction: column; /* Stack details and button on smaller screens */
+      align-items: flex-start;
+    }
+  
+    .view-results-button {
+      margin-top: 10px;
+      width: 100%; /* Make button full-width on small screens */
+    }
+  }
+  
