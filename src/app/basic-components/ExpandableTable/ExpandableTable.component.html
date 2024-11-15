@@ -9,7 +9,7 @@
         <mat-expansion-panel-header class="custom-panel-header">
           <div *ngIf="comp.judge && comp.ExpandableTable">
             <mat-panel-title class="panel-text">{{comp.ExpandableTable }}</mat-panel-title>
-            <mat-panel-description class="panel-description" *ngIf="comp.judge"> {{comp.judge}}: </mat-panel-description>
+            <mat-panel-description class="panel-description" *ngIf="comp.judge"> Dommer: {{comp.judge}}: </mat-panel-description>
           </div>
           <div *ngIf="comp.judge && !comp.ExpandableTable">
             <mat-panel-title class="panel-text">{{ comp.judge }}</mat-panel-title>
