@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'mypage', component: MyPageComponent },
   { path: 'competition-start', component: CompStartComponent },
   { path: 'event-page', component: EventPageComponent },
-  { path: 'result', component: ResultPageComponent},
+  { path: ':eventId/results', component: ResultPageComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect empty path to home
   { path: '**', redirectTo: '/home' }, // Redirect unknown paths to home
 ];
