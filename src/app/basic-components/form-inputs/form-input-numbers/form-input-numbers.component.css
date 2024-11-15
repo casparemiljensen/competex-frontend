@@ -1,0 +1,16 @@
+mat-form-field {
+    padding: 8px;               /* Padding inside the form field */
+    border-radius: 4px;         /* Rounded corners for a smoother look */
+    width: 100%;
+  }
+  
+  mat-label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333333;
+  }
+  
+  input {
+    background-color: transparent; /* Ensure background is transparent to inherit from mat-form-field */
+  }
+  

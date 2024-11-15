@@ -22,6 +22,13 @@ import { FormInputTextComponent } from './basic-components/form-inputs/form-inpu
 import { FormTemplateComponent } from './basic-components/form-template/form-template.component';
 import { FormInputDateComponent } from './basic-components/form-inputs/form-input-date/form-input-date.component';
 import { FormInputTimeComponent } from './basic-components/form-inputs/form-input-time/form-input-time.component';
+import { CompStartComponent } from './comp-start/comp-start.component';
+import { ConfirmDialogComponent } from './basic-components/confirm-dialog/confirm-dialog.component';
+import { RegistrationPageComponent } from './registration-page/registration-page.component';
+import { RegistrationFormsComponent } from './basic-components/registration/registration-forms/registration-forms.component';
+import { RegistrationFormEventInfoComponent } from './basic-components/registration/registration-form-event-info/registration-form-event-info.component';
+import { FormInputNumbersComponent } from './basic-components/form-inputs/form-input-numbers/form-input-numbers.component';
+import { RegistrationFormCompetitorInfoComponent } from './registration-form-competitor-info/registration-form-competitor-info.component';
 
 // Agnular Imports
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -55,9 +62,6 @@ import { MatGridListModule } from '@angular/material/grid-list';
 
 //ngx imports
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { CompStartComponent } from './comp-start/comp-start.component';
-import { ConfirmDialogComponent } from './basic-components/confirm-dialog/confirm-dialog.component';
-import { RegistrationPageComponent } from './registration-page/registration-page.component';
 
 @NgModule({
   declarations: [
@@ -87,6 +91,10 @@ import { RegistrationPageComponent } from './registration-page/registration-page
     MyPageComponent,
     EventPageComponent,
     RegistrationPageComponent,
+    RegistrationFormsComponent,
+    RegistrationFormEventInfoComponent,
+    FormInputNumbersComponent,
+    RegistrationFormCompetitorInfoComponent,
   ],
   imports: [
     BrowserModule,
