@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Event } from '../../models/event'
 import { V } from '@angular/cdk/keycodes';
+import { partition } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -121,7 +122,7 @@ export class InMemoryDataService implements InMemoryDbService{
     const result = [
       {
         ExpandableTable: "Konkurrence navn - Bed m.",
-        // judge: "Ray Ray",
+        judge: "Ray Ray",
         data: [
           {
             Nr: 1,
