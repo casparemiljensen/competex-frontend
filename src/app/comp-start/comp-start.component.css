@@ -44,17 +44,17 @@
 }
 
 .competition-button.start-button {
-    background-color: #4caf50; /* Green for Start */
+    background-color: #4caf50;
     color: white;
 }
 
 .competition-button.aktiv-button {
-    background-color: #ff9800; /* Orange for Aktiv */
+    background-color: #ff9800;
     color: white;
 }
 
 .competition-button.afsluttet-button {
-    background-color: #f44336; /* Red for Afsluttet */
+    background-color: #f44336;
     color: white;
 }
 
@@ -62,36 +62,34 @@
     opacity: 0.8; /* Slightly dim on hover */
 }
 
-/* Wrapper to center content and limit width */
 .container-wrapper {
-    max-width: 900px; /* Set a maximum width for the content */
-    margin: 0 auto; /* Center the content horizontally */
-    padding: 20px; /* Add padding for better spacing */
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px; 
 }
 
-/* Loading spinner centered */
 .loading-spinner {
     display: flex;
     justify-content: center;
     align-items: center;
-    height : 100vh; /* Full viewport height */
+    height : 100vh;
 }
 
 .competition-text {
-    flex-grow: 1; /* Allow text to take up remaining space */
+    flex-grow: 1;
     color: white;
     font-weight: bold;
-    padding-left: 10px; /* Add padding for better spacing */
+    padding-left: 10px;
 } 
 
 .centered-button-container {
     display: flex;
-    justify-content: center; /* Centers content horizontally */
-    margin-top: 10px; /* Add spacing as needed */
+    justify-content: center;
+    margin-top: 10px;
 }
 
 .newEvent-button {
-    background-color: #4caf50; /* Green color */
+    background-color: #4caf50;
     color: white;
     padding: 10px;
     border: none;
