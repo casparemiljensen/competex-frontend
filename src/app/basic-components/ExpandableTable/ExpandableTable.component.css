@@ -32,6 +32,32 @@
   color: white;
 }
 
+.custom-panel .panel-description {
+  color: white;
+  font-weight: lighter;
+}
+
 .custom-panel .custom-panel-header.mat-expanded {
   background-color: #2a78af; /* Darker blue when expanded */
+}
+
+.scrollable-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+/* Ensure the table doesn't break on small screens */
+.scrollable-container app-DataTable {
+  min-width: 600px; /* Adjust as needed */
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .panel-text {
+    font-size: 14px;
+  }
+
+  .panel-description {
+    font-size: 12px;
+  }
 }

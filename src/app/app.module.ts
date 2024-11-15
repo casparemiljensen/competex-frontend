@@ -25,6 +25,8 @@ import { FormInputTextComponent } from './basic-components/form-inputs/form-inpu
 import { FormTemplateComponent } from './basic-components/form-template/form-template.component';
 import { FormInputDateComponent } from './basic-components/form-inputs/form-input-date/form-input-date.component';
 import { FormInputTimeComponent } from './basic-components/form-inputs/form-input-time/form-input-time.component';
+import { ResultPageComponent } from './result-page/result-page.component';
+import { ResultsOverviewPageComponent } from './results-overview-page/results-overview-page.component';
 
 // Agnular Imports
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -60,6 +62,7 @@ import { MatCardModule } from '@angular/material/card';
 //ngx imports
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -87,6 +90,8 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
     FormEventInformationComponent,
     MyPageComponent,
     EventPageComponent,
+    ResultPageComponent,
+    ResultsOverviewPageComponent,
     CompetitionPageComponent,
   ],
   imports: [
