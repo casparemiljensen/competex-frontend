@@ -14,6 +14,8 @@ export class ResultPageComponent implements OnInit{
   date: string = '';
   eventId: string = '';
 
+  isLoading = true;
+
 
   constructor(
     private resultservice: ResultService,
@@ -31,6 +33,7 @@ export class ResultPageComponent implements OnInit{
   fetchEventResults(eventId: string){
     // to do: make getresults have id param
     this.resultservice.getResult().subscribe(data => {
+      this.isLoading = false;
       this.eventName = "Stævnenavn";
       this.creator = "Arrangør";
       this.date = "dato"

@@ -127,7 +127,7 @@ export class InMemoryDataService implements InMemoryDbService{
           {
             Nr: 1,
             Handler: "Rasmus",
-            Rabbit: "Kaninnavn 1",
+            Rabbit: "Kaninnavn Kaninnavn ",
             Fejl_1: "10+1+1",
             Tid_1: "1:02:35",
             Fejl_2: "10+1+1",
