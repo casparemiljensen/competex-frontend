@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './calender.component.css'
 })
 export class CalenderComponent {
-  title = "this is the tile of the calender"
+  title = "Stævne kalender"
 }
