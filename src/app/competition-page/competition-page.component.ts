@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+
 @Component({
   selector: 'app-competition-page',
   templateUrl: './competition-page.component.html',
