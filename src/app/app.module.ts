@@ -18,6 +18,15 @@ import { FormEventInformationComponent } from './basic-components/form-event-inf
 import { ExpandableTableComponent } from './basic-components/ExpandableTable/ExpandableTable.component';
 import { DataTableComponent } from './basic-components/DataTable/DataTable.component';
 import { EventPageComponent } from './event-page/event-page.component';
+import { CompStartComponent } from './comp-start/comp-start.component';
+import { ConfirmDialogComponent } from './basic-components/confirm-dialog/confirm-dialog.component';
+import { CompetitionPageComponent } from './competition-page/competition-page.component';
+import { FormInputTextComponent } from './basic-components/form-inputs/form-input-text/form-input-text.component';
+import { FormTemplateComponent } from './basic-components/form-template/form-template.component';
+import { FormInputDateComponent } from './basic-components/form-inputs/form-input-date/form-input-date.component';
+import { FormInputTimeComponent } from './basic-components/form-inputs/form-input-time/form-input-time.component';
+import { ResultPageComponent } from './result-page/result-page.component';
+import { ResultsOverviewPageComponent } from './results-overview-page/results-overview-page.component';
 
 // Agnular Imports
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -37,14 +46,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
-import { FormInputTextComponent } from './basic-components/form-inputs/form-input-text/form-input-text.component';
-import { FormTemplateComponent } from './basic-components/form-template/form-template.component';
-import { FormInputDateComponent } from './basic-components/form-inputs/form-input-date/form-input-date.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormInputTimeComponent } from './basic-components/form-inputs/form-input-time/form-input-time.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -52,13 +57,11 @@ import { MatDivider } from '@angular/material/divider';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
 
 //ngx imports
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { CompStartComponent } from './comp-start/comp-start.component';
-import { ConfirmDialogComponent } from './basic-components/confirm-dialog/confirm-dialog.component';
-import { ResultPageComponent } from './result-page/result-page.component';
-import { ResultsOverviewPageComponent } from './results-overview-page/results-overview-page.component';
+
 
 @NgModule({
   declarations: [
@@ -89,6 +92,7 @@ import { ResultsOverviewPageComponent } from './results-overview-page/results-ov
     EventPageComponent,
     ResultPageComponent,
     ResultsOverviewPageComponent,
+    CompetitionPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -121,6 +125,7 @@ import { ResultsOverviewPageComponent } from './results-overview-page/results-ov
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
       dataEncapsulation: false,
     }),
+    MatCardModule,
   ],
   providers: [provideAnimationsAsync(), provideNativeDateAdapter()],
   bootstrap: [AppComponent],
