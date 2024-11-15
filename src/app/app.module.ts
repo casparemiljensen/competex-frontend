@@ -18,6 +18,10 @@ import { FormEventInformationComponent } from './basic-components/form-event-inf
 import { ExpandableTableComponent } from './basic-components/ExpandableTable/ExpandableTable.component';
 import { DataTableComponent } from './basic-components/DataTable/DataTable.component';
 import { EventPageComponent } from './event-page/event-page.component';
+import { FormInputTextComponent } from './basic-components/form-inputs/form-input-text/form-input-text.component';
+import { FormTemplateComponent } from './basic-components/form-template/form-template.component';
+import { FormInputDateComponent } from './basic-components/form-inputs/form-input-date/form-input-date.component';
+import { FormInputTimeComponent } from './basic-components/form-inputs/form-input-time/form-input-time.component';
 
 // Agnular Imports
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -37,14 +41,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
-import { FormInputTextComponent } from './basic-components/form-inputs/form-input-text/form-input-text.component';
-import { FormTemplateComponent } from './basic-components/form-template/form-template.component';
-import { FormInputDateComponent } from './basic-components/form-inputs/form-input-date/form-input-date.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormInputTimeComponent } from './basic-components/form-inputs/form-input-time/form-input-time.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatExpansionModule } from '@angular/material/expansion';
