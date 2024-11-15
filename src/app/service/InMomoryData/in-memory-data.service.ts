@@ -164,7 +164,7 @@ export class InMemoryDataService implements InMemoryDbService{
       },
       {
         ExpandableTable: "Konkurrence navn - Spring m.",
-        // judge: "Sandy Dee",
+        judge: "Sandy Dee",
         data: [
           {
             Nr: 1,

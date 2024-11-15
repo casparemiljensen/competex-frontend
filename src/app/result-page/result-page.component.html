@@ -1,5 +1,7 @@
-<h1>Event - Creator - Date </h1>
-<h2>Resultater</h2>
+<div class="event-details" *ngIf="eventName && creator && date">
+    <h1>{{ eventName }} - {{ creator }} - {{ date }}</h1>
+    <h2>Resultater</h2>
+</div>
 
 <div class="page-container">
     <app-ExpandableTable [ExpandableTables]="results"></app-ExpandableTable>

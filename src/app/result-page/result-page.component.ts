@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, input, OnInit } from '@angular/core';
 import { ResultService } from '../service/Result/result.service';
 
 @Component({
@@ -8,11 +8,18 @@ import { ResultService } from '../service/Result/result.service';
 })
 export class ResultPageComponent implements OnInit{
   results: any[] = []
+  eventName: string = '';
+  creator: string = '';
+  date: string = '';
+
 
   constructor(private resultservice: ResultService) {}
 
   ngOnInit(): void {
     this.resultservice.getResult().subscribe(data => {
+      this.eventName = "Stævnenavn";
+      this.creator = "Arrangør";
+      this.date = "dato"
       this.results = data;
     console.log(this.results);
   });
