@@ -7,18 +7,49 @@
         ></app-registration-form-event-info>
       </div>
       <div *ngIf="currentPageIndex === 1">
-        <app-registration-form-competitor-info
-          [parentForm]="newForm"
-        ></app-registration-form-competitor-info>
-        <button
-          mat-raised-button
-          color="primary"
-          type="button"
-          (click)="handleSubmit()"
-          [disabled]="!myForm.valid || !newForm.valid"
-        >
-          Submit
-        </button>
+        <div formArrayName="rabbits">
+          <div
+            *ngFor="let rabbit of rabbitsControls.controls; let i = index"
+            [formGroupName]="i"
+            class="rabbit-form"
+          >
+            <app-registration-form-competitor-info
+              [parentForm]="rabbit"
+            ></app-registration-form-competitor-info>
+            <button
+              mat-raised-button
+              color="warn"
+              type="button"
+              (click)="removeRabbit(i)"
+              *ngIf="rabbitsControls.length > 1"
+            >
+              Remove
+            </button>
+          </div>
+        </div>
+        <div class="add-button-container">
+          <button
+            class="add-button"
+            mat-fab
+            color="primary"
+            type="button"
+            (click)="addRabbit()"
+            aria-label="Add Rabbit"
+          >
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+        <div class="submit-button-container">
+          <button
+            class="submit-button"
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="!myForm.valid"
+          >
+            Submit
+          </button>
+        </div>
       </div>
     </div>
     <mat-paginator

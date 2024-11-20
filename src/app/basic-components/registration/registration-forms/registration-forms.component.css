@@ -17,3 +17,24 @@
     margin-bottom: 16px;
   }
   
+.add-button {
+  background-color: rgb(69, 202, 69);
+  color: white;
+  border-radius: 5px;
+  align-items: center;
+}
+
+.add-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.submit-button {
+  background-color: #2196f3;
+  color: white;
+}
+
+.submit-button-container {
+  display: flex;
+  justify-content: right;
+}
