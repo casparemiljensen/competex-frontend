@@ -7,19 +7,23 @@
         ></app-registration-form-event-info>
       </div>
       <div *ngIf="currentPageIndex === 1">
-        <app-form-competition-permits
-          [control]="permissionsGroupControl"
-        ></app-form-competition-permits>
-      </div>
-      <div *ngIf="currentPageIndex === 2">
-        <app-form-competition
-          [control]="competitionControl"
-        ></app-form-competition>
+        <app-registration-form-competitor-info
+          [parentForm]="newForm"
+        ></app-registration-form-competitor-info>
+        <button
+          mat-raised-button
+          color="primary"
+          type="button"
+          (click)="handleSubmit()"
+          [disabled]="!myForm.valid || !newForm.valid"
+        >
+          Submit
+        </button>
       </div>
     </div>
     <mat-paginator
       class="paginator"
-      [length]="4"
+      [length]="2"
       [pageSize]="1"
       [pageSizeOptions]="[1]"
       showFirstLastButtons

@@ -4,9 +4,9 @@ import {
   FormGroup,
   Validators,
   FormControl,
-  FormArray,
 } from '@angular/forms';
 import { PageEvent } from '@angular/material/paginator';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-registration-forms',
@@ -19,7 +19,8 @@ export class RegistrationFormsComponent {
   myForm!: FormGroup;
   currentPageIndex: number = 0;
 
-  constructor(private fb: FormBuilder) {}
+  newForm!: FormGroup;
+  constructor(private fb: FormBuilder, private http: HttpClient) {}
 
   ngOnInit(): void {
     this.myForm = this.fb.group({
@@ -30,28 +31,53 @@ export class RegistrationFormsComponent {
       phoneNumber: ['', [Validators.required]],
     });
 
+    this.newForm = this.fb.group({
+      rabbitName:  ['', [Validators.required]],
+      competitions: [[], [this.maxSelectionValidator(3)]],
+      udenForKlassen: [false],
+    })
+
     this.myForm.valueChanges.subscribe((value) => {
+      console.log('Form Value Changed:', value);
+    });
+
+    this.newForm.valueChanges.subscribe((value) => {
       console.log('Form Value Changed:', value);
     });
   }
 
-  get competitionControl(): FormArray {
-    return this.myForm.get('competitions') as FormArray;
-  }
-
-  get permissionsGroupControl(): FormGroup {
-    return this.myForm.get('permissions') as FormGroup;
+  maxSelectionValidator(max: number) {
+    return (control: FormControl) => {
+      const value = control.value || [];
+      return value.length <= max ? null : { maxSelection: true };
+    };
   }
 
   handleSubmit() {
-    if (this.myForm.valid) {
-      const formData = this.myForm.value;
+    if (this.myForm.valid && this.newForm.valid) {
+      const formData = { ...this.myForm.value, ...this.newForm.value };
       console.log('Form Submitted:', formData);
     } else {
       console.log('Form is invalid');
       alert('Please correct the errors in the form before submitting.');
+      return;
     }
+  
+    const formData = { ...this.myForm.value, ...this.newForm.value };
+  
+    // Simulate sending to the database
+    this.http.post('/api/registrations', formData).subscribe(
+      (response) => {
+        console.log('Data submitted successfully:', response);
+        alert('Registration submitted successfully!');
+      },
+      (error) => {
+        console.error('Error submitting data:', error);
+        alert('An error occurred while submitting the registration.');
+      }
+    );
   }
+  
 
   onPageChange(event: PageEvent): void {
     this.currentPageIndex = event.pageIndex;

@@ -28,7 +28,7 @@ import { RegistrationPageComponent } from './registration-page/registration-page
 import { RegistrationFormsComponent } from './basic-components/registration/registration-forms/registration-forms.component';
 import { RegistrationFormEventInfoComponent } from './basic-components/registration/registration-form-event-info/registration-form-event-info.component';
 import { FormInputNumbersComponent } from './basic-components/form-inputs/form-input-numbers/form-input-numbers.component';
-import { RegistrationFormCompetitorInfoComponent } from './registration-form-competitor-info/registration-form-competitor-info.component';
+import { RegistrationFormCompetitorInfoComponent } from './basic-components/registration/registration-form-competitor-info/registration-form-competitor-info.component';
 
 // Agnular Imports
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
