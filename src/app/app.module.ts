@@ -39,6 +39,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InMemoryDataService } from './service/InMomoryData/in-memory-data.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 //  Angular Material Imports
 import { MatIconModule } from '@angular/material/icon';
@@ -66,6 +67,7 @@ import { MatCardModule } from '@angular/material/card';
 
 //ngx imports
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -135,6 +137,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
       dataEncapsulation: false,
     }),
     MatCardModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
   ],
   providers: [provideAnimationsAsync(), provideNativeDateAdapter()],
   bootstrap: [AppComponent],
