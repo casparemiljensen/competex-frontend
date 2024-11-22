@@ -15,41 +15,39 @@
 /* Table container customization for max width and centering */
 .table-container {
   width: 100%;
-  overflow: hidden;
+  overflow-x: auto; /* Enable horizontal scrolling */
   border-radius: 0 0 4px 4px; /* Rounded bottom corners to match panel */
   padding: 0;
   margin: 16px 0;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
 
-
-/* Increase font size for table column text */
-.custom-mat-table td.mat-cell {
-  font-size: 1.1em; /* Adjust the font size as needed */
-}
-
-/* Custom table styles */
+/* Table styling */
 .custom-mat-table {
-  width: 100%;
-  border-collapse: collapse; /* Remove gaps between table cells */
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  width: 100%; /* Ensure table takes up the container's width */
+  border-collapse: collapse;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
 }
 
-/* Header cell styling for improved emphasis */
+.custom-mat-table td.mat-cell {
+  font-size: 1.1em;
+}
+
 .custom-mat-table th.mat-header-cell {
-  font-weight: bold; /* Bolder text for headers */
-  font-size: 1.2em; /* Increase the font size */
-  color: black; /* Darker text color for contrast */
-  padding: 12px; /* Slightly increased padding */
+  font-weight: bold;
+  font-size: 1.2em;
+  color: black;
+  padding: 12px;
   text-align: left;
 }
 
-
-/* 
-.custom-mat-table tr:nth-child(even) td {
-   background-color: #f9f9f9;  Very light grey for even rows
-} */
-
 .custom-mat-table tr:nth-child(odd) td {
-  background-color: #dbdbdb; /* White for odd rows */
+  background-color: #dbdbdb;
 }
 
+/* Responsive font adjustments */
+@media (max-width: 600px) {
+  .custom-mat-table th.mat-header-cell, .custom-mat-table td.mat-cell {
+    font-size: 1em; /* Adjust font size for smaller screens */
+  }
+}

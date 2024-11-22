@@ -1,0 +1,108 @@
+/* Wrapper to center content and limit width */
+.container-wrapper {
+    margin: 0 auto;
+    padding: 0 5%; /* Add some padding to prevent elements from touching the screen edges */
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+  }
+  
+  /* Loading spinner centered within content */
+  .loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+  }
+  
+  /* Event details section */
+  .event-details {
+    padding: 5% 0;
+    text-align: center;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  h1, h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Page container styling */
+  .page-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 100%; /* Ensures it fits within the screen width */
+    margin: 0 auto;
+    padding: 0 5%;
+    box-sizing: border-box;
+  }
+  
+  /* Expansion panel styling */
+  .custom-panel {
+    margin-bottom: 16px;
+    width: 100%; /* Ensure the panel takes up full width on smaller screens */
+  }
+  
+  /* Expansion panel header customization */
+  .custom-panel .custom-panel-header {
+    background-color: #2196F3;
+    color: white;
+    font-weight: bold;
+    padding: 16px;
+    font-size: 1.1rem;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  /* Panel text and description */
+  .custom-panel .panel-text {
+    color: white;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  .custom-panel .panel-description {
+    color: white;
+    font-weight: lighter;
+    font-size: 14px;
+  }
+  
+  .custom-panel .custom-panel-header.mat-expanded {
+    background-color: #2a78af; /* Darker blue when expanded */
+  }
+  
+  /* Scrollable container for tables */
+  .scrollable-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Ensure the table doesn’t break on small screens */
+  .scrollable-container app-DataTable {
+    min-width: 600px; /* Keeps table from collapsing on small screens */
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    h1, h2 {
+      font-size: 1.2rem;
+    }
+  
+    .custom-panel .custom-panel-header {
+      font-size: 1rem;
+      padding: 12px;
+    }
+  
+    .page-container {
+      padding: 0 3%;
+    }
+  }
+  

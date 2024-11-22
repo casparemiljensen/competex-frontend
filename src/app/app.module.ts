@@ -18,6 +18,9 @@ import { FormEventInformationComponent } from './basic-components/form-event-inf
 import { ExpandableTableComponent } from './basic-components/ExpandableTable/ExpandableTable.component';
 import { DataTableComponent } from './basic-components/DataTable/DataTable.component';
 import { EventPageComponent } from './event-page/event-page.component';
+import { CompStartComponent } from './comp-start/comp-start.component';
+import { ConfirmDialogComponent } from './basic-components/confirm-dialog/confirm-dialog.component';
+import { CompetitionPageComponent } from './competition-page/competition-page.component';
 import { FormInputTextComponent } from './basic-components/form-inputs/form-input-text/form-input-text.component';
 import { FormTemplateComponent } from './basic-components/form-template/form-template.component';
 import { FormInputDateComponent } from './basic-components/form-inputs/form-input-date/form-input-date.component';
@@ -29,6 +32,8 @@ import { RegistrationFormsComponent } from './basic-components/registration/regi
 import { RegistrationFormEventInfoComponent } from './basic-components/registration/registration-form-event-info/registration-form-event-info.component';
 import { FormInputNumbersComponent } from './basic-components/form-inputs/form-input-numbers/form-input-numbers.component';
 import { RegistrationFormCompetitorInfoComponent } from './basic-components/registration/registration-form-competitor-info/registration-form-competitor-info.component';
+import { ResultPageComponent } from './result-page/result-page.component';
+import { ResultsOverviewPageComponent } from './results-overview-page/results-overview-page.component';
 
 // Agnular Imports
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -59,6 +64,7 @@ import { MatDivider } from '@angular/material/divider';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
 
 //ngx imports
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -95,6 +101,9 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
     RegistrationFormEventInfoComponent,
     FormInputNumbersComponent,
     RegistrationFormCompetitorInfoComponent,
+    ResultPageComponent,
+    ResultsOverviewPageComponent,
+    CompetitionPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -127,6 +136,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
       dataEncapsulation: false,
     }),
+    MatCardModule,
   ],
   providers: [provideAnimationsAsync(), provideNativeDateAdapter()],
   bootstrap: [AppComponent],

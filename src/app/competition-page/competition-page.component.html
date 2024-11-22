@@ -1,0 +1,41 @@
+<div class="page-container">
+  <div *ngIf="!detailsSubmitted">
+    <h2>Konkurrence Detaljer</h2>
+    <div class="form-group">
+      <form [formGroup]="myForm" (ngSubmit)="handleSubmit()">
+        <app-form-input-text label="Dommer" [control]="dommerControl">
+        </app-form-input-text>
+        <app-form-input-text label="Aspirant" [control]="aspirantControl">
+        </app-form-input-text>
+        <app-form-input-select
+          label="Bedømmelsesmetode"
+          [options]="bedMetodeOptions"
+          [control]="bedMetodeControl"
+        ></app-form-input-select>
+        <app-form-input-time label="Start Tid"> </app-form-input-time>
+        <button mat-raised-button type="submit" class="submit-button">
+          Fortsæt
+        </button>
+      </form>
+    </div>
+  </div>
+  <div *ngIf="detailsSubmitted">
+    <!-- Ongoing Competition Page -->
+    <h2>Bedømmelse</h2>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Startliste </mat-card-title>
+        <mat-card-subtitle></mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item> </mat-list-item>
+          <mat-list-item>Salt</mat-list-item>
+          <mat-list-item>Paprika</mat-list-item>
+        </mat-list>
+        <p>Bedømmelsesmetode: D2</p>
+        <p>Start Tid: 12:30</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
