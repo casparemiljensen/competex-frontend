@@ -25,8 +25,6 @@ import { FormInputTextComponent } from './basic-components/form-inputs/form-inpu
 import { FormTemplateComponent } from './basic-components/form-template/form-template.component';
 import { FormInputDateComponent } from './basic-components/form-inputs/form-input-date/form-input-date.component';
 import { FormInputTimeComponent } from './basic-components/form-inputs/form-input-time/form-input-time.component';
-import { CompStartComponent } from './comp-start/comp-start.component';
-import { ConfirmDialogComponent } from './basic-components/confirm-dialog/confirm-dialog.component';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
 import { RegistrationFormsComponent } from './basic-components/registration/registration-forms/registration-forms.component';
 import { RegistrationFormEventInfoComponent } from './basic-components/registration/registration-form-event-info/registration-form-event-info.component';
