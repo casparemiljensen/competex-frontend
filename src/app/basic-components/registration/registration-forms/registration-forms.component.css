@@ -1,0 +1,40 @@
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 5px;
+    width: 100%;
+    min-width: 50rem;
+  }
+  @media (max-width: 600px) {
+    .form-grid {
+      grid-template-columns: 1fr; /* Switch to a single column for mobile */
+      row-gap: 0px;
+      min-width: 10rem;
+    }
+  }
+  .form-group {
+    margin-bottom: 16px;
+  }
+  
+.add-button {
+  background-color: rgb(69, 202, 69);
+  color: white;
+  border-radius: 5px;
+  align-items: center;
+}
+
+.add-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.submit-button {
+  background-color: #2196f3;
+  color: white;
+}
+
+.submit-button-container {
+  display: flex;
+  justify-content: right;
+}

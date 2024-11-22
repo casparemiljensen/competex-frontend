@@ -1,0 +1,64 @@
+<div class="form-group">
+  <form [formGroup]="myForm" (ngSubmit)="handleSubmit()">
+    <div class="form-page">
+      <div *ngIf="currentPageIndex === 0">
+        <app-registration-form-event-info
+          [parentForm]="myForm"
+        ></app-registration-form-event-info>
+      </div>
+      <div *ngIf="currentPageIndex === 1">
+        <div formArrayName="rabbits">
+          <div
+            *ngFor="let rabbit of rabbitsControls.controls; let i = index"
+            [formGroupName]="i"
+            class="rabbit-form"
+          >
+            <app-registration-form-competitor-info
+              [control]="rabbit"
+            ></app-registration-form-competitor-info>
+            <button
+              mat-raised-button
+              color="warn"
+              type="button"
+              (click)="removeRabbit(i)"
+              *ngIf="rabbitsControls.length > 1"
+            >
+              Remove
+            </button>
+          </div>
+        </div>
+        <div class="add-button-container">
+          <button
+            class="add-button"
+            mat-fab
+            color="primary"
+            type="button"
+            (click)="addRabbit()"
+            aria-label="Add Rabbit"
+          >
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+        <div class="submit-button-container">
+          <button
+            class="submit-button"
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="!myForm.valid"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+    <mat-paginator
+      class="paginator"
+      [length]="2"
+      [pageSize]="1"
+      [pageSizeOptions]="[1]"
+      showFirstLastButtons
+      (page)="onPageChange($event)"
+    ></mat-paginator>
+  </form>
+</div>

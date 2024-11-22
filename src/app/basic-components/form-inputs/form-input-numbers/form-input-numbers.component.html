@@ -1,0 +1,14 @@
+<mat-form-field class="form-group" appearance="outline">
+  <mat-label>{{ label }}</mat-label>
+  <input
+    matInput
+    class="form-control"
+    [formControl]="control"
+    [attr.placeholder]="label"
+    type="number"
+    maxlength="8"
+  />
+  <mat-error *ngIf="showError">
+    {{ validationMessage }}
+  </mat-error>
+</mat-form-field>
