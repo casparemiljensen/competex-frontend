@@ -37,7 +37,6 @@ import { ResultsOverviewPageComponent } from './results-overview-page/results-ov
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { InMemoryDataService } from './service/InMomoryData/in-memory-data.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 //  Angular Material Imports
@@ -131,9 +130,6 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
     MatTableModule,
     MatPaginatorModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
-      dataEncapsulation: false,
-    }),
     MatCardModule,
   ],
   providers: [provideAnimationsAsync(), provideNativeDateAdapter()],

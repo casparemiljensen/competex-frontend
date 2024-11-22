@@ -11,7 +11,7 @@ export interface eventRespons {
     location: Location;
     registrationStartDate: string;
     registrationEndDate: string;
-    status: Status
+    status: Status;
     organizer: string[];
     sportType: SportType;
     competitions: any[];
