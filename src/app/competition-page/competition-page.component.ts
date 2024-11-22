@@ -24,6 +24,12 @@ export class CompetitionPageComponent {
     });
   }
 
+  participants = [
+    { name: 'Kanin 1' },
+    { name: 'Kanin 2' },
+    { name: 'Kanin 3' },
+  ];
+
   bedMetodeOptions = [
     { value: 'd1', viewValue: 'D1' },
     { value: 'c1', viewValue: 'C1' },
@@ -52,5 +58,9 @@ export class CompetitionPageComponent {
       console.log('Form is invalid');
       alert('Please correct the errors in the form before submitting.');
     }
+  }
+
+  handleParticipantChange(selectedIndex: number): void {
+    console.log('Selected Participant Index:', selectedIndex);
   }
 }

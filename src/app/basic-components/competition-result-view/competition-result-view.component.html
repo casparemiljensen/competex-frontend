@@ -1,0 +1,69 @@
+<!-- Result view -->
+<div class="result-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Tilføj resultat</mat-card-title>
+    </mat-card-header>
+    <div *ngIf="true">
+      <mat-card-content>
+        <!-- Participant Information -->
+        <div class="participant-info">
+          <div class="participant-field"><p>Fører: NAVN</p></div>
+          <div class="participant-field"><p>Kanin: NAVN</p></div>
+          <button mat-icon-button color="accent" (click)="editParticipant()">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </div>
+
+        <!-- Result Input Form -->
+        <form [formGroup]="resultForm" (ngSubmit)="handleSubmit()">
+          <div class="result-form">
+            <mat-form-field appearance="outline" class="result-input">
+              <mat-label>Fejl</mat-label>
+              <input
+                matInput
+                formControlName="fault"
+                placeholder="fejl*"
+                type="number"
+                min="0"
+                max="14"
+              />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="result-input">
+              <mat-label>Tid</mat-label>
+              <input
+                matInput
+                type="time"
+                step="0.1"
+                formControlName="time"
+                placeholder="tid*"
+              />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="result-input">
+              <mat-label>Korr.</mat-label>
+              <input
+                matInput
+                formControlName="correction"
+                [value]="0"
+                type="number"
+                min="0"
+                max="5"
+              />
+            </mat-form-field>
+          </div>
+          <div class="checkbox-group">
+            <mat-checkbox formControlName="disq">Diskvalificeret</mat-checkbox>
+            <mat-checkbox formControlName="trukket">Trukket</mat-checkbox>
+            <mat-checkbox formControlName="adv">Advarsel</mat-checkbox>
+          </div>
+          <button mat-fab color="primary" type="submit">
+            <mat-icon>check</mat-icon>
+          </button>
+        </form>
+      </mat-card-content>
+    </div>
+    <div *ngIf="false">
+      <mat-card-content> </mat-card-content>
+    </div>
+  </mat-card>
+</div>

@@ -59,6 +59,8 @@ import { MatCardModule } from '@angular/material/card';
 
 //ngx imports
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { CompetitionParticipantsListComponent } from './basic-components/competition-participants-list/competition-participants-list.component';
+import { CompetitionResultViewComponent } from './basic-components/competition-result-view/competition-result-view.component';
 
 @NgModule({
   declarations: [
@@ -88,6 +90,8 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
     MyPageComponent,
     EventPageComponent,
     CompetitionPageComponent,
+    CompetitionParticipantsListComponent,
+    CompetitionResultViewComponent,
   ],
   imports: [
     BrowserModule,
