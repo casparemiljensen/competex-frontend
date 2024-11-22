@@ -1,5 +1,5 @@
 <h4>Deltager Information:</h4>
-<div class="form-grid">
+<div class="form-grid" *ngIf="control">
   <app-form-input-text
     label="Kanin"
     [control]="rabbitNameControl"
@@ -20,6 +20,7 @@
       Du kan kun vælge op til 3 konkurrencer.
     </mat-error>
   </mat-form-field>
+
   <div class="switch-container" [formGroup]="control">
     Uden for klassen:
     <mat-slide-toggle formControlName="udenForKlassen" class="switch"

@@ -16,17 +16,17 @@ export class RegistrationFormCompetitorInfoComponent {
 
 
   get competitionsControl(): FormControl {
-    return this.parentForm.get('competitions') as FormControl;
+    return this.control?.get('competitions') as FormControl;
   }
   
-
   get rabbitNameControl(): FormControl {
-    return this.parentForm.get('rabbitName') as FormControl;
+    return this.control?.get('rabbitName') as FormControl;
   }
-
+  
   get sliderControl(): FormControl {
-    return this.parentForm.get('sliderValue') as FormControl;
+    return this.control?.get('udenForKlassen') as FormControl;
   }
+  
 
   ngOnInit(): void {
     // Fetch ExpandableTableData from the service

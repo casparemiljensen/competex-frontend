@@ -29,7 +29,7 @@ export class RegistrationFormsComponent {
       birthday: ['', [Validators.required]],
       mailAddress: ['', [Validators.required]],
       phoneNumber: ['', [Validators.required]],
-      rabbits: this.fb.array([]) // Initialize FormArray for rabbits
+      rabbits: this.fb.array([])
     });
 
     // Add the first set of controls by default
