@@ -12,18 +12,19 @@
           <mat-expansion-panel-header>
             <mat-panel-title class="event-header">
               <div class="event-column">
-                {{ event.date | date : "MMMM dd, yyyy" }}
+                {{ event.startDate | date : "MMMM dd, yyyy" }}
               </div>
-              <div class="event-column">{{ event.creator }}</div>
-              <div class="event-column">{{ event.name }}</div>
+              <!-- <div class="event-column">{{ event.creator }}</div> -->
+              <div class="event-column">{{ event.title }}</div>
             </mat-panel-title>
           </mat-expansion-panel-header>
 
           <div class="event-details">
             <div class="event-row">
-              <div><strong>Date:</strong> {{ event.date | date }}</div>
-              <div><strong>Creator:</strong> {{ event.creator }}</div>
-              <div><strong>Event:</strong> {{ event.name }}</div>
+              <div><strong>Description:</strong> {{ event.description }}</div>
+              <div><strong>Location:</strong> {{ event.location }}</div>
+              <div><strong>Start Date:</strong> {{ event.startDate | date }}</div>
+              <div><strong>End Date:</strong> {{ event.endDate | date }}</div>
             </div>
             <a
               [routerLink]="['/registration-page', event.id]"

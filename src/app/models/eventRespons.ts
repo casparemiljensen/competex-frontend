@@ -6,8 +6,8 @@ export interface eventRespons {
     id: string;
     title: string;
     description?: string;
-    startDate: string;
-    endDate: string;
+    startDate: Date;
+    endDate: Date;
     location: Location;
     registrationStartDate: string;
     registrationEndDate: string;
