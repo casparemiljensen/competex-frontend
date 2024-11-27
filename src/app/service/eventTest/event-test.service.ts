@@ -10,7 +10,7 @@ export class EventService {
 
   constructor(private http: HttpClient) { }
 
-  private apiUrl = '/api/Events'; 
+  private apiUrl = 'https://competex.schnykjaer.com:22114/api/Events'; 
 
   getEvents(): Observable<eventRespons[]> {
     return this.http.get<eventRespons[]>(this.apiUrl).pipe(
