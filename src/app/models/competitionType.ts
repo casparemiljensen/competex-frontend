@@ -1,5 +1,5 @@
 import { ScoreType, ScoreMethod } from './enums';
-export interface CompetitionType {
+export interface competitionType{
   name: string | null; // Nullable
   competitionAttributes: string[]; // Replace with a specific type if known
   scoreType: ScoreType; // Enum for ScoreType

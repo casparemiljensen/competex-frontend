@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { EventPageService } from '../../../service/event-page/event-page.service';
+import { eventRespons } from '../../../models/eventRespons';
 
 @Component({
   selector: 'app-registration-form-competitor-info',
@@ -8,11 +8,11 @@ import { EventPageService } from '../../../service/event-page/event-page.service
   styleUrl: './registration-form-competitor-info.component.css'
 })
 export class RegistrationFormCompetitorInfoComponent {
-  constructor(private eventPageService: EventPageService) {}
-  ExpandableTableData: any[] = [];
+  constructor() {}
   isLoading = true;
   @Input() parentForm!: FormGroup;
   @Input() control!: FormGroup;
+  @Input() compitionsData: any;
 
 
   get competitionsControl(): FormControl {
@@ -30,15 +30,16 @@ export class RegistrationFormCompetitorInfoComponent {
 
   ngOnInit(): void {
     // Fetch ExpandableTableData from the service
-    this.eventPageService.getExpandableTables().subscribe({
-      next: (data) => {
-        this.ExpandableTableData = data; // Populate dropdown options
-        this.isLoading = false; // Loading complete
-      },
-      error: (err) => {
-        console.error('Error fetching expandable table data:', err);
-        this.isLoading = false;
-      }
-    });
+    if(this.compitionsData)
+    {
+      this.isLoading = false;
+      // console.log(this.compitionsData[0].competitionType[0].name)
+      console.log(this.compitionsData)
+    }
+    else 
+    {
+      console.log("Error")
+    }
   } 
+
 }

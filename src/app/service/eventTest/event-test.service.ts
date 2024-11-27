@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { eventRespons } from '../../models/eventRespons';
+import { API_DOMAIN } from '../apiUrl';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class EventService {
 
   constructor(private http: HttpClient) { }
 
-  private apiUrl = '/api/Events'; 
+  private apiUrl = `${API_DOMAIN}api/Events`; 
 
   getEvents(): Observable<eventRespons[]> {
     return this.http.get<eventRespons[]>(this.apiUrl).pipe(
