@@ -5,6 +5,9 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { CompetitionService } from '../service/Competition/competition.service';
+import { CompetitionResponse } from '../models/competitionResponse';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-competition-page',
@@ -14,9 +17,16 @@ import {
 export class CompetitionPageComponent {
   myForm!: FormGroup;
   detailsSubmitted = false;
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private competitionService: CompetitionService
+  ) {}
+
+  competitions: Observable<CompetitionResponse[]> | undefined;
 
   ngOnInit(): void {
+    this.loadCompetitions(); //Change this later
+
     this.myForm = this.fb.group({
       dommer: ['', [Validators.required]],
       aspirant: ['', []],
@@ -52,5 +62,15 @@ export class CompetitionPageComponent {
       console.log('Form is invalid');
       alert('Please correct the errors in the form before submitting.');
     }
+  }
+
+  loadCompetitions(): void {
+    //Change later
+    this.competitionService.getCompetitions().subscribe({
+      next: (response) => {
+        console.log('Competitions:', response);
+      },
+      error: (err) => console.error('Error fetching competitions:', err),
+    });
   }
 }
