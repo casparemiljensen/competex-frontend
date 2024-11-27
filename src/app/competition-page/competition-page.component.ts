@@ -7,7 +7,6 @@ import {
 } from '@angular/forms';
 import { CompetitionService } from '../service/Competition/competition.service';
 import { CompetitionResponse } from '../models/competitionResponse';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-competition-page',
@@ -22,10 +21,11 @@ export class CompetitionPageComponent {
     private competitionService: CompetitionService
   ) {}
 
-  competitions: Observable<CompetitionResponse[]> | undefined;
+  competitions: CompetitionResponse[] = [];
+  // competitions: Observable<CompetitionResponse[]> | undefined;
 
   ngOnInit(): void {
-    this.loadCompetitions(); //Change this later
+    this.fetchCompetitions(); //Change this later
 
     this.myForm = this.fb.group({
       dommer: ['', [Validators.required]],
@@ -64,11 +64,12 @@ export class CompetitionPageComponent {
     }
   }
 
-  loadCompetitions(): void {
+  fetchCompetitions(): void {
     //Change later
     this.competitionService.getCompetitions().subscribe({
       next: (response) => {
-        console.log('Competitions:', response);
+        this.competitions = response;
+        console.log(this.competitions);
       },
       error: (err) => console.error('Error fetching competitions:', err),
     });
