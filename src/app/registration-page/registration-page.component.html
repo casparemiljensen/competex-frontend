@@ -1,0 +1,12 @@
+<div *ngIf="event; else loading">
+  <h1 class="heading">Tilmedling - {{ event.title }}</h1>
+  <h3 class="sub-heading">Organiseret af: {{ event.organizer }}</h3>
+</div>
+
+<div class="page-container">
+  <app-registration-forms></app-registration-forms>
+</div>
+
+<ng-template #loading>
+  <p>Loading event details...</p>
+</ng-template>

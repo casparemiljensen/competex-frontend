@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Event } from '../../models/event'
 import { V } from '@angular/cdk/keycodes';
+import { partition } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +32,6 @@ export class InMemoryDataService implements InMemoryDbService{
       { id: 20, date: new Date('2024-12-08'), creator: 'København Håndboldforening', name: 'Golf Masters' },
     ];
 
-
     const judge = [
       { 
         judge: "Judges",
@@ -51,6 +51,7 @@ export class InMemoryDataService implements InMemoryDbService{
     const ExpandableTables = [
       {
         ExpandableTable: "Boys U12 Football",
+        status: "Start", // Added status
         data: [
           { club: "Tigers", players: 11, coach: 'John Doe' },
           { club: "Hawks", players: 12, coach: 'Jane Smith' },
@@ -86,6 +87,7 @@ export class InMemoryDataService implements InMemoryDbService{
       },
       {
         ExpandableTable: "Girls U15 Volleyball",
+        status: "Aktiv", // Added status
         data: [
           { team: "Spikers", members: 10, manager: 'Alice Johnson' },
           { team: "Blockers", members: 9, manager: 'Billie Jean' },
@@ -94,6 +96,7 @@ export class InMemoryDataService implements InMemoryDbService{
       },
       {
         ExpandableTable: "Mixed U18 Basketball",
+        status: "Afsluttet", // Added status
         data: [
           { squad: "Shooters", athletes: 5, trainer: 'Mike Bane' },
           { squad: "Dribblers", athletes: 6, trainer: 'Sarah Conner' },
@@ -102,6 +105,7 @@ export class InMemoryDataService implements InMemoryDbService{
       },
       {
         ExpandableTable: "Open Swimming 100m",
+        status: "Start", // Added status
         data: [
           { club: "Wave Riders", swimmers: 4, coach: 'Lana Kane' },
           { club: "Speedsters", swimmers: 5, coach: 'Archer Sterling' },
@@ -110,6 +114,7 @@ export class InMemoryDataService implements InMemoryDbService{
       },
       {
         ExpandableTable: "Youth Chess Tournament",
+        status: "Aktiv", // Added status
         data: [
           { club: "Check Mates", players: 8, coordinator: 'Ray Gillette' },
           { club: "Kings & Queens", players: 7, coordinator: 'Pam Poovey' },
@@ -118,7 +123,94 @@ export class InMemoryDataService implements InMemoryDbService{
       }
     ];
 
-    return { events, ExpandableTables, judge };
+    const result = [
+      {
+        ExpandableTable: "Konkurrence navn - Bed m.",
+        judge: "Ray Ray",
+        data: [
+          {
+            Nr: 1,
+            Handler: "Rasmus",
+            Rabbit: "Kaninnavn Kaninnavn ",
+            Fejl_1: "10+1+1",
+            Tid_1: "1:02:35",
+            Fejl_2: "10+1+1",
+            Tid_2: "1:05:40",
+            T_Fejl: 12,
+            T_Tid: "2:08:15",
+            Pind: "x"
+          },
+          {
+            Nr: 2,
+            Handler: "Lars",
+            Rabbit: "Kaninnavn 2",
+            Fejl_1: "5+2",
+            Tid_1: "0:58:10",
+            Fejl_2: "6+3",
+            Tid_2: "1:00:20",
+            T_Fejl: 10,
+            T_Tid: "1:58:30",
+            Pind: "-"
+          },
+          {
+            Nr: 3,
+            Handler: "Sofie",
+            Rabbit: "Kaninnavn 3",
+            Fejl_1: "8+1",
+            Tid_1: "1:10:45",
+            Fejl_2: "9+1",
+            Tid_2: "1:08:30",
+            T_Fejl: 10,
+            T_Tid: "2:19:15",
+            Pind: "x"
+          }
+        ]
+      },
+      {
+        ExpandableTable: "Konkurrence navn - Spring m.",
+        judge: "Sandy Dee",
+        data: [
+          {
+            Nr: 1,
+            Handler: "Mikkel",
+            Rabbit: "Kaninnavn A",
+            Fejl_1: "7+1",
+            Tid_1: "1:05:10",
+            Fejl_2: "6+2",
+            Tid_2: "1:03:20",
+            T_Fejl: 8,
+            T_Tid: "2:08:30",
+            Pind: "x"
+          },
+          {
+            Nr: 2,
+            Handler: "Anna",
+            Rabbit: "Kaninnavn B",
+            Fejl_1: "3+4",
+            Tid_1: "0:55:20",
+            Fejl_2: "4+3",
+            Tid_2: "0:57:45",
+            T_Fejl: 7,
+            T_Tid: "1:53:05",
+            Pind: "-"
+          },
+          {
+            Nr: 3,
+            Handler: "Jens",
+            Rabbit: "Kaninnavn C",
+            Fejl_1: "5+2+1",
+            Tid_1: "1:02:25",
+            Fejl_2: "6+1",
+            Tid_2: "1:04:50",
+            T_Fejl: 9,
+            T_Tid: "2:07:15",
+            Pind: "x"
+          }
+        ]
+      }
+    ];
+
+    return { events, ExpandableTables, judge, result};
   }
 
   // genId(event: Event[]): number {

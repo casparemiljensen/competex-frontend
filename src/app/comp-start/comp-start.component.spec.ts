@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CompStartComponent } from './comp-start.component';
 
 describe('CompStartComponent', () => {
