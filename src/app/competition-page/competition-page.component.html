@@ -4,42 +4,40 @@
       <td>{{ competition.startDate }}</td>
     </tr>
   </div>
-    <div *ngIf="!detailsSubmitted">
-      <div *ngIf="false">
-        <h2>Konkurrence Detaljer</h2>
-        <div class="form-group">
-          <form [formGroup]="myForm" (ngSubmit)="handleSubmit()">
-            <app-form-input-text label="Dommer" [control]="dommerControl">
-            </app-form-input-text>
-            <app-form-input-text label="Aspirant" [control]="aspirantControl">
-            </app-form-input-text>
-            <app-form-input-select
-              label="Bedømmelsesmetode"
-              [options]="bedMetodeOptions"
-              [control]="bedMetodeControl"
-            ></app-form-input-select>
-            <app-form-input-time label="Start Tid"> </app-form-input-time>
-            <button mat-raised-button type="submit" class="submit-button">
-              Fortsæt
-            </button>
-          </form>
-        </div>
-      </div>
-      <!-- <div *ngIf="detailsSubmitted"> -->
-      <div *ngIf="true" class="subpage-container">
-        <h2>Bedømmelse</h2>
-        <div class="result-content">
-          <app-competition-result-view class="result-view">
-          </app-competition-result-view>
+  <!-- <div *ngIf="!detailsSubmitted"> -->
+  <div *ngIf="false">
+    <h2>Konkurrence Detaljer</h2>
+    <div class="form-group">
+      <form [formGroup]="myForm" (ngSubmit)="handleSubmit()">
+        <app-form-input-text label="Dommer" [control]="dommerControl">
+        </app-form-input-text>
+        <app-form-input-text label="Aspirant" [control]="aspirantControl">
+        </app-form-input-text>
+        <app-form-input-select
+          label="Bedømmelsesmetode"
+          [options]="bedMetodeOptions"
+          [control]="bedMetodeControl"
+        ></app-form-input-select>
+        <app-form-input-time label="Start Tid"> </app-form-input-time>
+        <button mat-raised-button type="submit" class="submit-button">
+          Fortsæt
+        </button>
+      </form>
+    </div>
+  </div>
+  <!-- <div *ngIf="detailsSubmitted"> -->
+  <div *ngIf="true" class="subpage-container">
+    <h2>Bedømmelse</h2>
+    <div class="result-content">
+      <app-competition-result-view class="result-view">
+      </app-competition-result-view>
 
-          <app-competition-participants-list
-            [participants]="participants"
-            (selectedParticipantChange)="handleParticipantChange($event)"
-            class="participants-list"
-          >
-          </app-competition-participants-list>
-        </div>
-      </div>
+      <app-competition-participants-list
+        [participants]="participants"
+        (selectedParticipantChange)="handleParticipantChange($event)"
+        class="participants-list"
+      >
+      </app-competition-participants-list>
     </div>
   </div>
 </div>
