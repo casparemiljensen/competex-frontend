@@ -1,0 +1,30 @@
+<h4>Deltager Information:</h4>
+<div class="form-grid" *ngIf="control">
+  <app-form-input-text
+    label="Kanin"
+    [control]="rabbitNameControl"
+  ></app-form-input-text>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Vælg konkurrencer (maks. 3)</mat-label>
+    <mat-select [formControl]="competitionsControl" multiple>
+      <mat-option *ngIf="isLoading" disabled>Loading...</mat-option>
+      <mat-option
+        *ngFor="let competition of ExpandableTableData"
+        [value]="competition.ExpandableTable"
+      >
+        {{ competition.ExpandableTable }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="competitionsControl.hasError('maxSelection')">
+      Du kan kun vælge op til 3 konkurrencer.
+    </mat-error>
+  </mat-form-field>
+
+  <div class="switch-container" [formGroup]="control">
+    Uden for klassen:
+    <mat-slide-toggle formControlName="udenForKlassen" class="switch"
+      >Switch</mat-slide-toggle
+    >
+  </div>
+</div>

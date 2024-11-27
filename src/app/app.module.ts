@@ -25,6 +25,13 @@ import { FormInputTextComponent } from './basic-components/form-inputs/form-inpu
 import { FormTemplateComponent } from './basic-components/form-template/form-template.component';
 import { FormInputDateComponent } from './basic-components/form-inputs/form-input-date/form-input-date.component';
 import { FormInputTimeComponent } from './basic-components/form-inputs/form-input-time/form-input-time.component';
+import { RegistrationPageComponent } from './registration-page/registration-page.component';
+import { RegistrationFormsComponent } from './basic-components/registration/registration-forms/registration-forms.component';
+import { RegistrationFormEventInfoComponent } from './basic-components/registration/registration-form-event-info/registration-form-event-info.component';
+import { FormInputNumbersComponent } from './basic-components/form-inputs/form-input-numbers/form-input-numbers.component';
+import { RegistrationFormCompetitorInfoComponent } from './basic-components/registration/registration-form-competitor-info/registration-form-competitor-info.component';
+import { ResultPageComponent } from './result-page/result-page.component';
+import { ResultsOverviewPageComponent } from './results-overview-page/results-overview-page.component';
 
 // Agnular Imports
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -87,6 +94,13 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
     FormEventInformationComponent,
     MyPageComponent,
     EventPageComponent,
+    RegistrationPageComponent,
+    RegistrationFormsComponent,
+    RegistrationFormEventInfoComponent,
+    FormInputNumbersComponent,
+    RegistrationFormCompetitorInfoComponent,
+    ResultPageComponent,
+    ResultsOverviewPageComponent,
     CompetitionPageComponent,
   ],
   imports: [

@@ -11,7 +11,9 @@
         <mat-expansion-panel *ngFor="let event of group[1]">
           <mat-expansion-panel-header>
             <mat-panel-title class="event-header">
-              <div class="event-column">{{ event.date | date: 'MMMM dd, yyyy' }}</div>
+              <div class="event-column">
+                {{ event.date | date : "MMMM dd, yyyy" }}
+              </div>
               <div class="event-column">{{ event.creator }}</div>
               <div class="event-column">{{ event.name }}</div>
             </mat-panel-title>
@@ -23,7 +25,11 @@
               <div><strong>Creator:</strong> {{ event.creator }}</div>
               <div><strong>Event:</strong> {{ event.name }}</div>
             </div>
-            <a [routerLink]="['/register', event.id]" class="register-link">Register for event</a>
+            <a
+              [routerLink]="['/registration-page', event.id]"
+              class="register-link"
+              >Register for event</a
+            >
           </div>
         </mat-expansion-panel>
       </mat-accordion>
