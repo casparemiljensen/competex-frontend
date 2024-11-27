@@ -1,6 +1,6 @@
-<div *ngIf="eventTitle; else loading">
-  <h1 class="heading">Tilmedling - {{ eventTitle }}</h1>
-  <h3 class="sub-heading">Organiseret af: {{ eventCreator }}</h3>
+<div *ngIf="event; else loading">
+  <h1 class="heading">Tilmedling - {{ event.title }}</h1>
+  <h3 class="sub-heading">Organiseret af: {{ event.organizer }}</h3>
 </div>
 
 <div class="page-container">

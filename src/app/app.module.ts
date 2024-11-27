@@ -37,7 +37,6 @@ import { ResultsOverviewPageComponent } from './results-overview-page/results-ov
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { InMemoryDataService } from './service/InMomoryData/in-memory-data.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
@@ -133,9 +132,6 @@ import { environment } from '../environments/environment';
     MatTableModule,
     MatPaginatorModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
-      dataEncapsulation: false,
-    }),
     MatCardModule,
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
   ],
