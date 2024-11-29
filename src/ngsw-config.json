@@ -33,7 +33,7 @@
         "https://competex.schnykjaer.com:22114/api/**"
       ],
       "cacheConfig": {
-        "strategy": "performance",
+        "strategy": "freshness",
         "maxSize": 100,
         "maxAge": "1h",
         "timeout": "10s"
