@@ -26,17 +26,27 @@ export class EventService {
     );
   }
 
-  getEventsBySearchPending(): Observable<any[]> {
-    const body = JSON.stringify({ status: 'Pending' }); // JSON body
-    const headers = { 'Content-Type': 'application/json', Accept: '*/*' }; // Optional headers from cURL
-    return this.http.post<any[]>(`${this.apiUrl}/search`, body, {headers}).pipe(
-      catchError(this.handleError<any[]>('getEventsBySearchPending'))
+  getEventsBySearchPending(): Observable<{ values: eventRespons[]; pageInfo: any }> {
+    const body = JSON.stringify({ status: 'Pending' }); 
+    const headers = { 'Content-Type': 'application/json', Accept: '*/*' }; 
+  
+    return this.http.post<{ values: eventRespons[]; pageInfo: any }>(
+      `${this.apiUrl}/search`, 
+      body, 
+      { headers }
+    ).pipe(
+      catchError(this.handleError<{ values: eventRespons[]; pageInfo: any }>('getEventsBySearchPending'))
     );
   }
 
-  getEventsBySearcActive(): Observable<eventRespons> {
+  getEventsBySearchPendingtest(): Observable<eventRespons> {
     console.log("this is the pending" + Status.Pending);
-    return this.http.get<eventRespons>(`${this.apiUrl}/${Status.Active}`).pipe(
+
+    // return this.http.get<eventRespons>(`${this.apiUrl}/${Status.Active}`).pipe(
+    //   catchError(this.handleError<eventRespons>(`getEventBySearch status=${Status.Active}`))
+    // );
+
+    return this.http.get<eventRespons>(`${this.apiUrl}/Pendingw`).pipe(
       catchError(this.handleError<eventRespons>(`getEventBySearch status=${Status.Active}`))
     );
   }
@@ -55,8 +65,9 @@ export class EventService {
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      console.error(`${operation} failed: ${error.message}`); // Log to console or a logging service
-      return of(result as T); // Return a safe fallback value
+      console.error(`${operation} failed: ${error.message}`); // Log error to console
+      return of(result as T); // Return a safe default result
     };
   }
+  
 }
