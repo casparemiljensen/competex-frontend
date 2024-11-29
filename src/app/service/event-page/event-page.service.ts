@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class EventPageService {
-  private judgeUrl = 'api/judge';
+  private judgeUrl = 'https://competex.schnykjaer.com:22114/api/Judges';
   private ExpandableTablesUrl = 'api/ExpandableTables';
 
   constructor(private http: HttpClient) {}

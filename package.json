@@ -4,9 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "build": "ng build --configuration production",
+    "postbuild": "node inject-sw.js"
   },
   "private": true,
   "dependencies": {
@@ -20,6 +21,7 @@
     "@angular/platform-browser": "^18.2.0",
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
+    "@angular/service-worker": "^18.2.8",
     "angular-in-memory-web-api": "^0.18.0",
     "ngx-mat-timepicker": "^18.0.0",
     "office-ui-fabric-core": "^11.1.0",
