@@ -8,10 +8,15 @@ const swPath = path.join(__dirname, "dist/compete-x/browser/ngsw-worker.js");
 const customLogic = `
   // Store Requests in Cache Storage
   async function saveRequestToCache(request) {
-    const cache = await caches.open('sync-api-requests-cache');
-    const requestClone = new Request(request.url, request.options);
-    await cache.put(requestClone, new Response(JSON.stringify(request.options), { headers: { 'Content-Type': 'application/json' } }));
-  }
+  console.log('Saving request to cache:', request);
+  const cache = await caches.open('sync-api-requests-cache');
+  console.log('Opened cache:', cache);
+  const requestClone = new Request(request.url, request.options);
+  console.log('Cloned request:', requestClone);
+  await cache.put(requestClone, new Response(JSON.stringify(request.options), { headers: { 'Content-Type': 'application/json' } }));
+  console.log('Request saved in cache.');
+}
+
 
   // Retrieve Requests from Cache
   async function getRequestsFromCache() {
