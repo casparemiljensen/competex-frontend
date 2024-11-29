@@ -11,7 +11,8 @@
       [formControl]="competitionsControl" multiple>
       <ng-container *ngFor="let competition of compitionsData">
         <mat-option *ngIf="isLoading" disabled>Loading...</mat-option>
-        <mat-option *ngFor="let competitionName of competition.competitionType">
+        <mat-option *ngFor="let competitionName of competition.competitionType"
+        [value]="competition.level + ' and ' + competitionName.competitionType">
           {{competition.level}}: {{ competitionName.name }}
         </mat-option>
       </ng-container>
