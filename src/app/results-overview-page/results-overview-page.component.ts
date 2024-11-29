@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { EventService } from '../service/event/event.service';
+import { EventService } from '../service/eventTest/event-test.service';
+import { eventRespons } from '../models/eventRespons';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,13 +11,23 @@ import { Router } from '@angular/router';
 export class ResultsOverviewPageComponent {
   title = "Resultater for tidliger stævner";
 
-  events: any[] = [];
+  events: eventRespons[] = []
 
   constructor(private eventService: EventService, private router: Router) {}
 
   ngOnInit(): void {
-    this.eventService.getEvents().subscribe((data) => {
-      this.events = data;
+    this.fetchEvents();
+  }
+
+  fetchEvents(): void {
+    this.eventService.getEventsBySearchPending().subscribe({
+      next: (response) => {
+        this.events = response; // Assign the response to `this.events`
+        console.log('Fetched events:', this.events); // Debug log
+      },
+      error: (err) => {
+        console.error('Error fetching events:', err); // Improved error log
+      },
     });
   }
 

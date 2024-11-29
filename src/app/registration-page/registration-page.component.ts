@@ -10,8 +10,8 @@ import { eventRespons } from '../models/eventRespons';
 })
 export class RegistrationPageComponent implements OnInit {
   event: eventRespons | undefined; // Holds the fetched event
-eventTitle: any;
-eventCreator: any;
+  eventTitle: any;
+  eventCreator: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,7 +24,9 @@ eventCreator: any;
       const eventId = params.get('id');
       if (eventId) {
         this.fetchEvent(eventId);
+
       } else {
+        // handle empty repons here
         console.error('Event ID is missing in the route.');
       }
     });
