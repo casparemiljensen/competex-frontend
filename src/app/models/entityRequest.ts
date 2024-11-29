@@ -1,6 +1,5 @@
 import { Level, EntityType } from './enums';
-export interface Entity {
-  id: string;
+export interface entityRequest {
   type: EntityType;
   name: string;
   birthDate: string;
