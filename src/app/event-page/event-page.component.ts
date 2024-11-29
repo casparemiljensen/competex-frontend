@@ -31,7 +31,7 @@ export class EventPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
-      const eventId = params.get('id');
+      const eventId = params.get('eventId');
       if (eventId) {
         this.fetchEvent(eventId);
       } else {
@@ -42,15 +42,15 @@ export class EventPageComponent implements OnInit {
 
     this.isLoading = false;
     
-    //Fetch judge data
-    this.eventPageService.getJudge().subscribe(data => {
-      this.judgeData = data;
-    });
+    // //Fetch judge data
+    // this.eventPageService.getJudge().subscribe(data => {
+    //   this.judgeData = data;
+    // });
 
-    //Fetch ExpandableTable data
-    this.eventPageService.getExpandableTables().subscribe(data => {
-      this.ExpandableTableData = data;
-    });
+    // //Fetch ExpandableTable data
+    // this.eventPageService.getExpandableTables().subscribe(data => {
+    //   this.ExpandableTableData = data;
+    // });
   }
 
   fetchEvent(eventId: string): void{
