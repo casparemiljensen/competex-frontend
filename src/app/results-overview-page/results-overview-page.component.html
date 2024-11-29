@@ -16,7 +16,7 @@
             </li>
           </ul> -->
         </div>
-        <button class="view-results-button" (click)="viewEventResults(event.id)">View Results</button>
+        <button class="view-results-button" [routerLink]="['/results', event.id]">View Results</button>
       </div>
     </div>
   </div>
