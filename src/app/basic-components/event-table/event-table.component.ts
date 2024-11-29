@@ -31,6 +31,9 @@ export class EventTableComponent implements OnInit {
       const events = this.mapApiDataToEvents(apiData);
       this.groupedEvents = this.groupEventsByMonth(events);
       this.isLoading = false;
+      for (const event of events) {
+        console.log(event.id)
+      }
     });
   }
 
