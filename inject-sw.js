@@ -1,10 +1,8 @@
 const fs = require("fs");
 const path = require("path");
 
-// Path to the generated service worker file after the build
 const swPath = path.join(__dirname, "dist/compete-x/browser/ngsw-worker.js");
 
-// Custom logic to inject into the service worker
 const customLogic = `
   // Store Requests in Cache Storage
   async function saveRequestToCache(request) {
@@ -54,7 +52,6 @@ const customLogic = `
         await removeRequestFromCache(request.url); // Remove it from cache on success
       } catch (err) {
         console.error('Failed to sync request:', request, err);
-        // Optionally, leave it in the cache for the next sync attempt
       }
     }
   }
@@ -62,7 +59,6 @@ const customLogic = `
   // Save Requests in Cache When Offline
   self.addEventListener('fetch', (event) => {
     if (!navigator.onLine) {
-      // Save the request in the cache if offline
       event.respondWith(
         fetch(event.request).catch(async () => {
           await saveRequestToCache({
@@ -73,8 +69,6 @@ const customLogic = `
               body: event.request.body,
             },
           });
-
-          // Register the sync event
           self.registration.sync.register('sync-api-requests');
         })
       );
