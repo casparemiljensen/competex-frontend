@@ -26,11 +26,10 @@
               <div><strong>Start Date:</strong> {{ event.startDate | date }}</div>
               <div><strong>End Date:</strong> {{ event.endDate | date }}</div>
             </div>
-            <a
-              [routerLink]="['/registration-page', event.id]"
-              class="register-link"
-              >Register for event</a
-            >
+            <a [routerLink]="['/', event.id, 'event-page']" class="register-link">
+              Til stævne side
+            </a>
+            
           </div>
         </mat-expansion-panel>
       </mat-accordion>
