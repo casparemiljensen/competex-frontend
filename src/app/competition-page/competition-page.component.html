@@ -29,13 +29,17 @@
   <div *ngIf="true" class="subpage-container">
     <h2>Bedømmelse</h2>
     <div class="result-content">
-      <app-competition-result-view class="result-view">
+      <app-competition-result-view
+        class="result-view"
+        [match]="selectedMatch"
+        (matchUpdated)="updateMatchList($event)"
+      >
       </app-competition-result-view>
 
       <app-competition-participants-list
-        [participants]="participants"
-        (selectedParticipantChange)="handleParticipantChange($event)"
+        [matches]="matches"
         class="participants-list"
+        (matchSelected)="selectMatch($event)"
       >
       </app-competition-participants-list>
     </div>

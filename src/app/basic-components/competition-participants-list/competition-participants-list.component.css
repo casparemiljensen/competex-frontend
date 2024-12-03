@@ -44,3 +44,16 @@ mat-card-content {
 mat-card {
   width: 100%;
 }
+mat-row.selected {
+  background-color: #d3e5ff; /* Light blue background */
+  color: #000; /* Ensure text is readable */
+}
+
+mat-row.selected:hover {
+  background-color: #b3d0ff; /* Slightly darker blue on hover */
+}
+
+.completed {
+  background-color: lightgray;
+  pointer-events: none;
+}

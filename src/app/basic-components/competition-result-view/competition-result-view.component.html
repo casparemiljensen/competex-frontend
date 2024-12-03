@@ -7,9 +7,14 @@
     <div *ngIf="true">
       <mat-card-content>
         <!-- Participant Information -->
-        <div class="participant-info">
-          <div class="participant-field"><p>Fører: NAVN</p></div>
-          <div class="participant-field"><p>Kanin: NAVN</p></div>
+        <p>Match ID: {{ match?.id }}</p>
+        <div
+          *ngFor="let participant of match?.participants"
+          class="participant-info"
+        >
+          <div class="participant-field">
+            <p>Fører: {{ participant.name }}</p>
+          </div>
           <button mat-icon-button color="accent" (click)="editParticipant()">
             <mat-icon>edit</mat-icon>
           </button>
@@ -39,7 +44,7 @@
                 placeholder="tid*"
               />
             </mat-form-field>
-            <mat-form-field appearance="outline" class="result-input">
+            <!-- <mat-form-field appearance="outline" class="result-input">
               <mat-label>Korr.</mat-label>
               <input
                 matInput
@@ -49,14 +54,20 @@
                 min="0"
                 max="5"
               />
-            </mat-form-field>
+            </mat-form-field> -->
           </div>
-          <div class="checkbox-group">
+          <!-- Checkbose er ikke med i denne version -->
+          <!-- <div class="checkbox-group">
             <mat-checkbox formControlName="disq">Diskvalificeret</mat-checkbox>
             <mat-checkbox formControlName="trukket">Trukket</mat-checkbox>
             <mat-checkbox formControlName="adv">Advarsel</mat-checkbox>
-          </div>
-          <button mat-fab color="primary" type="submit">
+          </div> -->
+          <button
+            mat-fab
+            color="primary"
+            type="submit"
+            [disabled]="resultForm.invalid"
+          >
             <mat-icon>check</mat-icon>
           </button>
         </form>

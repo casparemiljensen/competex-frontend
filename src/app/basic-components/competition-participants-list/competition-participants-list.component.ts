@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { Match } from '../../models/match';
-import { MatchService } from '../../service/match/match.service';
+import { MatchResponse } from '../../models/matchResponse';
+import { Participant } from '../../models/participant';
 
 @Component({
   selector: 'app-competition-participants-list',
@@ -9,39 +9,18 @@ import { MatchService } from '../../service/match/match.service';
   styleUrl: './competition-participants-list.component.css',
 })
 export class CompetitionParticipantsListComponent {
-  @Input() roundID: any = null;
-  @Input() participants: { name: string }[] = [];
-  @Output() selectedParticipantChange = new EventEmitter<number>();
+  @Input() matches: MatchResponse[] = [];
+  @Input() participants: Participant[] = [];
+  @Output() matchSelected = new EventEmitter<MatchResponse>();
 
   displayedColumns: string[] = ['number', 'name'];
-  dataSource = new MatTableDataSource(this.participants);
-  selectedParticipant: any = null;
-  matches: Match[] = [];
+  dataSource = new MatTableDataSource(this.matches);
+  selectedMatch: MatchResponse | null = null;
 
-  constructor(private matchService: MatchService) {}
-
-  ngOnInit(): void {
-    this.fetchMatches();
-  }
-  ngOnChanges(): void {
-    this.dataSource.data = this.participants;
-  }
-
-  selectParticipant(participant: any): void {
-    this.selectedParticipant = participant;
-    const index = this.participants.indexOf(participant);
-    this.selectedParticipantChange.emit(index);
-  }
-
-  fetchMatches(): void {
-    this.matchService.getMatches().subscribe({
-      next: (data) => {
-        this.matches = data;
-        console.log('Matches:', this.matches);
-      },
-      error: (err) => {
-        console.log('Error:', err);
-      },
-    });
+  onSelectMatch(match: MatchResponse): void {
+    // Emit the selected match
+    console.log('OnSelectMatch in startlist: ', match);
+    this.matchSelected.emit(match); // Emit the selected match
+    this.selectedMatch = match;
   }
 }

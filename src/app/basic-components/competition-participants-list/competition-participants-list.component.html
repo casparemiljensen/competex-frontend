@@ -4,7 +4,7 @@
       <mat-card-title>Startliste</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <mat-table [dataSource]="dataSource" class="startlist-table">
+      <mat-table [dataSource]="matches" class="startlist-table">
         <!-- Number Column -->
         <ng-container matColumnDef="number">
           <mat-header-cell *matHeaderCellDef> Nr. </mat-header-cell>
@@ -16,14 +16,19 @@
         <!-- Participant Name Column -->
         <ng-container matColumnDef="name">
           <mat-header-cell *matHeaderCellDef> Deltager </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{ element.name }} </mat-cell>
+          <mat-cell *matCellDef="let element">
+            <div *ngFor="let participant of element.participants">
+              {{ participant.name }}
+            </div>
+          </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row
           *matRowDef="let row; columns: displayedColumns"
-          (click)="selectParticipant(row)"
-          [class.selected]="row === selectedParticipant"
+          (click)="onSelectMatch(row)"
+          [class.selected]="row === selectedMatch"
+          [class.completed]="row.status === 3"
         ></mat-row>
       </mat-table>
     </mat-card-content>
