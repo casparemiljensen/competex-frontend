@@ -4,6 +4,7 @@ import { ConfirmDialogComponent } from '../basic-components/confirm-dialog/confi
 import { eventRespons } from '../models/eventRespons';
 import { ActivatedRoute } from '@angular/router';
 import { EventService } from '../service/eventTest/event-test.service';
+import { Router } from '@angular/router';
 import { Status } from '../models/enums'
 
 @Component({
@@ -22,7 +23,8 @@ export class CompStartComponent implements OnInit {
   constructor(
     public dialog: MatDialog, 
     private route: ActivatedRoute,
-    private EventService: EventService
+    private EventService: EventService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -69,7 +71,8 @@ export class CompStartComponent implements OnInit {
   }
 
   openConfirmDialog(buttonText: string, comp: any): void {
-    if (buttonText === "Start") {
+    if (buttonText === "0") { // the 0 here is in sted of "start"
+      this.router.navigate(['/competition-page', comp.id])
       return; // Do not open the dialog if buttonText is "Start"
     }
     
@@ -77,10 +80,10 @@ export class CompStartComponent implements OnInit {
       title: '',
       message: ''
     };
-    if (buttonText === 'Aktiv') {
+    if (buttonText === '1') { // the 1 here is for the active enume status
       dialogData.title = 'OPS! Du er ved at redigere i en aktiv konkurrence!';
       dialogData.message = 'Ønsker du at fortsætte?';
-    } else if (buttonText === 'Afsluttet') {
+    } else if (buttonText === '2' || buttonText === '3') { //the 2 and 3 are for the cancled anc ocnclude traits in that stauts
       dialogData.title = 'OPS! Du er ved at redigere i en afsluttet konkurrence!';
       dialogData.message = 'Ønsker du at fortsætte?';
     }
@@ -91,6 +94,7 @@ export class CompStartComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.buttonClick.emit();
+        console.log(buttonText)
         console.log("User  chose to proceed with:", comp);
       } else {
         console.log("User  cancelled action for:", comp);

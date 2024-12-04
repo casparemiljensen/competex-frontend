@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'registration-page/:id', component: RegistrationPageComponent },
   { path: 'results', component: ResultsOverviewPageComponent},
   { path: 'results/:eventId', component: ResultPageComponent},
-  { path: 'competition-page', component: CompetitionPageComponent },
+  { path: 'competition-page/:id', component: CompetitionPageComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect empty path to home
   { path: '**', redirectTo: '/home' }, // Redirect unknown paths to home
 ];
