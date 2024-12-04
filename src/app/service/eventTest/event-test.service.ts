@@ -39,27 +39,42 @@ export class EventService {
     );
   }
 
-  getEventsBySearchPendingtest(): Observable<eventRespons> {
-    console.log("this is the pending" + Status.Pending);
-
-    // return this.http.get<eventRespons>(`${this.apiUrl}/${Status.Active}`).pipe(
-    //   catchError(this.handleError<eventRespons>(`getEventBySearch status=${Status.Active}`))
-    // );
-
-    return this.http.get<eventRespons>(`${this.apiUrl}/Pendingw`).pipe(
-      catchError(this.handleError<eventRespons>(`getEventBySearch status=${Status.Active}`))
+  getEventsBySearchActive(): Observable<{ values: eventRespons[]; pageInfo: any }> {
+    const body = JSON.stringify({ status: 'Active' }); 
+    const headers = { 'Content-Type': 'application/json', Accept: '*/*' }; 
+  
+    return this.http.post<{ values: eventRespons[]; pageInfo: any }>(
+      `${this.apiUrl}/search`, 
+      body, 
+      { headers }
+    ).pipe(
+      catchError(this.handleError<{ values: eventRespons[]; pageInfo: any }>('getEventsBySearchPending'))
     );
   }
 
-  getEventsBySearcCancelled(): Observable<eventRespons> {
-    return this.http.get<eventRespons>(`${this.apiUrl}/${Status.Cancelled}`).pipe(
-      catchError(this.handleError<eventRespons>(`getEventBySearch status=${Status.Cancelled}`))
+  getEventsBySearchCancelled(): Observable<{ values: eventRespons[]; pageInfo: any }> {
+    const body = JSON.stringify({ status: 'Cancelled' }); 
+    const headers = { 'Content-Type': 'application/json', Accept: '*/*' }; 
+  
+    return this.http.post<{ values: eventRespons[]; pageInfo: any }>(
+      `${this.apiUrl}/search`, 
+      body, 
+      { headers }
+    ).pipe(
+      catchError(this.handleError<{ values: eventRespons[]; pageInfo: any }>('getEventsBySearchPending'))
     );
   }
 
-  getEventsBySearcConcluded(): Observable<eventRespons> {
-    return this.http.get<eventRespons>(`${this.apiUrl}/${Status.Concluded}`).pipe(
-      catchError(this.handleError<eventRespons>(`getEventBySearch status=${Status.Concluded}`))
+  getEventsBySearchConcluded(): Observable<{ values: eventRespons[]; pageInfo: any }> {
+    const body = JSON.stringify({ status: 'Concluded' }); 
+    const headers = { 'Content-Type': 'application/json', Accept: '*/*' }; 
+  
+    return this.http.post<{ values: eventRespons[]; pageInfo: any }>(
+      `${this.apiUrl}/search`, 
+      body, 
+      { headers }
+    ).pipe(
+      catchError(this.handleError<{ values: eventRespons[]; pageInfo: any }>('getEventsBySearchPending'))
     );
   }
 
