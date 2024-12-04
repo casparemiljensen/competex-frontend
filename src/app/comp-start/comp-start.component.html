@@ -6,22 +6,24 @@
   </div>
 
   <div class="competition-container">
-    <div *ngFor="let comp of ExpandableTableData; let i = index">
+    <div *ngFor="let comp of event.competitions; let i = index">
       <div
         class="competition-item"
-        [class.start]="comp.status === 'Start'"
-        [class.aktiv]="comp.status === 'Aktiv'"
-        [class.afsluttet]="comp.status === 'Afsluttet'"
+        [class.start]="comp.status === status.Pending "
+        [class.aktiv]="comp.status === status.Active"
+        [class.afsluttet]="comp.status === ( status.Concluded || status.Cancelled) "
       >
-      <span class="competition-text">{{ comp.ExpandableTable }}</span>
+      <!-- Mabe it is nessry to loop over the compition type, depeiing on the stcutre -->
+      <span class="competition-text">{{ comp.competitionType[0].name }}</span>
       <button
         class="competition-button"
-        [class.start-button]="comp.status === 'Start'"
-        [class.aktiv-button]="comp.status === 'Aktiv'"
-        [class.afsluttet-button]="comp.status === 'Afsluttet'"
-        (click)="openConfirmDialog(comp.status, comp)"
+        [class.start-button]="comp.status === status.Pending"
+        [class.aktiv-button]="comp.status === status.Active"
+        [class.afsluttet-button]="comp.status === (status.Concluded || status.Cancelled)"
+        
+        (click)="openConfirmDialog(comp.status.toString(), comp)"
       >
-        {{ comp.status }}
+        {{ getStatusString(comp.status) }}
       </button>
       </div>
     </div>
