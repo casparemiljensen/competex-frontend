@@ -8,12 +8,13 @@ import {
 } from '@angular/forms';
 import { PageEvent } from '@angular/material/paginator';
 import { eventRequest } from '../../models/eventRequest';
-import { EventService } from '../../service/event/event.service';
+import { EventService } from '../../service/eventTest/event-test.service';
 import { CompetitionService } from '../../service/Competition/competition.service';
 import { JudgeService } from '../../service/judge/judge.service';
 import { Judge } from '../../models/judge';
 import { LocationService } from '../../service/location/location.service';
 import { Location } from '../../models/location';
+import { CompetitionRequest } from '../../models/competitionRequest';
 @Component({
   selector: 'app-form-template',
   templateUrl: './form-template.component.html',
@@ -137,9 +138,8 @@ export class FormTemplateComponent implements OnInit {
 
           //Create competitions for event.
           const competitions = formData.competitions.map(
-            (competition: any) => ({
+            (competition: CompetitionRequest) => ({
               ...competition,
-              eventId: eventResponse.id, // Add eventId to each competition
             })
           );
 

@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { MatchResponse } from '../../models/matchResponse';
 import { MatchRequest } from '../../models/matchRequest';
 import { Observable, map } from 'rxjs';
+import { API_DOMAIN } from '../apiUrl';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MatchService {
-  private baseUrl = 'https://competex.schnykjaer.com:22114/api'; // backend URL
+  private baseUrl = `${API_DOMAIN}api/Judges`;
 
   constructor(private http: HttpClient) {}
 
