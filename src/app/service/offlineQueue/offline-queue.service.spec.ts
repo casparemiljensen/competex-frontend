@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SyncService } from './sync.service';
+import { OfflineQueueService } from './offline-queue.service';
 
-describe('SyncService', () => {
-  let service: SyncService;
+describe('OfflineQueueService', () => {
+  let service: OfflineQueueService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(SyncService);
+    service = TestBed.inject(OfflineQueueService);
   });
 
   it('should be created', () => {

@@ -1,8 +1,12 @@
 export class SyncTask<T> {
-    constructor(
-      public url: string,
-      public body: T,
-      public params?: string
-    ) {}
+  id?: number;
+  url: string;
+  body: T;
+  params: string;
+
+  constructor(url: string, body: T, params: string) {
+    this.url = url;
+    this.body = body;
+    this.params = params;
   }
-  
+}

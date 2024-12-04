@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CheckForUpdateService } from './check-for-update.service';
 import { CachePrimerService } from './service/CachePrimer/cache-primer.service';
-import { SyncService } from './service/SyncService/sync.service';  // Import SyncService
+import { OfflineQueueService } from './service/offlineQueue/offline-queue.service';  // Import OfflineQueueService
 
 @Component({
   selector: 'app-root',
@@ -14,19 +14,17 @@ export class AppComponent implements OnInit {
   constructor(
     private checkForUpdateService: CheckForUpdateService, 
     private cachePrimerService: CachePrimerService,
-    private syncService: SyncService  
+    private offlineQueueService: OfflineQueueService  
   ) {}
 
   ngOnInit(): void {
     this.cachePrimerService.primeCache();
-
-    if (navigator.onLine) {
-      this.syncService.processQueue();
-    }
+    this.offlineQueueService.processQueue();
 
     window.addEventListener('online', () => {
-      console.log('CompeteX is back online');
-      this.syncService.processQueue();  
+      console.log('CompeteX is back online, Syncing tasks');
+      this.offlineQueueService.processQueue();
+      console.log('Syncing tasks offlineQueue');
     });
 
     window.addEventListener('offline', () => {

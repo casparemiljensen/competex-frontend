@@ -21,6 +21,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "custom-sw.js",
+                "input": "src",
+                "output": "/"
               }
             ],
             "styles": [
