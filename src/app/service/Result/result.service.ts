@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { API_DOMAIN } from '../apiUrl';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ResultService {
-  private ResultUrl = 'api/result'
+  private ResultUrl = `${API_DOMAIN}/result`; 
 
   constructor(private http: HttpClient) { }
 

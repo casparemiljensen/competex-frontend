@@ -12,7 +12,7 @@ export class EventService {
 
   constructor(private http: HttpClient) { }
 
-  private apiUrl = `${API_DOMAIN}api/Events`; 
+  private apiUrl = `${API_DOMAIN}/Events`; 
 
   getEvents(): Observable<eventRespons[]> {
     return this.http.get<eventRespons[]>(this.apiUrl).pipe(
