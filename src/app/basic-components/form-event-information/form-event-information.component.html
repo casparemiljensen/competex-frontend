@@ -4,14 +4,16 @@
     label="Titel"
     [control]="titleControl"
   ></app-form-input-text>
-  <app-form-input-text
+  <app-form-input-select
     label="Arrangør"
     [control]="organizerControl"
-  ></app-form-input-text>
-  <app-form-input-text
+    [options]="organizerOptions"
+  ></app-form-input-select>
+  <app-form-input-select
     label="Stednavn"
     [control]="locationControl"
-  ></app-form-input-text>
+    [options]="locationOptions"
+  ></app-form-input-select>
   <app-form-input-text
     label="Adresse"
     [control]="adressControl"

@@ -8,6 +8,9 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class FormEventInformationComponent {
   @Input() parentForm!: FormGroup;
+  @Input() locations: { id: string; name: string }[] = [];
+  @Input() judges: { id: string; name: string }[] = [];
+  @Input() organizers: { id: string; name: string }[] = [];
 
   // Getter methods to access each form control from the parent form
   get titleControl(): FormControl {
@@ -39,5 +42,22 @@ export class FormEventInformationComponent {
   }
   get registrationEndDateControl(): FormControl {
     return this.parentForm.get('registrationEndDate') as FormControl;
+  }
+
+  get locationOptions() {
+    return this.locations.map((location) => {
+      return {
+        value: location.id,
+        viewValue: location.name,
+      };
+    });
+  }
+  get organizerOptions() {
+    return this.organizers.map((organizer) => {
+      return {
+        value: organizer.id,
+        viewValue: organizer.name,
+      };
+    });
   }
 }
