@@ -16,6 +16,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class RegistrationFormsComponent {
   @Input() formFields: { [key: string]: any } = {};
+  @Input() compitionsData: any;
 
   myForm!: FormGroup;
   currentPageIndex: number = 0;

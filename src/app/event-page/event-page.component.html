@@ -1,38 +1,42 @@
 <div class="page-container">
-  <div class="title">
-    This is the title for the event
-  </div>
-
-  <div class="top-section">
-    <div class="container locatoin">
-      <h3>Location</h3>
-      <p>Stednavn</p>
-      <p>Address</p>
-      <p>Post nummer og by</p>
-    </div>
-    <div class="container dates">
-      <h3>Datoer og tidspunkt</h3>
-      <p>Starttidspunkt:</p>
-      <p>Tilmeldingsstart:</p>
-      <p>Sidste tilmelding:</p>
+  <div *ngIf="event">
+    <div class="title">
+      {{event.title}}
     </div>
 
-    <!-- Button section to display button deping on if is creator -->
+    <div class="top-section">
+      <div class="container locatoin">
+        <h3>Location</h3>
+        <p>{{event.location.name}}</p>
+        <p>{{event.location.address}}</p>
+        <p>{{event.location.zip}}, {{event.location.city}}, {{event.location.country}}</p>
+      </div>
+      <div class="container dates">
+        <h3>Datoer og tidspunkt</h3>
+        <p>Starttidspunkt: {{event.startDate | date : "MMMM dd, yyyy" }}</p>
+        <p>Tilmeldingsstart: {{event.registrationStartDate | date : "MMMM dd, yyyy"}}</p>
+        <p>Sidste tilmelding: {{event.registrationEndDate | date : "MMM dd, yyyy"}}</p>
+      </div>
+  
+      <!-- Button section to display button deping on if is creator -->
       <div class="container buttons" *ngIf="isCreator">
-        <button mat-button class="start-button">START</button>
+        <button mat-button class="start-button" [routerLink]="['/competition-start', event.id]">START</button>
         <button mat-button color="warn" class="edit-button">
           <mat-icon>edit</mat-icon> Edit
         </button>
-        <button mat-button color="primary" class="register-button">Register</button>
+        <button mat-button color="primary" class="register-button" [routerLink]="['/registration-page', event.id]">Register</button>
       </div>
 
       <div class="container buttons" *ngIf="!isCreator">
-        <button mat-button color="primary" class="register-button">Register</button>
-        <button mat-button class="result-button">Results</button>
+        <button mat-button color="primary" class="register-button" [routerLink]="['/registration-page', event.id]">Register</button>
+        <button mat-button class="result-button" [routerLink]="['/results', event.id]">Results</button>
       </div>
-
+    </div>
   </div>
-  <div *ngIf="isCreator">
+
+  <!--Out of scope for this version -->
+
+  <!-- <div *ngIf="isCreator">
     <div class="middle-section">
       <div class="table-container">
         <app-ExpandableTable [ExpandableTables]="judgeData"></app-ExpandableTable>
@@ -44,5 +48,5 @@
   </div>
   <div class="ExpandableTable-container">
     <app-ExpandableTable [ExpandableTables]="ExpandableTableData"></app-ExpandableTable>
-  </div>
+  </div> -->
 </div>

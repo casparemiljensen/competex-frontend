@@ -1,4 +1,9 @@
 <div class="page-container">
+  <div>
+    <tr *ngFor="let competition of competitions">
+      <td>{{ competition.startDate }}</td>
+    </tr>
+  </div>
   <div *ngIf="!detailsSubmitted">
     <h2>Konkurrence Detaljer</h2>
     <div class="form-group">

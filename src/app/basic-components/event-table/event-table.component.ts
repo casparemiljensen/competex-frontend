@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { EventService } from '../../service/event/event.service';
-import { Event } from '../../models/event'
+import { Observable } from 'rxjs';
+import { EventService } from '../../service/eventTest/event-test.service';
+import { eventRespons } from '../../models/eventRespons';
 
 @Component({
   selector: 'app-event-table',
@@ -11,24 +12,46 @@ import { Event } from '../../models/event'
 
 export class EventTableComponent implements OnInit {
 
-  events: Event[] = [];
-  groupedEvents: [string, Event[]][] = [];
+  events$: Observable<eventRespons[]> | undefined; // Observable to hold event data
+  groupedEvents: [string, eventRespons[]][] = [];
   isLoading = true;
 
+  // Inject the EventService
   constructor(private eventService: EventService) {}
 
+  // Use Angular's lifecycle hook to fetch events on component initialization
   ngOnInit(): void {
-    this.eventService.getEvents().subscribe(events => {
-      this.events = events;
-      this.groupedEvents = this.groupEventsByMonth(this.events);
+    this.fetchEvents();
+  }
+
+  // Fetch events from the service
+  fetchEvents(): void {
+    this.isLoading = true;
+    this.eventService.getEvents().subscribe((apiData) => {
+      const events = this.mapApiDataToEvents(apiData);
+      this.groupedEvents = this.groupEventsByMonth(events);
       this.isLoading = false;
+      for (const event of events) {
+        console.log(event.id)
+      }
     });
   }
 
-  groupEventsByMonth(events: Event[]): [string, Event[]][] {
-    // Group events by month and year
-    const groupedEvents: { [key: string]: Event[] } = events.reduce((groups, event) => {
-      const eventDate = new Date(event.date);
+  mapApiDataToEvents(apiData: any): eventRespons[] {
+    return apiData.values.map((value: any) => ({
+      id: value.id,
+      title: value.title,
+      description: value.description,
+      startDate: new Date(value.startDate),
+      endDate: new Date(value.endDate),
+      location: `${value.location.name}, ${value.location.city}, ${value.location.country}`,
+      creator: value.organizer,
+    }));
+  }
+
+  groupEventsByMonth(events: eventRespons[]): [string, eventRespons[]][] {
+    const groupedEvents: { [key: string]: eventRespons[] } = events.reduce((groups, event: eventRespons) => {
+      const eventDate = event.startDate;
       const monthYear = eventDate.toLocaleString('default', { month: 'long', year: 'numeric' });
   
       if (!groups[monthYear]) {
@@ -37,13 +60,13 @@ export class EventTableComponent implements OnInit {
   
       groups[monthYear].push(event);
       return groups;
-    }, {} as { [key: string]: Event[] });
+    }, {} as { [key: string]: eventRespons[] });
   
     // Sort the events by date within each month-year group
     Object.keys(groupedEvents).forEach(monthYear => {
-      groupedEvents[monthYear].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+      groupedEvents[monthYear].sort((a, b) => a.startDate.getTime() - b.startDate.getTime());
     });
   
-    return Object.entries(groupedEvents) as [string, Event[]][];
+    return Object.entries(groupedEvents) as [string, eventRespons[]][];
   }
 }
