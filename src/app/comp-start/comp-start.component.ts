@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../basic-components/confirm-dialog/confirm-dialog.component';
 import { eventRespons } from '../models/eventRespons';
 import { ActivatedRoute } from '@angular/router';
-import { EventService } from '../service/eventTest/event-test.service';
+import { EventService } from '../service/event/event.service';
 import { Router } from '@angular/router';
 import { Status } from '../models/enums'
 
