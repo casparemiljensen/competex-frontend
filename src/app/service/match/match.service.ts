@@ -9,14 +9,14 @@ import { API_DOMAIN } from '../apiUrl';
   providedIn: 'root',
 })
 export class MatchService {
-  private baseUrl = `${API_DOMAIN}api/Matches`;
+  private baseUrl = `${API_DOMAIN}/Matches`;
 
   constructor(private http: HttpClient) {}
 
   //Fetch all matches
   getMatches(): Observable<MatchResponse[]> {
     return this.http
-      .get<{ values: MatchResponse[] }>(`${this.baseUrl}/Matches`)
+      .get<{ values: MatchResponse[] }>(`${this.baseUrl}`)
       .pipe(map((response) => response.values));
   }
 

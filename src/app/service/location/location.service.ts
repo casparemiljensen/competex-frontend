@@ -10,7 +10,7 @@ import { Location } from '../../models/location';
 export class LocationService {
   constructor(private http: HttpClient) {}
 
-  private apiUrl = `${API_DOMAIN}api/Locations`;
+  private apiUrl = `${API_DOMAIN}/Locations`;
 
   getLocation(): Observable<any[]> {
     return this.http

@@ -10,7 +10,7 @@ import { Judge } from '../../models/judge';
 export class JudgeService {
   constructor(private http: HttpClient) {}
 
-  private apiUrl = `${API_DOMAIN}api/Judges`;
+  private apiUrl = `${API_DOMAIN}/Judges`;
 
   getJudge(): Observable<any[]> {
     return this.http
