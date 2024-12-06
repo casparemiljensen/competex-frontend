@@ -34,6 +34,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "custom-sw.js",
+                "input": "src",
+                "output": "/"
               }
             ],
             "styles": [
@@ -41,7 +46,8 @@
               "src/styles.css",
               "node_modules/office-ui-fabric-core/dist/css/fabric.min.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "serviceWorker": "src/ngsw-config.json"
           },
           "configurations": {
             "production": {
@@ -57,7 +63,17 @@
                   "maximumError": "4kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
             },
             "development": {
               "optimization": false,
@@ -70,7 +86,6 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            
           },
           "configurations": {
             "production": {

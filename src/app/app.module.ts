@@ -38,6 +38,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 //  Angular Material Imports
 import { MatIconModule } from '@angular/material/icon';
@@ -67,6 +68,7 @@ import { MatCardModule } from '@angular/material/card';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { CompetitionParticipantsListComponent } from './basic-components/competition-participants-list/competition-participants-list.component';
 import { CompetitionResultViewComponent } from './basic-components/competition-result-view/competition-result-view.component';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -135,6 +137,9 @@ import { CompetitionResultViewComponent } from './basic-components/competition-r
     MatPaginatorModule,
     HttpClientModule,
     MatCardModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+    }),
   ],
   providers: [provideAnimationsAsync(), provideNativeDateAdapter()],
   bootstrap: [AppComponent],
