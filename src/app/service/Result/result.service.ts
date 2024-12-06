@@ -7,7 +7,7 @@ import { API_DOMAIN } from '../apiUrl';
   providedIn: 'root',
 })
 export class ResultService {
-  private apiUrl = `${API_DOMAIN}api/Judges`;
+  private apiUrl = `${API_DOMAIN}/Judges`;
 
   constructor(private http: HttpClient) {}
 

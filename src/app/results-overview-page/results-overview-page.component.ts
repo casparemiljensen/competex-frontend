@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { EventService } from '../service/eventTest/event-test.service';
+import { EventService } from '../service/event/event.service';
 import { eventRespons } from '../models/eventRespons';
 import { Router } from '@angular/router';
 // import { Observable } from 'rxjs';
