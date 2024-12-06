@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CheckForUpdateService } from './check-for-update.service';
 import { CachePrimerService } from './service/CachePrimer/cache-primer.service';
-import { OfflineQueueService } from './service/offlineQueue/offline-queue.service';  // Import OfflineQueueService
+import { OfflineQueueService } from './service/offlineQueue/offline-queue.service';
 
 @Component({
   selector: 'app-root',
