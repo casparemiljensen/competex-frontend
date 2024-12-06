@@ -11,7 +11,7 @@ import { API_DOMAIN } from '../apiUrl';
   providedIn: 'root',
 })
 export class entityService {
-  private baseUrl = `${API_DOMAIN}api/Entities`; // backend URL
+  private baseUrl = `${API_DOMAIN}/Entities`; // backend URL
 
   constructor(
     private http: HttpClient,

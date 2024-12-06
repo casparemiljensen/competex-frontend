@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CompetitionService } from '../Competition/competition.service';
 import { entityService } from '../entity/entity.service';
-import { EventService } from '../eventTest/event-test.service';
-import { EventPageService } from '../event-page/event-page.service';
+import { EventService } from '../event/event.service';
 import { MatchService } from '../match/match.service';
 import { ResultService } from '../Result/result.service';
 
@@ -14,7 +13,6 @@ export class CachePrimerService {
     private competitionService: CompetitionService, 
     private entityService: entityService,
     private eventService: EventService,
-    private eventpageService: EventPageService,
     private matchService: MatchService,
     private resultsService: ResultService,
   ) {}
@@ -23,8 +21,8 @@ export class CachePrimerService {
     this.cacheCompetitions();
     this.cacheEntities();
     this.cacheEvents();
-    this.cacheEventPageData();
-    // this.cacheResults();
+    this.cacheMatches();
+    this.cacheResults();
   }
 
   private cacheCompetitions(): void {
@@ -48,17 +46,17 @@ export class CachePrimerService {
     });
   }
 
-  private cacheEventPageData(): void {
-    this.eventpageService.getJudge().subscribe({
-      next: (judges) => console.log('Judges cached:', judges),
-      error: (err) => console.error('Failed to cache judges:', err.message),
+  private cacheMatches(): void {
+    this.matchService.getMatches().subscribe({
+      next: (matches) => console.log('Matches cached:', matches),
+      error: (err) => console.error('Failed to cache matches:', err.message),
     });
   }
 
-  // private cacheResults(): void {
-  //   this.resultsService.getResult().subscribe({
-  //     next: (results) => console.log('Results cached:', results),
-  //     error: (err) => console.error('Failed to cache results:', err.message),
-  //   });
-  // }
+  private cacheResults(): void {
+    this.resultsService.getResult().subscribe({
+      next: (results) => console.log('Results cached:', results),
+      error: (err) => console.error('Failed to cache results:', err.message),
+    });
+  }
 }
