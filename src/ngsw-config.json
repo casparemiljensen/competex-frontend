@@ -30,11 +30,11 @@
     {
       "name": "api",
       "urls": [
-        "https://competex.schnykjaer.com:22114/api/**"
+        "https://localhost:7140/**"
       ],
       "cacheConfig": {
         "strategy": "performance",
-        "maxSize": 10000,
+        "maxSize": 1000,
         "maxAge": "2d",
         "timeout": "5s"
       }

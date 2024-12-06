@@ -5,12 +5,13 @@ import { catchError, map } from 'rxjs/operators';
 import { entityRequest } from '../../models/entityRequest';
 import { entityResponse } from '../../models/entityResponse';
 import { OfflineQueueService } from '../offlineQueue/offline-queue.service';
+import { API_DOMAIN } from '../apiUrl';
 
 @Injectable({
   providedIn: 'root',
 })
 export class entityService {
-  private baseUrl = 'https://competex.schnykjaer.com:22114/api/Entities'; // backend URL
+  private baseUrl = `${API_DOMAIN}api/Entities`; // backend URL
 
   constructor(
     private http: HttpClient,
@@ -28,14 +29,14 @@ export class entityService {
   postEntity(entity: entityRequest): Observable<entityResponse> {
     return this.http.post<entityResponse>(this.baseUrl, entity).pipe(
       catchError((error) => {
-        // If there's an error (likely offline), save the request in the queue
+        // If the request fails (likely offline), save the request in the queue
         console.error('Error posting entity, saving to queue:', error);
+
         this.offlineQueueService.addToQueue(this.baseUrl, entity, new HttpParams());
-        // Return an empty observable of type entityResponse
         return EMPTY;
       })
     );
-  }
+  }  
 
   // Delete an entity (Handles offline and online requests)
   deleteEntity(id: string): Observable<void> {

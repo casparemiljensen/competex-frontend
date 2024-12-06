@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
     window.addEventListener('online', () => {
       console.log('CompeteX is back online, Syncing tasks');
       this.offlineQueueService.processQueue();
-      console.log('Syncing tasks offlineQueue');
+      console.log('Tasks synced');
     });
 
     window.addEventListener('offline', () => {

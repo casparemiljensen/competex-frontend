@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { API_DOMAIN } from '../apiUrl';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventPageService {
-  private judgeUrl = 'https://competex.schnykjaer.com:22114/api/Judges';
+  private judgeUrl = `${API_DOMAIN}api/Judges`;
   private ExpandableTablesUrl = 'api/ExpandableTables';
 
   constructor(private http: HttpClient) {}

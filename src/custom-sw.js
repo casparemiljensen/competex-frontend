@@ -1,15 +1,34 @@
-self.addEventListener("sync", (event) => {
-  if (event.tag === "sync-tasks") {
-    console.log("Background sync triggered");
-    event.waitUntil(syncPendingTasks());
+self.addEventListener("fetch", (event) => {
+  if (event.request.method === "POST") {
+    event.respondWith(
+      (async () => {
+        try {
+          const networkResponse = await fetch(event.request);
+          return networkResponse;
+        } catch (error) {
+          return new Response(
+            JSON.stringify({ error: "Request failed offline" }),
+            {
+              headers: { "Content-Type": "application/json" },
+            }
+          );
+        }
+      })()
+    );
   }
 });
 
+// Syncing tasks when network becomes available
 async function syncPendingTasks() {
+  console.log("Starting task synchronization...");
+
   try {
     const syncTasks = await getSyncTasksFromIndexedDB();
+    console.log("Tasks retrieved for synchronization:", syncTasks);
 
     for (const task of syncTasks) {
+      console.log("Syncing task:", task);
+
       try {
         const response = await fetch(task.url, {
           method: "POST",
@@ -19,12 +38,12 @@ async function syncPendingTasks() {
 
         if (response.ok) {
           console.log("Task synced successfully:", task);
-          await removeTaskFromIndexedDB(task.id); // Use an ID to identify tasks
+          await removeTaskFromIndexedDB(task.id);
         } else {
           console.error("Task sync failed:", response.status, task);
         }
       } catch (err) {
-        console.error("Error syncing task:", err);
+        console.error("Error syncing task:", task, err);
       }
     }
   } catch (err) {
@@ -32,10 +51,9 @@ async function syncPendingTasks() {
   }
 }
 
-// Function to get sync tasks from IndexedDB
 function getSyncTasksFromIndexedDB() {
   return new Promise((resolve, reject) => {
-    const request = indexedDB.open("SyncTasksDB");
+    const request = indexedDB.open("SyncTasksDB", 3);
 
     request.onerror = () => {
       reject("Failed to open IndexedDB");
@@ -58,10 +76,9 @@ function getSyncTasksFromIndexedDB() {
   });
 }
 
-// Function to remove a synced task from IndexedDB
 function removeTaskFromIndexedDB(taskId) {
   return new Promise((resolve, reject) => {
-    const request = indexedDB.open("SyncTasksDB");
+    const request = indexedDB.open("SyncTasksDB", 3);
 
     request.onerror = () => {
       reject("Failed to open IndexedDB");
@@ -84,11 +101,11 @@ function removeTaskFromIndexedDB(taskId) {
   });
 }
 
-// Initialize IndexedDB when the service worker starts
+// Initialize IndexedDB
 initializeIndexedDB();
 
 function initializeIndexedDB() {
-  const request = indexedDB.open("SyncTasksDB", 1);
+  const request = indexedDB.open("SyncTasksDB", 3);
 
   request.onupgradeneeded = (event) => {
     const db = event.target.result;
@@ -97,7 +114,11 @@ function initializeIndexedDB() {
     }
   };
 
+  request.onsuccess = () => {
+    console.log("IndexedDB initialized successfully.");
+  };
+
   request.onerror = () => {
-    console.error("Failed to initialize IndexedDB");
+    console.error("Failed to initialize IndexedDB.");
   };
 }

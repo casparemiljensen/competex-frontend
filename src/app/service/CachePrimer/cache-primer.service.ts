@@ -30,8 +30,7 @@ export class CachePrimerService {
   private cacheCompetitions(): void {
     this.competitionService.getCompetitions().subscribe({
       next: (competitions) => console.log('Competitions cached:', competitions),
-      error: (err) =>
-        console.error('Failed to cache competitions:', err.message),
+      error: (err) => console.error('Failed to cache competitions:', err.message),
     });
   }
 

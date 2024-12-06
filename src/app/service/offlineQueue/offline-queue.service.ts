@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, EMPTY } from 'rxjs';
-import { SyncTask } from '../../models/syncTask'; // Make sure to import the SyncTask class
+import { SyncTask } from '../../models/syncTask';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +10,9 @@ export class OfflineQueueService {
 
   // Method to add a task to the offline queue
   addToQueue(url: string, payload: any, params: HttpParams): void {
-    const request = indexedDB.open('SyncTasksDB', 1);
+    console.log('Adding task to queue:', { url, payload, params: params.toString() });
+
+    const request = indexedDB.open('SyncTasksDB', 3);
 
     request.onupgradeneeded = (event) => {
       const db = (event.target as IDBRequest).result;
@@ -24,7 +25,10 @@ export class OfflineQueueService {
       const db = (event.target as IDBRequest).result;
       const transaction = db.transaction('syncTasks', 'readwrite');
       const store = transaction.objectStore('syncTasks');
-      store.add({ url, payload, params });
+      const task = { url, body: payload, params: params.toString() };
+      store.add(task);
+
+      console.log('Task successfully stored in IndexedDB:', task);
     };
 
     request.onerror = (event) => {
@@ -34,7 +38,14 @@ export class OfflineQueueService {
 
   // Method to process all queued requests
   processQueue(): void {
-    const request = indexedDB.open('SyncTasksDB', 1);
+    const request = indexedDB.open('SyncTasksDB', 3);
+
+    request.onupgradeneeded = (event) => {
+      const db = (event.target as IDBRequest).result;
+      if (!db.objectStoreNames.contains('syncTasks')) {
+        db.createObjectStore('syncTasks', { keyPath: 'id', autoIncrement: true });
+      }
+    };
 
     request.onsuccess = (event) => {
       const db = (event.target as IDBRequest).result;
@@ -43,17 +54,35 @@ export class OfflineQueueService {
       const getAllRequest = store.getAll();
 
       getAllRequest.onsuccess = () => {
-        const tasks: SyncTask<any>[] = getAllRequest.result; // Explicitly type the tasks array
+        const tasks: SyncTask<any>[] = getAllRequest.result;
+        console.log('Retrieved tasks from queue:', tasks);
         if (tasks.length > 0) {
-          tasks.forEach((task: SyncTask<any>) => { // Specify the type of task here
-            this.http
-              .post(task.url, task.body, { params: new HttpParams({ fromString: task.params }) })
-              .subscribe({
-                next: () => this.removeFromQueue(task.id!),
-                error: (err) => console.error('Failed to sync task:', err),
-              });
+          tasks.forEach((task: SyncTask<any>) => {
+            console.log('Syncing task:', task);
+            this.http.post(
+              task.url,
+              JSON.stringify(task.body),
+              {
+                headers: { 'Content-Type': 'application/json' },
+                params: new HttpParams({ fromString: task.params })
+              }
+            ).subscribe({
+              next: () => {
+                  console.log('Task synced successfully:', task);
+                  this.removeFromQueue(task.id!);
+                },
+              error: (err) =>  {
+                console.error('Failed to sync task:', task, err);
+              },
+            });
           });
+        } else {
+          console.log('No tasks to sync');
         }
+      };
+
+      getAllRequest.onerror = () => {
+        console.error('Error retrieving tasks from IndexedDB.');
       };
     };
 
@@ -64,7 +93,7 @@ export class OfflineQueueService {
 
   // Method to remove a task from the queue after successful sync
   private removeFromQueue(taskId: number): void {
-    const request = indexedDB.open('SyncTasksDB', 1);
+    const request = indexedDB.open('SyncTasksDB', 3); 
 
     request.onsuccess = (event) => {
       const db = (event.target as IDBRequest).result;
