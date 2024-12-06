@@ -8,7 +8,7 @@ import { API_DOMAIN } from '../apiUrl';
   providedIn: 'root',
 })
 export class CompetitionTypeService {
-  private baseUrl = `${API_DOMAIN}api/CompetitionType`;
+  private baseUrl = `${API_DOMAIN}/CompetitionType`;
 
   constructor(private http: HttpClient) {}
 

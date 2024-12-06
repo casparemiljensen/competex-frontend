@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { EventPageService } from '../service/event-page/event-page.service';
+import { EventService } from '../service/event/event.service';
 import { ActivatedRoute } from '@angular/router';
 import { eventRespons } from '../models/eventRespons';
-import { EventService } from '../service/event/event.service';
 import { CompetitionResponse } from '../models/competitionResponse';
 
 @Component({
