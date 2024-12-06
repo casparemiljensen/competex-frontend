@@ -1,8 +1,11 @@
-import { competitionType } from './competitionType';
+import { CompetitionType } from './competitionType';
 import { Level, Status } from './enums';
+
 export interface CompetitionRequest {
-  id: string; // UUID
-  competitionType: competitionType  ; // Replace [...] with the expected type, e.g., string[] or an enum
+  id?: string; // UUID
+  competitionType?: CompetitionType[];
+  competitionTypeId?: string; // UUID
+  eventId: string; // UUID
   startDate: string; // ISO date string
   endDate: string; // ISO date string
   level: Level; // Enum for Level

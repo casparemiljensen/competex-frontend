@@ -24,7 +24,6 @@ export class RegistrationPageComponent implements OnInit {
       const eventId = params.get('id');
       if (eventId) {
         this.fetchEvent(eventId);
-
       } else {
         // handle empty repons here
         console.error('Event ID is missing in the route.');
@@ -58,6 +57,7 @@ export class RegistrationPageComponent implements OnInit {
       organizer: data.organizer,
       sportType: data.sportType,
       competitions: data.competitions,
+      entryFee: data.entryFee,
     };
   }
 }
