@@ -11,6 +11,9 @@ import { MatchResponse } from '../models/matchResponse';
 import { MatchService } from '../service/match/match.service';
 import { ParticipantType, Team, Single, Ekvipage } from '../models/participant';
 import { MatchRequest } from '../models/matchRequest';
+import { ActivatedRoute } from '@angular/router';
+import { RoundService } from '../service/Round/round.service';
+import { RoundRequest } from '../models/roundRequest';
 
 @Component({
   selector: 'app-competition-page',
@@ -25,20 +28,27 @@ export class CompetitionPageComponent {
   competitionId!: string;
   matches: MatchResponse[] = [];
   selectedMatch: MatchResponse | null = null;
-  variable: string = 'Hello';
+  showRoundDetailsView = false;
 
   constructor(
     private fb: FormBuilder,
     private competitionService: CompetitionService,
-    private matchService: MatchService
+    private matchService: MatchService,
+    private roundService: RoundService,
+    private route: ActivatedRoute
   ) {}
 
   competitions: CompetitionResponse[] = [];
   // competitions: Observable<CompetitionResponse[]> | undefined;
 
   ngOnInit(): void {
-    this.fetchCompetition(); //Change this later
-    this.nextRound(); //Change this later
+    this.competitionId = this.route.snapshot.paramMap.get('id')!;
+    console.log('CompetitionId passed: ', this.competitionId); // Use the compId as needed
+    if (this.competitionId) {
+      this.fetchCompetition(this.competitionId);
+    } else {
+      console.error('Competition ID is missing in the route.');
+    }
 
     this.myForm = this.fb.group({
       dommer: ['', [Validators.required]],
@@ -46,6 +56,7 @@ export class CompetitionPageComponent {
       bedmetode: ['', [Validators.required]],
     });
   }
+
   bedMetodeOptions = [
     { value: 'd1', viewValue: 'D1' },
     { value: 'c1', viewValue: 'C1' },
@@ -81,12 +92,12 @@ export class CompetitionPageComponent {
   }
 
   //Fetch the given competition to display on page.
-  fetchCompetition(): void {
+  fetchCompetition(competition: string): void {
     //Change later
-    this.competitionService.getCompetitions().subscribe({
+    this.competitionService.getCompetitionById(competition).subscribe({
       next: (response) => {
-        this.competitions = response;
-        console.log(this.competitions);
+        this.competition = response;
+        console.log('Competition: ', this.competition);
       },
       error: (err) => console.error('Error fetching competitions:', err),
     });
@@ -99,7 +110,7 @@ export class CompetitionPageComponent {
     this.matchService.getMatches().subscribe({
       next: (response) => {
         this.matches = response;
-        console.log(this.matches);
+        console.log('Matches: ', this.matches);
       },
       error: (err) => console.error('Error fetching competitions:', err),
     });
@@ -116,5 +127,21 @@ export class CompetitionPageComponent {
     if (matchIndex > -1) {
       this.matches[matchIndex].status = updatedMatch.status;
     }
+  }
+
+  onNewRoundClick(count: number): void {
+    this.showRoundDetailsView = !this.showRoundDetailsView;
+    const newRound: RoundRequest = {
+      competitionId: this.competitionId,
+      sequenceNumber: 0, // Add the missing sequenceNumber property
+    };
+    if (count === 0) {
+      newRound.sequenceNumber = 0;
+    } else {
+      newRound.sequenceNumber = 1;
+    }
+    this.roundService.createMatchesForRound(newRound).subscribe({
+      // Handle the subscription response here
+    });
   }
 }

@@ -30,6 +30,7 @@
     <h2>Bedømmelse</h2>
     <div class="result-content">
       <app-competition-result-view
+        *ngIf="!showRoundDetailsView"
         class="result-view"
         [match]="selectedMatch"
         (matchUpdated)="updateMatchList($event)"
@@ -37,11 +38,18 @@
       </app-competition-result-view>
 
       <app-competition-participants-list
+        *ngIf="!showRoundDetailsView"
+        (newRoundClick)="onNewRoundClick(0)"
         [matches]="matches"
         class="participants-list"
         (matchSelected)="selectMatch($event)"
       >
       </app-competition-participants-list>
+      <app-competition-round-details
+        *ngIf="showRoundDetailsView"
+        (newRoundAdded)="onNewRoundClick(1)"
+        (roundDetailsSubmitted)="handleSubmit()"
+      ></app-competition-round-details>
     </div>
   </div>
 </div>

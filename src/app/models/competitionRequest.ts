@@ -13,4 +13,5 @@ export interface CompetitionRequest {
   minParticipants: number;
   maxParticipants: number;
   registrationPrice: number;
+  name: string;
 }

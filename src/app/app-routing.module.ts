@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'create-event', component: CreateEventComponent },
   { path: 'mypage', component: MyPageComponent },
   {
-    path: 'competition-start/:eventId/:eventId',
+    path: 'competition-start/:eventId',
     component: CompStartComponent,
   },
   { path: ':eventId/event-page', component: EventPageComponent },

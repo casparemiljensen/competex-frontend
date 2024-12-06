@@ -12,6 +12,7 @@ export class CompetitionParticipantsListComponent {
   @Input() matches: MatchResponse[] = [];
   @Input() participants: Participant[] = [];
   @Output() matchSelected = new EventEmitter<MatchResponse>();
+  @Output() newRoundClick = new EventEmitter<void>();
 
   displayedColumns: string[] = ['number', 'name'];
   dataSource = new MatTableDataSource(this.matches);
@@ -22,5 +23,8 @@ export class CompetitionParticipantsListComponent {
     console.log('OnSelectMatch in startlist: ', match);
     this.matchSelected.emit(match); // Emit the selected match
     this.selectedMatch = match;
+  }
+  handleNewRoundClick() {
+    this.newRoundClick.emit();
   }
 }

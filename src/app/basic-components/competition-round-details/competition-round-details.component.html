@@ -1,0 +1,17 @@
+<div>
+  <h2>Angiv Runde Detaljer</h2>
+  <div class="form-group">
+    <form [formGroup]="myForm" (ngSubmit)="handleSubmit()">
+      <p>
+        Angiv finalekrav. Lad felter værre tomme hvis der ikke er begrænsning.
+      </p>
+      <app-form-input-text label="Fejl" [control]="faultControl">
+      </app-form-input-text>
+      <app-form-input-time label="Tid" [control]="timeControl">
+      </app-form-input-time>
+      <button mat-raised-button type="submit" class="submit-button">
+        Fortsæt
+      </button>
+    </form>
+  </div>
+</div>
