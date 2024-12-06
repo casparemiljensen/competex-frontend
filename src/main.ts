@@ -1,6 +1,10 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 
+platformBrowserDynamic().bootstrapModule(AppModule, {
+  ngZoneEventCoalescing: true
+})
+
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/ngsw-worker.js').then(() => {
     console.log('Angular Service Worker registered');
