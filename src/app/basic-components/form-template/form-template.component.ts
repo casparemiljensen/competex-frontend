@@ -184,14 +184,17 @@ export class FormTemplateComponent implements OnInit {
           // Step 2: Prepare and create competitions using the `eventId`
           const competitions = formData.competitions.map((data: any) => ({
             eventId: eventResponse.id, // Use the eventId from the response
-            competitionTypeId: data.competitionType,
+            competitionTypeId: JSON.parse(data.competitionType).id,
             startDate: formData.startDate,
             endDate: formData.endDate,
-            level: parseInt(data.level, 10),
+            level: parseInt(JSON.parse(data.level).level, 10),
             status: 0,
             minParticipants: 0,
             maxParticipants: 100,
             registrationPrice: data.price,
+            name: `${JSON.parse(data.level).name} ${
+              JSON.parse(data.competitionType).name
+            } `,
           }));
 
           competitions.forEach((competition: CompetitionRequest) => {

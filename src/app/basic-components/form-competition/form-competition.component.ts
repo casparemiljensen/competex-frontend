@@ -76,7 +76,7 @@ export class CompetitionFormComponent {
   getCompetitionTypeOptions() {
     this.competitionTypeOptions = this.competitionTypes.map((data) => {
       return {
-        value: data.id,
+        value: JSON.stringify({ id: data.id, name: data.name || '' }),
         viewValue: data.name || '', // Set a default value if data.name is null or undefined
       };
     });
@@ -88,7 +88,7 @@ export class CompetitionFormComponent {
     this.levelOptions = Object.entries(Level)
       .filter(([key, value]) => typeof value === 'number') // Ensure only numeric values are used
       .map(([key, value]) => ({
-        value: value.toString(), // Explicitly cast the value to a number
+        value: JSON.stringify({ level: value, name: key }), // Explicitly cast the value to a number
         viewValue: key, // Use string representation for display
       }));
 
