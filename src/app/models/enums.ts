@@ -34,10 +34,13 @@ export enum EntityType {
 }
 
 export enum Level { // Can be used for all types of participants and competitions.
-  Intermediate,
-  Beginner,
-  Advanced,
-  Professional,
+  Mini,
+  Let,
+  Middelsvær,
+  Svær,
+  Elite,
+  Veteran,
+  IkkeElite,
 }
 
 export enum PenaltyType {

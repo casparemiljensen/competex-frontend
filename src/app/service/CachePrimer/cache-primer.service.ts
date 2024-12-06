@@ -4,6 +4,10 @@ import { entityService } from '../entity/entity.service';
 import { EventService } from '../event/event.service';
 import { MatchService } from '../match/match.service';
 import { ResultService } from '../Result/result.service';
+import { LocationService } from '../location/location.service';
+import { OrganizerService } from '../organizerService/organizer.service';
+import { CompetitionTypeService } from '../CompetitionType/competition-type.service';
+import { JudgeService } from '../judge/judge.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +19,10 @@ export class CachePrimerService {
     private eventService: EventService,
     private matchService: MatchService,
     private resultsService: ResultService,
+    private locationService: LocationService,
+    private organizerService: OrganizerService,
+    private competitiontypeService: CompetitionTypeService,
+    private judgeService: JudgeService
   ) {}
 
   primeCache(): void {
@@ -23,6 +31,9 @@ export class CachePrimerService {
     this.cacheEvents();
     this.cacheMatches();
     this.cacheResults();
+    this.cacheLocations();
+    this.cacheOrganizers();
+    this.cacheCompetitionTypes();
   }
 
   private cacheCompetitions(): void {
@@ -57,6 +68,34 @@ export class CachePrimerService {
     this.resultsService.getResult().subscribe({
       next: (results) => console.log('Results cached:', results),
       error: (err) => console.error('Failed to cache results:', err.message),
+    });
+  }
+
+  private cacheLocations(): void {
+    this.locationService.getLocation().subscribe({
+      next: (locations) => console.log('Locations cached:', locations),
+      error: (err) => console.error('Failed to cache locations:', err.message),
+    });
+  }
+
+  private cacheOrganizers(): void {
+    this.organizerService.getOrganizer().subscribe({
+      next: (organizers) => console.log('Organizers cached:', organizers),
+      error: (err) => console.error('Failed to cache organizers:', err.message),
+    });
+  }
+
+  private cacheCompetitionTypes(): void {
+    this.competitiontypeService.getCompetitionType().subscribe({
+      next: (competitionTypes) => console.log('Competition types cached:', competitionTypes),
+      error: (err) => console.error('Failed to cache competition types:', err.message),
+    });
+  }
+
+  private cacheJudges(): void {
+    this.judgeService.getJudge().subscribe({
+      next: (judges) => console.log('Judges cached:', judges),
+      error: (err) => console.error('Failed to cache judges:', err.message),
     });
   }
 }

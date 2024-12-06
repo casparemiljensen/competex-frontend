@@ -4,14 +4,14 @@ import { Observable } from 'rxjs';
 import { API_DOMAIN } from '../apiUrl';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ResultService {
-  private ResultUrl = `${API_DOMAIN}/result`; 
+  private apiUrl = `${API_DOMAIN}/Judges`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getResult(): Observable<any[]> {
-    return this.http.get<any[]>(this.ResultUrl)
+    return this.http.get<any[]>(this.apiUrl);
   }
 }

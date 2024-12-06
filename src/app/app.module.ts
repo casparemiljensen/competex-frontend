@@ -66,6 +66,8 @@ import { MatCardModule } from '@angular/material/card';
 
 //ngx imports
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { CompetitionParticipantsListComponent } from './basic-components/competition-participants-list/competition-participants-list.component';
+import { CompetitionResultViewComponent } from './basic-components/competition-result-view/competition-result-view.component';
 import { environment } from '../environments/environment';
 
 @NgModule({
@@ -103,6 +105,8 @@ import { environment } from '../environments/environment';
     ResultPageComponent,
     ResultsOverviewPageComponent,
     CompetitionPageComponent,
+    CompetitionParticipantsListComponent,
+    CompetitionResultViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -133,7 +137,9 @@ import { environment } from '../environments/environment';
     MatPaginatorModule,
     HttpClientModule,
     MatCardModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+    }),
   ],
   providers: [provideAnimationsAsync(), provideNativeDateAdapter()],
   bootstrap: [AppComponent],

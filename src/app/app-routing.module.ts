@@ -16,11 +16,14 @@ const routes: Routes = [
   { path: 'calender', component: CalenderComponent },
   { path: 'create-event', component: CreateEventComponent },
   { path: 'mypage', component: MyPageComponent },
-  { path: 'competition-start/:eventId', component: CompStartComponent },
+  {
+    path: 'competition-start/:eventId/:eventId',
+    component: CompStartComponent,
+  },
   { path: ':eventId/event-page', component: EventPageComponent },
   { path: 'registration-page/:id', component: RegistrationPageComponent },
-  { path: 'results', component: ResultsOverviewPageComponent},
-  { path: 'results/:eventId', component: ResultPageComponent},
+  { path: 'results', component: ResultsOverviewPageComponent },
+  { path: 'results/:eventId', component: ResultPageComponent },
   { path: 'competition-page/:id', component: CompetitionPageComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect empty path to home
   { path: '**', redirectTo: '/home' }, // Redirect unknown paths to home

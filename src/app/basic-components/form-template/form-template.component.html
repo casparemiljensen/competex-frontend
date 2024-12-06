@@ -4,6 +4,8 @@
       <div *ngIf="currentPageIndex === 0">
         <app-form-event-information
           [parentForm]="myForm"
+          [locations]="locations"
+          [organizers]="organizers"
         ></app-form-event-information>
       </div>
       <div *ngIf="currentPageIndex === 1">
@@ -14,6 +16,7 @@
       <div *ngIf="currentPageIndex === 2">
         <app-form-competition
           [control]="competitionControl"
+          [competitionTypes]="competitionTypes"
         ></app-form-competition>
       </div>
       <div *ngIf="currentPageIndex === 3">
