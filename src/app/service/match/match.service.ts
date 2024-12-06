@@ -8,12 +8,12 @@ import { API_DOMAIN } from '../apiUrl';
   providedIn: 'root',
 })
 export class MatchService {
-  private baseUrl = `${API_DOMAIN}api`; // backend URL
+  private baseUrl = `${API_DOMAIN}/Matches`; 
 
   constructor(private http: HttpClient) {}
 
   //Fetch all matches
   getMatches(): Observable<Match[]> {
-    return this.http.get<Match[]>(`${this.baseUrl}/Matches`);
+    return this.http.get<Match[]>(`${this.baseUrl}`);
   }
 }

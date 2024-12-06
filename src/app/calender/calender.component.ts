@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { EventService } from '../service/eventTest/event-test.service';
+import { ActivatedRoute } from '@angular/router';
+import { EventService } from '../service/event/event.service';
 import { eventRespons } from '../models/eventRespons';
 
 @Component({
@@ -13,23 +14,28 @@ export class CalenderComponent implements OnInit {
   events$: Observable<eventRespons[]> | undefined; // Observable to hold event data
 
   // Inject the EventService
-  constructor(private eventService: EventService) {}
+  constructor(
+    private eventService: EventService,
+    private route: ActivatedRoute 
+  ) {}
 
   // Use Angular's lifecycle hook to fetch events on component initialization
   ngOnInit(): void {
-    this.fetchEvents();
+    this.route.paramMap.subscribe((params) => {
+      const eventId = params.get('id');
+      if (eventId) {
+        console.log("test")
+
+      } else {
+        // handle empty repons here
+        console.error('Event ID is missing in the route.');
+      }
+      // this.fetchEvents();
+    });
   }
 
   // Fetch events from the service
   fetchEvents(): void {
     this.events$ = this.eventService.getEvents();
-    this.events$.subscribe({
-      next: (response) => {
-        console.log('Fetched Events:', response); // Debug: Log fetched events
-      },
-      error: (error) => {
-        console.error('Error fetching events:', error); // Debug: Log errors
-      },
-    });
   }
 }

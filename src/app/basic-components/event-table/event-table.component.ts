@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { EventService } from '../../service/eventTest/event-test.service';
+import { EventService } from '../../service/event/event.service';
 import { eventRespons } from '../../models/eventRespons';
 
 @Component({
@@ -31,6 +31,9 @@ export class EventTableComponent implements OnInit {
       const events = this.mapApiDataToEvents(apiData);
       this.groupedEvents = this.groupEventsByMonth(events);
       this.isLoading = false;
+      for (const event of events) {
+        console.log(event.id)
+      }
     });
   }
 

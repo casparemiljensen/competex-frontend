@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { EventService } from '../service/eventTest/event-test.service';
+import { EventService } from '../service/event/event.service';
 import { eventRespons } from '../models/eventRespons';
 import { Router } from '@angular/router';
+// import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-results-overview-page',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 export class ResultsOverviewPageComponent {
   title = "Resultater for tidliger stævner";
 
-  events: eventRespons[] = []
+  events: eventRespons[] | undefined;
 
   constructor(private eventService: EventService, private router: Router) {}
 
@@ -21,12 +22,18 @@ export class ResultsOverviewPageComponent {
 
   fetchEvents(): void {
     this.eventService.getEventsBySearchPending().subscribe({
-      next: (response) => {
-        this.events = response; // Assign the response to `this.events`
+      next: (response: { values: eventRespons[]; pageInfo: any }) => {
+        if (Array.isArray(response.values)) {
+          this.events = response.values; // Ensure it's an array
+        } else {
+          console.error('Unexpected response format:', response);
+          this.events = []; // Fallback to an empty array
+        }
         console.log('Fetched events:', this.events); // Debug log
       },
-      error: (err) => {
+      error: (err: any) => {
         console.error('Error fetching events:', err); // Improved error log
+        this.events = []; // Handle error by initializing with an empty array
       },
     });
   }

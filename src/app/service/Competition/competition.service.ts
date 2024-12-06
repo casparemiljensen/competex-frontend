@@ -9,7 +9,7 @@ import { API_DOMAIN } from '../apiUrl';
   providedIn: 'root',
 })
 export class CompetitionService {
-  private baseUrl = `${API_DOMAIN}api/Competitions`; // backend URL
+  private baseUrl = `${API_DOMAIN}/Competitions`; // backend URL
 
   constructor(private http: HttpClient) {}
 
