@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import { PageEvent } from '@angular/material/paginator';
 import { eventRequest } from '../../models/eventRequest';
-import { EventService } from '../../service/eventTest/event-test.service';
+import { EventService } from '../../service/event/event.service';
 import { CompetitionService } from '../../service/Competition/competition.service';
 import { JudgeService } from '../../service/judge/judge.service';
 import { Judge } from '../../models/judge';
