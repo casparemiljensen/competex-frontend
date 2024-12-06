@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, of, EMPTY } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { entityRequest } from '../../models/entityRequest';
+import { Entity } from '../../models/entity';
 import { entityResponse } from '../../models/entityResponse';
 import { OfflineQueueService } from '../offlineQueue/offline-queue.service';
 import { API_DOMAIN } from '../apiUrl';
@@ -26,7 +26,7 @@ export class entityService {
   }
 
   // Post an entity (Handles offline and online requests)
-  postEntity(entity: entityRequest): Observable<entityResponse> {
+  postEntity(entity: Entity): Observable<entityResponse> {
     return this.http.post<entityResponse>(this.baseUrl, entity).pipe(
       catchError((error) => {
         // If the request fails (likely offline), save the request in the queue
@@ -51,7 +51,7 @@ export class entityService {
   }
 
   // Update an entity (Handles offline and online requests)
-  updateEntity(id: string, entity: entityRequest): Observable<entityResponse> {
+  updateEntity(id: string, entity: Entity): Observable<entityResponse> {
     return this.http
       .put<entityResponse>(`${this.baseUrl}/${id}`, entity)
       .pipe(

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { entityRequest } from '../models/entityRequest';
+import { Entity } from '../models/entity';
 import { entityService } from '../service/entity/entity.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class HomeComponent {
 
   createEntity() {
     // Prepare the entity object
-    const newEntity: entityRequest = {
+    const newEntity: Entity = {
       type: 0,
       name: 'John Doe',
       birthDate: '2024-11-29T10:08:33.942Z', // Ensure the date is in the correct format
