@@ -22,6 +22,13 @@ export class CompetitionService {
 
   // Fetch a single competition by ID
   getCompetitionById(id: string): Observable<CompetitionResponse> {
-    return this.http.get<CompetitionResponse>(`${this.baseUrl}/${id}`);
+    return this.http
+      .get<CompetitionResponse>(`${this.baseUrl}/${id}`)
+      .pipe(map((response) => response));
+  }
+  createCompetition(event: CompetitionRequest): Observable<CompetitionRequest> {
+    return this.http
+      .post<CompetitionRequest>(this.baseUrl, event)
+      .pipe(map((response) => response));
   }
 }

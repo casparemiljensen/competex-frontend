@@ -4,7 +4,8 @@
       <td>{{ competition.startDate }}</td>
     </tr>
   </div>
-  <div *ngIf="!detailsSubmitted">
+  <!-- <div *ngIf="!detailsSubmitted"> -->
+  <div *ngIf="false">
     <h2>Konkurrence Detaljer</h2>
     <div class="form-group">
       <form [formGroup]="myForm" (ngSubmit)="handleSubmit()">
@@ -24,23 +25,23 @@
       </form>
     </div>
   </div>
-  <div *ngIf="detailsSubmitted">
-    <!-- Ongoing Competition Page -->
+  <!-- <div *ngIf="detailsSubmitted"> -->
+  <div *ngIf="true" class="subpage-container">
     <h2>Bedømmelse</h2>
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>Startliste </mat-card-title>
-        <mat-card-subtitle></mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <mat-list>
-          <mat-list-item> </mat-list-item>
-          <mat-list-item>Salt</mat-list-item>
-          <mat-list-item>Paprika</mat-list-item>
-        </mat-list>
-        <p>Bedømmelsesmetode: D2</p>
-        <p>Start Tid: 12:30</p>
-      </mat-card-content>
-    </mat-card>
+    <div class="result-content">
+      <app-competition-result-view
+        class="result-view"
+        [match]="selectedMatch"
+        (matchUpdated)="updateMatchList($event)"
+      >
+      </app-competition-result-view>
+
+      <app-competition-participants-list
+        [matches]="matches"
+        class="participants-list"
+        (matchSelected)="selectMatch($event)"
+      >
+      </app-competition-participants-list>
+    </div>
   </div>
 </div>

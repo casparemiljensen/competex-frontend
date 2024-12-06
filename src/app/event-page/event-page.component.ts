@@ -7,18 +7,16 @@ import { CompetitionResponse } from '../models/competitionResponse';
 @Component({
   selector: 'app-event-page',
   templateUrl: './event-page.component.html',
-  styleUrl: './event-page.component.css'
+  styleUrl: './event-page.component.css',
 })
 export class EventPageComponent implements OnInit {
   event!: eventRespons;
   isLoading = true;
-  
 
   // This is the tempory, to show how the pange changes give the view is creator of the event or not
   isCreator = true;
 
-  constructor
-  (
+  constructor(
     private EventService: EventService,
     private route: ActivatedRoute
   ) {}
@@ -37,7 +35,7 @@ export class EventPageComponent implements OnInit {
     this.isLoading = false;
   }
 
-  fetchEvent(eventId: string): void{
+  fetchEvent(eventId: string): void {
     this.EventService.getEventById(eventId).subscribe({
       next: (response) => {
         this.event = response;

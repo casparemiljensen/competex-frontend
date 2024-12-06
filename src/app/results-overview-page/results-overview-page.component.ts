@@ -7,10 +7,10 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-results-overview-page',
   templateUrl: './results-overview-page.component.html',
-  styleUrl: './results-overview-page.component.css'
+  styleUrl: './results-overview-page.component.css',
 })
 export class ResultsOverviewPageComponent {
-  title = "Resultater for tidliger stævner";
+  title = 'Resultater for tidliger stævner';
 
   events: eventRespons[] | undefined;
 
