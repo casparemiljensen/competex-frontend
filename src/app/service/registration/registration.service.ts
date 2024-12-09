@@ -23,7 +23,7 @@ export class RegistrationService {
   }
 
   getRegistrationBySearch(compitionId: string): Observable<{ values: RegistrationRespons[] }> {
-    const body = ({ "CompetitionId": compitionId });
+    const body = JSON.stringify({ CompetitionId: compitionId });
     const headers = { 'Content-Type': 'application/json', Accept: '*/*' };
     console.log('Body:', body);
     return this.http.post<{ values: RegistrationRespons[] }>(
