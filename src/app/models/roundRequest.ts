@@ -10,3 +10,10 @@ export interface RoundRequest {
   startTime?: string; // ISO date string
   endTime?: string; // ISO date string
 }
+
+export interface CreateRoundRequest {
+  sequenceNumber: number;
+  competitionId: string;
+  maxFaults?: number;
+  maxMinutes?: string;
+}

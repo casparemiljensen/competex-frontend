@@ -13,7 +13,7 @@ import { ParticipantType, Team, Single, Ekvipage } from '../models/participant';
 import { MatchRequest } from '../models/matchRequest';
 import { ActivatedRoute } from '@angular/router';
 import { RoundService } from '../service/Round/round.service';
-import { RoundRequest } from '../models/roundRequest';
+import { CreateRoundRequest, RoundRequest } from '../models/roundRequest';
 
 @Component({
   selector: 'app-competition-page',
@@ -37,9 +37,6 @@ export class CompetitionPageComponent {
     private roundService: RoundService,
     private route: ActivatedRoute
   ) {}
-
-  competitions: CompetitionResponse[] = [];
-  // competitions: Observable<CompetitionResponse[]> | undefined;
 
   ngOnInit(): void {
     this.competitionId = this.route.snapshot.paramMap.get('id')!;
@@ -99,20 +96,7 @@ export class CompetitionPageComponent {
         this.competition = response;
         console.log('Competition: ', this.competition);
       },
-      error: (err) => console.error('Error fetching competitions:', err),
-    });
-  }
-
-  //create a new round and create and add the matches that live up to the constraints given by judge.
-  nextRound(): void {
-    //change when endpoint is done.
-    console.log('Next round clicked');
-    this.matchService.getMatches().subscribe({
-      next: (response) => {
-        this.matches = response;
-        console.log('Matches: ', this.matches);
-      },
-      error: (err) => console.error('Error fetching competitions:', err),
+      error: (err) => console.error('Error fetching competition:', err),
     });
   }
 
@@ -129,19 +113,54 @@ export class CompetitionPageComponent {
     }
   }
 
-  onNewRoundClick(count: number): void {
-    this.showRoundDetailsView = !this.showRoundDetailsView;
-    const newRound: RoundRequest = {
+  onNewRoundClick(): void {
+    const newRound: CreateRoundRequest = {
       competitionId: this.competitionId,
       sequenceNumber: 0, // Add the missing sequenceNumber property
     };
-    if (count === 0) {
-      newRound.sequenceNumber = 0;
-    } else {
-      newRound.sequenceNumber = 1;
-    }
+
     this.roundService.createMatchesForRound(newRound).subscribe({
-      // Handle the subscription response here
+      next: (response: MatchResponse[]) => {
+        console.log('Matches created for first round: ', response);
+        this.addDetailsToMatches(response); // Update this line to pass a single MatchResponse object
+      },
+      error: (err) => {
+        console.error('Error creating matches for round:', err);
+      },
     });
+  }
+  onNextRoundClick(): void {
+    this.showRoundDetailsView = !this.showRoundDetailsView;
+  }
+  onRoundDetailsSubmit(form: any): void {
+    this.showRoundDetailsView = !this.showRoundDetailsView;
+    const count = this.matches[0].round.sequenceNumber;
+    console.log('current count:', count);
+    console.log('detailt form:', form);
+    const newRound: CreateRoundRequest = {
+      competitionId: this.competitionId,
+      sequenceNumber: count + 1,
+      maxFaults: form.fault,
+      maxMinutes: form.time,
+    };
+
+    this.roundService.createMatchesForRound(newRound).subscribe({
+      next: (response: MatchResponse[]) => {
+        console.log(
+          `Matches created for round ${newRound.sequenceNumber}: `,
+          response
+        );
+        this.addDetailsToMatches(response); // Update this line to pass a single MatchResponse object
+      },
+      error: (err) => {
+        console.error('Error creating matches for round:', err);
+      },
+    });
+  }
+
+  addDetailsToMatches(response: MatchResponse[]) {
+    //Add judge, starttime, endtime, field to the matches
+    this.matches = response;
+    console.log('Matches with details: ', this.matches);
   }
 }

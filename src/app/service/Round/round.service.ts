@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { API_DOMAIN } from '../apiUrl';
-import { RoundRequest } from '../../models/roundRequest';
+import { CreateRoundRequest, RoundRequest } from '../../models/roundRequest';
+import { MatchResponse } from '../../models/matchResponse';
 
 @Injectable({
   providedIn: 'root',
@@ -18,9 +19,17 @@ export class RoundService {
   //     .pipe(map((response) => response.values));
   // }
 
-  createMatchesForRound(round: RoundRequest): Observable<RoundRequest> {
+  createMatchesForRound(
+    round: CreateRoundRequest
+  ): Observable<MatchResponse[]> {
+    const url = `${this.baseUrl}/CreateMatchesForRound?competitionId=${round.competitionId}&roundSequenceNo=${round.sequenceNumber}`;
+    const body =
+      round.sequenceNumber > 0 && round.maxFaults && round.maxMinutes
+        ? { maxFaults: round.maxFaults, maxMinutes: round.maxMinutes }
+        : null;
+
     return this.http
-      .post<RoundRequest>(`${this.baseUrl}`, round)
-      .pipe(map((response) => response));
+      .post<{ values: MatchResponse[] }>(url, body) // Expecting MatchResponse[] as response
+      .pipe(map((response) => response.values));
   }
 }
