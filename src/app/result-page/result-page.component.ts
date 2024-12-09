@@ -5,7 +5,7 @@ import { EventService } from '../service/event/event.service';
 import { ScoreResultsResponse } from '../models/scoreResultsRespons';
 import { eventRespons } from '../models/eventRespons';
 import { Observable } from 'rxjs';
-import { Participant } from '../models/participant';
+import { createParticipant, Ekvipage, Participant, ParticipantType, Single } from '../models/participant';
 
 @Component({
   selector: 'app-result-page',
@@ -15,6 +15,8 @@ import { Participant } from '../models/participant';
 export class ResultPageComponent implements OnInit {
   results: ScoreResultsResponse[] = [];
   event!: eventRespons;
+
+  transformedObject: any = {};
 
   eventId: string = '';
   isLoading = true;
@@ -55,22 +57,39 @@ export class ResultPageComponent implements OnInit {
     });
   }
 
+  transformObject(obj: any): any {
+    // Extract required fields and restructure
+    return  [
+      {
+      ExpandableTable: obj[0].values[0].competition.name,
+      // level: obj[0].values[0].competition.level,
+      // status: obj[0].values[0].competition.status,
+      data: [
+        {
+        Nr: "1",
+        Deltager: obj[0].values[0].participant.member.firstName + ' ' + obj[0].values[0].participant.member.lastName,
+        Kanin: obj[0].values[0].participant.entity.name,
+        Fejl: obj[0].values[0].faults,
+        Tid: obj[0].values[0].time,                 
+        // participationType: createParticipant(obj[0].values[0].participant),
+        }
+      ]
+    }
+    ];
+  }
+  
   fetchResultsByCompitionId(ids: string[]): void {
     this.scoreResultService.getResultsByIds(ids).subscribe({
-      next: (data) => {
-        this.results = data.map((result) => {
-          console.log('Results for expandable table:', this.resultsForExpandableTable);
-          return result; // Ensure the map function returns the correct type
-        });
-        this.isLoading = false;
-      },
-      error: (err) => {
-        console.error('Error fetching competition results:', err);
-        this.isLoading = false;
-      },
+        next: (data: any[]) => {
+          console.log('Results fetched:', data[0].values[0].participant);
+          this.transformedObject = this.transformObject(data);
+          this.isLoading = false;
+          console.log('Transformed object:', this.transformedObject);
+      }
     });
   }
 
+  
   fetchEvent(eventId: string): Observable<eventRespons> {
     return this.eventService.getEventById(eventId); // Assuming `getEventById` returns Observable<eventRespons>
   }

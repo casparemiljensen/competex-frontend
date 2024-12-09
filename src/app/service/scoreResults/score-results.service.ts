@@ -23,14 +23,15 @@ export class ScoreResultsService {
 
   getResultsByIds(compitionIds: string[]): Observable<any[]> {
     const requests = compitionIds.map(id => this.getResultBySearch(id));
+    console.log('Requests:', requests);
     return forkJoin(requests);
   }
 
-  getResultBySearch(compitionId: string): Observable<{ values: ScoreResultsResponse[]; pageInfo: any }> {
-    const body = JSON.stringify({ "CompetitionId": compitionId });
+  getResultBySearch(compitionId: string): Observable<{ values: ScoreResultsResponse[] }> {
+    const body = ({ "CompetitionId": compitionId });
     const headers = { 'Content-Type': 'application/json', Accept: '*/*' };
-
-    return this.http.post<{ values: ScoreResultsResponse[]; pageInfo: any }>(
+    console.log('Body:', body);
+    return this.http.post<{ values: ScoreResultsResponse[] }>(
       `${this.apiUrl}/search`,
       body,
       { headers }
