@@ -10,6 +10,12 @@
   width: 100%;
   height: 100%;
 }
+.startlist-table .column-number {
+  flex: 1;
+}
+.startlist-table .column-name {
+  flex: 5;
+}
 
 .mat-header-cell,
 .mat-cell {
