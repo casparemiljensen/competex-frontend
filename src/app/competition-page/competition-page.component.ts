@@ -78,7 +78,7 @@ export class CompetitionPageComponent {
     if (this.myForm.valid) {
       const formData = this.myForm.value; // Collect the form data
       this.detailsSubmitted = true;
-      console.log('Form Submitted:', formData);
+      console.log('Form Submitted :', formData);
       // You can also send the form data to a server here using an API
       // Example: this.http.post('api-url', formData).subscribe(response => { ... });
     } else {
