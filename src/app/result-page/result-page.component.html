@@ -1,14 +1,23 @@
 <div class="container-wrapper">
-    <div *ngIf="isLoading" class="loading-spinner">
-      <mat-spinner></mat-spinner>
-    </div>
-  
-    <div class="event-details" *ngIf="eventName && creator && date">
-      <h1>{{ eventName }} - {{ creator }} - {{ date }}</h1>
-      <h2>Resultater</h2>
-    </div>
-  
-    <div class="page-container">
-      <app-ExpandableTable [ExpandableTables]="results" style="width: 100%;"></app-ExpandableTable>
-    </div>
+  <div *ngIf="isLoading" class="loading-spinner">
+    <mat-spinner></mat-spinner>
   </div>
+
+  <div *ngIf="!isLoading && (!event || !event.title)" class="no-event">
+    <h1>Noget gik galt</h1>
+    <p>Vi kunne ikke finde eventoplysningerne. Prøv venligst igen senere.</p>
+  </div>
+
+  <div class="event-details" *ngIf="event?.title && event?.organizer?.name && event?.startDate">
+    <h1>{{ event?.title }} - {{ event?.organizer?.name }} - {{ event?.startDate | date : "MMMM dd, yyyy" }} til {{ event?.endDate | date : "MMMM dd, yyyy" }}</h1>
+    <h2>Resultater</h2>
+  </div>
+
+  <div *ngIf="!isLoading && transformedObject.length > 0" class="page-container">
+    <app-ExpandableTable [ExpandableTables]="transformedObject" style="width: 100%;"></app-ExpandableTable>
+  </div>
+
+  <div *ngIf="!isLoading && transformedObject.length === 0" class="no-data">
+    <h1>Ingen resultater fundet</h1>
+  </div>
+</div>

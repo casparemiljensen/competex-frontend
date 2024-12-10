@@ -4,6 +4,7 @@ export interface CompetitionResponse {
   id: string; // UUID
   competitionType?: CompetitionType[]; // Replace [...] with the expected type, e.g., string[] or an enum
   competitionTypeId?: string;
+  eventId: string; // UUID
   startDate: string; // ISO date string
   endDate: string; // ISO date string
   level: Level; // Enum for Level
@@ -12,5 +13,4 @@ export interface CompetitionResponse {
   maxParticipants: number;
   registrationPrice: number;
   name: string;
-  eventId: string;
 }
