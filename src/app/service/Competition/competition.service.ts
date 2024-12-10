@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
+import { Observable, map, forkJoin } from 'rxjs';
 import { CompetitionRequest } from '../../models/competitionRequest';
 import { CompetitionResponse } from '../../models/competitionResponse';
 import { API_DOMAIN } from '../apiUrl';
@@ -30,5 +30,14 @@ export class CompetitionService {
     return this.http
       .post<CompetitionRequest>(this.baseUrl, event)
       .pipe(map((response) => response));
+  }
+
+  
+  getCompetitionsByIds(ids: string[]): Observable<CompetitionResponse[]> {
+    const requests = ids.map((id) =>
+      this.http.get<CompetitionResponse>(`${this.baseUrl}/${id}`)
+    );
+  
+    return forkJoin(requests); // Combine all requests
   }
 }

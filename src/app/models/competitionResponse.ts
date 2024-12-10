@@ -3,6 +3,8 @@ import { Level, Status } from './enums';
 export interface CompetitionResponse {
   id: string; // UUID
   competitionType: CompetitionType[]; // Replace [...] with the expected type, e.g., string[] or an enum
+  eventId: string; // UUID
+  name: string;
   startDate: string; // ISO date string
   endDate: string; // ISO date string
   level: Level; // Enum for Level

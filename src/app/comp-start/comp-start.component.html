@@ -14,7 +14,7 @@
         [class.afsluttet]="comp.status === ( status.Concluded || status.Cancelled) "
       >
       <!-- Mabe it is nessry to loop over the compition type, depeiing on the stcutre -->
-      <span class="competition-text">{{ comp.competitionType[0].name }}</span>
+      <span class="competition-text">{{ comp.name }}</span>
       <button
         class="competition-button"
         [class.start-button]="comp.status === status.Pending"

@@ -79,8 +79,8 @@
         <app-ExpandableTable [ExpandableTables]="judgeData"></app-ExpandableTable>
       </div>
     </div>
-  </div>
-  <div class="ExpandableTable-container">
-    <app-ExpandableTable [ExpandableTables]="ExpandableTableData"></app-ExpandableTable>
   </div> -->
+  <div class="ExpandableTable-container" *ngIf="transformedData">
+    <app-ExpandableTable [ExpandableTables]="transformedData"></app-ExpandableTable>
+  </div>
 </div>
