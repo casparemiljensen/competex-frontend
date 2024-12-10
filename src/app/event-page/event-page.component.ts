@@ -127,20 +127,58 @@ export class EventPageComponent implements OnInit {
   }
 
   transformRegistrationData(registrations: RegistrationRespons[]): any[] {
-    const transformedData = registrations.reduce(
-      (result: any[], registration) => {
-        // Find or create the corresponding competition entry
-        let competitionEntry = result.find(
-          (entry) => entry.ExpandableTable === registration.competition.name
-        );
+    const transformedData = registrations.reduce((result: any[], registration) => {
+      // Find or create the corresponding competition entry
+      let competitionEntry = result.find(
+        (entry) => entry.ExpandableTable === registration.competition.name
+      );
+  
+      // Create participant using `createParticipant`
+      const participant = createParticipant(registration.participant);
+  
+      // Build participant-specific data (order: name → entity)
+      let participantDetails: any;
 
-        // Create participant using `createParticipant`
-        const participant = createParticipant(registration.participant);
-
-        // Build participant-specific data (order: name → entity)
-        let participantDetails: any = {
-          Fører: '', // Placeholder for the name
-          Kanin: (participant as Ekvipage).entity?.name || 'N/A', // For Ekvipage, use entity name
+      // Set participant details based on participant type
+      switch (participant.$type) {
+        case 'Team': {
+          const teamParticipant = participant as Team;
+          participantDetails = {
+            TeamName: teamParticipant.members
+              ?.map((m) => `${m.firstName || ''} ${m.lastName || ''}`.trim())
+              .join(', ') || participant.name || 'Unknown Team', // Use team members' names or fallback to the team name
+          };
+          break;
+        }
+        case 'Single': {
+          const singleParticipant = participant as Single;
+          participantDetails = {
+            Deltager: singleParticipant.member
+              ? `${singleParticipant.member.firstName || ''} ${singleParticipant.member.lastName || ''}`.trim()
+              : 'Unknown Participant',
+          };
+          break;
+        }
+        case 'Ekvipage': {
+          const ekvipageParticipant = participant as Ekvipage;
+          participantDetails = {
+            Fører: ekvipageParticipant.member
+              ? `${ekvipageParticipant.member.firstName || ''} ${ekvipageParticipant.member.lastName || ''}`.trim()
+              : 'Unknown Participant',
+            Kanin: ekvipageParticipant.entity?.name || 'N/A', // For Ekvipage, use entity name
+          };
+          break;
+        }
+        default:
+          participantDetails = { UnknownType: 'Unsupported participant type' };
+          break;
+      }
+  
+      // If competition entry does not exist, create it
+      if (!competitionEntry) {
+        competitionEntry = {
+          ExpandableTable: registration.competition.name, // Competition name
+          data: [participantDetails], // Participant data with only name and entity
         };
 
         // Set the name based on participant type
