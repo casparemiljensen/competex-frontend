@@ -183,7 +183,7 @@ export class FormTemplateComponent implements OnInit {
 
           // Step 2: Prepare and create competitions using the `eventId`
           const competitions = formData.competitions.map((data: any) => ({
-            eventId: eventResponse.id, // Use the eventId from the response
+            eventId: eventResponse, // Use the eventId from the response
             competitionTypeId: JSON.parse(data.competitionType).id,
             startDate: formData.startDate,
             endDate: formData.endDate,
@@ -204,6 +204,17 @@ export class FormTemplateComponent implements OnInit {
                   'Competition created successfully:',
                   competitionResponse
                 );
+
+                this.eventService
+                  .addCompetititonToEvent(eventResponse, competitionResponse)
+                  .subscribe({
+                    next: (response) => {
+                      console.log('Competition added successfully:', response);
+                    },
+                    error: (err) => {
+                      console.error('Error creating competition:', err);
+                    },
+                  });
               },
               error: (err) => {
                 console.error('Error creating competition:', err);
