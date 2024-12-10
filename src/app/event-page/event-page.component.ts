@@ -115,24 +115,24 @@ export class EventPageComponent implements OnInit {
   
       // Build participant-specific data (order: name → entity)
       let participantDetails: any = {
-        name: '', // Placeholder for the name
-        entity: (participant as Ekvipage).entity?.name || 'N/A', // For Ekvipage, use entity name
+        Fører: '', // Placeholder for the name
+        Kanin: (participant as Ekvipage).entity?.name || 'N/A', // For Ekvipage, use entity name
       };
   
       // Set the name based on participant type
       if (participant.$type === 'Team') {
         const teamParticipant = participant as Team;
-        participantDetails.name = teamParticipant.members
+        participantDetails.Fører = teamParticipant.members
           ?.map((m) => `${m.firstName || ''} ${m.lastName || ''}`.trim())
           .join(', ') || participant.name || 'Unknown Team'; // Use team members' names or fallback to the team name
       } else if (participant.$type === 'Single') {
         const singleParticipant = participant as Single;
-        participantDetails.name = singleParticipant.member
+        participantDetails.Fører = singleParticipant.member
           ? `${singleParticipant.member.firstName || ''} ${singleParticipant.member.lastName || ''}`.trim()
           : 'Unknown Participant';
       } else if (participant.$type === 'Ekvipage') {
         const ekvipageParticipant = participant as Ekvipage;
-        participantDetails.name = ekvipageParticipant.member
+        participantDetails.Fører = ekvipageParticipant.member
           ? `${ekvipageParticipant.member.firstName || ''} ${ekvipageParticipant.member.lastName || ''}`.trim()
           : 'Unknown Participant';
       }
