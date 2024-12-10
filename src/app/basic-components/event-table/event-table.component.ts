@@ -21,14 +21,13 @@ export class EventTableComponent implements OnInit {
 
   // Use Angular's lifecycle hook to fetch events on component initialization
   ngOnInit(): void {
-    // this.fetchPendingEvents();
-    // this.fetchEvents();
+    this.fetchPendingEvents();
     this.isLoading = false;
   }
 
   fetchPendingEvents(): any {
     this.eventService.getEventsBySearchPending().subscribe((apiData) => {
-      if(!apiData){
+      if(apiData){
         const events = this.mapApiDataToEvents(apiData);
         this.groupedEvents = this.groupEventsByMonth(events);
         this.isLoading = false;
