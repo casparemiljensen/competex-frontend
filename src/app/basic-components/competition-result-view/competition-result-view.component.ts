@@ -99,7 +99,7 @@ export class CompetitionResultViewComponent {
         endTime: this.match.endTime,
         fieldId: this.match.fieldId,
         judgeId: this.match.judgeId,
-        scores: [newScore], // Add the new score to the scores array
+        // scores: [newScore], // Add the new score to the scores array
       };
 
       console.log('Updated Match:', JSON.stringify(updatedMatch, null, 2));

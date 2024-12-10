@@ -18,5 +18,5 @@ export interface MatchResponse {
   fieldId: string;
   judge: Judge;
   judgeId: string;
-  scores: ScoreResponse; // Replace `any` with a proper type when available
+  // scores: ScoreResponse;
 }

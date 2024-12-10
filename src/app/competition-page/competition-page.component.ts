@@ -14,6 +14,7 @@ import { MatchRequest } from '../models/matchRequest';
 import { ActivatedRoute } from '@angular/router';
 import { RoundService } from '../service/Round/round.service';
 import { CreateRoundRequest, RoundRequest } from '../models/roundRequest';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-competition-page',
@@ -150,7 +151,7 @@ export class CompetitionPageComponent {
           `Matches created for round ${newRound.sequenceNumber}: `,
           response
         );
-        this.addDetailsToMatches(response); // Update this line to pass a single MatchResponse object
+        this.addDetailsToMatches(response);
       },
       error: (err) => {
         console.error('Error creating matches for round:', err);
@@ -158,9 +159,36 @@ export class CompetitionPageComponent {
     });
   }
 
-  addDetailsToMatches(response: MatchResponse[]) {
+  addDetailsToMatches(matches: MatchResponse[]) {
     //Add judge, starttime, endtime, field to the matches
-    this.matches = response;
-    console.log('Matches with details: ', this.matches);
+    matches.forEach((match) => {
+      // Create updated match object
+      const updatedMatch: MatchRequest = {
+        id: match.id,
+        roundId: match.roundId,
+        participantIds: match.participantIds,
+        status: 0,
+        judgeId: 'd8ce4939-e44c-443f-8bfe-3568463ecc7b', // Add the missing judge property
+        startTime: '2024-12-10T05:23:50.032Z', // Add the missing startTime property
+        endTime: '2024-12-10T05:23:50.032Z', // Add the missing endTime property
+        fieldId: '2b3c4d5e-6f7a-8b9c-0d1e-2f3a4b5c6d7e', // Add the missing field propert
+      };
+      this.matchService.updateMatch(updatedMatch).subscribe({
+        next: () => {
+          console.log(`Match ${match.id} updated successfully.`);
+
+          // Update the local match object with new details
+          match.judgeId = updatedMatch.judgeId;
+          match.startTime = updatedMatch.startTime;
+          match.endTime = updatedMatch.endTime;
+          match.fieldId = updatedMatch.fieldId;
+          match.status = updatedMatch.status;
+        },
+        error: (err) => {
+          console.error(`Error updating match ${match.id}:`, err);
+        },
+      });
+    });
+    this.matches = [...matches];
   }
 }

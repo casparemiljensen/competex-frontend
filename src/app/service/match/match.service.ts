@@ -23,7 +23,7 @@ export class MatchService {
   updateMatch(match: MatchRequest): Observable<MatchRequest> {
     console.log('Updating match with ID:', match.id); // Log the match ID
     return this.http
-      .put<MatchRequest>(`${this.baseUrl}/Matches/${match.id}`, match)
+      .put<MatchRequest>(`${this.baseUrl}/${match.id}`, match)
       .pipe(map((response) => response));
   }
 }
