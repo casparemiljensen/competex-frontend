@@ -9,7 +9,7 @@ import { eventRespons } from '../models/eventRespons';
   styleUrls: ['./registration-page.component.css'],
 })
 export class RegistrationPageComponent implements OnInit {
-  event: eventRespons | undefined; // Holds the fetched event
+  event!: eventRespons; // Holds the fetched event
   eventTitle: any;
   eventCreator: any;
 
