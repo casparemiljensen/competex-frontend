@@ -11,21 +11,21 @@
           <app-form-input-select
             class="competition-input"
             label="Gren"
-            [control]="getGrenControl(i)"
-            [options]="grenOptions"
+            [control]="getCompetitionTypeControl(i)"
+            [options]="competitionTypeOptions"
           >
           </app-form-input-select>
           <app-form-input-select
             class="competition-input"
             label="Klasse"
-            [control]="getKlasseControl(i)"
-            [options]="klasseOptions"
+            [control]="getLevelControl(i)"
+            [options]="levelOptions"
           >
           </app-form-input-select>
           <app-form-input-text
             class="competition-input"
             label="Pris"
-            [control]="getPrisControl(i)"
+            [control]="getPriceControl(i)"
             validationMessage="Maks pris er 50 kr."
           >
           </app-form-input-text>

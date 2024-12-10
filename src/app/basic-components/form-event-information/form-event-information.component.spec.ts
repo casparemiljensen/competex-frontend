@@ -8,9 +8,8 @@ describe('FormEventInformationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [FormEventInformationComponent]
-    })
-    .compileComponents();
+      declarations: [FormEventInformationComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(FormEventInformationComponent);
     component = fixture.componentInstance;

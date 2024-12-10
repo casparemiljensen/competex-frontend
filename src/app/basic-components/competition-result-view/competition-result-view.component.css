@@ -1,0 +1,46 @@
+.result-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: auto;
+}
+
+.participant-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  padding: 10px;
+  outline: auto;
+}
+
+.result-form {
+  display: flex;
+  margin-bottom: 15px;
+}
+.result-input {
+  flex: 1;
+}
+.checkbox-group {
+  display: flex;
+  justify-content: left;
+  margin-bottom: 20px;
+}
+
+button[type="submit"] {
+  display: block;
+  margin: 0 auto;
+}
+
+mat-card-header {
+  background-color: #4682b4;
+  color: white;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+mat-card {
+  width: 100%;
+  min-height: 400px;
+}

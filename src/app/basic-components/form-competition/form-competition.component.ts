@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
@@ -6,6 +6,9 @@ import {
   Validators,
   FormControl,
 } from '@angular/forms';
+import { Level } from '../../models/enums';
+
+import { CompetitionType } from '../../models/competitionType';
 
 @Component({
   selector: 'app-form-competition',
@@ -14,27 +17,28 @@ import {
 })
 export class CompetitionFormComponent {
   @Input() control!: FormArray;
+  @Input() competitionTypes: CompetitionType[] = [];
 
   constructor(private fb: FormBuilder) {}
-  grenOptions = [
-    { value: 'lige', viewValue: 'Lige' },
-    { value: 'kroget', viewValue: 'Kroget' },
-    { value: 'hoejde', viewValue: 'Højdehop' },
-    { value: 'laengde', viewValue: 'Længdehop' },
-  ];
 
-  klasseOptions = [
-    { value: 'let', viewValue: 'Let' },
-    { value: 'middelsvaer', viewValue: 'Middelsvær' },
-    { value: 'svaer', viewValue: 'Svær' },
-    { value: 'elite', viewValue: 'Elite' },
-  ];
+  competitionTypeOptions: { value: string; viewValue: string }[] = [];
+  levelOptions: { value: string; viewValue: string }[] = [];
 
+  ngOnInit() {
+    this.getCompetitionTypeOptions();
+    this.getLevelOptions();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['competitionTypes'] && this.competitionTypes) {
+      this.getCompetitionTypeOptions();
+    }
+  }
   addCompetition() {
     const competitionForm = this.fb.group({
-      gren: ['', [Validators.required]],
-      klasse: ['', [Validators.required]],
-      pris: [
+      competitionType: ['', [Validators.required]],
+      level: ['', [Validators.required]],
+      price: [
         null,
         [
           Validators.required,
@@ -55,14 +59,39 @@ export class CompetitionFormComponent {
   get parentFormGroup(): FormGroup {
     return this.control.parent as FormGroup;
   }
-  getGrenControl(index: number): FormControl {
-    return (this.control.at(index) as FormGroup).get('gren') as FormControl;
+  getCompetitionTypeControl(index: number): FormControl {
+    return (this.control.at(index) as FormGroup).get(
+      'competitionType'
+    ) as FormControl;
   }
 
-  getKlasseControl(index: number): FormControl {
-    return (this.control.at(index) as FormGroup).get('klasse') as FormControl;
+  getLevelControl(index: number): FormControl {
+    return (this.control.at(index) as FormGroup).get('level') as FormControl;
   }
-  getPrisControl(index: number): FormControl {
-    return (this.control.at(index) as FormGroup).get('pris') as FormControl;
+  getPriceControl(index: number): FormControl {
+    return (this.control.at(index) as FormGroup).get('price') as FormControl;
+  }
+
+  // Get the options for the competition type dropdown from the competitionTypes array
+  getCompetitionTypeOptions() {
+    this.competitionTypeOptions = this.competitionTypes.map((data) => {
+      return {
+        value: JSON.stringify({ id: data.id, name: data.name || '' }),
+        viewValue: data.name || '', // Set a default value if data.name is null or undefined
+      };
+    });
+    console.log('competitionTypeOptions:', this.competitionTypeOptions);
+  }
+
+  // Get the options for the level dropdown from the Level enum
+  getLevelOptions() {
+    this.levelOptions = Object.entries(Level)
+      .filter(([key, value]) => typeof value === 'number') // Ensure only numeric values are used
+      .map(([key, value]) => ({
+        value: JSON.stringify({ level: value, name: key }), // Explicitly cast the value to a number
+        viewValue: key, // Use string representation for display
+      }));
+
+    console.log('Level Options:', this.levelOptions);
   }
 }

@@ -6,15 +6,16 @@
   ></app-form-input-text>
 
   <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Vælg konkurrencer (maks. 3)</mat-label>
-    <mat-select [formControl]="competitionsControl" multiple>
-      <mat-option *ngIf="isLoading" disabled>Loading...</mat-option>
-      <mat-option
-        *ngFor="let competition of ExpandableTableData"
-        [value]="competition.ExpandableTable"
-      >
-        {{ competition.ExpandableTable }}
-      </mat-option>
+    <mat-label>Vælg konkurrencer (maks. 3) </mat-label>
+    <mat-select 
+      [formControl]="competitionsControl" multiple>
+      <ng-container *ngFor="let competition of compitionsData">
+        <mat-option *ngIf="isLoading" disabled>Loading...</mat-option>
+        <mat-option *ngFor="let competitionName of competition.competitionType"
+        [value]="competition.level + ' and ' + competitionName.competitionType">
+          {{competition.level}}: {{ competitionName.name }}
+        </mat-option>
+      </ng-container>
     </mat-select>
     <mat-error *ngIf="competitionsControl.hasError('maxSelection')">
       Du kan kun vælge op til 3 konkurrencer.

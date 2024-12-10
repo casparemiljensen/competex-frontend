@@ -37,8 +37,8 @@ import { ResultsOverviewPageComponent } from './results-overview-page/results-ov
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { InMemoryDataService } from './service/InMomoryData/in-memory-data.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 //  Angular Material Imports
 import { MatIconModule } from '@angular/material/icon';
@@ -66,6 +66,10 @@ import { MatCardModule } from '@angular/material/card';
 
 //ngx imports
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { CompetitionParticipantsListComponent } from './basic-components/competition-participants-list/competition-participants-list.component';
+import { CompetitionResultViewComponent } from './basic-components/competition-result-view/competition-result-view.component';
+import { environment } from '../environments/environment';
+import { CompetitionRoundDetailsComponent } from './basic-components/competition-round-details/competition-round-details.component';
 
 @NgModule({
   declarations: [
@@ -102,6 +106,9 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
     ResultPageComponent,
     ResultsOverviewPageComponent,
     CompetitionPageComponent,
+    CompetitionParticipantsListComponent,
+    CompetitionResultViewComponent,
+    CompetitionRoundDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -131,10 +138,10 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
     MatTableModule,
     MatPaginatorModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
-      dataEncapsulation: false,
-    }),
     MatCardModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+    }),
   ],
   providers: [provideAnimationsAsync(), provideNativeDateAdapter()],
   bootstrap: [AppComponent],

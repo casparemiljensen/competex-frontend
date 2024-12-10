@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { EventPageService } from '../event-page/event-page.service';
+import { LocationService } from './location.service';
 
-describe('EventPageService', () => {
-  let service: EventPageService;
+describe('LocationService', () => {
+  let service: LocationService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(EventPageService);
+    service = TestBed.inject(LocationService);
   });
 
   it('should be created', () => {
