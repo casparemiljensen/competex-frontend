@@ -1,9 +1,4 @@
 <div class="page-container">
-  <div>
-    <tr *ngFor="let competition of competitions">
-      <td>{{ competition.startDate }}</td>
-    </tr>
-  </div>
   <!-- <div *ngIf="!detailsSubmitted"> -->
   <div *ngIf="false">
     <h2>Konkurrence Detaljer</h2>
@@ -27,9 +22,10 @@
   </div>
   <!-- <div *ngIf="detailsSubmitted"> -->
   <div *ngIf="true" class="subpage-container">
-    <h2>Bedømmelse</h2>
+    <h2>{{ competition.name }}</h2>
     <div class="result-content">
       <app-competition-result-view
+        *ngIf="!showRoundDetailsView"
         class="result-view"
         [match]="selectedMatch"
         (matchUpdated)="updateMatchList($event)"
@@ -37,11 +33,18 @@
       </app-competition-result-view>
 
       <app-competition-participants-list
+        *ngIf="!showRoundDetailsView"
+        (newRoundClick)="onNewRoundClick()"
+        (nextRoundClick)="onNextRoundClick()"
         [matches]="matches"
         class="participants-list"
         (matchSelected)="selectMatch($event)"
       >
       </app-competition-participants-list>
+      <app-competition-round-details
+        *ngIf="showRoundDetailsView"
+        (formSubmit)="onRoundDetailsSubmit($event)"
+      ></app-competition-round-details>
     </div>
   </div>
 </div>

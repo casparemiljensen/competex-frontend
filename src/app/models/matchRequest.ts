@@ -13,5 +13,5 @@ export interface MatchRequest {
   endTime: string; // ISO date string
   fieldId: string;
   judgeId: string;
-  scores: ScoreRequest[]; //ScoreRequest[];
+  // scores: ScoreRequest[]; //ScoreRequest[];
 }

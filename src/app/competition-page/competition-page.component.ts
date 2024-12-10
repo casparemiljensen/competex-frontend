@@ -11,6 +11,10 @@ import { MatchResponse } from '../models/matchResponse';
 import { MatchService } from '../service/match/match.service';
 import { ParticipantType, Team, Single, Ekvipage } from '../models/participant';
 import { MatchRequest } from '../models/matchRequest';
+import { ActivatedRoute } from '@angular/router';
+import { RoundService } from '../service/Round/round.service';
+import { CreateRoundRequest, RoundRequest } from '../models/roundRequest';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-competition-page',
@@ -25,20 +29,24 @@ export class CompetitionPageComponent {
   competitionId!: string;
   matches: MatchResponse[] = [];
   selectedMatch: MatchResponse | null = null;
-  variable: string = 'Hello';
+  showRoundDetailsView = false;
 
   constructor(
     private fb: FormBuilder,
     private competitionService: CompetitionService,
-    private matchService: MatchService
+    private matchService: MatchService,
+    private roundService: RoundService,
+    private route: ActivatedRoute
   ) {}
 
-  competitions: CompetitionResponse[] = [];
-  // competitions: Observable<CompetitionResponse[]> | undefined;
-
   ngOnInit(): void {
-    this.fetchCompetition(); //Change this later
-    this.nextRound(); //Change this later
+    this.competitionId = this.route.snapshot.paramMap.get('id')!;
+    console.log('CompetitionId passed: ', this.competitionId); // Use the compId as needed
+    if (this.competitionId) {
+      this.fetchCompetition(this.competitionId);
+    } else {
+      console.error('Competition ID is missing in the route.');
+    }
 
     this.myForm = this.fb.group({
       dommer: ['', [Validators.required]],
@@ -46,6 +54,7 @@ export class CompetitionPageComponent {
       bedmetode: ['', [Validators.required]],
     });
   }
+
   bedMetodeOptions = [
     { value: 'd1', viewValue: 'D1' },
     { value: 'c1', viewValue: 'C1' },
@@ -67,7 +76,7 @@ export class CompetitionPageComponent {
     if (this.myForm.valid) {
       const formData = this.myForm.value; // Collect the form data
       this.detailsSubmitted = true;
-      console.log('Form Submitted:', formData);
+      console.log('Form Submitted :', formData);
       // You can also send the form data to a server here using an API
       // Example: this.http.post('api-url', formData).subscribe(response => { ... });
     } else {
@@ -81,27 +90,14 @@ export class CompetitionPageComponent {
   }
 
   //Fetch the given competition to display on page.
-  fetchCompetition(): void {
+  fetchCompetition(competition: string): void {
     //Change later
-    this.competitionService.getCompetitions().subscribe({
+    this.competitionService.getCompetitionById(competition).subscribe({
       next: (response) => {
-        this.competitions = response;
-        console.log(this.competitions);
+        this.competition = response;
+        console.log('Competition: ', this.competition);
       },
-      error: (err) => console.error('Error fetching competitions:', err),
-    });
-  }
-
-  //create a new round and create and add the matches that live up to the constraints given by judge.
-  nextRound(): void {
-    //change when endpoint is done.
-    console.log('Next round clicked');
-    this.matchService.getMatches().subscribe({
-      next: (response) => {
-        this.matches = response;
-        console.log(this.matches);
-      },
-      error: (err) => console.error('Error fetching competitions:', err),
+      error: (err) => console.error('Error fetching competition:', err),
     });
   }
 
@@ -116,5 +112,83 @@ export class CompetitionPageComponent {
     if (matchIndex > -1) {
       this.matches[matchIndex].status = updatedMatch.status;
     }
+  }
+
+  onNewRoundClick(): void {
+    const newRound: CreateRoundRequest = {
+      competitionId: this.competitionId,
+      sequenceNumber: 0, // Add the missing sequenceNumber property
+    };
+
+    this.roundService.createMatchesForRound(newRound).subscribe({
+      next: (response: MatchResponse[]) => {
+        console.log('Matches created for first round: ', response);
+        this.addDetailsToMatches(response); // Update this line to pass a single MatchResponse object
+      },
+      error: (err) => {
+        console.error('Error creating matches for round:', err);
+      },
+    });
+  }
+  onNextRoundClick(): void {
+    this.showRoundDetailsView = !this.showRoundDetailsView;
+  }
+  onRoundDetailsSubmit(form: any): void {
+    this.showRoundDetailsView = !this.showRoundDetailsView;
+    const count = this.matches[0].round.sequenceNumber;
+    console.log('current count:', count);
+    console.log('detailt form:', form);
+    const newRound: CreateRoundRequest = {
+      competitionId: this.competitionId,
+      sequenceNumber: count + 1,
+      maxFaults: form.fault,
+      maxMinutes: form.time,
+    };
+
+    this.roundService.createMatchesForRound(newRound).subscribe({
+      next: (response: MatchResponse[]) => {
+        console.log(
+          `Matches created for round ${newRound.sequenceNumber}: `,
+          response
+        );
+        this.addDetailsToMatches(response);
+      },
+      error: (err) => {
+        console.error('Error creating matches for round:', err);
+      },
+    });
+  }
+
+  addDetailsToMatches(matches: MatchResponse[]) {
+    //Add judge, starttime, endtime, field to the matches
+    matches.forEach((match) => {
+      // Create updated match object
+      const updatedMatch: MatchRequest = {
+        id: match.id,
+        roundId: match.roundId,
+        participantIds: match.participantIds,
+        status: 0,
+        judgeId: 'd8ce4939-e44c-443f-8bfe-3568463ecc7b', // Add the missing judge property
+        startTime: '2024-12-10T05:23:50.032Z', // Add the missing startTime property
+        endTime: '2024-12-10T05:23:50.032Z', // Add the missing endTime property
+        fieldId: '2b3c4d5e-6f7a-8b9c-0d1e-2f3a4b5c6d7e', // Add the missing field propert
+      };
+      this.matchService.updateMatch(updatedMatch).subscribe({
+        next: () => {
+          console.log(`Match ${match.id} updated successfully.`);
+
+          // Update the local match object with new details
+          match.judgeId = updatedMatch.judgeId;
+          match.startTime = updatedMatch.startTime;
+          match.endTime = updatedMatch.endTime;
+          match.fieldId = updatedMatch.fieldId;
+          match.status = updatedMatch.status;
+        },
+        error: (err) => {
+          console.error(`Error updating match ${match.id}:`, err);
+        },
+      });
+    });
+    this.matches = [...matches];
   }
 }

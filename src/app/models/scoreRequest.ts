@@ -1,7 +1,7 @@
 // import { Penalty } from './penalty';
 
 export interface ScoreRequest {
-  $type: 'TimeScore' | 'SetScore' | 'PointScore'; // Discriminator field for score type
+  $type: 'TimeScore' | 'SetScore' | 'PointScore' | 'TimeFaultScore'; // Discriminator field for score type
   matchId: string;
   participantId: string;
   // penalties?: Penalty[]; // Array of penalties, not in scope yet
@@ -22,6 +22,11 @@ export interface PointScore extends ScoreRequest {
   $type: 'PointScore'; // Discriminator value
   // Additional fields specific to PointScore
 }
+export interface TimeFaultScore extends ScoreRequest {
+  $type: 'TimeFaultScore'; // Discriminator value
+  time: string; // ISO duration string or timespan
+  faults: number; // Number of faults
+}
 
 // Union type for the score
-export type ScoreType = TimeScore | SetScore | PointScore;
+export type ScoreType = TimeScore | SetScore | PointScore | TimeFaultScore;

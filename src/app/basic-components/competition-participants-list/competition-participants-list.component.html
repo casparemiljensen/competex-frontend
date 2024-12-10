@@ -6,8 +6,10 @@
     <mat-card-content>
       <mat-table [dataSource]="matches" class="startlist-table">
         <!-- Number Column -->
-        <ng-container matColumnDef="number">
-          <mat-header-cell *matHeaderCellDef> Nr. </mat-header-cell>
+        <ng-container matColumnDef="number" class="column-number">
+          <mat-header-cell *matHeaderCellDef class="column-number">
+            Nr.
+          </mat-header-cell>
           <mat-cell *matCellDef="let element; let i = index">
             {{ i + 1 }}
           </mat-cell>
@@ -15,10 +17,20 @@
 
         <!-- Participant Name Column -->
         <ng-container matColumnDef="name">
-          <mat-header-cell *matHeaderCellDef> Deltager </mat-header-cell>
-          <mat-cell *matCellDef="let element">
+          <mat-header-cell *matHeaderCellDef class="column-name">
+            Deltager
+          </mat-header-cell>
+          <mat-cell *matCellDef="let element" class="column-name">
             <div *ngFor="let participant of element.participants">
-              {{ participant.name }}
+              <div *ngIf="participant.$type == 'Ekvipage'">
+                Fører: {{ participant.member.firstName }}
+                {{ participant.member.lastName }}
+                <br />
+                Kanin: {{ participant.entity.name }}
+              </div>
+              <div *ngIf="participant.$type !== 'Ekvipage'">
+                {{ participant.name }}
+              </div>
             </div>
           </mat-cell>
         </ng-container>
@@ -32,5 +44,17 @@
         ></mat-row>
       </mat-table>
     </mat-card-content>
+    <div class="round-buttons">
+      <button mat-raised-button color="primary" (click)="handleNewRoundClick()">
+        Opret 1. runde
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="handleNextRoundClick()"
+      >
+        Næste runde
+      </button>
+    </div>
   </mat-card>
 </div>

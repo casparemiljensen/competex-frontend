@@ -69,6 +69,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { CompetitionParticipantsListComponent } from './basic-components/competition-participants-list/competition-participants-list.component';
 import { CompetitionResultViewComponent } from './basic-components/competition-result-view/competition-result-view.component';
 import { environment } from '../environments/environment';
+import { CompetitionRoundDetailsComponent } from './basic-components/competition-round-details/competition-round-details.component';
 
 @NgModule({
   declarations: [
@@ -107,6 +108,7 @@ import { environment } from '../environments/environment';
     CompetitionPageComponent,
     CompetitionParticipantsListComponent,
     CompetitionResultViewComponent,
+    CompetitionRoundDetailsComponent,
   ],
   imports: [
     BrowserModule,
