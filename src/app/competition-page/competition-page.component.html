@@ -1,7 +1,4 @@
 <div class="page-container">
-  <div>
-    <p>{{ competition.name + ": " + competition.id }}</p>
-  </div>
   <!-- <div *ngIf="!detailsSubmitted"> -->
   <div *ngIf="false">
     <h2>Konkurrence Detaljer</h2>
@@ -25,7 +22,7 @@
   </div>
   <!-- <div *ngIf="detailsSubmitted"> -->
   <div *ngIf="true" class="subpage-container">
-    <h2>Bedømmelse</h2>
+    <h2>{{ competition.name }}</h2>
     <div class="result-content">
       <app-competition-result-view
         *ngIf="!showRoundDetailsView"

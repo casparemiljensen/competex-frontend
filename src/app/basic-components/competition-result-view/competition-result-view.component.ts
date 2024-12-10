@@ -9,7 +9,8 @@ import { MatchResponse } from '../../models/matchResponse';
 import { MatchRequest } from '../../models/matchRequest';
 import { Participant } from '../../models/participant';
 import { MatchService } from '../../service/match/match.service';
-import { TimeScore } from '../../models/scoreRequest';
+import { TimeFaultScore, TimeScore } from '../../models/scoreRequest';
+import { ScoreService } from '../../service/Score/score.service';
 
 @Component({
   selector: 'app-competition-result-view',
@@ -23,7 +24,11 @@ export class CompetitionResultViewComponent {
   //Form group for results form.
   resultForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private matchService: MatchService) {}
+  constructor(
+    private fb: FormBuilder,
+    private matchService: MatchService,
+    private scoreService: ScoreService
+  ) {}
 
   // ngOnChanges(changes: SimpleChanges): void {
   //   console.log('Changes in result view:', changes);
@@ -37,9 +42,9 @@ export class CompetitionResultViewComponent {
       fault: ['', [Validators.required, Validators.min(0), Validators.max(14)]],
       time: ['', [Validators.required]],
       // correction: ['', [Validators.required]],
-      adv: [false],
-      disq: [false],
-      trukket: [false],
+      // adv: [false],
+      // disq: [false],
+      // trukket: [false],
     });
 
     //Diskvalificeret og trukket er disabled i denne version
@@ -83,36 +88,49 @@ export class CompetitionResultViewComponent {
       const formData = this.resultForm.value; // Collect the form data
       console.log('Form Submitted:', formData);
 
-      const newScore: TimeScore = {
-        $type: 'TimeScore',
-        matchId: this.match.id,
-        participantId: this.match.participantIds[0], // Assuming the first participant
+      const newScore: TimeFaultScore = {
+        $type: 'TimeFaultScore',
+        matchId: this.match!.id!,
+        participantId: this.match!.participantIds[0]!, // Assuming only 1 participant in match
         time: formData.time, // Map form value to the time field
+        faults: formData.fault, // Map form value to the faults field
       };
+      console.log('Constructed TimeScore:', newScore);
 
-      const updatedMatch: MatchRequest = {
-        id: this.match.id,
-        roundId: this.match.roundId,
-        participantIds: this.match.participantIds,
-        status: 3, // Completed when result us submitted
-        startTime: this.match.startTime,
-        endTime: this.match.endTime,
-        fieldId: this.match.fieldId,
-        judgeId: this.match.judgeId,
-        // scores: [newScore], // Add the new score to the scores array
-      };
-
-      console.log('Updated Match:', JSON.stringify(updatedMatch, null, 2));
-      this.matchUpdated.emit(updatedMatch); //Remove when BE request works.
-      this.matchService.updateMatch(updatedMatch).subscribe({
+      this.scoreService.createScore(newScore).subscribe({
         next: (response) => {
-          console.log('Match updated successfully:', response);
-          alert('Match updated successfully!');
-          this.matchUpdated.emit(updatedMatch);
+          console.log('Score created successfully:', response);
+
+          const updatedMatch: MatchRequest = {
+            id: this.match!.id!,
+            roundId: this.match!.roundId!,
+            participantIds: this.match!.participantIds!,
+            status: 3, // Completed when result us submitted
+            startTime: this.match!.startTime!,
+            endTime: this.match!.endTime!,
+            fieldId: this.match!.fieldId!,
+            judgeId: this.match!.judgeId!,
+          };
+
+          console.log('Updated Match:', JSON.stringify(updatedMatch, null, 2));
+
+          this.matchService.updateMatch(updatedMatch).subscribe({
+            next: (response) => {
+              console.log('Match updated successfully:', response);
+              alert('Match updated successfully!');
+              this.matchUpdated.emit(updatedMatch);
+
+              this.match = null; // Clear the match to hide the form
+            },
+            error: (err) => {
+              console.error('Error updating match:', err);
+              alert('Failed to update match.');
+            },
+          });
         },
         error: (err) => {
-          console.error('Error updating match:', err);
-          alert('Failed to update match.');
+          console.error('Error creating score:', err);
+          alert('Failed to create score.');
         },
       });
     } else {
