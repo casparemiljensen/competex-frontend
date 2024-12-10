@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { EventService } from '../service/event/event.service';
-import { eventRespons } from '../models/eventRespons';
+import { eventResponse } from '../models/eventRespons';
 
 @Component({
   selector: 'app-calender',
@@ -11,7 +11,7 @@ import { eventRespons } from '../models/eventRespons';
 })
 export class CalenderComponent implements OnInit {
   title = 'Stævne kalender';
-  events$: Observable<eventRespons[]> | undefined; // Observable to hold event data
+  events$: Observable<eventResponse[]> | undefined; // Observable to hold event data
 
   // Inject the EventService
   constructor(

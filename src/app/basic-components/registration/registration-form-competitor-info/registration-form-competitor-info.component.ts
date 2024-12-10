@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { eventRespons } from '../../../models/eventRespons';
+import { eventResponse } from '../../../models/eventRespons';
 import { entityService } from '../../../service/entity/entity.service';
 
 @Component({

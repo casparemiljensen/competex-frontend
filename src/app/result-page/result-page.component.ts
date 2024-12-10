@@ -3,18 +3,18 @@ import { ScoreResultsService } from '../service/scoreResults/score-results.servi
 import { ActivatedRoute } from '@angular/router';
 import { EventService } from '../service/event/event.service';
 import { ScoreResultsResponse } from '../models/scoreResultsRespons';
-import { eventRespons } from '../models/eventRespons';
+import { eventResponse } from '../models/eventRespons';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-result-page',
   templateUrl: './result-page.component.html',
-  styleUrls: ['./result-page.component.css']
+  styleUrls: ['./result-page.component.css'],
 })
 export class ResultPageComponent implements OnInit {
   results: ScoreResultsResponse[] = [];
-  event: eventRespons | null = null; // Initialize as null to handle cases when no event is found
+  event: eventResponse | null = null; // Initialize as null to handle cases when no event is found
 
   transformedObject: any[] = []; // Ensure it's an array to avoid template issues
 
@@ -37,7 +37,9 @@ export class ResultPageComponent implements OnInit {
             console.log('Event fetched:', this.event);
 
             if (this.event?.competitions?.length) {
-              const competitionIds = this.event.competitions.map(comp => comp.id);
+              const competitionIds = this.event.competitions.map(
+                (comp) => comp.id
+              );
               if (competitionIds.length === 0) {
                 console.warn('No competition IDs found in the event.');
                 this.isLoading = false;
@@ -53,7 +55,7 @@ export class ResultPageComponent implements OnInit {
             console.error('Error fetching event:', err);
             this.event = null;
             this.isLoading = false; // Stop spinner
-          }
+          },
         });
       } else {
         console.error('Event ID is missing in the route.');
@@ -69,17 +71,21 @@ export class ResultPageComponent implements OnInit {
     }
 
     return obj
-      .filter((competition: any) => competition.values && competition.values.length > 0)
+      .filter(
+        (competition: any) =>
+          competition.values && competition.values.length > 0
+      )
       .map((competition: any) => ({
-        ExpandableTable: competition.values[0]?.competition?.name || "Unknown Competition",
+        ExpandableTable:
+          competition.values[0]?.competition?.name || 'Unknown Competition',
         data: competition.values.map((value: any) => ({
           Deltager: value.participant?.member
             ? `${value.participant.member.firstName} ${value.participant.member.lastName}`
-            : "Unknown Participant",
-          Kanin: value.participant?.entity?.name || "Unknown Entity",
-          Fejl: value.faults ?? "N/A",
-          Tid: value.time ?? "N/A"
-        }))
+            : 'Unknown Participant',
+          Kanin: value.participant?.entity?.name || 'Unknown Entity',
+          Fejl: value.faults ?? 'N/A',
+          Tid: value.time ?? 'N/A',
+        })),
       }));
   }
 
@@ -91,27 +97,30 @@ export class ResultPageComponent implements OnInit {
       return;
     }
 
-    this.scoreResultService.getResultsByIds(ids).pipe(
-      catchError((err) => {
-        console.error('Error fetching results:', err);
-        this.transformedObject = [];
-        this.isLoading = false;
-        return of([]); // Return an empty array to handle errors gracefully
-      })
-    ).subscribe((data: any[]) => {
-      console.log('Results fetched:', data);
-      if (data && data.length > 0) {
-        this.transformedObject = this.transformObject(data);
-        console.log('Transformed object:', this.transformedObject);
-      } else {
-        console.warn('No results returned from API.');
-        this.transformedObject = [];
-      }
-      this.isLoading = false; // Stop spinner
-    });
+    this.scoreResultService
+      .getResultsByIds(ids)
+      .pipe(
+        catchError((err) => {
+          console.error('Error fetching results:', err);
+          this.transformedObject = [];
+          this.isLoading = false;
+          return of([]); // Return an empty array to handle errors gracefully
+        })
+      )
+      .subscribe((data: any[]) => {
+        console.log('Results fetched:', data);
+        if (data && data.length > 0) {
+          this.transformedObject = this.transformObject(data);
+          console.log('Transformed object:', this.transformedObject);
+        } else {
+          console.warn('No results returned from API.');
+          this.transformedObject = [];
+        }
+        this.isLoading = false; // Stop spinner
+      });
   }
 
-  fetchEvent(eventId: string): Observable<eventRespons | null> {
+  fetchEvent(eventId: string): Observable<eventResponse | null> {
     return this.eventService.getEventById(eventId).pipe(
       catchError((err) => {
         console.error('Error fetching event:', err);
