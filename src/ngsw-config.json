@@ -30,7 +30,7 @@
     {
       "name": "api",
       "urls": [
-        "https://localhost:7140/**"
+        "https://competex-backend.schnykjaer.com:22114/**"
       ],
       "cacheConfig": {
         "strategy": "performance",
