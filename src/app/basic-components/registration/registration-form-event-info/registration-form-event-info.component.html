@@ -1,5 +1,11 @@
 <h4>Deltager Information:</h4>
 <div class="form-grid">
+  <app-form-input-select
+    label="Medlem"
+    [control]="memberIdControl"
+    [options]="memberOptions"
+  ></app-form-input-select>
+  <!-- 
   <app-form-input-text
     label="Fornavn"
     [control]="firstNameControl"
@@ -19,5 +25,5 @@
   <app-form-input-numbers
     label="Telefon nr."
     [control]="phoneNumberControl"
-  ></app-form-input-numbers>
+  ></app-form-input-numbers> -->
 </div>

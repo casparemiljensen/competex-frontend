@@ -4,7 +4,7 @@ import { SportType } from './sportType';
 import { CompetitionResponse } from './competitionResponse';
 import { Organizer } from './organizer';
 
-export interface eventRespons {
+export interface eventResponse {
   id: string;
   title: string;
   description?: string;
