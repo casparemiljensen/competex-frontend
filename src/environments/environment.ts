@@ -1,4 +1,4 @@
 export const environment = {
     production: false,
-    apiUrl: 'https://localhost:7140/'
+    apiUrl: 'https://competex-backend.schnykjaer.com:22114/api'
 };
