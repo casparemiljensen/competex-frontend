@@ -1,18 +1,22 @@
 import { Injectable } from '@angular/core';
-import { catchError, map, Observable, of } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError, map, Observable, of, EMPTY } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { eventResponse } from '../../models/eventRespons';
 import { API_DOMAIN } from '../apiUrl';
 import { Status } from '../../models/enums';
 import { eventRequest } from '../../models/eventRequest';
 import { CompetitionResponse } from '../../models/competitionResponse';
 import { CompetitionRequest } from '../../models/competitionRequest';
+import { OfflineQueueService } from '../offlineQueue/offline-queue.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EventService {
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private offlineQueueService: OfflineQueueService
+  ) {}
 
   private apiUrl = `${API_DOMAIN}/Events`;
 
@@ -127,7 +131,14 @@ export class EventService {
   createEvent(event: eventRequest): Observable<eventRequest> {
     return this.http
       .post<eventRequest>(this.apiUrl, event)
-      .pipe(map((response) => response));
+      .pipe(
+        map((response) => response),
+        catchError((error) => {
+          console.error('Error creating event, saving to queue:', error);
+          this.offlineQueueService.addToQueue(this.apiUrl, event, new HttpParams());
+          return EMPTY;
+        })
+      );
   }
 
   addCompetititonToEvent(

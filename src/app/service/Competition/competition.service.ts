@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, map, forkJoin } from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable, map, forkJoin, EMPTY } from 'rxjs';
 import { CompetitionRequest } from '../../models/competitionRequest';
 import { CompetitionResponse } from '../../models/competitionResponse';
 import { API_DOMAIN } from '../apiUrl';
+import { catchError } from 'rxjs/operators';
+import { OfflineQueueService } from '../offlineQueue/offline-queue.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +13,10 @@ import { API_DOMAIN } from '../apiUrl';
 export class CompetitionService {
   private baseUrl = `${API_DOMAIN}/Competitions`; // backend URL
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private offlineQueueService: OfflineQueueService
+  ) {}
 
   // Fetch competitions
   getCompetitions(): Observable<CompetitionResponse[]> {
@@ -29,8 +34,17 @@ export class CompetitionService {
   createCompetition(event: CompetitionRequest): Observable<CompetitionRequest> {
     return this.http
       .post<CompetitionRequest>(this.baseUrl, event)
-      .pipe(map((response) => response));
+      .pipe(
+        map((response) => response),
+        catchError((error) => {
+          console.error('Error creating competition, saving to queue:', error);
+  
+          this.offlineQueueService.addToQueue(this.baseUrl, event, new HttpParams());
+          return EMPTY; 
+        })
+      );
   }
+  
 
   getCompetitionsByIds(ids: string[]): Observable<CompetitionResponse[]> {
     const requests = ids.map((id) =>
