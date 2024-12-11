@@ -21,7 +21,8 @@ export class ResultsOverviewPageComponent {
   }
 
   fetchEvents(): void {
-    this.eventService.getEventsBySearchPending().subscribe({
+
+    this.eventService.getEventsBySearchConcluded().subscribe({
       next: (response: { values: eventResponse[]; pageInfo: any }) => {
         if (Array.isArray(response.values)) {
           this.events = response.values; // Ensure it's an array

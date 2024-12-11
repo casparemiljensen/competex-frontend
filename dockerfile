@@ -4,6 +4,7 @@ WORKDIR /usr/src/app
 
 
 COPY package.json package-lock.json ./
+RUN rm -rf node_modules package-lock.json && echo "Workspace cleaned."
 RUN npm install -g @angular/cli
 RUN npm install
 COPY . /usr/src/app
