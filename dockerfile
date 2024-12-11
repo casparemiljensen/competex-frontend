@@ -3,8 +3,7 @@ FROM node:18 AS build
 WORKDIR /usr/src/app
 
 
-COPY package.json package-lock.json ./
-RUN rm -rf node_modules package-lock.json && echo "Workspace cleaned."
+COPY package.json ./
 RUN npm install -g @angular/cli
 RUN npm install
 COPY . /usr/src/app
@@ -12,7 +11,7 @@ COPY . /usr/src/app
 # RUN ng build
 
 
-RUN npm run build -- --configuration production
+RUN npm run build
 
 # CMD ["ng", "serve", "--host", "0.0.0.0"]
 
