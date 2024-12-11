@@ -8,29 +8,40 @@ import {
 } from '@angular/forms';
 import { PageEvent } from '@angular/material/paginator';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
+import { CompetitionService } from '../../../service/Competition/competition.service';
+import { CompetitionResponse } from '../../../models/competitionResponse';
+import { RegistrationService } from '../../../service/registration/registration.service';
+import { Participant } from '../../../models/participant';
 
 @Component({
   selector: 'app-registration-forms',
   templateUrl: './registration-forms.component.html',
-  styleUrls: ['./registration-forms.component.css']
+  styleUrls: ['./registration-forms.component.css'],
 })
 export class RegistrationFormsComponent {
-  @Input() formFields: { [key: string]: any } = {};
-  @Input() compitionsData: any;
+  @Input() competitionsData!: CompetitionResponse[];
 
   myForm!: FormGroup;
   currentPageIndex: number = 0;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {}
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private route: ActivatedRoute,
+    private competitionService: CompetitionService,
+    private registrationService: RegistrationService
+  ) {}
 
   ngOnInit(): void {
     this.myForm = this.fb.group({
-      firstName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
-      birthday: ['', [Validators.required]],
-      mailAddress: ['', [Validators.required]],
-      phoneNumber: ['', [Validators.required]],
-      rabbits: this.fb.array([])
+      // firstName: ['', [Validators.required]],
+      // lastName: ['', [Validators.required]],
+      // birthday: ['', [Validators.required]],
+      // mailAddress: ['', [Validators.required]],
+      // phoneNumber: ['', [Validators.required]],
+      rabbits: this.fb.array([]),
+      member: ['', [Validators.required]],
     });
 
     // Add the first set of controls by default
@@ -39,9 +50,8 @@ export class RegistrationFormsComponent {
 
   // Getter for the FormArray
   get rabbitsControls(): FormArray<FormGroup> {
-  return this.myForm.get('rabbits') as FormArray<FormGroup>;
-}
-
+    return this.myForm.get('rabbits') as FormArray<FormGroup>;
+  }
 
   // Method to add a new set of controls
   addRabbit(): void {
@@ -71,20 +81,59 @@ export class RegistrationFormsComponent {
       const formData = this.myForm.value;
       console.log('Form Submitted:', formData);
 
-      // Simulate sending to the database
-      this.http.post('/api/registrations', formData).subscribe(
-        (response) => {
-          console.log('Data submitted successfully:', response);
-          alert('Registration submitted successfully!');
-        },
-        (error) => {
-          console.error('Error submitting data:', error);
-          alert('An error occurred while submitting the registration.');
+      formData.rabbits.forEach(async (rabbit: any) => {
+        const participant = {
+          $type: 'Ekvipage',
+          name: `${JSON.parse(formData.member).name} og ${
+            JSON.parse(rabbit.rabbitName).name
+          }`,
+          memberId: `${JSON.parse(formData.member).id}`,
+          entityId: `${JSON.parse(rabbit.rabbitName).id}`,
+        };
+        console.log('Participant:', participant);
+
+        // Send the participant to the backend
+        const NewParticipantId = await this.submitParticipant(participant);
+        console.log('New Participant ID:', NewParticipantId);
+        if (!NewParticipantId) {
+          console.error('Error submitting participant');
+          return;
         }
-      );
-    } else {
-      console.log('Form is invalid');
-      alert('Please correct the errors in the form before submitting.');
+
+        // Send the registration to the backend
+        rabbit.competitions.forEach((competition: string) => {
+          const newRegistration = {
+            competitionId: competition,
+            participantId: NewParticipantId,
+            registrationDate: new Date().toISOString(),
+            status: 0,
+          };
+          console.log('Registration:', newRegistration);
+          this.registrationService.postRegistration(newRegistration).subscribe({
+            next: (response) => {
+              console.log('Participant submitted successfully:', response);
+              return response;
+            },
+            error: (err) => {
+              console.error('Error submitting participant:', err);
+              return undefined;
+            },
+          });
+        });
+      });
+    }
+  }
+
+  async submitParticipant(participant: any): Promise<string | undefined> {
+    try {
+      const response = await this.registrationService
+        .postParticipant(participant)
+        .toPromise();
+      console.log('Participant submitted successfully:', response);
+      return response;
+    } catch (err) {
+      console.error('Error submitting participant:', err);
+      return undefined;
     }
   }
 

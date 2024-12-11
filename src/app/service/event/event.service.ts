@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { eventRespons } from '../../models/eventRespons';
+import { eventResponse } from '../../models/eventRespons';
 import { API_DOMAIN } from '../apiUrl';
 import { Status } from '../../models/enums';
 import { eventRequest } from '../../models/eventRequest';
@@ -16,36 +16,36 @@ export class EventService {
 
   private apiUrl = `${API_DOMAIN}/Events`;
 
-  getEvents(): Observable<eventRespons[]> {
-    return this.http.get<eventRespons[]>(this.apiUrl).pipe(
-      catchError(this.handleError<eventRespons[]>('getEvents', [])) // Return empty array on error
+  getEvents(): Observable<eventResponse[]> {
+    return this.http.get<eventResponse[]>(this.apiUrl).pipe(
+      catchError(this.handleError<eventResponse[]>('getEvents', [])) // Return empty array on error
     );
   }
 
-  getEventById(id: string): Observable<eventRespons> {
+  getEventById(id: string): Observable<eventResponse> {
     return this.http
-      .get<eventRespons>(`${this.apiUrl}/${id}`)
+      .get<eventResponse>(`${this.apiUrl}/${id}`)
       .pipe(
-        catchError(this.handleError<eventRespons>(`getEventById id=${id}`))
+        catchError(this.handleError<eventResponse>(`getEventById id=${id}`))
       );
   }
 
   getEventsBySearchPending(): Observable<{
-    values: eventRespons[];
+    values: eventResponse[];
     pageInfo: any;
   }> {
     const body = JSON.stringify({ status: 'Pending' });
     const headers = { 'Content-Type': 'application/json', Accept: '*/*' };
 
     return this.http
-      .post<{ values: eventRespons[]; pageInfo: any }>(
+      .post<{ values: eventResponse[]; pageInfo: any }>(
         `${this.apiUrl}/search`,
         body,
         { headers }
       )
       .pipe(
         catchError(
-          this.handleError<{ values: eventRespons[]; pageInfo: any }>(
+          this.handleError<{ values: eventResponse[]; pageInfo: any }>(
             'getEventsBySearchPending'
           )
         )
@@ -53,21 +53,21 @@ export class EventService {
   }
 
   getEventsBySearchActive(): Observable<{
-    values: eventRespons[];
+    values: eventResponse[];
     pageInfo: any;
   }> {
     const body = JSON.stringify({ status: 'Active' });
     const headers = { 'Content-Type': 'application/json', Accept: '*/*' };
 
     return this.http
-      .post<{ values: eventRespons[]; pageInfo: any }>(
+      .post<{ values: eventResponse[]; pageInfo: any }>(
         `${this.apiUrl}/search`,
         body,
         { headers }
       )
       .pipe(
         catchError(
-          this.handleError<{ values: eventRespons[]; pageInfo: any }>(
+          this.handleError<{ values: eventResponse[]; pageInfo: any }>(
             'getEventsBySearchPending'
           )
         )
@@ -75,21 +75,21 @@ export class EventService {
   }
 
   getEventsBySearchCancelled(): Observable<{
-    values: eventRespons[];
+    values: eventResponse[];
     pageInfo: any;
   }> {
     const body = JSON.stringify({ status: 'Cancelled' });
     const headers = { 'Content-Type': 'application/json', Accept: '*/*' };
 
     return this.http
-      .post<{ values: eventRespons[]; pageInfo: any }>(
+      .post<{ values: eventResponse[]; pageInfo: any }>(
         `${this.apiUrl}/search`,
         body,
         { headers }
       )
       .pipe(
         catchError(
-          this.handleError<{ values: eventRespons[]; pageInfo: any }>(
+          this.handleError<{ values: eventResponse[]; pageInfo: any }>(
             'getEventsBySearchPending'
           )
         )
@@ -97,21 +97,21 @@ export class EventService {
   }
 
   getEventsBySearchConcluded(): Observable<{
-    values: eventRespons[];
+    values: eventResponse[];
     pageInfo: any;
   }> {
     const body = JSON.stringify({ status: 'Concluded' });
     const headers = { 'Content-Type': 'application/json', Accept: '*/*' };
 
     return this.http
-      .post<{ values: eventRespons[]; pageInfo: any }>(
+      .post<{ values: eventResponse[]; pageInfo: any }>(
         `${this.apiUrl}/search`,
         body,
         { headers }
       )
       .pipe(
         catchError(
-          this.handleError<{ values: eventRespons[]; pageInfo: any }>(
+          this.handleError<{ values: eventResponse[]; pageInfo: any }>(
             'getEventsBySearchPending'
           )
         )

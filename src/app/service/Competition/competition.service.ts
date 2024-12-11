@@ -32,12 +32,19 @@ export class CompetitionService {
       .pipe(map((response) => response));
   }
 
-  
   getCompetitionsByIds(ids: string[]): Observable<CompetitionResponse[]> {
     const requests = ids.map((id) =>
       this.http.get<CompetitionResponse>(`${this.baseUrl}/${id}`)
     );
-  
+
     return forkJoin(requests); // Combine all requests
+  }
+
+  getCompetitionSearch(search: {
+    [key: string]: any;
+  }): Observable<CompetitionResponse[]> {
+    return this.http
+      .post<{ values: CompetitionResponse[] }>(`${this.baseUrl}/search`, search)
+      .pipe(map((response) => response.values));
   }
 }
