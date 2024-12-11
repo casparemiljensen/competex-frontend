@@ -66,3 +66,9 @@
     align-items: center;
     height: 100vh; /* Adjust as needed */
   }
+
+  .center-wrapper {
+    display: grid;
+    place-items: center;
+    color: red;
+  }

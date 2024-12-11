@@ -5,6 +5,8 @@ import { eventRespons } from '../../models/eventRespons';
 import { API_DOMAIN } from '../apiUrl';
 import { Status } from '../../models/enums';
 import { eventRequest } from '../../models/eventRequest';
+import { CompetitionResponse } from '../../models/competitionResponse';
+import { CompetitionRequest } from '../../models/competitionRequest';
 
 @Injectable({
   providedIn: 'root',
@@ -125,6 +127,15 @@ export class EventService {
   createEvent(event: eventRequest): Observable<eventRequest> {
     return this.http
       .post<eventRequest>(this.apiUrl, event)
+      .pipe(map((response) => response));
+  }
+
+  addCompetititonToEvent(
+    eventId: eventRequest,
+    competitionId: CompetitionRequest
+  ) {
+    return this.http
+      .post(`${this.apiUrl}/${eventId}addCompetition/${competitionId}`, null)
       .pipe(map((response) => response));
   }
 }

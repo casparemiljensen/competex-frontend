@@ -2,7 +2,10 @@
   <mat-spinner></mat-spinner>
 </div>
 <div *ngIf="!isLoading">
-  <div class="table-container">
+  <div *ngIf="groupedEvents.length === 0">
+    <h2 class="center-wrapper"> Ingen stævner fundnet</h2>
+  </div>
+  <div class="table-container" *ngIf="groupedEvents">
     <ng-container *ngFor="let group of groupedEvents">
       <!-- Display the month header -->
       <h2 class="month-header">{{ group[0] }}</h2>
