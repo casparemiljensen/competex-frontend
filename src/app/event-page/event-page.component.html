@@ -81,10 +81,24 @@
     </div>
   </div> -->
 
-  <!-- Konkurrence tables-->
-  <div class="ExpandableTable-container" *ngIf="transformedData">
-    <app-ExpandableTable
-      [ExpandableTables]="transformedData"
-    ></app-ExpandableTable>
+  <!-- Konkurrencen har fået nye tilmeldinger. Skal tjekkes før en konkurrence kan startes. -->
+  <div class="container-wrapper">
+    <div class="new-registrations" *ngIf="newRegistrations">
+      <h3>Nye tilmeldinger</h3>
+      <div *ngFor="let registration of newRegistrations">
+        <p>
+          <strong>{{ registration.participant.name }}</strong> har tilmeldt sig
+          {{ registration.competition.name }}
+        </p>
+      </div>
+      <button (click)="approveRegistrations()">Godkend tilmeldinger</button>
+    </div>
+
+    <!-- Konkurrence tables-->
+    <div class="ExpandableTable-container" *ngIf="transformedData">
+      <app-ExpandableTable
+        [ExpandableTables]="transformedData"
+      ></app-ExpandableTable>
+    </div>
   </div>
 </div>

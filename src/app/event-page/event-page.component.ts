@@ -27,6 +27,7 @@ export class EventPageComponent implements OnInit {
   // This is the tempory, to show how the pange changes give the view is creator of the event or not
   isCreator = true;
   transformedData: any[] | undefined;
+  newRegistrations: RegistrationRespons[] = [];
 
   constructor(
     private EventService: EventService,
@@ -99,6 +100,13 @@ export class EventPageComponent implements OnInit {
           competitionId,
           registrations
         );
+        //loop through registrations array and add each reg that have status 0 to newRegistration
+        registrations.values.forEach((element) => {
+          console.log('Element:', element);
+          if (element.status == 0) {
+            this.newRegistrations.push(element);
+          }
+        });
 
         // Transform the data for this competition
         const transformed = this.transformRegistrationData(
@@ -213,5 +221,47 @@ export class EventPageComponent implements OnInit {
     );
 
     return transformedData;
+  }
+  fetchRegistrationsByCompetitionId(competitionId: string): void {
+    this.RegistrationService.getRegistrationBySearch(competitionId).subscribe({
+      next: (response) => {
+        console.log(
+          'Registrations for Competition ID:',
+          competitionId,
+          response
+        );
+        // Handle the fetched registrations, e.g., store them in a component property or pass them to a UI handler.
+      },
+      error: (err) => {
+        console.error(
+          'Error fetching registrations for Competition ID:',
+          competitionId,
+          err
+        );
+        // Handle the error, e.g., show an error message to the user.
+      },
+    });
+  }
+
+  approveRegistrations(): void {
+    //change each registrations status to 2
+    const registrationStatus = this.newRegistrations.map((reg) => {
+      return { ...reg, status: 2 };
+    });
+    console.log('Approving Registrations:', registrationStatus);
+
+    // Iterate over each registration and create a POST request
+    registrationStatus.forEach((registration) => {
+      this.RegistrationService.updateRegistration(registration).subscribe({
+        next: (response) => {
+          console.log('Registrations approved:', response);
+          // Handle the response, e.g., show a success message to the user.
+        },
+        error: (err) => {
+          console.error('Error approving registrations:', err);
+          // Handle the error, e.g., show an error message to the user.
+        },
+      });
+    });
   }
 }
