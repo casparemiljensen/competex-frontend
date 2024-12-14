@@ -5,16 +5,16 @@ import { EventService } from '../event/event.service';
 import { MatchService } from '../match/match.service';
 import { ResultService } from '../Result/result.service';
 import { LocationService } from '../location/location.service';
-import { OrganizerService } from '../organizerService/organizer.service';
+import { OrganizerService } from '../club/club.service';
 import { CompetitionTypeService } from '../CompetitionType/competition-type.service';
 import { JudgeService } from '../judge/judge.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CachePrimerService {
   constructor(
-    private competitionService: CompetitionService, 
+    private competitionService: CompetitionService,
     private entityService: entityService,
     private eventService: EventService,
     private matchService: MatchService,
@@ -39,7 +39,8 @@ export class CachePrimerService {
   private cacheCompetitions(): void {
     this.competitionService.getCompetitions().subscribe({
       next: (competitions) => console.log('Competitions cached:', competitions),
-      error: (err) => console.error('Failed to cache competitions:', err.message),
+      error: (err) =>
+        console.error('Failed to cache competitions:', err.message),
     });
   }
 
@@ -87,8 +88,10 @@ export class CachePrimerService {
 
   private cacheCompetitionTypes(): void {
     this.competitiontypeService.getCompetitionType().subscribe({
-      next: (competitionTypes) => console.log('Competition types cached:', competitionTypes),
-      error: (err) => console.error('Failed to cache competition types:', err.message),
+      next: (competitionTypes) =>
+        console.log('Competition types cached:', competitionTypes),
+      error: (err) =>
+        console.error('Failed to cache competition types:', err.message),
     });
   }
 

@@ -15,9 +15,8 @@ import { Judge } from '../../models/judge';
 import { LocationService } from '../../service/location/location.service';
 import { Location } from '../../models/location';
 import { CompetitionRequest } from '../../models/competitionRequest';
-import { Organizer } from '../../models/organizer';
-import { OrganizerService } from '../../service/organizerService/organizer.service';
-import { Member } from '../../models/member';
+import { Club } from '../../models/club';
+import { OrganizerService } from '../../service/club/club.service';
 import { CompetitionType } from '../../models/competitionType';
 import { CompetitionTypeService } from '../../service/CompetitionType/competition-type.service';
 
@@ -33,7 +32,7 @@ export class FormTemplateComponent implements OnInit {
   currentPageIndex: number = 0;
   judges: Judge[] = [];
   locations: Location[] = [];
-  organizers: Member[] = [];
+  organizers: Club[] = [];
   competitionTypes: CompetitionType[] = [];
 
   constructor(

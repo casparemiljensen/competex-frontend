@@ -1,7 +1,7 @@
 import { Component, Input, SimpleChanges } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Location } from '../../models/location';
-import { Organizer } from '../../models/organizer';
+import { Club } from '../../models/club';
 import { Member } from '../../models/member';
 
 @Component({
@@ -12,7 +12,7 @@ import { Member } from '../../models/member';
 export class FormEventInformationComponent {
   @Input() parentForm!: FormGroup;
   @Input() locations: Location[] = [];
-  @Input() organizers: Member[] = [];
+  @Input() organizers: Club[] = [];
 
   locationOptions: { value: string; viewValue: string }[] = [];
   organizerOptions: { value: string; viewValue: string }[] = [];
@@ -71,7 +71,7 @@ export class FormEventInformationComponent {
     this.organizerOptions = this.organizers.map((organizer) => {
       return {
         value: organizer.id,
-        viewValue: `${organizer.firstName} ${organizer.lastName}`,
+        viewValue: organizer.name,
       };
     });
     console.log('organizerOptions:', this.organizerOptions);
