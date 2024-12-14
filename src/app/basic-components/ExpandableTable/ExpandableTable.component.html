@@ -1,23 +1,35 @@
 <div class="container-wrapper">
+  <div *ngIf="noCompetitions">
+    <p>Ingen Konkurrencer Fundet.</p>
+  </div>
   <div *ngIf="isLoading" class="loading-spinner">
     <mat-spinner></mat-spinner>
   </div>
 
   <mat-accordion multi="true" class="custom-accordion">
     <div>
-      <mat-expansion-panel *ngFor="let comp of ExpandableTables" class="custom-panel">
+      <mat-expansion-panel
+        *ngFor="let comp of ExpandableTables"
+        class="custom-panel"
+      >
         <mat-expansion-panel-header class="custom-panel-header">
           <div *ngIf="comp.judge && comp.ExpandableTable">
-            <mat-panel-title class="panel-text">{{ comp.ExpandableTable }}</mat-panel-title>
+            <mat-panel-title class="panel-text">{{
+              comp.ExpandableTable
+            }}</mat-panel-title>
             <mat-panel-description class="panel-description" *ngIf="comp.judge">
               Dommer: {{ comp.judge }}
             </mat-panel-description>
           </div>
           <div *ngIf="comp.judge && !comp.ExpandableTable">
-            <mat-panel-title class="panel-text">{{ comp.judge }}</mat-panel-title>
+            <mat-panel-title class="panel-text">{{
+              comp.judge
+            }}</mat-panel-title>
           </div>
           <div *ngIf="!comp.judge && comp.ExpandableTable">
-            <mat-panel-title class="panel-text">{{ comp.ExpandableTable }}</mat-panel-title>
+            <mat-panel-title class="panel-text">{{
+              comp.ExpandableTable
+            }}</mat-panel-title>
           </div>
         </mat-expansion-panel-header>
         <div class="page-container">
@@ -25,7 +37,8 @@
           <div class="scrollable-container">
             <app-DataTable
               [dataSource]="comp.data"
-              [displayedColumns]="displayedColumns">
+              [displayedColumns]="displayedColumns"
+            >
             </app-DataTable>
           </div>
         </div>

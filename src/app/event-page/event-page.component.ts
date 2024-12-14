@@ -135,56 +135,65 @@ export class EventPageComponent implements OnInit {
         );
 
         // Create participant using `createParticipant`
-        const participant = createParticipant(registration.participant);
+        const participant = registration.participant;
+        const participantDetails = {
+          Fører: participant.member
+            ? `${participant.member.firstName || ''} ${
+                participant.member.lastName || ''
+              }`.trim()
+            : 'Unknown Participant',
+          Kanin: participant.entity?.name || 'N/A', // For Ekvipage, use entity name
+        };
+        //const participant = createParticipant(registration.participant);
 
         // Build participant-specific data (order: name → entity)
-        let participantDetails: any;
+        //let participantDetails: any;
 
         // Set participant details based on participant type
-        switch (participant.$type) {
-          case 'Team': {
-            const teamParticipant = participant as Team;
-            participantDetails = {
-              TeamName:
-                teamParticipant.members
-                  ?.map((m) =>
-                    `${m.firstName || ''} ${m.lastName || ''}`.trim()
-                  )
-                  .join(', ') ||
-                participant.name ||
-                'Unknown Team', // Use team members' names or fallback to the team name
-            };
-            break;
-          }
-          case 'Single': {
-            const singleParticipant = participant as Single;
-            participantDetails = {
-              Deltager: singleParticipant.member
-                ? `${singleParticipant.member.firstName || ''} ${
-                    singleParticipant.member.lastName || ''
-                  }`.trim()
-                : 'Unknown Participant',
-            };
-            break;
-          }
-          case 'Ekvipage': {
-            const ekvipageParticipant = participant as Ekvipage;
-            participantDetails = {
-              Fører: ekvipageParticipant.member
-                ? `${ekvipageParticipant.member.firstName || ''} ${
-                    ekvipageParticipant.member.lastName || ''
-                  }`.trim()
-                : 'Unknown Participant',
-              Kanin: ekvipageParticipant.entity?.name || 'N/A', // For Ekvipage, use entity name
-            };
-            break;
-          }
-          default:
-            participantDetails = {
-              UnknownType: 'Unsupported participant type',
-            };
-            break;
-        }
+        // switch (participant.$type) {
+        //   case 'Team': {
+        //     const teamParticipant = participant as Team;
+        //     participantDetails = {
+        //       TeamName:
+        //         teamParticipant.members
+        //           ?.map((m) =>
+        //             `${m.firstName || ''} ${m.lastName || ''}`.trim()
+        //           )
+        //           .join(', ') ||
+        //         participant.name ||
+        //         'Unknown Team', // Use team members' names or fallback to the team name
+        //     };
+        //     break;
+        //   }
+        //   case 'Single': {
+        //     const singleParticipant = participant as Single;
+        //     participantDetails = {
+        //       Deltager: singleParticipant.member
+        //         ? `${singleParticipant.member.firstName || ''} ${
+        //             singleParticipant.member.lastName || ''
+        //           }`.trim()
+        //         : 'Unknown Participant',
+        //     };
+        //     break;
+        //   }
+        //   case 'Ekvipage': {
+        //     const ekvipageParticipant = participant as Ekvipage;
+        //     participantDetails = {
+        //       Fører: ekvipageParticipant.member
+        //         ? `${ekvipageParticipant.member.firstName || ''} ${
+        //             ekvipageParticipant.member.lastName || ''
+        //           }`.trim()
+        //         : 'Unknown Participant',
+        //       Kanin: ekvipageParticipant.entity?.name || 'N/A', // For Ekvipage, use entity name
+        //     };
+        //     break;
+        //   }
+        //   default:
+        //     participantDetails = {
+        //       UnknownType: 'Unsupported participant type',
+        //     };
+        //     break;
+        // }
 
         // If competition entry does not exist, create it
         if (!competitionEntry) {

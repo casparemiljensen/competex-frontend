@@ -83,7 +83,6 @@ export class RegistrationFormsComponent {
 
       formData.rabbits.forEach(async (rabbit: any) => {
         const participant = {
-          $type: 'Ekvipage',
           name: `${JSON.parse(formData.member).name} og ${
             JSON.parse(rabbit.rabbitName).name
           }`,

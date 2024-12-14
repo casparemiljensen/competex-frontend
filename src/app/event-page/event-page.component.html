@@ -3,7 +3,7 @@
     <div class="title">
       {{ event.title }}
     </div>
-
+    <!-- event inf -->
     <div class="top-section">
       <div class="container locatoin">
         <h3>Location</h3>
@@ -80,7 +80,11 @@
       </div>
     </div>
   </div> -->
+
+  <!-- Konkurrence tables-->
   <div class="ExpandableTable-container" *ngIf="transformedData">
-    <app-ExpandableTable [ExpandableTables]="transformedData"></app-ExpandableTable>
+    <app-ExpandableTable
+      [ExpandableTables]="transformedData"
+    ></app-ExpandableTable>
   </div>
 </div>
