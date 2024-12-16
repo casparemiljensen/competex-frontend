@@ -13,6 +13,7 @@ import { CompetitionService } from '../../../service/Competition/competition.ser
 import { CompetitionResponse } from '../../../models/competitionResponse';
 import { RegistrationService } from '../../../service/registration/registration.service';
 import { Participant } from '../../../models/participant';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-registration-forms',
@@ -30,7 +31,8 @@ export class RegistrationFormsComponent {
     private http: HttpClient,
     private route: ActivatedRoute,
     private competitionService: CompetitionService,
-    private registrationService: RegistrationService
+    private registrationService: RegistrationService,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -120,6 +122,13 @@ export class RegistrationFormsComponent {
           });
         });
       });
+      //Reset form and rabbit array, and create new form addRabbit is ready.
+      this.myForm.reset();
+      this.rabbitsControls.clear(); // Clear FormArray explicitly
+      this.addRabbit();
+
+      //navigate back to the registration page
+      this.location.back();
     }
   }
 
