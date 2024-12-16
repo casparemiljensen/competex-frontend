@@ -19,6 +19,7 @@ import { Club } from '../../models/club';
 import { OrganizerService } from '../../service/club/club.service';
 import { CompetitionType } from '../../models/competitionType';
 import { CompetitionTypeService } from '../../service/CompetitionType/competition-type.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-template',
@@ -41,7 +42,9 @@ export class FormTemplateComponent implements OnInit {
     private competitionTypeService: CompetitionTypeService,
     private locationService: LocationService,
     private organizerService: OrganizerService,
-    private competitionService: CompetitionService
+    private competitionService: CompetitionService,
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -228,6 +231,12 @@ export class FormTemplateComponent implements OnInit {
           alert('Failed to create the event.');
         },
       });
+      //Reset form and rabbit array, and create new form addRabbit is ready.
+      this.myForm.reset();
+      this.competitionControl.clear(); // Clear FormArray explicitly
+
+      //navigate to calender page
+      this.router.navigate(['/calender']);
     } else {
       console.log('Form is invalid');
       this.checkFormValidation();
