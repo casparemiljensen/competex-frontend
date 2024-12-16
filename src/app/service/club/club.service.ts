@@ -10,7 +10,7 @@ import { Club } from '../../models/club';
 export class OrganizerService {
   constructor(private http: HttpClient) {}
 
-  private apiUrl = `${API_DOMAIN}/Club`; //Change to Club when DTO is created.
+  private apiUrl = `${API_DOMAIN}/Clubs`; //Change to Club when DTO is created.
 
   getOrganizer(): Observable<Club[]> {
     return this.http

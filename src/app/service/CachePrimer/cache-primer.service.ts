@@ -96,7 +96,7 @@ export class CachePrimerService {
   }
 
   private cacheJudges(): void {
-    this.judgeService.getJudge().subscribe({
+    this.judgeService.getJudges().subscribe({
       next: (judges) => console.log('Judges cached:', judges),
       error: (err) => console.error('Failed to cache judges:', err.message),
     });

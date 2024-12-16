@@ -12,7 +12,7 @@ export class JudgeService {
 
   private apiUrl = `${API_DOMAIN}/Judges`;
 
-  getJudge(): Observable<any[]> {
+  getJudges(): Observable<any[]> {
     return this.http
       .get<{ values: Judge[] }>(this.apiUrl)
       .pipe(map((response) => response.values));

@@ -255,7 +255,10 @@ export class EventPageComponent implements OnInit {
       this.RegistrationService.updateRegistration(registration).subscribe({
         next: (response) => {
           console.log('Registrations approved:', response);
-          // Handle the response, e.g., show a success message to the user.
+          // After successfully approving, remove from `newRegistrations`
+          this.newRegistrations = this.newRegistrations.filter(
+            (r) => r.id !== registration.id
+          );
         },
         error: (err) => {
           console.error('Error approving registrations:', err);

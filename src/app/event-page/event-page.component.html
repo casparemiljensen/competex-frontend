@@ -83,7 +83,7 @@
 
   <!-- Konkurrencen har fået nye tilmeldinger. Skal tjekkes før en konkurrence kan startes. -->
   <div class="container-wrapper">
-    <div class="new-registrations" *ngIf="newRegistrations">
+    <div class="new-registrations">
       <h3>Nye tilmeldinger</h3>
       <div *ngFor="let registration of newRegistrations">
         <p>
@@ -91,7 +91,14 @@
           {{ registration.competition.name }}
         </p>
       </div>
-      <button (click)="approveRegistrations()">Godkend tilmeldinger</button>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="approveRegistrations()"
+        [disabled]="!newRegistrations || newRegistrations.length === 0"
+      >
+        Godkend tilmeldinger
+      </button>
     </div>
 
     <!-- Konkurrence tables-->
