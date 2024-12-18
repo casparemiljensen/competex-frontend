@@ -117,10 +117,10 @@ export class CompetitionResultViewComponent {
           this.matchService.updateMatch(updatedMatch).subscribe({
             next: (response) => {
               console.log('Match updated successfully:', response);
-              alert('Match updated successfully!');
               this.matchUpdated.emit(updatedMatch);
 
               this.match = null; // Clear the match to hide the form
+              this.resultForm.reset(); // Reset the form fields
             },
             error: (err) => {
               console.error('Error updating match:', err);

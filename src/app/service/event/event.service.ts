@@ -151,4 +151,19 @@ export class EventService {
       .post(`${this.apiUrl}/${eventId}addCompetition/${competitionId}`, null)
       .pipe(map((response) => response));
   }
+
+  updateEvent(event: eventRequest): Observable<string> {
+    return this.http.put<string>(`${this.apiUrl}/${event.id}`, event).pipe(
+      map((response) => response),
+      catchError((error) => {
+        console.error('Error updating event, saving to queue:', error);
+        this.offlineQueueService.addToQueue(
+          `${this.apiUrl}/${event.id}`,
+          event,
+          new HttpParams()
+        );
+        return EMPTY;
+      })
+    );
+  }
 }

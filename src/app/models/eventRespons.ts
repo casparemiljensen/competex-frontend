@@ -11,8 +11,8 @@ export interface eventResponse {
   startDate: Date;
   endDate: Date;
   location: Location;
-  registrationStartDate: Date;
-  registrationEndDate: Date;
+  registrationStartDate: string;
+  registrationEndDate: string;
   status: Status;
   organizer: Club;
   sportType: SportType;

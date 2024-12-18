@@ -32,19 +32,20 @@ export class CompetitionService {
       .pipe(map((response) => response));
   }
   createCompetition(event: CompetitionRequest): Observable<CompetitionRequest> {
-    return this.http
-      .post<CompetitionRequest>(this.baseUrl, event)
-      .pipe(
-        map((response) => response),
-        catchError((error) => {
-          console.error('Error creating competition, saving to queue:', error);
-  
-          this.offlineQueueService.addToQueue(this.baseUrl, event, new HttpParams());
-          return EMPTY; 
-        })
-      );
+    return this.http.post<CompetitionRequest>(this.baseUrl, event).pipe(
+      map((response) => response),
+      catchError((error) => {
+        console.error('Error creating competition, saving to queue:', error);
+
+        this.offlineQueueService.addToQueue(
+          this.baseUrl,
+          event,
+          new HttpParams()
+        );
+        return EMPTY;
+      })
+    );
   }
-  
 
   getCompetitionsByIds(ids: string[]): Observable<CompetitionResponse[]> {
     const requests = ids.map((id) =>
@@ -60,5 +61,23 @@ export class CompetitionService {
     return this.http
       .post<{ values: CompetitionResponse[] }>(`${this.baseUrl}/search`, search)
       .pipe(map((response) => response.values));
+  }
+
+  updateCompetition(competition: CompetitionRequest): Observable<string> {
+    return this.http
+      .put<string>(`${this.baseUrl}/${competition.id}`, competition)
+      .pipe(
+        map((response) => response),
+        catchError((error) => {
+          console.error('Error updating competition, saving to queue:', error);
+
+          this.offlineQueueService.addToQueue(
+            `${this.baseUrl}/${competition.id}`,
+            competition,
+            new HttpParams()
+          );
+          return EMPTY;
+        })
+      );
   }
 }

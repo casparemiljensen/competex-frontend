@@ -7,6 +7,8 @@
       <div class="info-section-content-item">
         <strong>Dommer</strong>
         <p>{{ getJudgeNameById(judgeControl.value) }}</p>
+      </div>
+      <div class="info-section-content-item">
         <strong>Bane</strong>
         <p>{{ getFieldNameById(fieldControl.value) }}</p>
       </div>
@@ -16,8 +18,8 @@
       </div>
     </div>
   </div>
-  <!-- <div *ngIf="!detailsSubmitted"> -->
-  <div *ngIf="false">
+  <div *ngIf="!detailsSubmitted">
+    <!-- <div *ngIf="false"> -->
     <h2>Konkurrence Detaljer</h2>
     <div class="form-group">
       <form [formGroup]="myForm" (ngSubmit)="handleDetailsSubmit()">

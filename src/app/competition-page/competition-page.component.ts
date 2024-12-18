@@ -17,6 +17,9 @@ import { CreateRoundRequest, RoundRequest } from '../models/roundRequest';
 import { forkJoin } from 'rxjs';
 import { JudgeService } from '../service/judge/judge.service';
 import { LocationService } from '../service/location/location.service';
+import { Status } from '../models/enums';
+import { Location } from '@angular/common';
+import { EventService } from '../service/event/event.service';
 
 @Component({
   selector: 'app-competition-page',
@@ -30,7 +33,7 @@ export class CompetitionPageComponent {
   competition!: CompetitionResponse;
   competitionId!: string;
   matches: MatchResponse[] = [];
-  selectedMatch: MatchResponse | null = null;
+  selectedMatch!: MatchResponse;
   showRoundDetailsView = false;
 
   fieldOptions: { value: string; viewValue: string }[] = [];
@@ -43,7 +46,9 @@ export class CompetitionPageComponent {
     private roundService: RoundService,
     private route: ActivatedRoute,
     private judgeService: JudgeService,
-    private locationService: LocationService
+    private locationService: LocationService,
+    private eventService: EventService,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -315,5 +320,23 @@ export class CompetitionPageComponent {
     return field ? field.viewValue : 'Metode ikke valgtt'; // Default text if no method is selected
   }
 
-  finishCompetition(): void {}
+  finishCompetition(): void {
+    alert('Are you sure you want to finish the competition?');
+    //update competition status to finished and event status to conducted
+    const updatedCompetition: CompetitionResponse = {
+      ...this.competition,
+      status: Status.Concluded, // Finished status
+    };
+    console.log('Updated Competition:', updatedCompetition);
+    this.competitionService.updateCompetition(updatedCompetition).subscribe({
+      next: (response) => {
+        console.log('Competition status updated:', response);
+      },
+      error: (err) => {
+        console.error('Error updating competition status:', err);
+      },
+    });
+    //navigate back
+    this.location.back();
+  }
 }

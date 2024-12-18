@@ -175,7 +175,7 @@ export class FormTemplateComponent implements OnInit {
         registrationEndDate: formData.registrationEndDate,
         competitionIds: [], // Map to competition objects
         status: 0,
-        sportTypeId: '3a2b1a0d-9e8f-7d6c-5b4a-3f2e1d0c9b8a',
+        sportTypeId: '1035c83a-1899-49cb-bfd6-bcefc1aafffb',
         entryFee: formData.entryFee,
       };
       //Create the event request.
