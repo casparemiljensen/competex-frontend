@@ -71,11 +71,11 @@ export class CompetitionService {
         catchError((error) => {
           console.error('Error updating competition, saving to queue:', error);
 
-          this.offlineQueueService.addToQueue(
-            `${this.baseUrl}/${competition.id}`,
-            competition,
-            new HttpParams()
-          );
+          // this.offlineQueueService.addToQueue(
+          //   `${this.baseUrl}/${competition.id}`,
+          //   competition,
+          //   new HttpParams()
+          // );
           return EMPTY;
         })
       );

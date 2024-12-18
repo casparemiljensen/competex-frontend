@@ -32,11 +32,15 @@ export class entityService {
         // If the request fails (likely offline), save the request in the queue
         console.error('Error posting entity, saving to queue:', error);
 
-        this.offlineQueueService.addToQueue(this.baseUrl, entity, new HttpParams());
+        this.offlineQueueService.addToQueue(
+          this.baseUrl,
+          entity,
+          new HttpParams()
+        );
         return EMPTY;
       })
     );
-  }  
+  }
 
   // Delete an entity (Handles offline and online requests)
   deleteEntity(id: string): Observable<void> {
@@ -44,7 +48,11 @@ export class entityService {
       catchError((error) => {
         // If the request fails (likely offline), save the request in the queue
         console.error('Error deleting entity, saving to queue:', error);
-        this.offlineQueueService.addToQueue(`${this.baseUrl}/${id}`, {}, new HttpParams());
+        this.offlineQueueService.addToQueue(
+          `${this.baseUrl}/${id}`,
+          {},
+          new HttpParams()
+        );
         return EMPTY;
       })
     );
@@ -52,15 +60,13 @@ export class entityService {
 
   // Update an entity (Handles offline and online requests)
   updateEntity(id: string, entity: Entity): Observable<entityResponse> {
-    return this.http
-      .put<entityResponse>(`${this.baseUrl}/${id}`, entity)
-      .pipe(
-        catchError((error) => {
-          // If the request fails (likely offline), save the request in the queue
-          console.error('Error updating entity, saving to queue:', error);
-          this.offlineQueueService.addToQueue(`${this.baseUrl}/${id}`, entity, new HttpParams());
-          return EMPTY;
-        })
-      );
+    return this.http.put<entityResponse>(`${this.baseUrl}/${id}`, entity).pipe(
+      catchError((error) => {
+        // If the request fails (likely offline), save the request in the queue
+        console.error('Error updating entity, saving to queue:', error);
+        //this.offlineQueueService.addToQueue(`${this.baseUrl}/${id}`, entity, new HttpParams());
+        return EMPTY;
+      })
+    );
   }
 }

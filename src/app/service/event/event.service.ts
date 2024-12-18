@@ -157,11 +157,11 @@ export class EventService {
       map((response) => response),
       catchError((error) => {
         console.error('Error updating event, saving to queue:', error);
-        this.offlineQueueService.addToQueue(
-          `${this.apiUrl}/${event.id}`,
-          event,
-          new HttpParams()
-        );
+        // this.offlineQueueService.addToQueue(
+        //   `${this.apiUrl}/${event.id}`,
+        //   event,
+        //   new HttpParams()
+        // );
         return EMPTY;
       })
     );
