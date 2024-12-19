@@ -2,7 +2,7 @@ import { RoundStatus, RoundType } from './enums';
 
 export interface RoundRequest {
   id?: string;
-  name?: string;
+  name: string;
   sequenceNumber: number;
   roundType?: RoundType;
   competitionId: string;

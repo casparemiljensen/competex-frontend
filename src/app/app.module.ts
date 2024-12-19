@@ -70,6 +70,7 @@ import { CompetitionParticipantsListComponent } from './basic-components/competi
 import { CompetitionResultViewComponent } from './basic-components/competition-result-view/competition-result-view.component';
 import { environment } from '../environments/environment';
 import { CompetitionRoundDetailsComponent } from './basic-components/competition-round-details/competition-round-details.component';
+import { FormValidateViewComponent } from './basic-components/form-validate-view/form-validate-view.component';
 
 @NgModule({
   declarations: [
@@ -109,6 +110,7 @@ import { CompetitionRoundDetailsComponent } from './basic-components/competition
     CompetitionParticipantsListComponent,
     CompetitionResultViewComponent,
     CompetitionRoundDetailsComponent,
+    FormValidateViewComponent,
   ],
   imports: [
     BrowserModule,

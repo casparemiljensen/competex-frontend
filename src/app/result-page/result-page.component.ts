@@ -69,6 +69,7 @@ export class ResultPageComponent implements OnInit {
       console.warn('transformObject received empty or invalid data.');
       return [];
     }
+    console.log('Competition:', obj);
 
     return obj
       .filter(

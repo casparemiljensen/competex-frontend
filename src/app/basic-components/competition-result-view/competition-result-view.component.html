@@ -4,19 +4,39 @@
     <mat-card-header>
       <mat-card-title>Tilføj resultat</mat-card-title>
     </mat-card-header>
-    <div *ngIf="match">
+    <div>
       <mat-card-content>
         <!-- Participant Information -->
-        <div
-          *ngFor="let participant of match?.participants"
-          class="participant-info"
-        >
-          <div class="participant-field">
-            <p>Fører: {{ participant.name }}</p>
+        <div *ngIf="match">
+          <div *ngFor="let participant of match.participants">
+            <div class="participant-info">
+              <div class="participant-field">
+                <p>
+                  Fører: {{ participant.member?.firstName }}
+                  {{ participant.member?.lastName }}
+                </p>
+              </div>
+              <button
+                mat-icon-button
+                color="accent"
+                (click)="editParticipant()"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+            </div>
+            <div class="participant-info">
+              <div class="participant-field">
+                <p>Kanin: {{ participant.entity?.name }}</p>
+              </div>
+              <button
+                mat-icon-button
+                color="accent"
+                (click)="editParticipant()"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+            </div>
           </div>
-          <button mat-icon-button color="accent" (click)="editParticipant()">
-            <mat-icon>edit</mat-icon>
-          </button>
         </div>
 
         <!-- Result Input Form -->
@@ -66,7 +86,7 @@
             <mat-checkbox formControlName="adv">Advarsel</mat-checkbox>
           </div> -->
           <button
-            mat-fab
+            mat-raised-button
             color="primary"
             type="submit"
             [disabled]="resultForm.invalid"

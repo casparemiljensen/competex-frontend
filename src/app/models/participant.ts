@@ -4,7 +4,9 @@ import { Member } from './member';
 export interface Participant {
   id: string;
   name: string;
-  $type: string;
+  $type?: string; //not removed, due to maybe need in code somewhere for old code...
+  member?: Member; //Added since we only have this type of participant now..
+  entity?: Entity; //Added since we only have this type of participant now..
 }
 
 export interface Team extends Participant {
@@ -26,6 +28,7 @@ export interface Ekvipage extends Participant {
 
 export type ParticipantType = Team | Single | Ekvipage;
 
+//not used in current version, only one type of participant now
 export function createParticipant(data: any): ParticipantType {
   switch (data.$type) {
     case 'Team':

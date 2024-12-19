@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { EventService } from '../service/event/event.service';
 import { Router } from '@angular/router';
 import { Status } from '../models/enums';
+import { eventRequest } from '../models/eventRequest';
 
 @Component({
   selector: 'app-comp-start',
@@ -99,5 +100,35 @@ export class CompStartComponent implements OnInit {
         console.log('User  cancelled action for:', comp);
       }
     });
+  }
+  finishEvent(): void {
+    //update event status to conducted and make api call
+    const udpatedEvent: eventRequest = {
+      id: this.event.id,
+      title: this.event.title,
+      startDate: this.event.startDate,
+      endDate: this.event.endDate,
+      locationId: this.event.location.id,
+      organizerId: this.event.organizer.id,
+      registrationStartDate: this.event.registrationStartDate,
+      registrationEndDate: this.event.registrationEndDate,
+      sportTypeId: this.event.sportType.id,
+      entryFee: this.event.entryFee,
+      competitionIds: this.event.competitions.map((comp) => comp.id),
+      status: Status.Concluded,
+    };
+
+    console.log('Event competitions:', this.event.competitions);
+    console.log('updated event competitions:', udpatedEvent.competitionIds);
+    console.log('Updated Event:', udpatedEvent);
+    this.EventService.updateEvent(udpatedEvent).subscribe({
+      next: (response) => {
+        console.log('Event updated successfully:', response);
+      },
+      error: (err) => console.error('Error updating event:', err),
+    });
+
+    //route to result page
+    this.router.navigate(['/results', this.event.id]);
   }
 }

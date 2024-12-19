@@ -2,7 +2,7 @@ import { Location } from './location';
 import { Status } from './enums';
 import { SportType } from './sportType';
 import { CompetitionResponse } from './competitionResponse';
-import { Organizer } from './organizer';
+import { Club } from './club';
 
 export interface eventResponse {
   id: string;
@@ -11,10 +11,10 @@ export interface eventResponse {
   startDate: Date;
   endDate: Date;
   location: Location;
-  registrationStartDate: Date;
-  registrationEndDate: Date;
+  registrationStartDate: string;
+  registrationEndDate: string;
   status: Status;
-  organizer: Organizer;
+  organizer: Club;
   sportType: SportType;
   competitions: CompetitionResponse[];
   entryFee: number;

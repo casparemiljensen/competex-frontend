@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { API_DOMAIN } from '../apiUrl';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
-import { Member } from '../../models/member';
+import { Club } from '../../models/club';
 
 @Injectable({
   providedIn: 'root',
@@ -10,11 +10,11 @@ import { Member } from '../../models/member';
 export class OrganizerService {
   constructor(private http: HttpClient) {}
 
-  private apiUrl = `${API_DOMAIN}/Members`; //Change to Club when DTO is created.
+  private apiUrl = `${API_DOMAIN}/Clubs`; //Change to Club when DTO is created.
 
-  getOrganizer(): Observable<any[]> {
+  getOrganizer(): Observable<Club[]> {
     return this.http
-      .get<{ values: Member[] }>(this.apiUrl)
+      .get<{ values: Club[] }>(this.apiUrl)
       .pipe(map((response) => response.values));
   }
 }

@@ -42,6 +42,11 @@ export class RegistrationService {
     return this.http.post<string>(this.apiUrl, registration);
   }
 
+  updateRegistration(registration: any): Observable<string> {
+    const id = registration.id;
+    return this.http.put<string>(`${this.apiUrl}/${id}`, registration);
+  }
+
   postParticipant(participant: any): Observable<string> {
     return this.http.post<string>(this.participantUrl, participant).pipe(
       catchError((error) => {

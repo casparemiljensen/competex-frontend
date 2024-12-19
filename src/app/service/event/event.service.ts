@@ -38,7 +38,7 @@ export class EventService {
     values: eventResponse[];
     pageInfo: any;
   }> {
-    const body = JSON.stringify({ status: 'Pending' });
+    const body = JSON.stringify({ status: Status.Pending });
     const headers = { 'Content-Type': 'application/json', Accept: '*/*' };
 
     return this.http
@@ -60,7 +60,7 @@ export class EventService {
     values: eventResponse[];
     pageInfo: any;
   }> {
-    const body = JSON.stringify({ status: 'Active' });
+    const body = JSON.stringify({ status: Status.Active });
     const headers = { 'Content-Type': 'application/json', Accept: '*/*' };
 
     return this.http
@@ -82,7 +82,7 @@ export class EventService {
     values: eventResponse[];
     pageInfo: any;
   }> {
-    const body = JSON.stringify({ status: 'Cancelled' });
+    const body = JSON.stringify({ status: Status.Cancelled });
     const headers = { 'Content-Type': 'application/json', Accept: '*/*' };
 
     return this.http
@@ -104,7 +104,7 @@ export class EventService {
     values: eventResponse[];
     pageInfo: any;
   }> {
-    const body = JSON.stringify({ status: 'Concluded' });
+    const body = JSON.stringify({ status: Status.Concluded });
     const headers = { 'Content-Type': 'application/json', Accept: '*/*' };
 
     return this.http
@@ -129,16 +129,18 @@ export class EventService {
     };
   }
   createEvent(event: eventRequest): Observable<eventRequest> {
-    return this.http
-      .post<eventRequest>(this.apiUrl, event)
-      .pipe(
-        map((response) => response),
-        catchError((error) => {
-          console.error('Error creating event, saving to queue:', error);
-          this.offlineQueueService.addToQueue(this.apiUrl, event, new HttpParams());
-          return EMPTY;
-        })
-      );
+    return this.http.post<eventRequest>(this.apiUrl, event).pipe(
+      map((response) => response),
+      catchError((error) => {
+        console.error('Error creating event, saving to queue:', error);
+        this.offlineQueueService.addToQueue(
+          this.apiUrl,
+          event,
+          new HttpParams()
+        );
+        return EMPTY;
+      })
+    );
   }
 
   addCompetititonToEvent(
@@ -148,5 +150,20 @@ export class EventService {
     return this.http
       .post(`${this.apiUrl}/${eventId}addCompetition/${competitionId}`, null)
       .pipe(map((response) => response));
+  }
+
+  updateEvent(event: eventRequest): Observable<string> {
+    return this.http.put<string>(`${this.apiUrl}/${event.id}`, event).pipe(
+      map((response) => response),
+      catchError((error) => {
+        console.error('Error updating event, saving to queue:', error);
+        // this.offlineQueueService.addToQueue(
+        //   `${this.apiUrl}/${event.id}`,
+        //   event,
+        //   new HttpParams()
+        // );
+        return EMPTY;
+      })
+    );
   }
 }

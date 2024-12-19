@@ -3,7 +3,7 @@
     <div class="title">
       {{ event.title }}
     </div>
-
+    <!-- event inf -->
     <div class="top-section">
       <div class="container locatoin">
         <h3>Location</h3>
@@ -80,7 +80,32 @@
       </div>
     </div>
   </div> -->
-  <div class="ExpandableTable-container" *ngIf="transformedData">
-    <app-ExpandableTable [ExpandableTables]="transformedData"></app-ExpandableTable>
+
+  <!-- Konkurrencen har fået nye tilmeldinger. Skal tjekkes før en konkurrence kan startes. -->
+  <div class="container-wrapper">
+    <div class="new-registrations">
+      <h3>Nye tilmeldinger</h3>
+      <div *ngFor="let registration of newRegistrations">
+        <p>
+          <strong>{{ registration.participant.name }}</strong> har tilmeldt sig
+          {{ registration.competition.name }}
+        </p>
+      </div>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="approveRegistrations()"
+        [disabled]="!newRegistrations || newRegistrations.length === 0"
+      >
+        Godkend tilmeldinger
+      </button>
+    </div>
+
+    <!-- Konkurrence tables-->
+    <div class="ExpandableTable-container" *ngIf="transformedData">
+      <app-ExpandableTable
+        [ExpandableTables]="transformedData"
+      ></app-ExpandableTable>
+    </div>
   </div>
 </div>

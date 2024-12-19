@@ -15,18 +15,19 @@
           comp.status === (status.Concluded || status.Cancelled)
         "
       >
-      <!-- Mabe it is nessry to loop over the compition type, depeiing on the stcutre -->
-      <span class="competition-text">{{ comp.name }}</span>
-      <button
-        class="competition-button"
-        [class.start-button]="comp.status === status.Pending"
-        [class.aktiv-button]="comp.status === status.Active"
-        [class.afsluttet-button]="comp.status === (status.Concluded || status.Cancelled)"
-        
-        (click)="openConfirmDialog(comp.status.toString(), comp)"
-      >
-        {{ getStatusString(comp.status) }}
-      </button>
+        <!-- Mabe it is nessry to loop over the compition type, depeiing on the stcutre -->
+        <span class="competition-text">{{ comp.name }}</span>
+        <button
+          class="competition-button"
+          [class.start-button]="comp.status === status.Pending"
+          [class.aktiv-button]="comp.status === status.Active"
+          [class.afsluttet-button]="
+            comp.status === (status.Concluded || status.Cancelled)
+          "
+          (click)="openConfirmDialog(comp.status.toString(), comp)"
+        >
+          {{ getStatusString(comp.status) }}
+        </button>
       </div>
     </div>
     <div class="centered-button-container">
@@ -34,5 +35,8 @@
         Tilføj Træningskonkurrence
       </button>
     </div>
+    <button mat-raised-button color="primary" (click)="finishEvent()">
+      Afslut Konkurrence
+    </button>
   </div>
 </div>
