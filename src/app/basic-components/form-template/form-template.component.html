@@ -20,19 +20,21 @@
         ></app-form-competition>
       </div>
       <div *ngIf="currentPageIndex === 3">
-        Value: {{ myForm.value | json }}
+        <app-form-validate-view [formData]="myForm.value">
+        </app-form-validate-view>
         <button mat-raised-button type="submit" class="submit-button">
           Submit
         </button>
       </div>
     </div>
-    <mat-paginator
-      class="paginator"
-      [length]="4"
-      [pageSize]="1"
-      [pageSizeOptions]="[1]"
-      showFirstLastButtons
-      (page)="onPageChange($event)"
-    ></mat-paginator>
+    <div class="paginator-container">
+      <mat-paginator
+        [length]="4"
+        [pageSize]="1"
+        [pageSizeOptions]="[1]"
+        showFirstLastButtons
+        (page)="onPageChange($event)"
+      ></mat-paginator>
+    </div>
   </form>
 </div>

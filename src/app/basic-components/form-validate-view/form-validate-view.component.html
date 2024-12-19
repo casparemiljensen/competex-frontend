@@ -1,0 +1,50 @@
+<div *ngIf="formData">
+  <h2>Er dine informationer korrekte?</h2>
+  <div>
+    <p><strong>Titel:</strong> {{ formData.title || "Not provided" }}</p>
+    <p><strong>Arrangør:</strong> {{ formData.organizer || "Not provided" }}</p>
+    <p><strong>Stednavn:</strong> {{ formData.location || "Not provided" }}</p>
+    <p><strong>Entre pris:</strong> {{ formData.entryFee || 0 }}</p>
+    <p>
+      <strong>Start dato:</strong> {{ formData.startDate || "Not provided" }}
+    </p>
+    <p><strong>Slut dato::</strong> {{ formData.endDate || "Not provided" }}</p>
+    <p>
+      <strong>Dato for tilmeldingsstart:</strong>
+      {{ formData.registrationStartDate || "Not provided" }}
+    </p>
+    <p>
+      <strong>Dato for tilmeldingsslut:</strong>
+      {{ formData.registrationEndDate || "Not provided" }}
+    </p>
+  </div>
+  <h3>Konkurrence oversigt</h3>
+  <div *ngFor="let competition of formData.competitions">
+    <p>
+      <strong>Klasse:</strong>
+      {{ getViewValue(competition.level) }} <strong>Gren:</strong>
+      {{ getViewValue(competition.competitionType) }} <strong>Pris:</strong>
+      {{ competition.price }}
+    </p>
+  </div>
+  <p *ngIf="formData.competitions.length === 0">Ingen konkurrencer valgt</p>
+  <!-- <h3>Permissions</h3>
+  <ul>
+    <li>
+      <strong>Uden For Klassen:</strong>
+      {{ formData.permissions.udenForKlassen ? "Yes" : "No" }}
+    </li>
+    <li>
+      <strong>Veteran Kaniner:</strong>
+      {{ formData.permissions.veteranKaniner ? "Yes" : "No" }}
+    </li>
+    <li>
+      <strong>Eftertilmelding:</strong>
+      {{ formData.permissions.eftertilmelding ? "Yes" : "No" }}
+    </li>
+    <li>
+      <strong>Træningsstævner:</strong>
+      {{ formData.permissions.traeningsstaevner ? "Yes" : "No" }}
+    </li>
+  </ul> -->
+</div>

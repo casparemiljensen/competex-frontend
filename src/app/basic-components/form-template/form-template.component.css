@@ -17,7 +17,8 @@
   text-align: center;
 }
 .form-page {
-  height: 50vh;
+  display: flex;
+  justify-content: center;
 }
 
 .submit-button {
@@ -29,8 +30,7 @@
   background-color: rgb(66, 156, 66) !important;
 }
 
-.paginator {
+.paginator-container {
   display: flex;
-  justify-content: center;
-  margin-top: 20px;
+  justify-content: center; /* Center the paginator */
 }

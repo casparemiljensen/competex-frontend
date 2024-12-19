@@ -26,4 +26,10 @@ export class MatchService {
       .put<MatchRequest>(`${this.baseUrl}/${match.id}`, match)
       .pipe(map((response) => response));
   }
+
+  getMatchesByRoundId(roundId: string): Observable<MatchResponse[]> {
+    return this.http
+      .get<{ item2: MatchResponse[] }>(`${this.baseUrl}/round/${roundId}`)
+      .pipe(map((response) => response.item2));
+  }
 }

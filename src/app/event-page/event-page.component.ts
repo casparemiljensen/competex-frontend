@@ -27,6 +27,7 @@ export class EventPageComponent implements OnInit {
   // This is the tempory, to show how the pange changes give the view is creator of the event or not
   isCreator = true;
   transformedData: any[] | undefined;
+  newRegistrations: RegistrationRespons[] = [];
 
   constructor(
     private EventService: EventService,
@@ -99,6 +100,13 @@ export class EventPageComponent implements OnInit {
           competitionId,
           registrations
         );
+        //loop through registrations array and add each reg that have status 0 to newRegistration
+        registrations.values.forEach((element) => {
+          console.log('Element:', element);
+          if (element.status == 0) {
+            this.newRegistrations.push(element);
+          }
+        });
 
         // Transform the data for this competition
         const transformed = this.transformRegistrationData(
@@ -135,56 +143,65 @@ export class EventPageComponent implements OnInit {
         );
 
         // Create participant using `createParticipant`
-        const participant = createParticipant(registration.participant);
+        const participant = registration.participant;
+        const participantDetails = {
+          Fører: participant.member
+            ? `${participant.member.firstName || ''} ${
+                participant.member.lastName || ''
+              }`.trim()
+            : 'Unknown Participant',
+          Kanin: participant.entity?.name || 'N/A', // For Ekvipage, use entity name
+        };
+        //const participant = createParticipant(registration.participant);
 
         // Build participant-specific data (order: name → entity)
-        let participantDetails: any;
+        //let participantDetails: any;
 
         // Set participant details based on participant type
-        switch (participant.$type) {
-          case 'Team': {
-            const teamParticipant = participant as Team;
-            participantDetails = {
-              TeamName:
-                teamParticipant.members
-                  ?.map((m) =>
-                    `${m.firstName || ''} ${m.lastName || ''}`.trim()
-                  )
-                  .join(', ') ||
-                participant.name ||
-                'Unknown Team', // Use team members' names or fallback to the team name
-            };
-            break;
-          }
-          case 'Single': {
-            const singleParticipant = participant as Single;
-            participantDetails = {
-              Deltager: singleParticipant.member
-                ? `${singleParticipant.member.firstName || ''} ${
-                    singleParticipant.member.lastName || ''
-                  }`.trim()
-                : 'Unknown Participant',
-            };
-            break;
-          }
-          case 'Ekvipage': {
-            const ekvipageParticipant = participant as Ekvipage;
-            participantDetails = {
-              Fører: ekvipageParticipant.member
-                ? `${ekvipageParticipant.member.firstName || ''} ${
-                    ekvipageParticipant.member.lastName || ''
-                  }`.trim()
-                : 'Unknown Participant',
-              Kanin: ekvipageParticipant.entity?.name || 'N/A', // For Ekvipage, use entity name
-            };
-            break;
-          }
-          default:
-            participantDetails = {
-              UnknownType: 'Unsupported participant type',
-            };
-            break;
-        }
+        // switch (participant.$type) {
+        //   case 'Team': {
+        //     const teamParticipant = participant as Team;
+        //     participantDetails = {
+        //       TeamName:
+        //         teamParticipant.members
+        //           ?.map((m) =>
+        //             `${m.firstName || ''} ${m.lastName || ''}`.trim()
+        //           )
+        //           .join(', ') ||
+        //         participant.name ||
+        //         'Unknown Team', // Use team members' names or fallback to the team name
+        //     };
+        //     break;
+        //   }
+        //   case 'Single': {
+        //     const singleParticipant = participant as Single;
+        //     participantDetails = {
+        //       Deltager: singleParticipant.member
+        //         ? `${singleParticipant.member.firstName || ''} ${
+        //             singleParticipant.member.lastName || ''
+        //           }`.trim()
+        //         : 'Unknown Participant',
+        //     };
+        //     break;
+        //   }
+        //   case 'Ekvipage': {
+        //     const ekvipageParticipant = participant as Ekvipage;
+        //     participantDetails = {
+        //       Fører: ekvipageParticipant.member
+        //         ? `${ekvipageParticipant.member.firstName || ''} ${
+        //             ekvipageParticipant.member.lastName || ''
+        //           }`.trim()
+        //         : 'Unknown Participant',
+        //       Kanin: ekvipageParticipant.entity?.name || 'N/A', // For Ekvipage, use entity name
+        //     };
+        //     break;
+        //   }
+        //   default:
+        //     participantDetails = {
+        //       UnknownType: 'Unsupported participant type',
+        //     };
+        //     break;
+        // }
 
         // If competition entry does not exist, create it
         if (!competitionEntry) {
@@ -204,5 +221,50 @@ export class EventPageComponent implements OnInit {
     );
 
     return transformedData;
+  }
+  fetchRegistrationsByCompetitionId(competitionId: string): void {
+    this.RegistrationService.getRegistrationBySearch(competitionId).subscribe({
+      next: (response) => {
+        console.log(
+          'Registrations for Competition ID:',
+          competitionId,
+          response
+        );
+        // Handle the fetched registrations, e.g., store them in a component property or pass them to a UI handler.
+      },
+      error: (err) => {
+        console.error(
+          'Error fetching registrations for Competition ID:',
+          competitionId,
+          err
+        );
+        // Handle the error, e.g., show an error message to the user.
+      },
+    });
+  }
+
+  approveRegistrations(): void {
+    //change each registrations status to 2
+    const registrationStatus = this.newRegistrations.map((reg) => {
+      return { ...reg, status: 2 };
+    });
+    console.log('Approving Registrations:', registrationStatus);
+
+    // Iterate over each registration and create a POST request
+    registrationStatus.forEach((registration) => {
+      this.RegistrationService.updateRegistration(registration).subscribe({
+        next: (response) => {
+          console.log('Registrations approved:', response);
+          // After successfully approving, remove from `newRegistrations`
+          this.newRegistrations = this.newRegistrations.filter(
+            (r) => r.id !== registration.id
+          );
+        },
+        error: (err) => {
+          console.error('Error approving registrations:', err);
+          // Handle the error, e.g., show an error message to the user.
+        },
+      });
+    });
   }
 }

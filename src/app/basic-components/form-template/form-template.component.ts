@@ -15,11 +15,11 @@ import { Judge } from '../../models/judge';
 import { LocationService } from '../../service/location/location.service';
 import { Location } from '../../models/location';
 import { CompetitionRequest } from '../../models/competitionRequest';
-import { Organizer } from '../../models/organizer';
-import { OrganizerService } from '../../service/organizerService/organizer.service';
-import { Member } from '../../models/member';
+import { Club } from '../../models/club';
+import { OrganizerService } from '../../service/club/club.service';
 import { CompetitionType } from '../../models/competitionType';
 import { CompetitionTypeService } from '../../service/CompetitionType/competition-type.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-template',
@@ -33,7 +33,7 @@ export class FormTemplateComponent implements OnInit {
   currentPageIndex: number = 0;
   judges: Judge[] = [];
   locations: Location[] = [];
-  organizers: Member[] = [];
+  organizers: Club[] = [];
   competitionTypes: CompetitionType[] = [];
 
   constructor(
@@ -42,7 +42,9 @@ export class FormTemplateComponent implements OnInit {
     private competitionTypeService: CompetitionTypeService,
     private locationService: LocationService,
     private organizerService: OrganizerService,
-    private competitionService: CompetitionService
+    private competitionService: CompetitionService,
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -173,7 +175,7 @@ export class FormTemplateComponent implements OnInit {
         registrationEndDate: formData.registrationEndDate,
         competitionIds: [], // Map to competition objects
         status: 0,
-        sportTypeId: '3a2b1a0d-9e8f-7d6c-5b4a-3f2e1d0c9b8a',
+        sportTypeId: '1035c83a-1899-49cb-bfd6-bcefc1aafffb',
         entryFee: formData.entryFee,
       };
       //Create the event request.
@@ -229,6 +231,12 @@ export class FormTemplateComponent implements OnInit {
           alert('Failed to create the event.');
         },
       });
+      //Reset form and rabbit array, and create new form addRabbit is ready.
+      this.myForm.reset();
+      this.competitionControl.clear(); // Clear FormArray explicitly
+
+      //navigate to calender page
+      this.router.navigate(['/calender']);
     } else {
       console.log('Form is invalid');
       this.checkFormValidation();

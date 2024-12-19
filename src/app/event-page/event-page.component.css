@@ -134,3 +134,8 @@ button.mat-button:hover {
     gap: 6px;
   }
 }
+
+.new-registrations {
+  padding: 10px;
+  margin-bottom: 20px;
+}

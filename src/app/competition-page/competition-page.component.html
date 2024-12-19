@@ -1,19 +1,46 @@
 <div class="page-container">
-  <!-- <div *ngIf="!detailsSubmitted"> -->
-  <div *ngIf="false">
+  <div class="info-section">
+    <div class="info-section-header">
+      <h1>{{ competition.name }}</h1>
+    </div>
+    <div class="info-section-content">
+      <div class="info-section-content-item">
+        <strong>Dommer</strong>
+        <p>{{ getJudgeNameById(judgeControl.value) }}</p>
+      </div>
+      <div class="info-section-content-item">
+        <strong>Bane</strong>
+        <p>{{ getFieldNameById(fieldControl.value) }}</p>
+      </div>
+      <div class="info-section-content-item">
+        <strong>Bedømmelsesmetode</strong>
+        <p>{{ getMethodNameById(methodControl.value) }}</p>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!detailsSubmitted">
+    <!-- <div *ngIf="false"> -->
     <h2>Konkurrence Detaljer</h2>
     <div class="form-group">
-      <form [formGroup]="myForm" (ngSubmit)="handleSubmit()">
-        <app-form-input-text label="Dommer" [control]="dommerControl">
-        </app-form-input-text>
-        <app-form-input-text label="Aspirant" [control]="aspirantControl">
-        </app-form-input-text>
+      <form [formGroup]="myForm" (ngSubmit)="handleDetailsSubmit()">
+        <app-form-input-select
+          label="Dommer"
+          [control]="judgeControl"
+          [options]="judgeOptions"
+        >
+        </app-form-input-select>
+        <app-form-input-select
+          label="Bane"
+          [options]="fieldOptions"
+          [control]="fieldControl"
+        >
+        </app-form-input-select>
         <app-form-input-select
           label="Bedømmelsesmetode"
-          [options]="bedMetodeOptions"
-          [control]="bedMetodeControl"
+          [options]="methodOptions"
+          [control]="methodControl"
         ></app-form-input-select>
-        <app-form-input-time label="Start Tid"> </app-form-input-time>
+        <!-- <app-form-input-text label="Start Tid"> </app-form-input-text> -->
         <button mat-raised-button type="submit" class="submit-button">
           Fortsæt
         </button>
@@ -47,4 +74,7 @@
       ></app-competition-round-details>
     </div>
   </div>
+  <button mat-raised-button color="primary" (click)="finishCompetition()">
+    Afslut Konkurrence
+  </button>
 </div>
