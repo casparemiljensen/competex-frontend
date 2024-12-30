@@ -30,7 +30,7 @@
     {
       "name": "api",
       "urls": [
-        "https://competex-backend.schnykjaer.com:22114/**"
+        "http://competex-backend-service.competex-backend.svc.cluster.local:8080/**"
       ],
       "cacheConfig": {
         "strategy": "performance",
