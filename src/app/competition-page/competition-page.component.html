@@ -49,13 +49,14 @@
   </div>
   <!-- <div *ngIf="detailsSubmitted"> -->
   <div *ngIf="true" class="subpage-container">
-    <h2>{{ competition.name }}</h2>
+    <h2 *ngIf="!showRoundDetailsView">{{ competition.name }}</h2>
     <div class="result-content">
       <app-competition-result-view
         *ngIf="!showRoundDetailsView"
         class="result-view"
         [match]="selectedMatch"
         (matchUpdated)="updateMatchList($event)"
+        (resultSubmitted)="handleMatchDone()"
       >
       </app-competition-result-view>
 
@@ -75,7 +76,12 @@
       ></app-competition-round-details>
     </div>
   </div>
-  <button mat-raised-button color="primary" (click)="finishCompetition()">
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="finishCompetition()"
+    *ngIf="!showRoundDetailsView"
+  >
     Afslut Konkurrence
   </button>
 </div>

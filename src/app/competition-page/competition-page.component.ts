@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -20,6 +20,7 @@ import { LocationService } from '../service/location/location.service';
 import { Status } from '../models/enums';
 import { Location } from '@angular/common';
 import { EventService } from '../service/event/event.service';
+import { CompetitionParticipantsListComponent } from '../basic-components/competition-participants-list/competition-participants-list.component';
 
 @Component({
   selector: 'app-competition-page',
@@ -39,6 +40,9 @@ export class CompetitionPageComponent {
 
   fieldOptions: { value: string; viewValue: string }[] = [];
   judgeOptions: { value: string; viewValue: string }[] = [];
+
+  @ViewChild(CompetitionParticipantsListComponent)
+  participantsList!: CompetitionParticipantsListComponent;
 
   constructor(
     private fb: FormBuilder,
@@ -340,5 +344,10 @@ export class CompetitionPageComponent {
     });
     //navigate back
     this.location.back();
+  }
+
+  handleMatchDone() {
+    console.log('Result submitted, resetting selected match');
+    this.participantsList.resetSelectedMatch(); // Call the method on the child component
   }
 }

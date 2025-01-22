@@ -20,6 +20,7 @@ import { ScoreService } from '../../service/Score/score.service';
 export class CompetitionResultViewComponent {
   @Input() match: MatchResponse | null = null;
   @Output() matchUpdated = new EventEmitter<MatchRequest>();
+  @Output() resultSubmitted = new EventEmitter<void>();
 
   //Form group for results form.
   resultForm!: FormGroup;
@@ -125,6 +126,7 @@ export class CompetitionResultViewComponent {
               this.match = null; // Clear the match to hide the form
               this.resultForm.reset(); // Reset the form fields
               this.resultForm.disable();
+              this.resultSubmitted.emit(); // Emit event to notify parent component
             },
             error: (err) => {
               console.error('Error updating match:', err);

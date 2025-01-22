@@ -45,4 +45,8 @@ export class CompetitionParticipantsListComponent {
   handleNextRoundClick(): void {
     this.nextRoundClick.emit();
   }
+  resetSelectedMatch(): void {
+    this.selectedMatch = null;
+    console.log('resetSelectedMatch in startlist');
+  }
 }
