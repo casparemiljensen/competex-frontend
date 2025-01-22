@@ -35,6 +35,7 @@ export class CompetitionPageComponent {
   matches: MatchResponse[] = [];
   selectedMatch!: MatchResponse;
   showRoundDetailsView = false;
+  disableRoundButton = false;
 
   fieldOptions: { value: string; viewValue: string }[] = [];
   judgeOptions: { value: string; viewValue: string }[] = [];
@@ -57,8 +58,8 @@ export class CompetitionPageComponent {
     this.getJudgeOptions();
     console.log('CompetitionId passed: ', this.competitionId); // Use the compId as needed
     if (this.competitionId) {
-        this.fetchCompetition(this.competitionId);
-        this.existingMatches(this.competitionId);
+      this.fetchCompetition(this.competitionId);
+      this.existingMatches(this.competitionId);
     } else {
       console.error('Competition ID is missing in the route.');
     }
@@ -149,7 +150,7 @@ export class CompetitionPageComponent {
           competitionId: this.competitionId,
           sequenceNumber: 0, // Add the missing sequenceNumber property
         };
-        console.log("ROUNDS ASDPA;DSPASD 1")
+        console.log('ROUNDS ASDPA;DSPASD 1');
         this.roundService.createMatchesForRound(newMatchesForRound).subscribe({
           next: (response: MatchResponse[]) => {
             console.log('Matches created for first round: ', response);
@@ -184,14 +185,14 @@ export class CompetitionPageComponent {
     this.roundService.createRound(newRound).subscribe({
       next: (response: string) => {
         console.log(`Round ${newRound.name} created successfully: `, response);
-        console.log(`Testasd ${form.value.fault} ${form.value.time}`)
+        console.log(`Testasd ${form.value.fault} ${form.value.time}`);
         const newMatchesForRound: CreateRoundRequest = {
           competitionId: this.competitionId,
           sequenceNumber: count + 1,
           maxFaults: form.value.fault,
           maxMinutes: form.value.time,
         };
-        console.log("ROUNDS ASDPA;DSPASD 2");
+        console.log('ROUNDS ASDPA;DSPASD 2');
         this.roundService.createMatchesForRound(newMatchesForRound).subscribe({
           next: (response: MatchResponse[]) => {
             console.log(
@@ -251,6 +252,7 @@ export class CompetitionPageComponent {
         const rounds = response;
         console.log('Existing Rounds:', response);
         if (rounds.length > 0) {
+          this.disableRoundButton = true;
           const highestSequenceRound = rounds.reduce((prev, current) => {
             return prev.sequenceNumber > current.sequenceNumber
               ? prev

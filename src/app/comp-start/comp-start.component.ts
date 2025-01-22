@@ -108,8 +108,11 @@ export class CompStartComponent implements OnInit {
     };
     if (buttonText === '1') {
       // the 1 here is for the active enume status
-      dialogData.title = 'OPS! Du er ved at redigere i en aktiv konkurrence!';
-      dialogData.message = 'Ønsker du at fortsætte?';
+      this.router.navigate(['/competition-page', comp.id]);
+
+      return; //Do nothing when active at this state.
+      // dialogData.title = 'OPS! Du er ved at redigere i en aktiv konkurrence!';
+      // dialogData.message = 'Ønsker du at fortsætte?';
     } else if (buttonText === '2' || buttonText === '3') {
       //the 2 and 3 are for the cancled anc ocnclude traits in that stauts
       dialogData.title =

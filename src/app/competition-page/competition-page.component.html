@@ -66,6 +66,7 @@
         [matches]="matches"
         class="participants-list"
         (matchSelected)="selectMatch($event)"
+        [isDisabled]="disableRoundButton"
       >
       </app-competition-participants-list>
       <app-competition-round-details
