@@ -89,7 +89,7 @@
 }
 
 .newEvent-button {
-  background-color: #4caf50;
+  background-color: grey;
   color: white;
   padding: 10px;
   border: none;
@@ -98,8 +98,4 @@
   font-weight: bold;
   text-align: center;
   width: 100%;
-}
-
-.newEvent-button:hover {
-  opacity: 0.9;
 }
