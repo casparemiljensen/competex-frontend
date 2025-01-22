@@ -30,7 +30,7 @@
     {
       "name": "api",
       "urls": [
-        "http://competex-backend-service.competex-backend.svc.cluster.local:8080/**"
+        "http://backend.localhost/**"
       ],
       "cacheConfig": {
         "strategy": "performance",
