@@ -10,6 +10,7 @@ import { RegistrationPageComponent } from './registration-page/registration-page
 import { ResultPageComponent } from './result-page/result-page.component';
 import { ResultsOverviewPageComponent } from './results-overview-page/results-overview-page.component';
 import { CompetitionPageComponent } from './competition-page/competition-page.component'; // Import the missing component
+import { RabbitPageComponent } from './rabbit-page/rabbit-page.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -22,8 +23,9 @@ const routes: Routes = [
   { path: 'results', component: ResultsOverviewPageComponent },
   { path: 'results/:eventId', component: ResultPageComponent },
   { path: 'competition-page/:id', component: CompetitionPageComponent },
+  { path: 'entities', component: RabbitPageComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect empty path to home
-  { path: '**', redirectTo: '/home' }, // Redirect unknown paths to home
+  { path: '**', redirectTo: '/home' }, // Redirect unknown paths to home,
 ];
 
 @NgModule({

@@ -29,17 +29,16 @@ export class CompetitionResultViewComponent {
     private matchService: MatchService,
     private scoreService: ScoreService
   ) {}
-
-  // ngOnChanges(changes: SimpleChanges): void {
-  //   console.log('Changes in result view:', changes);
-  //   if (changes['match']) {
-  //     console.log('MatchResponse in result view:', this.match);
-  //   }
-  // }
-
+  ngOnChanges(): void {
+    if (this.match) {
+      this.resultForm.enable(); // Enable the form if a match is selected
+    } else {
+      this.resultForm.disable(); // Disable the form if no match is selected
+    }
+  }
   ngOnInit(): void {
     this.resultForm = this.fb.group({
-      fault: ['', [Validators.required, Validators.min(0), Validators.max(14)]],
+      fault: ['', [Validators.required]],
       time: ['', [Validators.required]],
       // correction: ['', [Validators.required]],
       // adv: [false],
@@ -55,6 +54,10 @@ export class CompetitionResultViewComponent {
     // this.resultForm.get('trukket')?.valueChanges.subscribe((value) => {
     //   this.updateFieldStatus(value);
     // });
+
+    if (!this.match) {
+      this.resultForm.disable();
+    }
   }
 
   editParticipant(): void {
@@ -121,6 +124,7 @@ export class CompetitionResultViewComponent {
 
               this.match = null; // Clear the match to hide the form
               this.resultForm.reset(); // Reset the form fields
+              this.resultForm.disable();
             },
             error: (err) => {
               console.error('Error updating match:', err);

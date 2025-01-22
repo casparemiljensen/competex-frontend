@@ -1,0 +1,43 @@
+/* Full Page Background Styling */
+mat-sidenav-content {
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Home Content Styling */
+.home-content {
+  text-align: center;
+  color: #0d47a1; /* Deep blue for text */
+  padding: 16px;
+  max-width: 800px;
+}
+
+/* Title Styling */
+.home-content h1 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin: 16px auto;
+  font-weight: 600;
+}
+
+.home-content h1 span {
+  color: #1565c0; /* Slightly lighter blue for emphasis */
+}
+
+/* Subtitle/Description Text */
+.home-content p {
+  font-size: 1.2rem;
+  margin: 24px auto;
+  color: #455a64; /* Dark grayish-blue */
+}
+
+/* Background Banner */
+.background-banner {
+  height: 200px;
+  width: 100%;
+  border-radius: 0 0 16px 16px;
+  position: center;
+}
