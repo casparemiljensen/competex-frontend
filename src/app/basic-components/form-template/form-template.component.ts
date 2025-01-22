@@ -224,8 +224,6 @@ export class FormTemplateComponent implements OnInit {
               },
             });
           });
-
-          alert('Event and competitions created successfully!');
         },
         error: (err) => {
           console.error('Error creating event:', err);
@@ -237,7 +235,7 @@ export class FormTemplateComponent implements OnInit {
       this.competitionControl.clear(); // Clear FormArray explicitly
 
       //navigate to calender page, and refresh page to see update.
-      this.router.navigate(['/calender']);
+      this.router.navigate(['/home']);
     } else {
       console.log('Form is invalid');
       this.checkFormValidation();
