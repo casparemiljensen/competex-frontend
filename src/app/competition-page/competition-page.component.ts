@@ -210,6 +210,9 @@ export class CompetitionPageComponent {
             this.roundService.deleteRoundById(response1).subscribe({
               next: () => {
                 console.log(`Round ${response1} deleted successfully.`);
+                alert(
+                  'No matches did meet the criteria. Finish competetion or loosen your criteria'
+                );
               },
               error: (err) => {
                 console.error(`Error deleting round ${response1}:`, err);
