@@ -105,7 +105,6 @@ export class CompetitionPageComponent {
       // Example: this.http.post('api-url', formData).subscribe(response => { ... });
     } else {
       console.log('Form is invalid');
-      alert('Please correct the errors in the form before submitting.');
     }
   }
 
@@ -140,7 +139,7 @@ export class CompetitionPageComponent {
 
   onNewRoundClick(): void {
     const newRound: RoundRequest = {
-      name: 'Round 1',
+      name: 'Round 0',
       sequenceNumber: 0,
       competitionId: this.competitionId,
       status: 0,
@@ -187,8 +186,8 @@ export class CompetitionPageComponent {
       status: 0,
     };
     this.roundService.createRound(newRound).subscribe({
-      next: (response: string) => {
-        console.log(`Round ${newRound.name} created successfully: `, response);
+      next: (response1: string) => {
+        console.log(`Round ${newRound.name} created successfully: `, response1);
         console.log(`Testasd ${form.value.fault} ${form.value.time}`);
         const newMatchesForRound: CreateRoundRequest = {
           competitionId: this.competitionId,
@@ -198,15 +197,24 @@ export class CompetitionPageComponent {
         };
         console.log('ROUNDS ASDPA;DSPASD 2');
         this.roundService.createMatchesForRound(newMatchesForRound).subscribe({
-          next: (response: MatchResponse[]) => {
+          next: (response2: MatchResponse[]) => {
             console.log(
               `Matches created for round ${newMatchesForRound.sequenceNumber}: `,
-              response
+              response2
             );
-            this.addDetailsToMatches(response);
+            //this.addDetailsToMatches(response);
+            this.matches = response2;
           },
           error: (err) => {
             console.error('Error creating matches for round:', err);
+            this.roundService.deleteRoundById(response1).subscribe({
+              next: () => {
+                console.log(`Round ${response1} deleted successfully.`);
+              },
+              error: (err) => {
+                console.error(`Error deleting round ${response1}:`, err);
+              },
+            });
           },
         });
       },
