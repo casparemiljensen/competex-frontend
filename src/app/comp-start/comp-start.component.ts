@@ -7,6 +7,9 @@ import { EventService } from '../service/event/event.service';
 import { Router } from '@angular/router';
 import { Status } from '../models/enums';
 import { eventRequest } from '../models/eventRequest';
+import { CompetitionResponse } from '../models/competitionResponse';
+import { CompetitionService } from '../service/Competition/competition.service';
+import { CompetitionRequest } from '../models/competitionRequest';
 
 @Component({
   selector: 'app-comp-start',
@@ -18,6 +21,7 @@ export class CompStartComponent implements OnInit {
   isLoading = true;
   test!: any[];
   public status = Status;
+  updatedCompetition!: CompetitionRequest;
 
   @Output() buttonClick = new EventEmitter<void>();
 
@@ -25,7 +29,8 @@ export class CompStartComponent implements OnInit {
     public dialog: MatDialog,
     private route: ActivatedRoute,
     private EventService: EventService,
-    private router: Router
+    private router: Router,
+    private competitionService: CompetitionService
   ) {}
 
   ngOnInit(): void {
@@ -67,9 +72,33 @@ export class CompStartComponent implements OnInit {
   }
 
   openConfirmDialog(buttonText: string, comp: any): void {
+    console.log('Comp text:', comp);
     if (buttonText === '0') {
       // the 0 here is in sted of "start"
+      this.updatedCompetition = {
+        competitionTypeId: comp.competitionType.id,
+        eventId: this.event.id,
+        name: comp.name,
+        startDate: comp.startDate,
+        endDate: comp.endDate,
+        level: comp.level,
+        status: Status.Active,
+        minParticipants: comp.minParticipants,
+        maxParticipants: comp.maxParticipants,
+        registrationPrice: comp.registrationPrice,
+        id: comp.id,
+      };
+      this.competitionService
+        .updateCompetition(this.updatedCompetition)
+        .subscribe({
+          next: (response) => {
+            console.log('Competition updated successfully:', response);
+          },
+          error: (err) => console.error('Error updating competition:', err),
+        });
+
       this.router.navigate(['/competition-page', comp.id]);
+
       return; // Do not open the dialog if buttonText is "Start"
     }
 
@@ -79,8 +108,11 @@ export class CompStartComponent implements OnInit {
     };
     if (buttonText === '1') {
       // the 1 here is for the active enume status
-      dialogData.title = 'OPS! Du er ved at redigere i en aktiv konkurrence!';
-      dialogData.message = 'Ønsker du at fortsætte?';
+      this.router.navigate(['/competition-page', comp.id]);
+
+      return; //Do nothing when active at this state.
+      // dialogData.title = 'OPS! Du er ved at redigere i en aktiv konkurrence!';
+      // dialogData.message = 'Ønsker du at fortsætte?';
     } else if (buttonText === '2' || buttonText === '3') {
       //the 2 and 3 are for the cancled anc ocnclude traits in that stauts
       dialogData.title =

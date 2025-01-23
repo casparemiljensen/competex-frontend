@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -20,6 +20,7 @@ import { LocationService } from '../service/location/location.service';
 import { Status } from '../models/enums';
 import { Location } from '@angular/common';
 import { EventService } from '../service/event/event.service';
+import { CompetitionParticipantsListComponent } from '../basic-components/competition-participants-list/competition-participants-list.component';
 
 @Component({
   selector: 'app-competition-page',
@@ -35,9 +36,13 @@ export class CompetitionPageComponent {
   matches: MatchResponse[] = [];
   selectedMatch!: MatchResponse;
   showRoundDetailsView = false;
+  disableRoundButton = false;
 
   fieldOptions: { value: string; viewValue: string }[] = [];
   judgeOptions: { value: string; viewValue: string }[] = [];
+
+  @ViewChild(CompetitionParticipantsListComponent)
+  participantsList!: CompetitionParticipantsListComponent;
 
   constructor(
     private fb: FormBuilder,
@@ -149,7 +154,7 @@ export class CompetitionPageComponent {
           competitionId: this.competitionId,
           sequenceNumber: 0, // Add the missing sequenceNumber property
         };
-
+        console.log('ROUNDS ASDPA;DSPASD 1');
         this.roundService.createMatchesForRound(newMatchesForRound).subscribe({
           next: (response: MatchResponse[]) => {
             console.log('Matches created for first round: ', response);
@@ -184,14 +189,14 @@ export class CompetitionPageComponent {
     this.roundService.createRound(newRound).subscribe({
       next: (response: string) => {
         console.log(`Round ${newRound.name} created successfully: `, response);
-
+        console.log(`Testasd ${form.value.fault} ${form.value.time}`);
         const newMatchesForRound: CreateRoundRequest = {
           competitionId: this.competitionId,
           sequenceNumber: count + 1,
-          maxFaults: form.fault,
-          maxMinutes: form.time,
+          maxFaults: form.value.fault,
+          maxMinutes: form.value.time,
         };
-
+        console.log('ROUNDS ASDPA;DSPASD 2');
         this.roundService.createMatchesForRound(newMatchesForRound).subscribe({
           next: (response: MatchResponse[]) => {
             console.log(
@@ -251,6 +256,7 @@ export class CompetitionPageComponent {
         const rounds = response;
         console.log('Existing Rounds:', response);
         if (rounds.length > 0) {
+          this.disableRoundButton = true;
           const highestSequenceRound = rounds.reduce((prev, current) => {
             return prev.sequenceNumber > current.sequenceNumber
               ? prev
@@ -338,5 +344,10 @@ export class CompetitionPageComponent {
     });
     //navigate back
     this.location.back();
+  }
+
+  handleMatchDone() {
+    console.log('Result submitted, resetting selected match');
+    this.participantsList.resetSelectedMatch(); // Call the method on the child component
   }
 }
