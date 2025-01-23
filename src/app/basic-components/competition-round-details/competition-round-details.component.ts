@@ -19,8 +19,8 @@ export class CompetitionRoundDetailsComponent {
 
   ngOnInit(): void {
     this.myForm = this.fb.group({
-      fault: [, [Validators.min(0), Validators.max(20)]],
-      time: ['', [Validators.min(0), Validators.max(100)]],
+      fault: [, []],
+      time: ['', []],
     });
   }
   get faultControl() {

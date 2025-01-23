@@ -1,21 +1,24 @@
 <div *ngIf="formData">
   <h2>Er dine informationer korrekte?</h2>
   <div>
-    <p><strong>Titel:</strong> {{ formData.title || "Not provided" }}</p>
-    <p><strong>Arrangør:</strong> {{ formData.organizer || "Not provided" }}</p>
-    <p><strong>Stednavn:</strong> {{ formData.location || "Not provided" }}</p>
-    <p><strong>Entre pris:</strong> {{ formData.entryFee || 0 }}</p>
+    <p><strong>Titel:</strong> {{ formData.title || "Ikke Angivet" }}</p>
+    <p><strong>Arrangør:</strong> {{ formData.organizer || "Ikke Angivet" }}</p>
+    <p><strong>Stednavn:</strong> {{ formData.location || "Ikke Angivet" }}</p>
+    <p><strong>Entré pris:</strong> {{ formData.entryFee || 0 }}</p>
     <p>
-      <strong>Start dato:</strong> {{ formData.startDate || "Not provided" }}
+      <strong>Start dato:</strong>
+      {{ formData.startDate | date : "dd-MM-yyyy" }}
     </p>
-    <p><strong>Slut dato::</strong> {{ formData.endDate || "Not provided" }}</p>
+    <p>
+      <strong>Slut dato::</strong> {{ formData.endDate | date : "dd-MM-yyyy" }}
+    </p>
     <p>
       <strong>Dato for tilmeldingsstart:</strong>
-      {{ formData.registrationStartDate || "Not provided" }}
+      {{ formData.registrationStartDate | date : "dd-MM-yyyy" }}
     </p>
     <p>
       <strong>Dato for tilmeldingsslut:</strong>
-      {{ formData.registrationEndDate || "Not provided" }}
+      {{ formData.registrationEndDate | date : "dd-MM-yyyy" }}
     </p>
   </div>
   <h3>Konkurrence oversigt</h3>

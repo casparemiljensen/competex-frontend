@@ -28,6 +28,7 @@ export class RoundService {
     round: CreateRoundRequest
   ): Observable<MatchResponse[]> {
     const url = `${this.baseUrl}/CreateMatchesForRound?competitionId=${round.competitionId}&roundSequenceNo=${round.sequenceNumber}`;
+    console.log("Roundasd", round);
     const body =
       round.sequenceNumber > 0 && round.maxFaults && round.maxMinutes
         ? { maxFaults: round.maxFaults, maxMinutes: round.maxMinutes }

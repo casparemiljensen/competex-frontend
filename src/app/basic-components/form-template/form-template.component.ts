@@ -53,38 +53,39 @@ export class FormTemplateComponent implements OnInit {
     today.setHours(0, 0, 0, 0);
 
     this.myForm = this.fb.group({
-      title: ['', [Validators.required, Validators.pattern('^[A-Z].*')]],
+      title: ['', [Validators.required]],
       organizer: ['', [Validators.required]],
       location: ['', [Validators.required]],
-      entryFee: [
-        0,
-        [Validators.required, Validators.min(0), Validators.max(100)],
-      ],
-      startDate: ['', [Validators.required, this.notInPastValidator(today)]], //Date not in past
-      endDate: [
-        '',
-        [
-          Validators.required,
-          this.notInPastValidator(today), // Cannot be in the past
-          this.afterOrEqualDateValidator('startDate'), // Must be after or equal to startDate
-        ],
-      ],
-      registrationStartDate: [
-        '',
-        [
-          Validators.required,
-          this.notInPastValidator(today), // Cannot be in the past
-          this.beforeOrEqualDateValidator('startDate'), // Cannot be after startDate,
-        ],
-      ],
-      registrationEndDate: [
-        '',
-        [
-          Validators.required,
-          this.notInPastValidator(today), // Cannot be in the past
-          this.beforeOrEqualDateValidator('startDate'), // Cannot be after startDate
-        ],
-      ],
+      entryFee: [0, [Validators.required]],
+      startDate: ['', [Validators.required]],
+      endDate: ['', [Validators.required]],
+      registrationStartDate: ['', [Validators.required]],
+      registrationEndDate: ['', [Validators.required]],
+      // startDate: ['', [Validators.required, this.notInPastValidator(today)]], //Date not in past
+      // endDate: [
+      //   '',
+      //   [
+      //     Validators.required,
+      //     this.notInPastValidator(today), // Cannot be in the past
+      //     this.afterOrEqualDateValidator('startDate'), // Must be after or equal to startDate
+      //   ],
+      // ],
+      // registrationStartDate: [
+      //   '',
+      //   [
+      //     Validators.required,
+      //     this.notInPastValidator(today), // Cannot be in the past
+      //     this.beforeOrEqualDateValidator('startDate'), // Cannot be after startDate,
+      //   ],
+      // ],
+      // registrationEndDate: [
+      //   '',
+      //   [
+      //     Validators.required,
+      //     this.notInPastValidator(today), // Cannot be in the past
+      //     this.beforeOrEqualDateValidator('startDate'), // Cannot be after startDate
+      //   ],
+      // ],
       competitions: this.fb.array([]),
       permissions: this.fb.group({
         //Not in scope for this version
@@ -223,20 +224,18 @@ export class FormTemplateComponent implements OnInit {
               },
             });
           });
+          //Reset form and rabbit array, and create new form addRabbit is ready.
+          this.myForm.reset();
+          this.competitionControl.clear(); // Clear FormArray explicitly
 
-          alert('Event and competitions created successfully!');
+          //navigate to calender page, and refresh page to see update.
+          this.router.navigate(['/calender']);
         },
         error: (err) => {
           console.error('Error creating event:', err);
           alert('Failed to create the event.');
         },
       });
-      //Reset form and rabbit array, and create new form addRabbit is ready.
-      this.myForm.reset();
-      this.competitionControl.clear(); // Clear FormArray explicitly
-
-      //navigate to calender page
-      this.router.navigate(['/calender']);
     } else {
       console.log('Form is invalid');
       this.checkFormValidation();

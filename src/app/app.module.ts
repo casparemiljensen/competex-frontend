@@ -71,6 +71,7 @@ import { CompetitionResultViewComponent } from './basic-components/competition-r
 import { environment } from '../environments/environment';
 import { CompetitionRoundDetailsComponent } from './basic-components/competition-round-details/competition-round-details.component';
 import { FormValidateViewComponent } from './basic-components/form-validate-view/form-validate-view.component';
+import { RabbitPageComponent } from './rabbit-page/rabbit-page.component';
 
 @NgModule({
   declarations: [
@@ -111,6 +112,7 @@ import { FormValidateViewComponent } from './basic-components/form-validate-view
     CompetitionResultViewComponent,
     CompetitionRoundDetailsComponent,
     FormValidateViewComponent,
+    RabbitPageComponent,
   ],
   imports: [
     BrowserModule,

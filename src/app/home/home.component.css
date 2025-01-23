@@ -1,0 +1,40 @@
+/* Home Content Styling */
+.home-content {
+  text-align: center;
+  color: #0d47a1; /* Deep blue for text */
+  padding: 16px;
+  width: 100%;
+  height: 100%;
+}
+
+/* Title Styling */
+.home-content h1 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin: 16px auto;
+  font-weight: 600;
+}
+
+.home-content h1 span {
+  color: #1565c0; /* Slightly lighter blue for emphasis */
+}
+
+/* Subtitle/Description Text */
+.home-content p {
+  font-size: 1.2rem;
+  margin: 24px auto;
+  color: #455a64; /* Dark grayish-blue */
+}
+.home-content div {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  margin: auto;
+  padding-bottom: 10%;
+}

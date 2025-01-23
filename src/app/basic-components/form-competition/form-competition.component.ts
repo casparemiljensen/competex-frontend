@@ -38,14 +38,7 @@ export class CompetitionFormComponent {
     const competitionForm = this.fb.group({
       competitionType: ['', [Validators.required]],
       level: ['', [Validators.required]],
-      price: [
-        null,
-        [
-          Validators.required,
-          Validators.max(50),
-          Validators.pattern('^[0-9]*$'),
-        ],
-      ],
+      price: [null, [Validators.required]],
     });
     this.control.push(competitionForm);
   }

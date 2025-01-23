@@ -45,7 +45,12 @@
       </mat-table>
     </mat-card-content>
     <div class="round-buttons">
-      <button mat-raised-button color="primary" (click)="handleNewRoundClick()">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="handleNewRoundClick()"
+        [disabled]="isDisabled"
+      >
         Opret 1. runde
       </button>
       <button
