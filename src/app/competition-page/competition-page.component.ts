@@ -337,13 +337,13 @@ export class CompetitionPageComponent {
     this.competitionService.updateCompetition(updatedCompetition).subscribe({
       next: (response) => {
         console.log('Competition status updated:', response);
+        //navigate back
+        this.location.back();
       },
       error: (err) => {
         console.error('Error updating competition status:', err);
       },
     });
-    //navigate back
-    this.location.back();
   }
 
   handleMatchDone() {
