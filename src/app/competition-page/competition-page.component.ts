@@ -323,7 +323,7 @@ export class CompetitionPageComponent {
     const field = this.methodOptions.find(
       (option) => option.value === methodId
     );
-    return field ? field.viewValue : 'Metode ikke valgtt'; // Default text if no method is selected
+    return field ? field.viewValue : 'Metode ikke valgt'; // Default text if no method is selected
   }
 
   finishCompetition(): void {

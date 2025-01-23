@@ -121,14 +121,13 @@ export class RegistrationFormsComponent {
             },
           });
         });
+        //navigate back to the registration page
+        this.location.back();
       });
       //Reset form and rabbit array, and create new form addRabbit is ready.
       this.myForm.reset();
       this.rabbitsControls.clear(); // Clear FormArray explicitly
       this.addRabbit();
-
-      //navigate back to the registration page
-      this.location.back();
     }
   }
 

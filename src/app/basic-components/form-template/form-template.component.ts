@@ -224,18 +224,18 @@ export class FormTemplateComponent implements OnInit {
               },
             });
           });
+          //Reset form and rabbit array, and create new form addRabbit is ready.
+          this.myForm.reset();
+          this.competitionControl.clear(); // Clear FormArray explicitly
+
+          //navigate to calender page, and refresh page to see update.
+          this.router.navigate(['/calender']);
         },
         error: (err) => {
           console.error('Error creating event:', err);
           alert('Failed to create the event.');
         },
       });
-      //Reset form and rabbit array, and create new form addRabbit is ready.
-      this.myForm.reset();
-      this.competitionControl.clear(); // Clear FormArray explicitly
-
-      //navigate to calender page, and refresh page to see update.
-      this.router.navigate(['/home']);
     } else {
       console.log('Form is invalid');
       this.checkFormValidation();

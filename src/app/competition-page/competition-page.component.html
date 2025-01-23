@@ -41,14 +41,12 @@
           [control]="methodControl"
         ></app-form-input-select>
         <!-- <app-form-input-text label="Start Tid"> </app-form-input-text> -->
-        <button mat-raised-button type="submit" class="submit-button">
-          Fortsæt
-        </button>
+        <button type="submit" class="new-button">Fortsæt</button>
       </form>
     </div>
   </div>
-  <!-- <div *ngIf="detailsSubmitted"> -->
-  <div *ngIf="true" class="subpage-container">
+  <div *ngIf="detailsSubmitted">
+    <!-- <div *ngIf="true" class="subpage-container"> -->
     <h2 *ngIf="!showRoundDetailsView">{{ competition.name }}</h2>
     <div class="result-content">
       <app-competition-result-view
