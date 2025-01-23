@@ -26,7 +26,6 @@
             class="competition-input"
             label="Pris"
             [control]="getPriceControl(i)"
-            validationMessage="Maks pris er 50 kr."
           >
           </app-form-input-text>
           <div>
@@ -39,11 +38,7 @@
     </div>
   </div>
   <div class="competition-button-container">
-    <button
-      mat-raised-button
-      class="add-competition-button"
-      (click)="addCompetition()"
-    >
+    <button class="new-button" (click)="addCompetition()">
       Tilføj Konkurrence
     </button>
   </div>

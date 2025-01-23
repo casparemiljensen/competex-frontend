@@ -28,10 +28,12 @@ export class RoundService {
     round: CreateRoundRequest
   ): Observable<MatchResponse[]> {
     const url = `${this.baseUrl}/CreateMatchesForRound?competitionId=${round.competitionId}&roundSequenceNo=${round.sequenceNumber}`;
+    console.log('Roundasd', round);
     const body =
-      round.sequenceNumber > 0 && round.maxFaults && round.maxMinutes
+      round.sequenceNumber > 0
         ? { maxFaults: round.maxFaults, maxMinutes: round.maxMinutes }
         : null;
+    console.log('Body', body);
 
     return this.http
       .post<{ values: MatchResponse[] }>(url, body) // Expecting MatchResponse[] as response
@@ -44,5 +46,9 @@ export class RoundService {
         `${this.baseUrl}/competition/${competitionId}`
       )
       .pipe(map((response) => response.values));
+  }
+
+  deleteRoundById(roundId: string): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${roundId}`);
   }
 }

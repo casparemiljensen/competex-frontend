@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -20,6 +20,7 @@ import { LocationService } from '../service/location/location.service';
 import { Status } from '../models/enums';
 import { Location } from '@angular/common';
 import { EventService } from '../service/event/event.service';
+import { CompetitionParticipantsListComponent } from '../basic-components/competition-participants-list/competition-participants-list.component';
 
 @Component({
   selector: 'app-competition-page',
@@ -35,9 +36,13 @@ export class CompetitionPageComponent {
   matches: MatchResponse[] = [];
   selectedMatch!: MatchResponse;
   showRoundDetailsView = false;
+  disableRoundButton = false;
 
   fieldOptions: { value: string; viewValue: string }[] = [];
   judgeOptions: { value: string; viewValue: string }[] = [];
+
+  @ViewChild(CompetitionParticipantsListComponent)
+  participantsList!: CompetitionParticipantsListComponent;
 
   constructor(
     private fb: FormBuilder,
@@ -100,7 +105,6 @@ export class CompetitionPageComponent {
       // Example: this.http.post('api-url', formData).subscribe(response => { ... });
     } else {
       console.log('Form is invalid');
-      alert('Please correct the errors in the form before submitting.');
     }
   }
 
@@ -135,7 +139,7 @@ export class CompetitionPageComponent {
 
   onNewRoundClick(): void {
     const newRound: RoundRequest = {
-      name: 'Round 1',
+      name: 'Round 0',
       sequenceNumber: 0,
       competitionId: this.competitionId,
       status: 0,
@@ -149,7 +153,7 @@ export class CompetitionPageComponent {
           competitionId: this.competitionId,
           sequenceNumber: 0, // Add the missing sequenceNumber property
         };
-
+        console.log('ROUNDS ASDPA;DSPASD 1');
         this.roundService.createMatchesForRound(newMatchesForRound).subscribe({
           next: (response: MatchResponse[]) => {
             console.log('Matches created for first round: ', response);
@@ -182,26 +186,38 @@ export class CompetitionPageComponent {
       status: 0,
     };
     this.roundService.createRound(newRound).subscribe({
-      next: (response: string) => {
-        console.log(`Round ${newRound.name} created successfully: `, response);
-
+      next: (response1: string) => {
+        console.log(`Round ${newRound.name} created successfully: `, response1);
+        console.log(`Testasd ${form.value.fault} ${form.value.time}`);
         const newMatchesForRound: CreateRoundRequest = {
           competitionId: this.competitionId,
           sequenceNumber: count + 1,
-          maxFaults: form.fault,
-          maxMinutes: form.time,
+          maxFaults: form.value.fault,
+          maxMinutes: form.value.time,
         };
-
+        console.log('ROUNDS ASDPA;DSPASD 2');
         this.roundService.createMatchesForRound(newMatchesForRound).subscribe({
-          next: (response: MatchResponse[]) => {
+          next: (response2: MatchResponse[]) => {
             console.log(
               `Matches created for round ${newMatchesForRound.sequenceNumber}: `,
-              response
+              response2
             );
-            this.addDetailsToMatches(response);
+            //this.addDetailsToMatches(response);
+            this.matches = response2;
           },
           error: (err) => {
             console.error('Error creating matches for round:', err);
+            this.roundService.deleteRoundById(response1).subscribe({
+              next: () => {
+                console.log(`Round ${response1} deleted successfully.`);
+                alert(
+                  'No matches did meet the criteria. Finish competetion or loosen your criteria'
+                );
+              },
+              error: (err) => {
+                console.error(`Error deleting round ${response1}:`, err);
+              },
+            });
           },
         });
       },
@@ -251,6 +267,7 @@ export class CompetitionPageComponent {
         const rounds = response;
         console.log('Existing Rounds:', response);
         if (rounds.length > 0) {
+          this.disableRoundButton = true;
           const highestSequenceRound = rounds.reduce((prev, current) => {
             return prev.sequenceNumber > current.sequenceNumber
               ? prev
@@ -317,7 +334,7 @@ export class CompetitionPageComponent {
     const field = this.methodOptions.find(
       (option) => option.value === methodId
     );
-    return field ? field.viewValue : 'Metode ikke valgtt'; // Default text if no method is selected
+    return field ? field.viewValue : 'Metode ikke valgt'; // Default text if no method is selected
   }
 
   finishCompetition(): void {
@@ -331,12 +348,17 @@ export class CompetitionPageComponent {
     this.competitionService.updateCompetition(updatedCompetition).subscribe({
       next: (response) => {
         console.log('Competition status updated:', response);
+        //navigate back
+        this.location.back();
       },
       error: (err) => {
         console.error('Error updating competition status:', err);
       },
     });
-    //navigate back
-    this.location.back();
+  }
+
+  handleMatchDone() {
+    console.log('Result submitted, resetting selected match');
+    this.participantsList.resetSelectedMatch(); // Call the method on the child component
   }
 }

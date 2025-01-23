@@ -1,12 +1,10 @@
 <div class="page-container">
   <div *ngIf="event">
-    <div class="title">
-      {{ event.title }}
-    </div>
+    <div class="title">{{ event.title }} - Organizer view</div>
     <!-- event inf -->
     <div class="top-section">
       <div class="container locatoin">
-        <h3>Location</h3>
+        <h3>Lokation</h3>
         <p>{{ event.location.name }}</p>
         <p>{{ event.location.address }}</p>
         <p>
@@ -36,7 +34,7 @@
         >
           START
         </button>
-        <button mat-button color="warn" class="edit-button">
+        <button mat-button color="warn" class="edit-button" disabled>
           <mat-icon>edit</mat-icon> Edit
         </button>
         <button

@@ -17,6 +17,7 @@ import { Participant } from '../../models/participant';
 export class CompetitionParticipantsListComponent {
   @Input() matches: MatchResponse[] = [];
   @Input() participants: Participant[] = [];
+  @Input() isDisabled = false;
   @Output() matchSelected = new EventEmitter<MatchResponse>();
   @Output() newRoundClick = new EventEmitter<void>();
   @Output() nextRoundClick = new EventEmitter<void>();
@@ -39,8 +40,13 @@ export class CompetitionParticipantsListComponent {
   }
   handleNewRoundClick(): void {
     this.newRoundClick.emit();
+    this.isDisabled = true;
   }
   handleNextRoundClick(): void {
     this.nextRoundClick.emit();
+  }
+  resetSelectedMatch(): void {
+    this.selectedMatch = null;
+    console.log('resetSelectedMatch in startlist');
   }
 }

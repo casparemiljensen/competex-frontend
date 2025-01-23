@@ -24,14 +24,14 @@ export class EventTableComponent implements OnInit {
 
   fetchPendingEvents(): any {
     this.eventService.getEventsBySearchPending().subscribe((apiData) => {
-      if(apiData){
+      if (apiData) {
         const events = this.mapApiDataToEvents(apiData);
         this.groupedEvents = this.groupEventsByMonth(events);
         this.isLoading = false;
         return events;
       } else {
         this.isLoading = false;
-        console.log("No pending events")
+        console.log('No pending events');
         return [];
       }
     });
